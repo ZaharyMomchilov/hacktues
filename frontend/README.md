@@ -16,3 +16,7 @@
 # about page
 
 - [] line-height
+
+# other
+- [] nextjs image component
+- []
