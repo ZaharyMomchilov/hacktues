@@ -1,8 +1,8 @@
 import axios from 'axios'
 import Cookies from 'universal-cookie';
 import jwt_decode from "jwt-decode";
-import { Editable, EditableInput, EditablePreview } from "@chakra-ui/react"
-import { Box, Avatar, InputRightElement, Flex, Text, Button, ButtonGroup, Input, InputGroup, InputLeftElement, IconButton, Icon, Select, Switch } from "@chakra-ui/react";
+import { Center, Editable, EditableInput, EditablePreview } from "@chakra-ui/react"
+import { Box, Avatar, InputRightElement, Flex, Text, chakra, Button, ButtonGroup, Input, InputGroup, InputLeftElement, IconButton, Icon, Select, Switch } from "@chakra-ui/react";
 import { Formik, Field, Form } from 'formik';
 import {PhoneIcon, ViewIcon, ViewOffIcon, EditIcon, CheckIcon, CloseIcon} from '@chakra-ui/icons'
 import {
@@ -24,6 +24,11 @@ import {
   } from "@chakra-ui/react"
 
 const cookies = new Cookies()
+import {RemoveScroll} from 'react-remove-scroll';
+import { motion, useAnimation, useMotionValue, useTransform } from "framer-motion";
+// 1. Create a custom motion component from Box
+const MotionBox = chakra(motion.div);
+
 
 import { useRouter } from "next/router";
 import * as Yup from 'yup';
@@ -106,7 +111,16 @@ function Profile(props) {
 	const cancelRef = React.useRef()
 
 	return(
-	<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
+		<RemoveScroll>
+		<MotionBox position="absolute" blockScrollOnMount={true} preserveScrollBarGap={true} 
+		h="100%"
+		animate={{
+			marginLeft: ["100%", "10%" ],
+			width: ["300%", "90%"],
+		}}
+		backgroundColor="red.400" overflow="hidden" transition={{ duration: 1000 }}
+		>
+	<Box maxW="960px" marginLeft="auto" marginRight="auto">
 	<Flex backgroundColor="white" p="25px" rounded="lg" flexDirection="column" flexWrap="wrap" margin="50px">
 		<Flex>
 			<Avatar name={props.users.first_name}/>
@@ -297,7 +311,8 @@ function Profile(props) {
       )}
     </Formik>
 	</Flex>
-	</Box>)
+	</Box>
+	</MotionBox></RemoveScroll>)
 }
 
 export async function getServerSideProps(ctx) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Input, InputGroup, InputRightElement, Select, InputLeftElement, Switch, Heading, Flex, Button, useToast} from "@chakra-ui/react";
+import { Box, Input, InputGroup, InputRightElement, Select, InputLeftElement, Switch, Heading, IconButton, Flex, Button, useToast} from "@chakra-ui/react";
 import { Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider, MenuOptionGroup, MenuItemOption } from "@chakra-ui/react";
 import { Modal, ModalOverlay,ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton } from "@chakra-ui/react";
@@ -9,11 +9,10 @@ import { useDisclosure } from "@chakra-ui/react";
 
 import { Formik, Field } from 'formik';
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakra-ui/react";
-import {PhoneIcon, ViewIcon, ViewOffIcon} from '@chakra-ui/icons'
+import {PhoneIcon, ViewIcon, ViewOffIcon, SearchIcon} from '@chakra-ui/icons'
 import Cookies from 'universal-cookie'
 
 import * as Yup from 'yup';
-
 import Router from 'next/router'
 import Link from 'next/link'
 import Reg from './form'
@@ -25,7 +24,15 @@ const axios = require('axios');
 
 import styled from '@emotion/styled'
 
+
+
 const MenuItems = ({ children }) => (
+	<Button _active={{bg:"transparent"}} _hover={{bg:"transparent"}} _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px">
+    {children}
+  </Button>
+);
+
+const MenuItemss = ({ children }) => (
 	<Button _active={{bg:"transparent"}} _hover={{bg:"transparent"}} _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px">
     {children}
   </Button>
@@ -92,7 +99,7 @@ const Navbar = props => {
 		
   	return (
 	<header>
-    <Flex as="nav" align="center" justify="space-between" padding="10px" bg="#a5cf9f" color="white"{...props}>
+    {/* <Flex as="nav" align="center" justify="space-between" padding="10px" bg="#a5cf9f" color="white"{...props}>
       	<Flex width="auto" align="center" ml={5} mr={5}>
        		<Link href="/">
           		<a>
@@ -175,7 +182,23 @@ const Navbar = props => {
 			</DrawerBody>
         </DrawerContent>
     </Drawer>
+	</Flex> */}
+<Flex position="fixed" zIndex={1} top={0} bottom={0} left={0} margin="auto" height="100%" w="10%" p={1} background="#000">
+	<Flex flexDirection="column" position="fixed" zIndex={1} top={0} bottom={0} left={0} margin="auto" height="500px" w="10%" p={1} textAlign="center">
+	<Link href="/">
+          		<a>
+            		<Heading fontFamily="llpixel" color="black" fontSize="1.25rem" fontWeight="200" size="lg">
+              			<span style={{"color":"green"}}>GG</span>
+            		</Heading>
+          		</a>
+        	</Link>
+		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/example"><a>За Хак ТУЕС</a></Link></Button>
+		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/example2"><a>Регламент</a></Link></Button>
+		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/login"><a>Влез</a></Link></Button>
+		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/archive"><a>Архив</a></Link></Button>
+		
 	</Flex>
+</Flex>
 </header>
   )
 };
@@ -464,7 +487,7 @@ const CustomCheckbox = styled(Checkbox)`
 `
 
 
-  function Login({logIn}) {
+function Login({logIn}) {
   
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [show, setShow] = React.useState(false);
@@ -592,6 +615,6 @@ function useDeviceDetect() {
 	}, []);
   
 	return { isMobile };
-  }
+}
 
 export default Navbar;

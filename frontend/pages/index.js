@@ -12,6 +12,10 @@ import MessengerCustomerChat from 'react-messenger-customer-chat';
 const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2();
 
+import { motion } from "framer-motion"
+
+// import Example from './example'
+
 export default function Home() {
 
     useEffect(() => {
@@ -20,10 +24,11 @@ export default function Home() {
     var router = useRouter()
     const easterEgg = () => {
 		router.push("/secret/verywellkeptsecret/indeed/secret")
-    }
-
+	}
+	
     return( 
         <Box>
+        	{/* <Example/> */}
             <Konami code={[71,71,87,80]} action={easterEgg}/>
             {/* <Link isExternal href='https://discord.com/api/oauth2/authorize?client_id=743157046677078016&redirect_uri=https%3A%2F%2Fhacktues-git-wave2.zaharymomchilov.vercel.app%2F&response_type=code&scope=identify'>xd</Link>             */}
         </Box>

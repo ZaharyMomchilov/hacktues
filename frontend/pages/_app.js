@@ -12,6 +12,8 @@ import { createBreakpoints } from "@chakra-ui/react"
 import { useControllableState } from "@chakra-ui/react"
 import Terms from '../components/termsofservice/terms'
 
+import Background from '../components/background/background'
+
 const cookies = new Cookies();
 
 const theme = extendTheme({
@@ -64,8 +66,8 @@ function MyApp({ Component, pageProps }) {
   	<ChakraProvider resetCSS={false} theme={theme}>
   		<Navbar loggedin={logged} />
   	  	<Component {...pageProps} />
-			<Cookie/>
-  	  	<Footer/>
+			{/* <Cookie/> */}
+  	  	{/* <Footer/> */}
   	</ChakraProvider>) 
 }
 

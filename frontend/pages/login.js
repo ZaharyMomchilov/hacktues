@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Input, InputGroup, InputRightElement, useToast } from "@chakra-ui/react";
+import { Box, Button, Input, InputGroup, InputRightElement, useToast, chakra } from "@chakra-ui/react";
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakra-ui/react";
 
 import { Formik, Field, Form } from 'formik';
@@ -10,6 +10,7 @@ import { ViewIcon, ViewOffIcon} from '@chakra-ui/icons'
 
 import Router from 'next/router'
 
+import { motion } from "framer-motion";
 const cookies = new Cookies();
 
 export default function Login({logIn}) {
@@ -19,39 +20,47 @@ export default function Login({logIn}) {
 	const handleClick = () => setShow(!show);
 
 	const toast = useToast()
+	
+	const MotionBox = chakra(motion.div);
 	return(
-	  	<Box backgroundColor="white" p="25px" mt="50px" ml="10px" mr="10px" rounded="lg">
+
+    <MotionBox
+    animate={{
+        marginLeft: ["100%", "10%" ],
+        width: ["300%", "100%"],
+    }}
+    transition={{ duration: 1000 }}  backgroundColor="white" p="25px" mt="50px" ml="10px" mr="10px" rounded="lg">
 			<Formik initialValues={{ email: "", password: "" }} 
-	onSubmit={(values, actions) => {
-		setTimeout(() => {
-				var data = JSON.stringify(values, null, 1)
-				axios({
-					method: 'post',
-					url: 'https://hacktues.pythonanywhere.com/token/',
-					headers: 
-					{ "Content-type": "Application/json"},
-					data: data  
-					  },)
-					.then(function (response) {
-						console.log(response);
-					  	cookies.set('auth', response.data.access, { path: '/' })
-						cookies.set('refresh', response.data.refresh, { path: '/' })
-						toast({
-          title: "Влизането успешно.",
-          description: "Влизането в профила е успешно.",
-          status: "success",
-          duration: 9000
-        })
+				onSubmit={(values, actions) => {
+					setTimeout(() => {
+									var data = JSON.stringify(values, null, 1)
+									axios({
+										method: 'post',
+										url: 'https://hacktues.pythonanywhere.com/token/',
+										headers: 
+										{ "Content-type": "Application/json"},
+										data: data  
+										  },)
+										.then(function (response) {
+											console.log(response);
+										  	cookies.set('auth', response.data.access, { path: '/' })
+											cookies.set('refresh', response.data.refresh, { path: '/' })
+											toast({
+        										  title: "Влизането успешно.",
+        										  description: "Влизането в профила е успешно.",
+        										  status: "success",
+        										  duration: 9000
+        										})
 				
-					})
-					.catch(function (error) {
-					console.log(error);
-					})
-								console.log(JSON.stringify(values, null, 1))
-								actions.setSubmitting(false)
-							}, 1000);
+										})
+										.catch(function (error) {
+										console.log(error);
+										})
+									console.log(JSON.stringify(values, null, 1))
+									actions.setSubmitting(false)
+								}, 1000);
 					}}>
-{props => (
+	{props => (
 		<form onSubmit={props.handleSubmit}>
 		<Field name="email">
 			{({ field, form }) => (
@@ -87,5 +96,6 @@ export default function Login({logIn}) {
 		)}
 		</Formik>
 	</Box>
+	</MotionBox>
 	)
 }
