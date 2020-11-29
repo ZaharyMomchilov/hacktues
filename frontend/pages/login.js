@@ -9,9 +9,12 @@ import Cookies from 'universal-cookie';
 import { ViewIcon, ViewOffIcon} from '@chakra-ui/icons'
 
 import Router from 'next/router'
-
-import { motion } from "framer-motion";
 const cookies = new Cookies();
+
+import {RemoveScroll} from 'react-remove-scroll';
+import { motion, useAnimation, useMotionValue, useTransform } from "framer-motion";
+// 1. Create a custom motion component from Box
+const MotionBox = chakra(motion.div);
 
 export default function Login({logIn}) {
 	
@@ -24,12 +27,15 @@ export default function Login({logIn}) {
 	const MotionBox = chakra(motion.div);
 	return(
 
-    <MotionBox
-    animate={{
-        marginLeft: ["100%", "10%" ],
-        width: ["300%", "100%"],
-    }}
-    transition={{ duration: 1000 }}  backgroundColor="white" p="25px" mt="50px" ml="10px" mr="10px" rounded="lg">
+		<RemoveScroll>
+		<MotionBox position="absolute" blockScrollOnMount={true} preserveScrollBarGap={true} 
+		h="100%"
+		animate={{
+			marginLeft: ["100%", "10%" ],
+			width: ["300%", "90%"],
+		}}
+		backgroundColor="red.400" overflow="hidden" transition={{ duration: 1000 }}>
+		<Box  backgroundColor="white" p="25px" mt="10%" mb="25%" maxW="500px" ml="auto" mr="auto" rounded="lg">
 			<Formik initialValues={{ email: "", password: "" }} 
 				onSubmit={(values, actions) => {
 					setTimeout(() => {
@@ -95,7 +101,8 @@ export default function Login({logIn}) {
 		</form>
 		)}
 		</Formik>
-	</Box>
+		</Box>
 	</MotionBox>
+	</RemoveScroll>
 	)
 }

@@ -14,6 +14,7 @@ var TechPark = "https://goo.gl/maps/dtZjXyfVKV42cetB9"
 
 import { motion } from "framer-motion";
 
+import KeenSlider from "keen-slider";
 const day1 = [
   { title: 'Официално откриване на събитието', notime:0, time1: '17:30', time2:'18:00', link: TechPark, emoji:emojiPin, place:"Sofia Tech Park",}, 
   { title: 'Образователна лекция', notime:0, time1: '18:15', time2: '19:00', link: TechPark, emoji: emojiPin, place:"Sofia Tech Park",}, 
@@ -25,7 +26,7 @@ const day2 = [
   { title: 'Работа по проектите', notime:1, emoji:emojiLaptop, place:"Онлайн",},];
 
 export default function Schedule(){
-
+  var inW;
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [pause, setPause] = React.useState(false);
   const timer = React.useRef();
@@ -33,19 +34,24 @@ export default function Schedule(){
 
   const MotionBox = chakra(motion.div);
 
-  	return (
+  useEffect(() => {
+    // window is accessible here.
+    console.log("window.innerHeight", window.innerWidth);
+  }, []);
 
-    <MotionBox
-    animate={{
-        marginLeft: ["100%", "10%" ],
-        width: ["300%", "100%"],
-    }}
-    transition={{ duration: 1000 }}>
+  // new KeenSlider("#my-keen-slider", {
+  // slidesPerView: () => {
+  //   return window.innerWidth / 300;
+  // }})
+
+  	return(
+
+    
       <div style={{height:"100%","position": "relative"}} className="navigation-wrapper">
-    	<Flex flex="1 1 auto" paddingBottom={["50px","50px","100px","100px", "200px"]} ref={sliderRef} className="keen-slider">
+    	<motion.div animate={{marginLeft: ["100%", "10%" ], width: ["300%", "200%"],}} transition={{ duration: 1000 }} style={{display:"flex", flex:"1 1 auto", paddingBottom:"200px", ref: sliderRef}} className="keen-slider">
     		<div  className={"keen-slider__slide number-slide1"}>{GetEntry(day1)}</div>
     		<div  className={"keen-slider__slide number-slide2"}>{GetEntry(day2)}</div>
-    	</Flex>
+    	</motion.div>
       {slider && (
         <>
           <ArrowLeft
@@ -75,8 +81,10 @@ export default function Schedule(){
         </div>
         </Box>
       )}
+      <style>
+        
+      </style>
       </div>
-      </MotionBox>
   );
 };
 

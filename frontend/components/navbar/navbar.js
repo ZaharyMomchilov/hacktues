@@ -183,8 +183,8 @@ const Navbar = props => {
         </DrawerContent>
     </Drawer>
 	</Flex> */}
-<Flex position="fixed" zIndex={1} top={0} bottom={0} left={0} margin="auto" height="100%" w="10%" p={1} background="#000">
-	<Flex flexDirection="column" position="fixed" zIndex={1} top={0} bottom={0} left={0} margin="auto" height="500px" w="10%" p={1} textAlign="center">
+<Flex position="fixed" zIndex={2} top={0} bottom={0} left={0} margin="auto" height="100%" w="20%" p={1} background="#000">
+	<Flex flexDirection="column" position="fixed" zIndex={1} top={0} bottom={0} left={0} margin="auto" height="500px" w="20%" p={1} textAlign="center">
 	<Link href="/">
           		<a>
             		<Heading fontFamily="llpixel" color="black" fontSize="1.25rem" fontWeight="200" size="lg">
@@ -192,11 +192,13 @@ const Navbar = props => {
             		</Heading>
           		</a>
         	</Link>
-		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/example"><a>За Хак ТУЕС</a></Link></Button>
+		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/example"><a>Програма</a></Link></Button>
 		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/example2"><a>Регламент</a></Link></Button>
-		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/login"><a>Влез</a></Link></Button>
-		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/archive"><a>Архив</a></Link></Button>
-		
+		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/login"><a>Архив</a></Link></Button>
+		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/archive"><a>Декларации</a></Link></Button>
+		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/archive"><a>За Hack TUES</a></Link></Button>
+		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/archive"><a>Влез</a></Link></Button>
+		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/archive"><a>Регистрация</a></Link></Button>
 	</Flex>
 </Flex>
 </header>

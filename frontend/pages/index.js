@@ -25,9 +25,9 @@ export default function Home() {
     const easterEgg = () => {
 		router.push("/secret/verywellkeptsecret/indeed/secret")
 	}
-	
+
     return( 
-        <Box>
+        <Box zIndex={1}>
         	{/* <Example/> */}
             <Konami code={[71,71,87,80]} action={easterEgg}/>
             {/* <Link isExternal href='https://discord.com/api/oauth2/authorize?client_id=743157046677078016&redirect_uri=https%3A%2F%2Fhacktues-git-wave2.zaharymomchilov.vercel.app%2F&response_type=code&scope=identify'>xd</Link>             */}
