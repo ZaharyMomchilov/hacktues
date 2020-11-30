@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import { ChakraProvider, Box, Slide,SlideFade, Button, Text, Link, Flex } from "@chakra-ui/react"
+import { ChakraProvider, Box, Slide,SlideFade, Button, Text, Flex, Icon } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react";
 import 'keen-slider/keen-slider.min.css'
 import Navbar from '../components/navbar/navbar'
@@ -12,8 +12,9 @@ import { createBreakpoints } from "@chakra-ui/react"
 import { useControllableState } from "@chakra-ui/react"
 import Terms from '../components/termsofservice/terms'
 
+import {Link as ChakraLink} from '@chakra-ui/react'
 import Background from '../components/background/background'
-
+import { FiInstagram, FiFacebook, FiYoutube, FiMail } from 'react-icons/fi';
 const cookies = new Cookies();
 
 const theme = extendTheme({
@@ -66,6 +67,7 @@ function MyApp({ Component, pageProps }) {
   	<ChakraProvider resetCSS={false} theme={theme}>
   		<Navbar loggedin={logged} />
   	  	<Component {...pageProps} />
+		
 			{/* <Cookie/> */}
   	  	{/* <Footer/> */}
   	</ChakraProvider>) 

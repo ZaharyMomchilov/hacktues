@@ -31,11 +31,11 @@ export default function Login({logIn}) {
 		<MotionBox position="absolute" blockScrollOnMount={true} preserveScrollBarGap={true} 
 		h="100%"
 		animate={{
-			marginLeft: ["100%", "10%" ],
+			marginLeft: ["100%", "20%" ],
 			width: ["300%", "90%"],
 		}}
-		backgroundColor="red.400" overflow="hidden" transition={{ duration: 1000 }}>
-		<Box  backgroundColor="white" p="25px" mt="10%" mb="25%" maxW="500px" ml="auto" mr="auto" rounded="lg">
+		backgroundColor="red.400" transition={{ duration: 1000 }}>
+		<Box verticalAlign="center" backgroundColor="white" p="25px" maxW="500px" margin="auto" rounded="lg">
 			<Formik initialValues={{ email: "", password: "" }} 
 				onSubmit={(values, actions) => {
 					setTimeout(() => {

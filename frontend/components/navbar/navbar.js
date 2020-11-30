@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Input, InputGroup, InputRightElement, Select, InputLeftElement, Switch, Heading, IconButton, Flex, Button, useToast} from "@chakra-ui/react";
+import { Box, Icon, Text, Input, InputGroup, InputRightElement, Select, InputLeftElement, Switch, Heading, IconButton, Flex, Button, useToast} from "@chakra-ui/react";
 import { Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider, MenuOptionGroup, MenuItemOption } from "@chakra-ui/react";
 import { Modal, ModalOverlay,ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton } from "@chakra-ui/react";
@@ -22,19 +22,24 @@ import { Checkbox, CheckboxGroup } from "@chakra-ui/react"
 const cookies = new Cookies();
 const axios = require('axios');
 
+import {RemoveScroll} from 'react-remove-scroll';
+import {Link as ChakraLink} from '@chakra-ui/react'
+
 import styled from '@emotion/styled'
-
-
-
+import { jsx, css, keyframes } from '@emotion/react'
+import {Image} from '@chakra-ui/react'
+import { FiInstagram, FiFacebook, FiYoutube, FiMail } from 'react-icons/fi';
+import { useControllableProp, useControllableState, List } from "@chakra-ui/react"
+import { motion, AnimatePresence, useAnimation, useMotionValue, useTransform } from "framer-motion";
 const MenuItems = ({ children }) => (
 	<Button _active={{bg:"transparent"}} _hover={{bg:"transparent"}} _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px">
-    {children}
+	{children}
   </Button>
 );
 
 const MenuItemss = ({ children }) => (
 	<Button _active={{bg:"transparent"}} _hover={{bg:"transparent"}} _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px">
-    {children}
+	{children}
   </Button>
 );
 
@@ -57,11 +62,15 @@ const Navbar = props => {
   	const [show, setShow] = React.useState(false);
   	const handleToggle = () => setShow(!show);
 
-  	const { isOpen, onOpen, onClose } = useDisclosure();
+  	// const { isOpen, onOpen, onClose } = useDisclosure();
   	const firstField = React.useRef();
   	const btnRef = React.useRef();
 
-	
+	const [value, setValue] = useControllableState({ defaultValue: false })
+
+	function set() {
+		setValue(!value)
+	}
 
 	const { isMobile } = useDeviceDetect();
 
@@ -97,58 +106,31 @@ const Navbar = props => {
 			</>;
 	}
 		
+	const svgVariants = {
+		hidden: {rotate : -180},
+		visible: {
+			rotate: 0,
+			transition: {duration : 0.5}
+		}
+	}
+
+	const variants = {
+		closed: {marginTop : "100%"},
+		open: {marginTop : "0%"},
+	}
+
   	return (
 	<header>
-    {/* <Flex as="nav" align="center" justify="space-between" padding="10px" bg="#a5cf9f" color="white"{...props}>
-      	<Flex width="auto" align="center" ml={5} mr={5}>
-       		<Link href="/">
-          		<a>
-            		<Heading fontFamily="llpixel" color="black" fontSize="1.25rem" fontWeight="200" size="lg">
-              			Hack <span style={{"color":"green"}}>TUES 7</span>
-            		</Heading>
-          		</a>
-        	</Link>
-      	</Flex>
-
-      <Flex flexWrap="wrap" display={{base:"none", sm:"none", md:"none", lg: "flex" }} alignItems="center" flexGrow={1}>
-        <MenuItems><Link href="/schedule" ><a>Програма</a></Link></MenuItems>
-        <MenuItems><Link href="/regulation"><a>Регламент</a></Link></MenuItems>
-		<MenuItems><Link href="/archive"><a>Архив</a></Link></MenuItems>
-        	<Menu>
-        		<MenuButton cursor="pointer" _hover={{bg:"transparent"}}  _active={{background:"#a5cf9f"}} as={Button} color="white" background="transparent" _focus={{outline: "none", bg:"transparent"}} border="0px" borderWidth="0px" rightIcon={<ChevronDownIcon/>}>
-    				Декларации
-  				</MenuButton>
-  				<MenuList p="0">
-    				<a href="http://hacktues.pythonanywhere.com/static/frontend/Declaracia_pylnoletni%20uchenici_v.2.docx"><MenuItem fontSize="1rem" color="white" backgroundColor="#a5cf9f"   _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за пълнолетни(docx)</MenuItem></a>
-    				<a href="https://hacktues.pythonanywhere.com/static/frontend/Declaracia_pylnoletni%20uchenici_v.2.pdf"><MenuItem fontSize="1rem" color="white" backgroundColor="#a5cf9f"   _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за пълнолетни(pdf)</MenuItem></a>
-    				<a href="https://hacktues.pythonanywhere.com/static/frontend/Declaracia_uchenici%20pod%2018_v.2.docx"><MenuItem fontSize="1rem"  color="white" backgroundColor="#a5cf9f"   _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за непълнолетни(docx)</MenuItem></a>
-    				<a href="https://hacktues.pythonanywhere.com/static/frontend/Declaracia_uchenici%20pod%2018_v.2.pdf"><MenuItem fontSize="1rem" color="white"   backgroundColor="#a5cf9f"   _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за непълнолетни(pdf)</MenuItem></a>
-  				</MenuList>
-			</Menu>
-		<MenuItems><Link href="/about"><a>За Hack TUES</a></Link></MenuItems>
-		{login}
-		{logout}
-      </Flex>
-	<Box width="auto" display={{ md:"flex", lg: "none" }}>
-	<Button  _focus={{outline: "none"}} display="block" ref={btnRef} backgroundColor="transparent" colorScheme="lightgrey" border="0px" onClick={onOpen}>
-        <svg
-          fill="white"
-          width="12px"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-        </svg>
-      </Button>
-      </Box>
-    </Flex>
-    
+	{/* <Flex as="nav" align="center" justify="space-between" height="60px" bg="transparent" backgroundColor="#9accb7"{...props}>
+	
+	</Flex> */}
+  {/*   
 	<Flex display={{ md:"flex", lg: "none" }} width={{ xl: "100%", md: "100%" }} alignItems="center" flexGrow={1}>
-    	<Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
-        	<DrawerOverlay />
-        	<DrawerContent style={{width:"200px", minWidth:"1rem"}} backgroundColor="#a5cf9f" color="#a5cf9f">
-          	<DrawerCloseButton border="0px" color="white" backgroundColor="#a5cf9f" _focus={{outline: "none"}} />
-          	<DrawerHeader color="black" fontFamily="llpixel" fontWeight="400">Hack &nbsp;<span style={{"color":"green"}}>TUES 7</span></DrawerHeader>
+		<Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
+			<DrawerOverlay />
+			<DrawerContent style={{width:"200px", minWidth:"1rem"}} backgroundColor="#a5cf9f" color="#a5cf9f">
+		  	<DrawerCloseButton border="0px" color="white" backgroundColor="#a5cf9f" _focus={{outline: "none"}} />
+		  	<DrawerHeader color="black" fontFamily="llpixel" fontWeight="400">Hack &nbsp;<span style={{"color":"green"}}>TUES 7</span></DrawerHeader>
 	  		<DrawerBody display="flex" flexDirection="column" flexWrap="wrap">
 	  			<MenuItems>
 					<Link href="/schedule" >
@@ -157,17 +139,17 @@ const Navbar = props => {
 						</a>
 					</Link>
 				</MenuItems>
-        	<MenuItems><Link href="/regulation"><a onClick={onClose}>Регламент</a></Link></MenuItems>
-        	<MenuItems><Link href="/archive"><a onClick={onClose}>Архив</a></Link></MenuItems>
-        		<Menu>
-        			<MenuButton rightIcon={<ChevronDownIcon />} as={Button} _active={{background:"#a5cf9f"}}  _hover={{background:"#a5cf9f"}} color="white" bg="transparent" _focus={{outline: "none"}} border="0px" borderWidth="0px">
-    					Декларации
+			<MenuItems><Link href="/regulation"><a onClick={onClose}>Регламент</a></Link></MenuItems>
+			<MenuItems><Link href="/archive"><a onClick={onClose}>Архив</a></Link></MenuItems>
+				<Menu>
+					<MenuButton rightIcon={<ChevronDownIcon />} as={Button} _active={{background:"#a5cf9f"}}  _hover={{background:"#a5cf9f"}} color="white" bg="transparent" _focus={{outline: "none"}} border="0px" borderWidth="0px">
+						Декларации
   					</MenuButton>
   					<MenuList p="0">
-    					<a href="http://hacktues.pythonanywhere.com/static/frontend/Declaracia_pylnoletni%20uchenici_v.2.docx"><MenuItem fontSize="1rem" color="white" backgroundColor="#a5cf9f" _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за пълнолетни(docx)</MenuItem></a>
-    					<a href="https://hacktues.pythonanywhere.com/static/frontend/Declaracia_pylnoletni%20uchenici_v.2.pdf"><MenuItem fontSize="1rem" color="white" backgroundColor="#a5cf9f" _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за пълнолетни(pdf)</MenuItem></a>
-    					<a href="https://hacktues.pythonanywhere.com/static/frontend/Declaracia_uchenici%20pod%2018_v.2.docx"><MenuItem fontSize="1rem"  color="white" backgroundColor="#a5cf9f" _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за непълнолетни(docx)</MenuItem></a>
-    					<a href="https://hacktues.pythonanywhere.com/static/frontend/Declaracia_uchenici%20pod%2018_v.2.pdf"><MenuItem fontSize="1rem" color="white" backgroundColor="#a5cf9f"   _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за непълнолетни(pdf)</MenuItem></a>
+						<a href="http://hacktues.pythonanywhere.com/static/frontend/Declaracia_pylnoletni%20uchenici_v.2.docx"><MenuItem fontSize="1rem" color="white" backgroundColor="#a5cf9f" _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за пълнолетни(docx)</MenuItem></a>
+						<a href="https://hacktues.pythonanywhere.com/static/frontend/Declaracia_pylnoletni%20uchenici_v.2.pdf"><MenuItem fontSize="1rem" color="white" backgroundColor="#a5cf9f" _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за пълнолетни(pdf)</MenuItem></a>
+						<a href="https://hacktues.pythonanywhere.com/static/frontend/Declaracia_uchenici%20pod%2018_v.2.docx"><MenuItem fontSize="1rem"  color="white" backgroundColor="#a5cf9f" _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за непълнолетни(docx)</MenuItem></a>
+						<a href="https://hacktues.pythonanywhere.com/static/frontend/Declaracia_uchenici%20pod%2018_v.2.pdf"><MenuItem fontSize="1rem" color="white" backgroundColor="#a5cf9f"   _focus={{outline: "none"}} border="0px" borderWidth="0px">Декларация за непълнолетни(pdf)</MenuItem></a>
   					</MenuList>
 				</Menu>
 				<MenuItems>
@@ -180,27 +162,69 @@ const Navbar = props => {
 				{login}
 				{logout}
 			</DrawerBody>
-        </DrawerContent>
-    </Drawer>
+		</DrawerContent>
+	</Drawer>
 	</Flex> */}
-<Flex position="fixed" zIndex={2} top={0} bottom={0} left={0} margin="auto" height="100%" w="20%" p={1} background="#000">
-	<Flex flexDirection="column" position="fixed" zIndex={1} top={0} bottom={0} left={0} margin="auto" height="500px" w="20%" p={1} textAlign="center">
-	<Link href="/">
+	<Flex flexDirection="column" flexWrap="wrap" position="fixed" top={0} bottom={0} left={0} height="auto" w="60px" p={1} background="#9accb7">
+		<motion.Button style={{outline:"none", marginTop: "20px", marginRight:"auto", marginLeft:"auto", background:"transparent", border:"0"}}  display="block" ref={btnRef} backgroundColor="transparent" colorScheme="lightgrey" border="0px" onClick={set}>
+			<motion.svg variants={svgVariants} initial="hidden" animate="visible" style={{fill:"white", width:"18px"}}>
+				<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+			</motion.svg>
+	  	</motion.Button>
+		  <Flex margin="auto" flexDirection="column" flexWrap="wrap" color="white">
+			<ChakraLink marginTop="5px" style={{transform: `rotate(-90deg)`}} _focus={{outline:"none"}} href="https://instagram.com/hacktues">
+			  	<Icon as={FiFacebook} width="30px" height="30px"></Icon>
+			</ChakraLink>
+			<ChakraLink style={{transform: `rotate(-90deg)`}} _focus={{outline:"none"}} href="https://facebook.com/hacktues">
+			  	<Icon as={FiInstagram} background="transparent" width="30px" height="30px"></Icon>
+			</ChakraLink>
+			<ChakraLink marginTop="5px" style={{transform: `rotate(-90deg)`}} _focus={{outline:"none"}} href="https://www.youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ">
+			  	<Icon as={FiYoutube} background="transparent" width="30px" height="30px"></Icon>
+			</ChakraLink>
+			<ChakraLink marginTop="5px" style={{transform: `rotate(-90deg)`}} _focus={{outline:"none"}} href="mailto:hacktues@elsys-bg.org">
+			  	<Icon as={FiMail} background="transparent" width="30px" height="30px"></Icon>
+			</ChakraLink>
+		</Flex>
+		<Link href="/">
           		<a>
-            		<Heading fontFamily="llpixel" color="black" fontSize="1.25rem" fontWeight="200" size="lg">
-              			<span style={{"color":"green"}}>GG</span>
-            		</Heading>
+            		<Text textAlign="center" fontFamily="llpixel" color="#105231" fontSize="1.25rem" fontWeight="300">
+              			GG
+            		</Text>
           		</a>
         	</Link>
-		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/example"><a>Програма</a></Link></Button>
-		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/example2"><a>Регламент</a></Link></Button>
-		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/login"><a>Архив</a></Link></Button>
-		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/archive"><a>Декларации</a></Link></Button>
-		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/archive"><a>За Hack TUES</a></Link></Button>
-		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/archive"><a>Влез</a></Link></Button>
-		<Button _focus={{outline:"none"}} fontFamily="Rubik" color="white" bg="transparent" border="0px" borderWidth="0px" colorScheme="blue" aria-label="Search database"><Link href="/archive"><a>Регистрация</a></Link></Button>
+		{/* <Image fill="#105231" marginRight="auto" marginLeft="auto" marginBottom="20px" display="block" w="auto" maxW="40px" src="https://elsys-bg.org/web/images/logo.svg"></Image> */}
+		{/* <Icon viewBox="25 10 55 55" marginRight="auto" marginLeft="auto" marginBottom="20px" display="block" h="25px" w="40px" {...props}>
+    <path
+      fill="#105231"
+      d="M 108.217 26.1 A 12.98 12.98 0 0 0 98.942 30 V 13.052 H 54.109 a 12.98 12.98 0 0 0 -9.276 3.9 V 0 H 13.025 A 13.058 13.058 0 0 0 0 13.052 V 42.914 H 18.782 a 12.979 12.979 0 0 0 9.276 -3.9 V 55.966 H 59.866 a 13.034 13.034 0 0 0 11.675 -7.283 a 12.987 12.987 0 0 0 10.626 5.538 V 69 h 32.488 A 13.061 13.061 0 0 0 127 55.966 V 26.1 H 108.217 Z m 15.034 13.052 H 110.225 a 1.879 1.879 0 0 0 -0.017 3.757 h 13.043 V 55.966 a 9.292 9.292 0 0 1 -9.276 9.295 H 85.916 v -14.8 h -3.75 a 9.292 9.292 0 0 1 -9.276 -9.295 V 26.1 H 56.117 a 1.879 1.879 0 0 0 -0.018 3.757 H 69.142 V 42.914 a 9.293 9.293 0 0 1 -9.276 9.3 H 31.807 V 13.052 H 15.033 a 1.879 1.879 0 1 0 0 3.757 H 28.058 v 9.3 H 15.033 a 1.879 1.879 0 1 0 0 3.757 H 28.058 a 9.292 9.292 0 0 1 -9.276 9.295 H 3.749 v -26.1 a 9.292 9.292 0 0 1 9.276 -9.295 H 41.083 V 42.914 H 57.876 a 1.879 1.879 0 0 0 0 -3.757 H 44.833 V 26.1 a 9.292 9.292 0 0 1 9.276 -9.3 H 82.167 V 41.169 a 1.875 1.875 0 1 0 3.75 0 V 16.809 h 9.276 V 55.966 h 16.793 a 1.879 1.879 0 0 0 -0.018 -3.757 H 98.942 V 39.156 a 9.292 9.292 0 0 1 9.275 -9.295 h 15.034 v 9.295 Z"
+    />
+  </Icon> */}
 	</Flex>
-</Flex>
+	<RemoveScroll>
+	<motion.div marginLeft="60px">
+	<AnimatePresence>
+                    {value && (
+                        <motion.div
+							style={{backgroundColor: "black", height:"auto", marginLeft:"60px", overflow:"hidden", flexDirection:"column", flexWrap:"wrap", justifyContent:"center"}}
+                            animate={value ? "open" : "closed"}
+							variants={variants}
+                        >
+						<Flex backgroundColor="black" w="50%" top={0} left={0} bottom={0}>
+							<Flex backgroundColor="black" flexDirection="column" flexWrap="wrap" position="absolute" top="50%" left="60px">
+								<Link href="/schedule" ><a><span style={{fontSize:"44px", fontWeight:"700", color:"white"}}>Програма</span></a></Link>
+								<Link href="/regulation" ><a><span style={{fontSize:"44px", fontWeight:"700", color:"white"}}>Регламент</span></a></Link>
+								<Link href="/archive" ><a><span style={{fontSize:"44px", fontWeight:"700", color:"white"}}>Архив</span></a></Link>
+								<Link href="/" ><a><span style={{fontSize:"44px", fontWeight:"700", color:"white"}}>Декларации</span></a></Link>
+								<Link href="/about" ><a><span style={{fontSize:"44px", fontWeight:"700", color:"white"}}>За Hack TUES</span></a></Link>
+								<Link href="/" ><a><span style={{fontSize:"44px", fontWeight:"700", color:"white"}}>Декларации</span></a></Link>
+								<Link href="/" ><a><span style={{fontSize:"44px", fontWeight:"700", color:"white"}}>Декларации</span></a></Link>
+
+							</Flex>
+						</Flex>
+						</motion.div>
+                    )}
+                </AnimatePresence></motion.div>
+				</RemoveScroll>
 </header>
   )
 };
@@ -263,47 +287,47 @@ function Register(props) {
 		return error;
 	}
 
-    return (
-      <>
-        <Button _active={{bg:"transparent"}} _hover={{bg:"transparent"}} cursor="pointer" fontFamily="Rubik" color="white" bg="transparent" _focus={{outline: "none"}} border="0px" borderWidth="0px" onClick={onOpen}>Регистрация</Button>
-        <Modal motionPreset="slideInBottom" closeOnOverlayClick={false} isOpen={isOpen} size="xl" onEsc={onClose} onClose={onClose}>
-          <ModalOverlay/>
-          <ModalContent style={{width:"1000px", minWidth:"55rem"}}>
-            <ModalHeader fontFamily="Rubik">Регистрация</ModalHeader>
-            <ModalCloseButton _focus={{outline: "none"}} backgroundColor="transparent" border="white" />
-            <ModalBody>
+	return (
+	  <>
+		<Button _active={{bg:"transparent"}} _hover={{bg:"transparent"}} cursor="pointer" fontFamily="Rubik" color="white" bg="transparent" _focus={{outline: "none"}} border="0px" borderWidth="0px" onClick={onOpen}>Регистрация</Button>
+		<Modal motionPreset="slideInBottom" closeOnOverlayClick={false} isOpen={isOpen} size="xl" onEsc={onClose} onClose={onClose}>
+		  <ModalOverlay/>
+		  <ModalContent style={{width:"1000px", minWidth:"55rem"}}>
+			<ModalHeader fontFamily="Rubik">Регистрация</ModalHeader>
+			<ModalCloseButton _focus={{outline: "none"}} backgroundColor="transparent" border="white" />
+			<ModalBody>
 			<Formik initialValues={{first_name: '', last_name: '', email: '', password: ''}} validationSchema={SignupSchema}
 				onSubmit={(values, actions) => {
-        			setTimeout(() => {
+					setTimeout(() => {
 							var data = JSON.stringify(values, null, 1)
 							console.log(data)
-        					axios({
-        						method: 'post',
-        						url: 'https://hacktues.pythonanywhere.com/users/',
-        						headers: 
-        						{ "Content-type": "Application/json",
-        						  "Authorization": `Bearer ${cookies.get('auth')}`},
+							axios({
+								method: 'post',
+								url: 'https://hacktues.pythonanywhere.com/users/',
+								headers: 
+								{ "Content-type": "Application/json",
+								  "Authorization": `Bearer ${cookies.get('auth')}`},
 								data: data  
 								  },)
-        					    .then(function (response) {
-        					        if(response.status == 201){
+								.then(function (response) {
+									if(response.status == 201){
 										toast({
-        									  title: "Създаване на акаунт",
-        									  description: "Акаунтът беше успешно създаден.",
-        									  status: "success",
-        									  duration: 9000
-        									})
+											  title: "Създаване на акаунт",
+											  description: "Акаунтът беше успешно създаден.",
+											  status: "success",
+											  duration: 9000
+											})
 											onClose(true)							
 										}
-        					    	})
-        					    .catch(function (error) {
-        					    console.log(error);
-        					    })							
+									})
+								.catch(function (error) {
+								console.log(error);
+								})							
 											console.log(JSON.stringify(values, null, 1))
-          									actions.setSubmitting(false)
-        								}, 1000)
-      							}}>
-    {props => (
+		  									actions.setSubmitting(false)
+										}, 1000)
+	  							}}>
+	{props => (
 				<form style={{display:"flex",flexDirection:"row",flexWrap:"wrap"}} onSubmit={props.handleSubmit}>
 				<Field validate={validateUsername} name="first_name">
 					{({ field, form }) => (
@@ -313,7 +337,7 @@ function Register(props) {
 						<FormErrorMessage>{form.errors.first_name}</FormErrorMessage>
 					</FormControl>
 					)}
-          		</Field>
+		  		</Field>
 				<Field name="last_name">
 					{({ field, form }) => (
 					<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" isRequired isInvalid={form.errors.last_name && form.touched.last_name}>
@@ -341,7 +365,7 @@ function Register(props) {
 						<FormErrorMessage>{form.errors.reemail}</FormErrorMessage>
 					</FormControl>
 					)}
-          </Field>
+		  </Field>
 			<Field name="password" >
 				{({ field, form }) => (
 				<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" isRequired isInvalid={form.errors.password && form.touched.password}>
@@ -359,17 +383,17 @@ function Register(props) {
 		</Field>
 
 		  <Field name="repassword">
-            {({ field, form }) => (
-              <FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" isRequired isInvalid={form.errors.repassword && form.touched.repassword}>
-                <FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="password">Повторете паролата</FormLabel>
-                <Input _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} type="password"/>
-                <FormErrorMessage>{form.errors.repassword}</FormErrorMessage>
-              </FormControl>
-            )}
-          </Field>
+			{({ field, form }) => (
+			  <FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" isRequired isInvalid={form.errors.repassword && form.touched.repassword}>
+				<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="password">Повторете паролата</FormLabel>
+				<Input _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} type="password"/>
+				<FormErrorMessage>{form.errors.repassword}</FormErrorMessage>
+			  </FormControl>
+			)}
+		  </Field>
 
 		  <Field name="form">
-            {({ field, form }) => (
+			{({ field, form }) => (
 				<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field} isRequired>
   					<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="country">Клас</FormLabel>
   					<Select borderRadius={0} _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} variant="outline" id="form" fontFamily="Rubik" placeholder="Избери клас">
@@ -395,21 +419,21 @@ function Register(props) {
 						<option value="12g">12Г</option>
 					</Select>
 				</FormControl>
-            )}
-          </Field>
+			)}
+		  </Field>
 
 		  	<Field name="phone" >
-            	{({ field, form }) => (
-              	<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field} isRequired isInvalid={form.errors.phone && form.touched.phone}>
+				{({ field, form }) => (
+			  	<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field} isRequired isInvalid={form.errors.phone && form.touched.phone}>
 			  	<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="number">Телефон</FormLabel>
 			  	<InputGroup>
 			  		<InputLeftElement children={<PhoneIcon color="gray.300" />} />
-    				<Input _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} id="phone" _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field}/>
+					<Input _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} id="phone" _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field}/>
   					</InputGroup>
 					<FormErrorMessage>{form.errors.phone}</FormErrorMessage>
-              	</FormControl>
-            )}
-          	</Field>
+			  	</FormControl>
+			)}
+		  	</Field>
 
 			<Field name="alergies" >
 				{({ field, form }) => (
@@ -470,21 +494,21 @@ function Register(props) {
 				Продължи
 			</Button>
 
-        </form>
-      )}
-    </Formik>
+		</form>
+	  )}
+	</Formik>
 			</ModalBody>
-            <ModalFooter>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
-    );
+			<ModalFooter>
+			</ModalFooter>
+		  </ModalContent>
+		</Modal>
+	  </>
+	);
 }
 
 const CustomCheckbox = styled(Checkbox)`
   .chakra-checkbox__control{
-    color: beige;
+	color: beige;
   }
 `
 
@@ -527,21 +551,21 @@ function Login({logIn}) {
 						cookies.set('refresh', response.data.refresh, { path: '/' })
 						router.push('/')
 						toast({
-        					  title: "Влизането успешно.",
-        					  description: "Влизането в профила е успешно.",
-        					  status: "success",
-        					  duration: 9000
-        					})
+							  title: "Влизането успешно.",
+							  description: "Влизането в профила е успешно.",
+							  status: "success",
+							  duration: 9000
+							})
 						onClose(true)
 					})
 					.catch(function (error) {
 						// console.log(error.response.data.detail);
 						toast({
-        					  title: "Влизането не е успешно.",
-        					  description: error.response.data.detail,
-        					  status: "error",
-        					  duration: 9000
-        					})
+							  title: "Влизането не е успешно.",
+							  description: error.response.data.detail,
+							  status: "error",
+							  duration: 9000
+							})
 					})
 								console.log(JSON.stringify(values, null, 1))
 								actions.setSubmitting(false)

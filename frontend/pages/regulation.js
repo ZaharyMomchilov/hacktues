@@ -2,8 +2,12 @@ import React from 'react'
 import GetPanelData from '../components/regulation/panel'
 import Markdown from 'markdown-to-jsx';
 import txt from 'raw-loader!./regulation/regulation.md';
-import { Accordion, Box } from '@chakra-ui/react'
+import { Accordion, Box, chakra } from '@chakra-ui/react'
 var parts = txt.split(";;");
+
+
+import {RemoveScroll} from 'react-remove-scroll';
+import { motion, useAnimation, useMotionValue, useTransform } from "framer-motion";
 
 const panels = [
     { title: <Markdown>### HACK TUES и COVID-19</Markdown>, description: <Markdown>{parts[0]}</Markdown>},
@@ -20,11 +24,24 @@ const panels = [
 ];
 
 export default function Regulation() {
+
+	const MotionBox = chakra(motion.div);
+    
     return (
-        <Box pb={["200px", "150px"]} pt="50px">
+        <RemoveScroll>
+		<MotionBox position="absolute" blockScrollOnMount={true} preserveScrollBarGap={true} 
+		h="100%"
+		animate={{
+			marginLeft: ["100%", "5%" ],
+			width: ["300%", "100%"],
+		}}
+		backgroundColor="red.400" transition={{ duration: 1000 }}>
+        <Box mr="20%" pb={["200px", "150px"]} pt="50px">
             <Accordion allowToggle allowMultiple>
                 <GetPanelData lenght={panels.length} panels={panels}/>
             </Accordion>
         </Box>
+        </MotionBox>
+        </RemoveScroll>
     )
 }
