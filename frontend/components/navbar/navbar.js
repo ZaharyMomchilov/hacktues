@@ -88,7 +88,7 @@ const Navbar = props => {
 		login = 
 			<>
 				<Login logIn={handleChildClick} />
-				<Register/>
+				<MenuItems marginLeft={["none","none","none","auto"]}><Link href="/registration/first_step"><a onClick={onClose}>Регистрация</a></Link></MenuItems>
 			</>;
 	}
 		
