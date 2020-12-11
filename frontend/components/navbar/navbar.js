@@ -69,6 +69,8 @@ const Navbar = props => {
 		Router.reload(window.location.pathname);
    }
 
+//    useEffect(() => {
+
 	if(props.loggedin && !isMobile){
 		login = <ProfileButton/>
 		logout = <LogoutButton click={onClose}/>
@@ -81,24 +83,25 @@ const Navbar = props => {
 		login = 
 			<>
 				<MenuItems><Link href="/login"><a onClick={onClose}>Вход</a></Link></MenuItems>
-				<MenuItems marginLeft={["none","none","none","auto"]}><Link href="/registration/first_step"><a onClick={onClose}>Регистрация</a></Link></MenuItems>
+				<MenuItems marginLeft={["none","none","none","auto"]}><Link onClick={() => {onClose(); router.push('/')}} href="/registration/first_step"><a onClick={() => {onClose(); router.push('/')}}>Регистрация</a></Link></MenuItems>
 			</>;
 	}
 	else{
 		login = 
 			<>
 				<Login logIn={handleChildClick} />
-				<MenuItems marginLeft={["none","none","none","auto"]}><Link href="/registration/first_step"><a onClick={onClose}>Регистрация</a></Link></MenuItems>
+				<MenuItems marginLeft={["none","none","none","auto"]}><Link href="/registration/first_step"><a>Регистрация</a></Link></MenuItems>
 			</>;
 	}
-		
+//    }, [router, isMobile, login, logout, props.loggedin])
+	
   	return (
 	<header>
     <Flex as="nav" align="center" justify="space-between" padding="10px" bg="#a5cf9f" color="white"{...props}>
       	<Flex width="auto" align="center" ml={5} mr={5}>
-       		<Link href="/">
-          		<a>
-            		<Heading fontFamily="llpixel" color="black" fontSize="1.25rem" fontWeight="200" size="lg">
+       		<Link textDecoration="none" href="/">
+          		<a textDecoration="none">
+            		<Heading textDecoration="none" fontFamily="llpixel" color="black" fontSize="1.25rem" fontWeight="200" size="lg">
               			Hack <span style={{"color":"green"}}>TUES 7</span>
             		</Heading>
           		</a>
@@ -527,17 +530,17 @@ const CustomCheckbox = styled(Checkbox)`
 `
 
 function Logout() {
-	axios({
-		method: 'post',
-		url: 'https://hacktues.pythonanywhere.com/token/',
-		header: 'Content-Type: application/json',
-		data: {"email": "hacktues","password": "Go Green"}
-	})
-	.then(function (response) {
-		cookies.set('auth', response.data.access, { path: '/' })
-		cookies.set('refresh', response.data.refresh, { path: '/' })
+	// axios({
+	// 	method: 'post',
+	// 	url: 'https://hacktues.pythonanywhere.com/token/',
+	// 	header: 'Content-Type: application/json',
+	// 	data: {"email": "hacktues","password": "Go Green"}
+	// })
+	// .then(function (response) {
+		cookies.remove('auth')
+		cookies.remove('refresh')
 		Router.reload(window.location.pathname);
-	})
+	// })
 }
 
 function useDeviceDetect() {

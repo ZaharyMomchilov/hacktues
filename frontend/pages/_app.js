@@ -32,7 +32,7 @@ function checkToken(exp) {
 		console.log(true, 'token is not expired')
 		// console.log(exp.exp * 1000 - Date.now());
 		// console.log(cookies.get('auth'));
-		// console.log(jwt_decode(cookies.get('auth')).user_id);
+		console.log(jwt_decode(cookies.get('auth')).user_id);
 		// getUsers()
 	}
 	else{

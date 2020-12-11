@@ -204,7 +204,7 @@ export async function getServerSideProps(ctx){
 			  "Authorization": `Bearer ${cookies.get('auth')}`}
 			},
 			)
-
+			
 
 	var res = await axios({
 		method: 'get',

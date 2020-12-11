@@ -1,5 +1,5 @@
 import { Formik, Field } from 'formik';
-import { Button, Input, InputGroup,InputRightElement, useToast } from "@chakra-ui/react";
+import { Button, Input, InputGroup,InputRightElement, useToast, Flex, Text, Link } from "@chakra-ui/react";
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import Cookies from 'universal-cookie'
@@ -22,6 +22,59 @@ export default function Login({logIn}) {
 
 	const toast = useToast()
 	const router = useRouter()
+
+
+	if(cookies.get('discord_auth') == undefined && cookies.get('discord_refresh') == undefined){
+		router.push('/login')
+	}
+
+	if(router.query['code'] != undefined){
+        let payload = new FormData();
+        payload.append("client_id",CLIENT_ID)
+        payload.append("client_secret",CLIENT_SECRET)
+        payload.append("grant_type",'authorization_code')
+        payload.append("redirect_uri",'https://hacktues-git-wave2.zaharymomchilov.vercel.app/registration/second_step')
+        payload.append("code", router.query['code'])
+        payload.append("scope","identify email")
+
+    axios({
+        method: 'post',
+        url: 'https://discord.com/api/oauth2/token',
+        headers: 
+        { "Content-type": "application/x-www-form-urlencoded"},
+        data: payload
+          },)
+        .then(function (response) {
+
+            cookies.set('discord_auth', response.data.access_token, { path: '/' })
+            cookies.set('discord_refresh', response.data.refresh_token, { path: '/' })
+
+            axios({
+                method: 'get',
+                url: 'https://discordapp.com/api/users/@me',
+                headers: 
+                {
+                  "Authorization": `Bearer ${response.data.access_token}`}},)
+                .then(function (response){
+                    // console.log(response.data.id);
+                    userID = response.data.id
+                    // axios({
+                    //     method: 'get',
+                    //     url: `https://cdn.discordapp.com/avatars/${response.data.id}/${response.data.avatar}.png`,
+                    //     },)
+                    //     .then(function (response){
+                    //         console.log(response.config.url);
+                    //     })
+                  })
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response);
+                    }
+            })
+        }
+
+
 
 	return(
 	  	<Popover onClose={onClose} autoFocus="false" placement="bottom">
@@ -46,14 +99,14 @@ export default function Login({logIn}) {
 						console.log(response);
 					  	cookies.set('auth', response.data.access, { path: '/' })
 						cookies.set('refresh', response.data.refresh, { path: '/' })
-						router.push('/')
+						
 						toast({
         					  title: "Влизането успешно.",
         					  description: "Влизането в профила е успешно.",
         					  status: "success",
         					  duration: 9000
         					})
-						onClose(true)
+						router.push('/')
 					})
 					.catch(function (error) {
 						if (error.response) {

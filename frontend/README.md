@@ -5,8 +5,7 @@
 - [] email template
 - [] navbar
 
-
-
+if having the discord cookie... login with Popup, else login with discord => login tru mobile page
 
 # profile && login page
 - [] if not logged in, redirect

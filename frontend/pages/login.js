@@ -21,6 +21,16 @@ export default function Login({logIn}) {
 
 	var router = useRouter()
 	const toast = useToast()
+	
+	if(cookies.get('discord_auth') == undefined && cookies.get('discord_refresh') == undefined){
+		return(<Flex margin="auto" marginLeft="15px" marginRight="15px" paddingBottom="200px">
+        <Flex flexDirection="column" flexWrap="wrap" margin="auto" backgroundColor="white" margin="auto" marginTop="50px" padding="20px" rounded="lg" w={["100%","100%","33%","33%"]} minWidth={["none","none","55rem","55rem"]}>
+			<Text fontSize="15px" mt={0}>Влезте, чрез Discord</Text>
+            <Button margin="auto" size="lg" border={0} color="white" backgroundColor="#7289da" ><Link isExternal href='https://discord.com/api/oauth2/authorize?client_id=743157046677078016&redirect_uri=https%3A%2F%2Fhacktues-git-wave2.zaharymomchilov.vercel.app%2Fregistration%2Fsecond_step&response_type=code&scope=identify%20email'><a onClick={() => {router.push('/')}}>Login with Discord</a></Link></Button>
+	    </Flex>
+      </Flex>)
+	}
+
 	return(
 		<Box marginLeft="15px" marginRight="15px">
 	  	<Box margin="auto" w={["100%","100%","25%","25%"]} minWidth={["none","none","35rem","35rem"]} backgroundColor="white" p="25px" mt="50px" rounded="lg">
