@@ -22,14 +22,57 @@ export default function Login({logIn}) {
 	var router = useRouter()
 	const toast = useToast()
 
-	if(cookies.get('discord_auth') == undefined && cookies.get('discord_refresh') == undefined){
+	const CLIENT_ID = '743157046677078016'
+    const CLIENT_SECRET = 'zz8dSlB1maL4tUIWDCCLpIpn8MVPYqKP'
+	var userID;
+	
+	if(cookies.get('discord_auth') == undefined && cookies.get('discord_refresh') == undefined && router.query['code'] == undefined){
 		return(<Flex margin="auto" marginLeft="15px" marginRight="15px" paddingBottom="200px">
         <Flex flexDirection="column" flexWrap="wrap" margin="auto" backgroundColor="white" margin="auto" marginTop="50px" padding="20px" rounded="lg" w={["100%","100%","33%","33%"]} minWidth={["none","none","55rem","55rem"]}>
 			<Text fontSize="15px" mt={0}>Влезте, чрез Discord</Text>
-            <Button margin="auto" size="lg" border={0} color="white" backgroundColor="#7289da" ><Link isExternal href='https://discord.com/api/oauth2/authorize?client_id=743157046677078016&redirect_uri=https%3A%2F%2Fhacktues-git-wave2.zaharymomchilov.vercel.app%2Fregistration%2Fsecond_step&response_type=code&scope=identify%20email'><a onClick={() => {router.push('/')}}>Login with Discord</a></Link></Button>
+            <Button margin="auto" size="lg" border={0} color="white" backgroundColor="#7289da" ><Link isExternal href='https://discord.com/api/oauth2/authorize?client_id=743157046677078016&redirect_uri=https%3A%2F%2Fhacktues-git-wave2.zaharymomchilov.vercel.app%2F&response_type=code&scope=identify%20email'><a onClick={() => {router.push('/')}}>Login with Discord</a></Link></Button>
 	    </Flex>
       </Flex>)
 	}
+
+	if(router.query['code'] != undefined){
+        let payload = new FormData();
+        payload.append("client_id",CLIENT_ID)
+        payload.append("client_secret",CLIENT_SECRET)
+        payload.append("grant_type",'authorization_code')
+        payload.append("redirect_uri",'https://hacktues-git-wave2.zaharymomchilov.vercel.app/login')
+        payload.append("code", router.query['code'])
+        payload.append("scope","identify email")
+
+    axios({
+        method: 'post',
+        url: 'https://discord.com/api/oauth2/token',
+        headers: 
+        { "Content-type": "application/x-www-form-urlencoded"},
+        data: payload
+          },)
+        .then(function (response) {
+
+            cookies.set('discord_auth', response.data.access_token, { path: '/' })
+            cookies.set('discord_refresh', response.data.refresh_token, { path: '/' })
+
+            axios({
+                method: 'get',
+                url: 'https://discordapp.com/api/users/@me',
+                headers: 
+                {
+                  "Authorization": `Bearer ${response.data.access_token}`}},)
+                .then(function (response){
+                    userID = response.data.id
+                  
+                  })
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response);
+                    }
+            })
+        }
 
 	return(
 		<Box marginLeft="15px" marginRight="15px">
@@ -50,10 +93,6 @@ export default function Login({logIn}) {
 					  	cookies.set('auth', response.data.access, { path: '/' })
 						cookies.set('refresh', response.data.refresh, { path: '/' })
 						toast({ title: "Влизането успешно.", description: "Влизането в профила е успешно.",status: "success", duration: 9000})
-					
-
-
-
 					})
 					.then(function(){
 						
