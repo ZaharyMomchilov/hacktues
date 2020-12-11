@@ -6,6 +6,8 @@ import Cookies from 'universal-cookie'
 import { useDisclosure } from "@chakra-ui/react";
 import { useRouter } from 'next/router'
 import { Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverBody, PopoverFooter, PopoverArrow, PopoverCloseButton } from "@chakra-ui/react"
+import {useEffect} from 'react'
+
 
 const cookies = new Cookies();
 const axios = require('axios');
@@ -22,60 +24,7 @@ export default function Login({logIn}) {
 
 	const toast = useToast()
 	const router = useRouter()
-
-
-	if(cookies.get('discord_auth') == undefined && cookies.get('discord_refresh') == undefined){
-		router.push('/login')
-	}
-
-	if(router.query['code'] != undefined){
-        let payload = new FormData();
-        payload.append("client_id",CLIENT_ID)
-        payload.append("client_secret",CLIENT_SECRET)
-        payload.append("grant_type",'authorization_code')
-        payload.append("redirect_uri",'https://hacktues-git-wave2.zaharymomchilov.vercel.app/registration/second_step')
-        payload.append("code", router.query['code'])
-        payload.append("scope","identify email")
-
-    axios({
-        method: 'post',
-        url: 'https://discord.com/api/oauth2/token',
-        headers: 
-        { "Content-type": "application/x-www-form-urlencoded"},
-        data: payload
-          },)
-        .then(function (response) {
-
-            cookies.set('discord_auth', response.data.access_token, { path: '/' })
-            cookies.set('discord_refresh', response.data.refresh_token, { path: '/' })
-
-            axios({
-                method: 'get',
-                url: 'https://discordapp.com/api/users/@me',
-                headers: 
-                {
-                  "Authorization": `Bearer ${response.data.access_token}`}},)
-                .then(function (response){
-                    // console.log(response.data.id);
-                    userID = response.data.id
-                    // axios({
-                    //     method: 'get',
-                    //     url: `https://cdn.discordapp.com/avatars/${response.data.id}/${response.data.avatar}.png`,
-                    //     },)
-                    //     .then(function (response){
-                    //         console.log(response.config.url);
-                    //     })
-                  })
-            })
-            .catch(function (error) {
-                if (error.response) {
-                    console.log(error.response);
-                    }
-            })
-        }
-
-
-
+	
 	return(
 	  	<Popover onClose={onClose} autoFocus="false" placement="bottom">
 			<PopoverTrigger>

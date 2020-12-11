@@ -79,6 +79,13 @@ const Navbar = props => {
 		login = <ProfileButton click={onClose}/>
 		logout = <LogoutButton click={onClose}/>	
 	}
+	else if(!isMobile && cookies.get('discord_auth') == undefined){
+		login = 
+			<>
+				<MenuItems><Link href="/login"><a onClick={onClose}>Вход</a></Link></MenuItems>
+				<MenuItems marginLeft={["none","none","none","auto"]}><Link onClick={() => {onClose(); router.push('/')}} href="/registration/first_step"><a onClick={() => {onClose(); router.push('/')}}>Регистрация</a></Link></MenuItems>
+			</>;
+	}
 	else if(isMobile){
 		login = 
 			<>

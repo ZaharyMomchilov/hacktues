@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Input, InputGroup, InputRightElement, useToast } from "@chakra-ui/react";
+import { Box, Button, Input, InputGroup, InputRightElement, useToast, Flex, Text, Link } from "@chakra-ui/react";
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakra-ui/react";
 
 import { Formik, Field, Form } from 'formik';
@@ -21,7 +21,7 @@ export default function Login({logIn}) {
 
 	var router = useRouter()
 	const toast = useToast()
-	
+
 	if(cookies.get('discord_auth') == undefined && cookies.get('discord_refresh') == undefined){
 		return(<Flex margin="auto" marginLeft="15px" marginRight="15px" paddingBottom="200px">
         <Flex flexDirection="column" flexWrap="wrap" margin="auto" backgroundColor="white" margin="auto" marginTop="50px" padding="20px" rounded="lg" w={["100%","100%","33%","33%"]} minWidth={["none","none","55rem","55rem"]}>
