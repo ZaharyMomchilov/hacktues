@@ -34,6 +34,8 @@ function Profile(props) {
 			.matches(/^0\d{9}$/, 'използвай валиден телефон')
 	});
 
+	console.log(props.avatar.id);
+
 	return(
 	<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
 	<Flex backgroundColor="white" p="25px" rounded="lg" flexDirection="column" flexWrap="wrap" margin="50px">
