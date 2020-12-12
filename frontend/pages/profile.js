@@ -4,20 +4,15 @@ import jwt_decode from "jwt-decode";
 import {Box, Avatar, Flex, Text, Input, InputGroup, InputLeftElement, Select, Switch, useToast } from "@chakra-ui/react";
 import { Formik, Field, Form, useFormikContext, useField } from 'formik';
 import { PhoneIcon } from '@chakra-ui/icons'
-import { FormControl, FormLabel, FormErrorMessage, FormHelperText,
- } from "@chakra-ui/react";
-
+import { FormControl, FormLabel, FormErrorMessage, FormHelperText,} from "@chakra-ui/react";
 import {useCallback, useEffect, useState} from 'react'
 import _ from 'lodash';
 const cookies = new Cookies()
 import * as Yup from 'yup';
 
 function Profile(props) {
-
-	console.log(props);
+	
 	const toast = useToast()
-
-	console.log(getAvatar);
 
 	const SignupSchema = Yup.object().shape({
 	  	first_name: Yup.string()
@@ -39,8 +34,6 @@ function Profile(props) {
 			.matches(/^0\d{9}$/, 'използвай валиден телефон')
 	});
 
-	// return props.users.email == "hacktues" ? <Profile /> : <Error />
-	// console.log(res);
 	return(
 	<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
 	<Flex backgroundColor="white" p="25px" rounded="lg" flexDirection="column" flexWrap="wrap" margin="50px">
@@ -62,8 +55,6 @@ function Profile(props) {
 						data: data  
 						  },)
         			    .then(function (response) {
-							// console.log(response)
-
 							toast({ title: "Промени по акаунт", description: "Промените бяха направени успешно.", status: "success", duration: 4500})
         			    	})
         			    .catch(function (error) {
@@ -205,7 +196,6 @@ export async function getServerSideProps(ctx){
 			},
 			)
 			
-
 	var res = await axios({
 		method: 'get',
 		url: 'https://discordapp.com/api/users/@me',
@@ -241,14 +231,5 @@ const AutoSave = ({ debounceMs = 2000 }) => {
 	useEffect(() => debouncedSubmit, [debouncedSubmit, formik.values],);
 	return(<Box></Box>)
   };
-
-  
-const getAvatar = async () => {
-	
-		return res
-		// .then(function (response){
-		// 	return avatar = `https://cdn.discordapp.com/avatars/${response.data.id}/${response.data.avatar}.png`
-		//   })
-}
 
 export default Profile
