@@ -45,6 +45,7 @@ function checkToken(exp) {
 function MyApp({ Component, pageProps }) {
 
 	const [logged, setLogin] = useControllableState({defaultValue:0})
+	const [inTeam, setTeam] = useControllableState({defaultValue:false})
 
   	useEffect(() => {
 		if(cookies.get('CookieConsent')){
@@ -53,6 +54,19 @@ function MyApp({ Component, pageProps }) {
 				checkToken(jwt_decode(cookies.get('auth')))
 				if(jwt_decode(cookies.get('auth')).user_id != 3){
 					setLogin(1)
+
+					axios({
+						method: 'get',
+						url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}/`,
+						headers: 
+						{ "Content-type": "Application/json",
+						  "Authorization": `Bearer ${cookies.get('auth')}`}
+						  },)
+						.then(function (response){
+							// console.log(response);
+							setTeam(response.data.team_set[0])
+						})
+
 					// getUsers()
 			}
 		}
@@ -65,10 +79,10 @@ function MyApp({ Component, pageProps }) {
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
-  		<Navbar loggedin={logged} />
+  		<Navbar inTeam={inTeam} loggedin={logged} />
   	  	<Component {...pageProps} />
 			<Cookie/>
-  	  	<Footer/>
+  	  	{/* <Footer/> */}
   	</ChakraProvider>) 
 }
 
@@ -122,5 +136,18 @@ function getUsers() {
 			console.log(response);
 		})
 }
+
+// function getCurrTeamUser() {
+// 	axios({
+// 		method: 'get',
+// 		url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}/`,
+// 		headers: 
+// 		{ "Content-type": "Application/json",
+// 		  "Authorization": `Bearer ${cookies.get('auth')}`}
+// 		  },)
+// 		.then(function (response){
+// 			console.log(response.data.team_set[0]);
+// 		})
+// }
 
 export default MyApp

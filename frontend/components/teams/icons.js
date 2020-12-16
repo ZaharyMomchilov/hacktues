@@ -7,14 +7,84 @@ import 'react-icons/go'
 import * as go from "react-icons/go";
 import * as FontAwesome from 'react-icons/fa'
 
-const Art = () =>{
-    console.log();
-    return (
-    <Tag>
-        
-        <TagLabel fontFamily="Rubik">&nbsp;2D Art</TagLabel>
-    </Tag>);
-}
 
+const labels = [
+    { id: 0, label: "2D Art", color: "lightgreen"},
+    { id: 1, label: "3D Art", color: "grey"}, 
+    { id: 2, label: "Angular", color: "pink"}, 
+    { id: 3, label: "AngularJS",color: "pink"}, 
+    { id: 4, label: "Apache", color: "pink"},
+    { id: 5, label: "Arduino", color: "cyan"},
+    { id: 6, label: "Assembly", color: "cyan"},
+    { id: 7, label: "Atmel AVR", color: "cyan"},
+    { id: 8, label: "Augmented Reality", color: "blue"},
+    { id: 9, label: "Bash", color: "green"},
+    { id: 10, label: "Blender", color: "yellow"},
+    { id: 11, label: "Blockchain", color: "orange"},
+    { id: 12, label: "C", color: "cyan"},
+    { id: 13, label: "C#", color: "blue"},
+    { id: 14, label: "C++", color: "cyan"},
+    { id: 15, label: "Clojure", color: "blue"},
+    { id: 16, label: "Dart", color: "blue"},
+    { id: 17, label: "Desktop Application Development", color: "orange"},
+    { id: 18, label: "Django", color: "teal"},
+    { id: 19, label: "Docker", color: "blue"},
+    { id: 20, label: "ESP32", color: "cyan"},
+    { id: 21, label: "ESP8266", color: "cyan"},
+    { id: 22, label: "Embedded", color: "cyan"},
+    { id: 23, label: "Flutter + Dart", color: "blue"},
+    { id: 24, label: "GTK3", color: "yellow"},
+    { id: 25, label: "Game Development", color: "pink"},
+    { id: 26, label: "Golang", color: "teal"},
+    { id: 27, label: "HTML + CSS", color: "brown"},
+    { id: 28, label: "Haskell", color: "blue"},
+    { id: 29, label: "IoT", color: "cyan"},
+    { id: 30, label: "Java", color: "pink"},
+    { id: 31, label: "Java Script", color: "yellow"},
+    { id: 32, label: "Julia", color: "#9AE6B4"},
+    { id: 33, label: "Kafka", color: "grey"},
+    { id: 34, label: "Kotlin", color: "pink"},
+    { id: 35, label: "Laravel", color: "blue"},
+    { id: 36, label: "Linux", color: "grey"},
+    { id: 37, label: "MATLAB", color: "grey"},
+    { id: 38, label: "MSP430", color: "orange"},
+    { id: 39, label: "Machine Learning", color: "orange"},
+    { id: 40, label: "MicroPython", color: "cyan"},
+    { id: 41, label: "Mobile Development", color: "blue"},
+    { id: 42, label: "Mongo", color: "green"},
+    { id: 43, label: "Nginx", color: "green"},
+    { id: 44, label: "NoSQL", color: "yellow"},
+    { id: 45, label: "NodeJS", color: "yellow"},
+    { id: 46, label: "NoSQL", color: "yellow"},
+    { id: 47, label: "OpenGL", color: "teal"},
+    { id: 48, label: "PHP", color: "blue"},
+    { id: 49, label: "Perl", color: "blue"},
+    { id: 50, label: "Python", color: "yellow"},
+    { id: 51, label: "Qt", color: "green"},
+    { id: 52, label: "R", color: "grey"},
+    { id: 53, label: "RX62G", color: "grey"},
+    { id: 54, label: "Raspberry Pi", color: "cyan"},
+    { id: 55, label: "React Native", color: "blue"},
+    { id: 56, label: "ReactJS", color: "yellow"},
+    { id: 57, label: "Renesas RX", color: "blue"},
+    { id: 58, label: "Ruby", color: "pink"},
+    { id: 59, label: "Ruby on Rails", color: "pink"},
+    { id: 60, label: "Rust", color: "grey"},
+    { id: 61, label: "SQL", color: "yellow"},
+    { id: 62, label: "STM32", color: "cyan"},
+    { id: 63, label: "Scala", color: "pink"},
+    { id: 64, label: "Solidity", color: "teal"},
+    { id: 65, label: "Spark", color: "grey"},
+    { id: 66, label: "Spring", color: "green"},
+    { id: 67, label: "Svelte", color: "orange"},
+    { id: 68, label: "Swift", color: "orange"},
+    { id: 69, label: "Symfony", color: "blue"},
+    { id: 70, label: "Unity3D", color: "grey"},
+    { id: 71, label: "Unreal Engine", color: "pink"},
+    { id: 72, label: "Virtual Reality", color: "teal"},
+    { id: 72, label: "VueJS", color: "green"},
+    { id: 73, label: "Web Development", color: "teal"},
+    { id: 74, label: "Networking", color: "grey"},
+];
 
-export default Art;
+export default labels;

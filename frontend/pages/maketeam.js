@@ -9,8 +9,6 @@ const cookies = new Cookies();
 import * as Yup from 'yup';
 import styled from '@emotion/styled'
 
-import {Input} from '../../components/form/readwrite/wrapper'
-
 export default function Register(props) {
 
 	const { isOpen, onOpen, onClose } = useDisclosure();

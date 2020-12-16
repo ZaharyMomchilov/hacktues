@@ -12,6 +12,8 @@ import * as Yup from 'yup';
 
 function Profile(props) {
 	
+	console.log(props);
+
 	const toast = useToast()
 
 	const SignupSchema = Yup.object().shape({
@@ -205,7 +207,7 @@ export async function getServerSideProps(ctx){
 		{
 		  "Authorization": `Bearer ${cookies.get('discord_auth')}`}},)
 
-	return {props: {users: response.data, avatar: res.data}}
+	return {props: {users: response.data, avatar: res.data}}	
 
 }
 
@@ -214,7 +216,7 @@ const CheckboxArrayControl = (props, {children}) => {
 	const [field] = useField(props);
 
 	return (
-	  <Switch css={{boxShadow:"none", alignSelf: "center", outline: "none"}} {...field} isChecked={field.value} {...props}>
+	  <Switch colorScheme="green"  css={{boxShadow:"none", alignSelf: "center", outline: "none"}} {...field} isChecked={field.value} {...props}>
 		{children}
 	  </Switch>
 	)

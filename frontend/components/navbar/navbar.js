@@ -60,6 +60,7 @@ const Navbar = props => {
 
 	var login;
 	var logout;
+	var team;
 
 	var router = useRouter()
 
@@ -70,6 +71,14 @@ const Navbar = props => {
    }
 
 //    useEffect(() => {
+
+   	if(props.inTeam){
+		   console.log(props.inTeam);
+		   team = <MenuItems><Link href={`/teams/${encodeURIComponent(props.inTeam)}/`}><a>Моят отбор</a></Link></MenuItems>
+	}
+	else{
+		team = <MenuItems><Link href="/maketeam/"><a>Създай отбор</a></Link></MenuItems>
+	}
 
 	if(props.loggedin && !isMobile){
 		login = <ProfileButton/>
@@ -103,7 +112,7 @@ const Navbar = props => {
 //    }, [router, isMobile, login, logout, props.loggedin])
 	
   	return (
-	<header>
+	<Box>
     <Flex as="nav" align="center" justify="space-between" padding="10px" bg="#a5cf9f" color="white"{...props}>
       	<Flex width="auto" align="center" ml={5} mr={5}>
        		<Link textDecoration="none" href="/">
@@ -131,6 +140,7 @@ const Navbar = props => {
   				</MenuList>
 			</Menu>
 		<MenuItems><Link href="/about"><a>За Hack TUES</a></Link></MenuItems>
+		{team}
 		{login}
 		{logout}
       </Flex>
@@ -188,7 +198,7 @@ const Navbar = props => {
         </DrawerContent>
     </Drawer>
 	</Flex>
-</header>
+</Box>
 	// <Flex position="fixed" overflow="hidden" width="100%" height="auto" zIndex={999} color="black" backgroundColor="white" boxShadow="0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24)" id="header">
 		
 	// </Flex>

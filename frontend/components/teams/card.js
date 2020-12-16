@@ -1,37 +1,41 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { Tag, TagIcon, TagLabel, TagCloseButton, Icon, Link } from "@chakra-ui/react";
+import { Tag, TagIcon, TagLabel, TagCloseButton, Icon, Avatar } from "@chakra-ui/react";
+import labels from './icons'
+import Link from 'next/link'
 
 const Card = (props) => {
 
-    var i,j;
-    var label = [];
+		var j;
+		
+		const teammates = props.teammates.map((data, index) =>
+			data = data.split('\n').map(str => <Text key={index} p={0} m={0}>{str}</Text>)
+    	);
 
-    const labels = [
-      { id: 0, label: "Arduino", color: "cyan"}, { id: 1, label: "Apache", color: "green"}, { id: 2, label: "React", color: "orange"}, { id: 3, label: "AngularJS",color: "orange"}, { id: 4, label: "Angular", color: "cyan"},];
+		var tech = []
+		props.label.map((data, index) => {
+			for(j = 0; j < labels.length; j++)
+				if(labels[j].label == data){
+					tech[j] = <Tag key={index} mt="5px" mr="5px" colorScheme={labels[j].color} key={j}><TagLabel fontFamily="Rubik" >{data}</TagLabel></Tag>
+		}});
 
-    for(i = 0; i < (props.label.length); i++){
-        for(j = 0; j < labels.length; j++){
-          if(props.label[i] == labels[j].id){
-            label.push(<Tag mr="5px" colorScheme={labels[j].color} key={j}><TagLabel fontFamily="Rubik" >{labels[j].label}</TagLabel></Tag>)
-      }
-    }
-  }
-
-    return (
-      <Flex width="400px" flexDirection="column" flexWrap="wrap" alignSelf="stretch" h="250px" m="15px" padding="15px" backgroundColor="white" rounded="lg" overflow="hidden">
-        <Text mb="0" display="flex" color="black" mt="1" fontWeight="semibold" as="h2">
-        {props.name}
-        Test
-        </Text>
-        <Flex flexDirection="row" flexWrap="wrap">{label}</Flex>
-        <Flex paddingTop={["10px","10px","10px","25px"]} justifyContent="center" flexDirection="column">
-            <Text wordBreak="break-word" m="0" pt={["0","0","0","15px"]} fontWeight="300" as="h3"><strong>Участници: </strong>
-            {props.teammates}
-            Test peeps
-            </Text>
-        </Flex>
-      </Flex>
-    );
+		return (
+			<Link display="flex" color="black" href={`/teams/${encodeURIComponent(props.id)}/`}>
+			<Flex cursor="pointer" width="400px" flexDirection="column" flexWrap="wrap" alignSelf="stretch" h="auto" m="15px" padding="15px" backgroundColor="white" rounded="lg" overflow="hidden">
+				<Flex paddingBottom="15px" flexDirection="row" flexWrap="wrap">
+					<Avatar name={props.name} />
+						<Text mb="auto" ml="15px" mt="auto">{props.name}</Text>
+				</Flex>
+				<Text wordBreak="break-word" m="0" p="0" lineHeight="1.5" fontWeight="400"><strong fontWeight="700">Технологии:</strong></Text>
+				<Flex paddingTop={["10px","10px","10px","15px"]} flexDirection="row" flexWrap="wrap">{tech}</Flex>
+				<Flex paddingTop={["10px","10px","10px","15px"]} justifyContent="center" flexDirection="column">
+						<Text wordBreak="break-word" m="0" lineHeight="1.5" fontWeight="400"><strong fontWeight="700">Участници:</strong></Text>
+						<Text wordBreak="keep-all" m="0" pt={["0","0","0","15px"]} fontWeight="300" as="h3">
+							{teammates}
+						</Text>
+				</Flex>
+			</Flex>
+			</Link>
+		);
 }
 
 export default Card;

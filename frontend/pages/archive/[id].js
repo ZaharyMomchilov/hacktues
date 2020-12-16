@@ -9,6 +9,7 @@ import { AiOutlineTeam, AiOutlineUser, AiOutlineGift} from 'react-icons/ai';
 var data = JSON.parse(JSON.stringify(archive));
 
 const Hacktues = ({currData}) => {     
+
     return(
     <Flex display="block" width="100%" flexDirection="column" flexWrap="wrap" pb="150px" pt="50px" justifyContent="center" paddingLeft={["auto","auto","100px","200px"]} paddingRight={["auto","auto","100px","200px"]} borderColor="black">
         <Flex flexDirection={["column","column","column", "row"]} flexWrap="wrap">
