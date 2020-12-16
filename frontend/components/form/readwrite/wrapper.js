@@ -1,7 +1,7 @@
 import { Formik, Field } from 'formik';
 import {FormControl, FormLabel, FormErrorMessage, Input} from '@chakra-ui/react'
 
-const Input = (props) => {
+const FormInput = (props) => {
     return(
     <Field name="first_name">
 		{({ field, form }) => (
