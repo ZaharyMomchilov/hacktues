@@ -9,7 +9,7 @@ const cookies = new Cookies();
 import * as Yup from 'yup';
 import styled from '@emotion/styled'
 
-import {Input as FormInput} from '../../components/form/readwrite/wrapper'
+import FormInput from '../../components/form/readwrite/wrapper'
 
 export default function Register(props) {
 

@@ -1,4 +1,5 @@
 const Input = (props) => {
+    return(
     <Field name="first_name">
 		{({ field, form }) => (
 			<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" isRequired isInvalid={form.errors.first_name && form.touched.first_name}>
@@ -8,6 +9,7 @@ const Input = (props) => {
 			</FormControl>
 		)}
     </Field>
+    )
 }
 
 export default Input
