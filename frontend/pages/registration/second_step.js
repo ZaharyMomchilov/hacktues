@@ -151,7 +151,7 @@ export default function Register(props) {
 					</FormControl>
 					)}
           		</Field> */}
-				  <Input></Input>
+				  <FormInput></FormInput>
 				<Field name="last_name">
 					{({ field, form }) => (
 					<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" isRequired isInvalid={form.errors.last_name && form.touched.last_name}>
