@@ -9,8 +9,6 @@ const cookies = new Cookies();
 import * as Yup from 'yup';
 import styled from '@emotion/styled'
 
-import FormInput from '../../components/form/readwrite/wrapper'
-
 export default function Register(props) {
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -142,7 +140,7 @@ export default function Register(props) {
       							}}>
     {props => (
 				<form style={{display:"flex",flexDirection:"row",flexWrap:"wrap"}} onSubmit={props.handleSubmit}>
-				{/* <Field name="first_name">
+				<Field name="first_name">
 					{({ field, form }) => (
 					<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" isRequired isInvalid={form.errors.first_name && form.touched.first_name}>
 						<FormLabel fontFamily="Rubik" fontSize="15px">Име (на кирилица)</FormLabel>
@@ -150,8 +148,7 @@ export default function Register(props) {
 						<FormErrorMessage color="green" >{form.errors.first_name}</FormErrorMessage>
 					</FormControl>
 					)}
-          		</Field> */}
-				  <FormInput></FormInput>
+          		</Field>
 				<Field name="last_name">
 					{({ field, form }) => (
 					<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" isRequired isInvalid={form.errors.last_name && form.touched.last_name}>

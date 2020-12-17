@@ -16,7 +16,7 @@ if having the discord cookie... login with Popup, else login with discord => log
 
 # rewrite discord skip login, cuz there is insecurity when loggin in to another accout
 
-# make wrapper component for Field in froms (login, registration && teams, profile)
+# optimise _app.js, navbar.js, footer.js!!!!
 
 
 ------------------------------------------------------------------------------------
