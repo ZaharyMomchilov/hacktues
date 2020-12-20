@@ -1,17 +1,14 @@
 import axios from 'axios'
 import Cookies from 'universal-cookie';
-import jwt_decode from "jwt-decode";
-import {Box, Avatar, Flex, Text, Input, InputGroup, InputLeftElement, Select, Switch, Textarea, } from "@chakra-ui/react";
-import { Formik, Field, Form, useFormikContext, useField } from 'formik';
-import { PhoneIcon } from '@chakra-ui/icons'
-import { FormControl, FormLabel, FormErrorMessage, FormHelperText,} from "@chakra-ui/react";
-import {useCallback, useEffect, useState} from 'react'
+import {Box, Avatar, Flex, Text, Input, Textarea, Tag, TagLabel } from "@chakra-ui/react";
+import { Formik, Field, Form} from 'formik';
+import { FormControl, FormLabel, FormErrorMessage} from "@chakra-ui/react";
+import labels from '../../components/teams/icons'
 import _ from 'lodash';
-const cookies = new Cookies()
-import { useRouter } from 'next/router'
+import jwt_decode from "jwt-decode";
+
 function Teams(props) {
 
-	console.log(props);
 	var confirmed
 
 	if(props.teams.confirmed){
@@ -20,6 +17,15 @@ function Teams(props) {
 	else if(!props.teams.confirmed){
 		confirmed = <span style={{color: "red"}} >Не</span>
 	}
+
+	var j
+	var tech = []
+
+	props.teams.technologies.map((data, index) => {
+			for(j = 0; j < labels.length; j++)
+				if(labels[j].label == data){
+					tech[j] = <Tag key={index} mt="5px" mr="5px" background={labels[j].color} key={j}><TagLabel textColor="white" fontFamily="Rubik" >{data}</TagLabel></Tag>
+	}});
 
 	return(
 		<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
@@ -54,7 +60,7 @@ function Teams(props) {
 						{({ field, form }) => (
 						<FormControl flexGrow={1} w="100%" mr="5px" isRequired isInvalid={form.errors.email && form.touched.email}>
 							<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="email">Описание на проекта</FormLabel>
-								<Textarea  isDisabled _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="project_description" />
+								<Textarea fontSize="14px" fontFamily="Rubik"  isDisabled _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="project_description" />
 							<FormErrorMessage border={0}>{form.errors.email}</FormErrorMessage>
 						</FormControl>
 						)}
@@ -68,6 +74,10 @@ function Teams(props) {
 						</FormControl>
 						)}
 				</Field>
+
+				<Flex paddingTop="15px" flexDirection="row" flexWrap="wrap" width="100%">
+				  	{tech}
+				</Flex>
 			</Form>
 		  )}
 		</Formik>
@@ -80,7 +90,17 @@ function Teams(props) {
 export async function getServerSideProps(ctx){
 
 	const cookies = new Cookies(ctx.req.headers.cookie);
-	var response = await axios({
+
+	if(jwt_decode(cookies.get('auth')).user_id == 3){
+		return {
+      		redirect: {
+       		permanent: false,
+        	destination: '/',
+      	},
+	}
+	}
+	else{
+		var response = await axios({
 		method: 'get',
 		url: `https://hacktues.pythonanywhere.com/teams/${ctx.query.id}/`,
 		headers: 
@@ -90,6 +110,7 @@ export async function getServerSideProps(ctx){
 		)
 
 	return {props: {teams: response.data}}
+	}
 
 }
 

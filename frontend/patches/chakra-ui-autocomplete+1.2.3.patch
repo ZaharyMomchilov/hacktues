@@ -1,0 +1,22 @@
+diff --git a/node_modules/chakra-ui-autocomplete/dist/chakra-ui-autocomplete.esm.js b/node_modules/chakra-ui-autocomplete/dist/chakra-ui-autocomplete.esm.js
+index 2f82a52..19f654e 100644
+--- a/node_modules/chakra-ui-autocomplete/dist/chakra-ui-autocomplete.esm.js
++++ b/node_modules/chakra-ui-autocomplete/dist/chakra-ui-autocomplete.esm.js
+@@ -8,6 +8,7 @@ import { Stack, Box, List, ListItem, Text, ListIcon } from '@chakra-ui/layout';
+ import { Button } from '@chakra-ui/button';
+ import { Input } from '@chakra-ui/input';
+ import { Tag, TagLabel, TagCloseButton } from '@chakra-ui/tag';
++import {CheckIcon} from '@chakra-ui/icons'
+ 
+ function _extends() {
+   _extends = Object.assign || function (target) {
+@@ -263,8 +264,7 @@ var CUIAutoComplete = function CUIAutoComplete(props) {
+     }, "\"", item.label, "\"")) : createElement(Box, {
+       display: 'inline-flex',
+       alignItems: 'center'
+-    }, selectedItemValues.includes(item.value) && createElement(ListIcon, Object.assign({
+-      icon: 'check-circle',
++    }, selectedItemValues.includes(item.value) && createElement(CheckIcon, Object.assign({
+       color: 'green.500',
+       role: 'img',
+       display: 'inline',

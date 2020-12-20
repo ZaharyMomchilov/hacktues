@@ -15,7 +15,7 @@ const Card = (props) => {
 		props.label.map((data, index) => {
 			for(j = 0; j < labels.length; j++)
 				if(labels[j].label == data){
-					tech[j] = <Tag key={index} mt="5px" mr="5px" colorScheme={labels[j].color} key={j}><TagLabel fontFamily="Rubik" >{data}</TagLabel></Tag>
+					tech[j] = <Tag key={index} mt="5px" mr="5px" background={labels[j].color} key={j}><TagLabel textColor="white" fontFamily="Rubik" >{data}</TagLabel></Tag>
 		}});
 
 		return (
@@ -23,7 +23,7 @@ const Card = (props) => {
 			<Flex cursor="pointer" width="400px" flexDirection="column" flexWrap="wrap" alignSelf="stretch" h="auto" m="15px" padding="15px" backgroundColor="white" rounded="lg" overflow="hidden">
 				<Flex paddingBottom="15px" flexDirection="row" flexWrap="wrap">
 					<Avatar name={props.name} />
-						<Text mb="auto" ml="15px" mt="auto">{props.name}</Text>
+						<Text  fontSize="15px" fontFamily="Rubik" mb="auto" ml="15px" mt="auto">{props.name}</Text>
 				</Flex>
 				<Text wordBreak="break-word" m="0" p="0" lineHeight="1.5" fontWeight="400"><strong fontWeight="700">Технологии:</strong></Text>
 				<Flex paddingTop={["10px","10px","10px","15px"]} flexDirection="row" flexWrap="wrap">{tech}</Flex>

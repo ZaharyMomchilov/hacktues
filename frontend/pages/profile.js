@@ -11,8 +11,6 @@ const cookies = new Cookies()
 import * as Yup from 'yup';
 
 function Profile(props) {
-	
-	console.log(props);
 
 	const toast = useToast()
 
@@ -43,7 +41,7 @@ function Profile(props) {
 	<Flex backgroundColor="white" p="25px" rounded="lg" flexDirection="column" flexWrap="wrap" margin="50px">
 		<Flex>
 			<Avatar src={`https://cdn.discordapp.com/avatars/${props.avatar.id}/${props.avatar.avatar}.png`}/>
-			<Text fontSize="md" pl="15px">{props.users.first_name}&nbsp;{props.users.last_name}</Text>
+			<Text fontSize="15px" fontFamily="Rubik" pl="15px">{props.users.first_name}&nbsp;{props.users.last_name}</Text>
 		</Flex>
 		<Formik validationSchema={SignupSchema} initialValues={{ first_name: props.users.first_name , last_name: props.users.last_name, email: props.users.email, form: props.users.form, alergies:props.users.alergies, tshirt_size:props.users.tshirt_size, food_preferences:props.users.food_preferences, is_online:props.users.is_online, phone: props.users.phone}}
 		onSubmit={(values, actions) => {
@@ -188,10 +186,19 @@ function Profile(props) {
 }
 
 export async function getServerSideProps(ctx){
-	
+
 	const cookies = new Cookies(ctx.req.headers.cookie);
 
-	var response = await axios({
+	if(jwt_decode(cookies.get('auth')).user_id == 3){
+		return {
+      		redirect: {
+       		permanent: false,
+        	destination: '/',
+      	},
+	}
+}
+	else{
+		var response = await axios({
 			method: 'get',
 			url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}`,
 			headers: 
@@ -200,14 +207,16 @@ export async function getServerSideProps(ctx){
 			},
 			)
 			
-	var res = await axios({
-		method: 'get',
-		url: 'https://discordapp.com/api/users/@me',
-		headers: 
-		{
-		  "Authorization": `Bearer ${cookies.get('discord_auth')}`}},)
+		var res = await axios({
+			method: 'get',
+			url: 'https://discordapp.com/api/users/@me',
+			headers: 
+			{
+			  "Authorization": `Bearer ${cookies.get('discord_auth')}`}},)
 
-	return {props: {users: response.data, avatar: res.data}}	
+			 
+			return {props: {users: response.data, avatar: res.data}}
+	}
 
 }
 

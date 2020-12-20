@@ -72,7 +72,7 @@ const Navbar = props => {
 
 //    useEffect(() => {
 
-   	if(props.inTeam){
+   	if(props.inteam == "false"){
 		   console.log(props.inTeam);
 		   team = <MenuItems><Link href={`/teams/${encodeURIComponent(props.inTeam)}/`}><a>Моят отбор</a></Link></MenuItems>
 	}

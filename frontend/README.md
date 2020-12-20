@@ -1,11 +1,7 @@
 ## TO-DO List
 
-
-- [x] make mobile registration
-- [x] email template
 - [] fixing navbar
 
-if having the discord cookie... login with Popup, else login with discord => login tru mobile page
 
 # profile && login page
 - [x] if not logged in, redirect
@@ -40,3 +36,7 @@ if having the discord cookie... login with Popup, else login with discord => log
 
 
 
+# vitanov , solarni paneli, baterii, zapazvane na energiqta,
+
+
+# ogranichi AI upotrebata

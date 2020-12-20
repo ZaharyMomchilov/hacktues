@@ -45,7 +45,7 @@ function checkToken(exp) {
 function MyApp({ Component, pageProps }) {
 
 	const [logged, setLogin] = useControllableState({defaultValue:0})
-	const [inTeam, setTeam] = useControllableState({defaultValue:false})
+	const [inTeam, setTeam] = useControllableState({defaultValue:"false"})
 
   	useEffect(() => {
 		if(cookies.get('CookieConsent')){
@@ -79,7 +79,7 @@ function MyApp({ Component, pageProps }) {
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
-  		<Navbar inTeam={inTeam} loggedin={logged} />
+  		<Navbar inteam={inTeam} loggedin={logged} />
   	  	<Component {...pageProps} />
 			<Cookie/>
   	  	{/* <Footer/> */}
