@@ -63,8 +63,9 @@ function MyApp({ Component, pageProps }) {
 						  "Authorization": `Bearer ${cookies.get('auth')}`}
 						  },)
 						.then(function (response){
-							// console.log(response);
+							
 							setTeam(response.data.team_set[0])
+							
 						})
 
 					// getUsers()

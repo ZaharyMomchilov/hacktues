@@ -70,14 +70,13 @@ const Navbar = props => {
 		Router.reload(window.location.pathname);
    }
 
-//    useEffect(() => {
+//    console.log(props.inteam);
 
    	if(props.inteam == "false"){
-		   console.log(props.inTeam);
-		   team = <MenuItems><Link href={`/teams/${encodeURIComponent(props.inTeam)}/`}><a>Моят отбор</a></Link></MenuItems>
+		   team = <MenuItems><Link href="/maketeam/"><a>Създай отбор</a></Link></MenuItems>
 	}
 	else{
-		team = <MenuItems><Link href="/maketeam/"><a>Създай отбор</a></Link></MenuItems>
+		team = <MenuItems><Link href={`/teams/${encodeURIComponent(props.inteam)}/`}><a>Моят отбор</a></Link></MenuItems>
 	}
 
 	if(props.loggedin && !isMobile){

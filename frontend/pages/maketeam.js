@@ -8,7 +8,7 @@ import _ from 'lodash';
 const cookies = new Cookies()
 import { useRouter } from 'next/router'
 import * as Yup from 'yup';
-import { CUIAutoComplete } from '../components/xd/chakra-ui-autocomplete.esm'
+import { CUIAutoComplete } from '../components/autocomplete/chakra-ui-autocomplete.esm'
 import labels from '../components/teams/icons'
 import jwt_decode from "jwt-decode";
 
@@ -38,8 +38,7 @@ const Teams = (props) => {
 				chosenTech.indexOf(data.label) !== -1 && chosenTech.splice(chosenTech.indexOf(data.label), 1)
 				tagRefs.current[index].current.style.background = data.color
 				tagRefs.current[index].current.style.boxShadow = "none"
-			}
-			
+			}		
 		}} ref={tagRefs.current[index]} key={data.id} mt="5px" mr="5px" background={data.color}><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)	
 	});
 
@@ -79,6 +78,7 @@ const Teams = (props) => {
 							}
                             let selected = people.map(a => a.value);
                             values['users'] = selected
+							values['users'].push(jwt_decode(cookies.get('auth')).user_id)
                             values['technologies'] = chosenTech
 							var data = JSON.stringify(values, null, 1)
         					axios({
@@ -106,7 +106,6 @@ const Teams = (props) => {
 											actions.setFieldError(key, value)
 										}
 								}})						
-											console.log(JSON.stringify(values, null, 1))
           									actions.setSubmitting(false)
         								}, 1000);
       							}}>
@@ -136,7 +135,7 @@ const Teams = (props) => {
 						{({ field, form }) => (
 						<FormControl paddingTop="15px" flexGrow={1} w="100%" mr="5px"  isInvalid={form.errors.project_description && form.touched.project_description}>
 							<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="email">Описание на проекта</FormLabel>
-								<Textarea fontSize="14px" fontFamily="Rubik" _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="project_description" />
+								<Textarea resize="none" fontSize="14px" fontFamily="Rubik" _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="project_description" />
 							<FormErrorMessage border={0}>{form.errors.project_description}</FormErrorMessage>
 						</FormControl>
 						)}

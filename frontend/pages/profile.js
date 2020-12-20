@@ -12,6 +12,7 @@ import * as Yup from 'yup';
 
 function Profile(props) {
 
+	console.log(props);
 	const toast = useToast()
 
 	const SignupSchema = Yup.object().shape({
