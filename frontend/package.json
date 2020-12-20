@@ -6,7 +6,6 @@
     "build": "NODE_DEBUG=request next build",
     "start": "next start",
     "dev": "next dev",
-    "postinstall": "npx chakra-ui-autocomplete"
   },
   "dependencies": {
     "@atayahmet/react-axios-token-provider": "^1.0.0",
