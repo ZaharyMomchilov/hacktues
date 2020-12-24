@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Cookies from 'universal-cookie';
-import {Box, Avatar, Flex, Text, Input, Textarea, Tag, TagLabel, useToast } from "@chakra-ui/react";
+import {Box, Avatar, Flex, Text, Input, Textarea, Tag, TagLabel, useToast, useControllableState } from "@chakra-ui/react";
 import { Formik, Field, Form, useFormikContext} from 'formik';
 import { FormControl, FormLabel, FormErrorMessage} from "@chakra-ui/react";
 import labels from '../../components/teams/icons'
@@ -29,61 +29,52 @@ function Teams(props) {
 	var j
 	var tech = []
 
-	if(props.users.is_captain){
-		if(router.query.id == props.users.team_set[0]){
-			var i,j
-			var atech = []
+	if(props.user.is_captain){
+		if(router.query.id == props.user.team_set[0]){
+			const technology = labels
+			
 			var tech = []
-			var ctech = []
-			var alreadyChosen = props.teams.technologies
-			var chosenTech = []
+			
+			var chosenTech = props.teams.technologies
+			var alreadyChosenTech = props.teams.technologies
+
 			const tagRefs = React.useRef([]);
-			tagRefs.current = labels.map(
+			tagRefs.current = technology.map(
 				(ref, index) =>   tagRefs.current[index] = React.createRef()
 			)
 
-			const alreadyRefs = React.useRef([]);
-			alreadyRefs.current = props.teams.technologies.map(
-				(ref, index) =>   alreadyRefs.current[index] = React.createRef()
-			)
-			for(let p = 0; p < props.teams.technologies.length; p++){
-				labels.map((data, index) => {
-				
-					if(data.label == props.teams.technologies[p]){
-						
-						tech.push(<Tag ref={tagRefs.current[index]} key={data.id} mt="5px" mr="5px" boxShadow = "0px 0px 5px" background="rgb(0, 255, 255)"><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)	
-						console.log("xd");
-				}
+			technology.map((data, index) => {
+					if(alreadyChosenTech.includes(data.label)){
+						tech.push(<Tag onClick={function(){
+							if(!chosenTech.includes(data.label)){
+								chosenTech.push(data.label)
+								tagRefs.current[index].current.style.background = "rgb(0, 255, 255)"
+								tagRefs.current[index].current.style.boxShadow = "0px 0px 5px"
+							}
+							else if(chosenTech.includes(data.label)){
+								chosenTech.indexOf(data.label) !== -1 && chosenTech.splice(chosenTech.indexOf(data.label), 1)
+								tagRefs.current[index].current.style.background = data.color
+								tagRefs.current[index].current.style.boxShadow = "none"
+							}		
+						}} ref={tagRefs.current[index]} cursor="pointer" key={data.id} mt="5px" mr="5px" boxShadow="0px 0px 5px" background="rgb(0, 255, 255)"><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)	
+					}
 					else{
-							tech.push(<Tag onClick={function(){
-								if(!chosenTech.includes(data.label)){
-									chosenTech.push(data.label)
-									tagRefs.current[index].current.style.background = "rgb(0, 255, 255)"
-									tagRefs.current[index].current.style.boxShadow = "0px 0px 5px"
-								}
-								else if(chosenTech.includes(data.label)){
-									chosenTech.indexOf(data.label) !== -1 && chosenTech.splice(chosenTech.indexOf(data.label), 1)
-									tagRefs.current[index].current.style.background = data.color
-									tagRefs.current[index].current.style.boxShadow = "none"
-								}
-							}} ref={tagRefs.current[index]} key={data.id} mt="5px" mr="5px" background={data.color}><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)	
-				}
-				
-				
-				// tech.push(<Tag onClick={function(){
-				// 	if(!chosenTech.includes(data.label)){
-				// 		chosenTech.push(data.label)
-				// 		tagRefs.current[index].current.style.background = "rgb(0, 255, 255)"
-				// 		tagRefs.current[index].current.style.boxShadow = "0px 0px 5px"
-				// 	}
-				// 	else if(chosenTech.includes(data.label)){
-				// 		chosenTech.indexOf(data.label) !== -1 && chosenTech.splice(chosenTech.indexOf(data.label), 1)
-				// 		tagRefs.current[index].current.style.background = data.color
-				// 		tagRefs.current[index].current.style.boxShadow = "none"
+						tech.push(<Tag onClick={function(){
+							if(!chosenTech.includes(data.label)){
+								chosenTech.push(data.label)
+								tagRefs.current[index].current.style.background = "rgb(0, 255, 255)"
+								tagRefs.current[index].current.style.boxShadow = "0px 0px 5px"
+							}
+							else if(chosenTech.includes(data.label)){
+								chosenTech.indexOf(data.label) !== -1 && chosenTech.splice(chosenTech.indexOf(data.label), 1)
+								tagRefs.current[index].current.style.background = data.color
+								tagRefs.current[index].current.style.boxShadow = "none"
+							}		
+						}} ref={tagRefs.current[index]} cursor="pointer" key={data.id} mt="5px" mr="5px" background={data.color}><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)
+					}
 					
-				// }} ref={tagRefs.current[index]} key={data.id} mt="5px" mr="5px" background={data.color}><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)	
-		})
-	}
+			})
+
 
 			return(
 				<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
@@ -168,20 +159,9 @@ function Teams(props) {
 									<FormErrorMessage border={0}>{form.errors.last_name}</FormErrorMessage>
 								</FormControl>
 								)}
-						</Field>
-									
-						{/* <Field name="users">
-						{({ field, form }) => (
-						<FormControl paddingTop="15px" flexGrow={1} w="100%" mr="5px" isInvalid={form.errors.users && form.touched.users}>
-						<FormLabel fontFamily="Rubik" fontSize="15px" htmlFor="text">Избери участници</FormLabel>
-							<CUIAutoComplete id="users" {...field} placeholder="Добави участници" toggleButtonStyleProps={{display:"none"}} tagStyleProps={{ padding: "5px",sx:{ "& button": { border: "none"},},
-  }} items={pickerItems} selectedItems={selectedItems} onSelectedItemsChange={(changes) =>   handleSelectedItemsChange(changes.selectedItems)}/>
-                            <FormErrorMessage paddingBottom="15px" border={0}>{form.errors.users}</FormErrorMessage>
-                        </FormControl>
-						)}
-				</Field> */}
+						</Field>			
 					<Flex flexDirection="column" flexWrap="wrap">
-						<Text m={0} p={0} pt="15px">Технологии</Text>
+						<Text fontFamily="Rubik" fontSize="15px" m={0} p={0} pt="15px">Технологии</Text>
 						<Flex paddingTop="15px" flexDirection="row" flexWrap="wrap">	
 							  {tech}
 						</Flex>
@@ -190,7 +170,7 @@ function Teams(props) {
 					</Form>
 				  )}
 				</Formik>
-				<Text>Потвърден:&nbsp;{confirmed}</Text>
+				<Text fontFamily="Rubik" fontSize="15px">Потвърден:&nbsp;{confirmed}</Text>
 				</Flex>
 				</Box>
 			)
@@ -306,7 +286,7 @@ export async function getServerSideProps(ctx){
 			},
 		)
 				
-	return {props: {teams: response.data,  users: res.data, }}
+	return {props: {teams: response.data,  user: res.data, users: users.data }}
 	}
 
 }

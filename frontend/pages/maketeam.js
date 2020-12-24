@@ -39,14 +39,13 @@ const Teams = (props) => {
 				tagRefs.current[index].current.style.background = data.color
 				tagRefs.current[index].current.style.boxShadow = "none"
 			}		
-		}} ref={tagRefs.current[index]} key={data.id} mt="5px" mr="5px" background={data.color}><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)	
+		}} ref={tagRefs.current[index]} cursor="pointer" key={data.id} mt="5px" mr="5px" background={data.color}><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)	
 	});
 
     var users = props.users
     var items = []
 	var i
 	
-
 	var users = users.filter(function(item) {
     	return item.email !== "hacktues"
 	})
