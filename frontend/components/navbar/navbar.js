@@ -1,14 +1,14 @@
 import React, {useEffect} from "react";
-import { Box, Input, InputGroup, InputRightElement, Select, InputLeftElement, Switch, Heading, Flex, Button, useToast, Text, Link, useControllableState} from "@chakra-ui/react";
+import { Box, Input, InputGroup, InputRightElement, Select, InputLeftElement, Switch, Heading, Flex, Button, useToast, Text, Icon, Link, IconButton, useControllableState} from "@chakra-ui/react";
 import { Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider, MenuOptionGroup, MenuItemOption } from "@chakra-ui/react";
 import { Modal, ModalOverlay,ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useDisclosure } from "@chakra-ui/react";
-
+import { Slide } from "@chakra-ui/react"
 import { Formik, Field } from 'formik';
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText, CloseButton  } from "@chakra-ui/react";
-import {PhoneIcon, ViewIcon, ViewOffIcon} from '@chakra-ui/icons'
+import {PhoneIcon, ViewIcon, ViewOffIcon, CloseIcon} from '@chakra-ui/icons'
 import Cookies from 'universal-cookie'
 
 import * as Yup from 'yup';
@@ -25,10 +25,11 @@ import styled from '@emotion/styled'
 import Login from './login'
 import Reg from './form'
 
-import { motion } from "framer-motion";
+import { motion, useSpring } from "framer-motion";
+import { FiInstagram, FiFacebook, FiYoutube, FiMail } from 'react-icons/fi';
 
 const MenuItems = ({ children }) => (
-	<Button _active={{bg:"transparent"}} _hover={{bg:"transparent"}} background="none" _focus={{outline:"none"}} fontFamily="Rubik" color="white" border="0px" borderWidth="0px">
+	<Button textDecoration="none" _active={{bg:"transparent"}}  _hover={{backgroundColor:"#85c59b", textDecoration:"none"}} background="none" _focus={{outline:"none"}} fontFamily="Rubik" color="white" border="0px" borderWidth="0px">
     {children}
   </Button>
 );
@@ -48,7 +49,8 @@ function equalTo(ref, msg) {
   }
 Yup.addMethod(Yup.string, 'equalTo', equalTo);
 
-const Navbar = props => {
+
+const Navbar = (props) => {
   	const [show, setShow] = React.useState(false);
   	const handleToggle = () => setShow(!show);
 
@@ -57,7 +59,7 @@ const Navbar = props => {
   	const btnRef = React.useRef();
 
 	const { isMobile } = useDeviceDetect();
-
+	const { isOpen : isOpenx , onToggle : onTogglex} = useDisclosure();
 	var login;
 	var logout;
 	var team;
@@ -70,9 +72,10 @@ const Navbar = props => {
 		Router.reload(window.location.pathname);
    }
 
-//    console.log(props.inteam);
-
-   	if(props.inteam == "false"){
+   	if(props.loggedin == 0 && props.inteam == "false"){
+		team = <MenuItems display="none"><Link display="none" href="/maketeam/"><a>Създай отбор</a></Link></MenuItems>
+	   }
+   	else if(props.loggedin == 1 && props.inteam == "false"){
 		   team = <MenuItems><Link href="/maketeam/"><a>Създай отбор</a></Link></MenuItems>
 	}
 	else{
@@ -91,21 +94,23 @@ const Navbar = props => {
 		login = 
 			<>
 				<MenuItems><Link href="/login"><a onClick={onClose}>Вход</a></Link></MenuItems>
-				<MenuItems marginLeft={["none","none","none","auto"]}><Link onClick={() => {onClose(); router.push('/')}} href="/registration/first_step"><a onClick={() => {onClose(); router.push('/')}}>Регистрация</a></Link></MenuItems>
+				<MenuItems marginLeft={["none","none","none","auto"]}><Link _hover={{textDecoration:"none"}} onClick={() => {onClose(); router.push('/')}} href="/registration/first_step"><a textDecoration="none" onClick={() => {onClose(); router.push('/')}}>Регистрация</a></Link></MenuItems>
 			</>;
+			console.log("xd");
 	}
 	else if(isMobile){
 		login = 
 			<>
 				<MenuItems><Link href="/login"><a onClick={onClose}>Вход</a></Link></MenuItems>
-				<MenuItems marginLeft={["none","none","none","auto"]}><Link onClick={() => {onClose(); router.push('/')}} href="/registration/first_step"><a onClick={() => {onClose(); router.push('/')}}>Регистрация</a></Link></MenuItems>
+				<MenuItems marginLeft={["none","none","none","auto"]}><Link _hover={{textDecoration:"none"}} onClick={() => {onClose(); router.push('/')}} href="/registration/first_step"><a textDecoration="none" onClick={() => {onClose(); router.push('/')}}>Регистрация</a></Link></MenuItems>
 			</>;
 	}
 	else{
 		login = 
 			<>
-				<Login logIn={handleChildClick} />
-				<MenuItems marginLeft={["none","none","none","auto"]}><Link href="/registration/first_step"><a>Регистрация</a></Link></MenuItems>
+				<MenuItems><Link  _hover={{textDecoration:"none"}} href="/login"><a onClick={onClose}>Вход</a></Link></MenuItems>
+				{/* <Login logIn={handleChildClick} /> */}
+				<MenuItems marginLeft={["none","none","none","auto"]}><Link _hover={{textDecoration:"none"}} href="/registration/first_step"><a textDecoration="none">Регистрация</a></Link></MenuItems>
 			</>;
 	}
 //    }, [router, isMobile, login, logout, props.loggedin])
@@ -156,6 +161,36 @@ const Navbar = props => {
       </Button>
       </Box>
     </Flex>
+
+	{/* <Flex zIndex="11" position="fixed" flexDirection="column" flexWrap="wrap" alignSelf="center" top="0" left="0" height="100vh" w="5%" backgroundColor="#76b48c">
+		<IconButton _focus={{outline: "none"}} _hover={{backgroundColor:"#85c59b"}} colorScheme="white" marginTop="15px" backgroundColor="transparent" outline="none" border="none" zIndex="11" aria-label="Open Close" onClick={onTogglex} icon={<CloseIcon />} />
+		<Flex zIndex="11" w="20px" margin="auto" alignItems="center" justifyContent="center" flexDirection="column" flexWrap="nowrap">
+            <Text textAlign="center" alignSelf="center" fontWeight="300" color="white">
+                <Link isExternal paddingRight="10px" _focus={{outline:"none"}} href="https://facebook.com/hacktues">
+                    <Icon alignSelf="center" justifyContent="center" textAlign="center" marginBottom="5px" transform="rotate(-90deg)" as={FiInstagram} background="transparent" width="28px" height="28px"></Icon>
+                </Link>
+                <Link isExternal paddingRight="10px" _focus={{outline:"none"}} href="https://www.youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ">
+                    <Icon marginBottom="5px" transform="rotate(-90deg)" as={FiYoutube} background="transparent" width="28px" height="28px"></Icon>
+                </Link>
+                <Link isExternal paddingRight="10px" _focus={{outline:"none"}} href="mailto:hacktues@elsys-bg.org">
+                    <Icon transform="rotate(-90deg)" as={FiMail} background="transparent" width="28px" height="28px"></Icon>
+                </Link>
+				<Link isExternal paddingRight="10px" _focus={{outline:"none"}} href="https://instagram.com/hacktues">
+                    <Icon transform="rotate(-90deg)" as={FiFacebook} width="28px" height="28px"></Icon>
+                </Link>
+            </Text>
+        </Flex>
+		<Text cursor="pointer" onClick={() => {router.push('/')}} textAlign="center" marginTop="auto" textColor="#105231" fontFamily="llpixel" fontWeight="300" fontSize="30px">GG</Text>
+	</Flex>
+      <Slide direction="left" in={isOpenx} style={{height:"100%", width: "auto", zIndex: 10, 
+	  left: "5%",
+	   shadow:"md" }}>
+        <Flex rounded="0" flexDirection="column" flexWrap="wrap" height="100%" p="40px" color="white" bg="#76b48c" shadow="md">
+		{team}
+		{login}
+		{logout}
+        </Flex>
+      </Slide> */}
     
 	<Flex display={{ md:"flex", lg: "none" }} width={{ xl: "100%", md: "100%" }} alignItems="center" flexGrow={1}>
     	<Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
@@ -206,13 +241,13 @@ const Navbar = props => {
 
 function ProfileButton(props){
 	return(
-	<Button marginLeft={["none","none","none","auto"]} _active={{bg:"transparent"}} _hover={{bg:"transparent"}} cursor="pointer" fontFamily="Rubik" color="white" bg="transparent" _focus={{outline: "none"}} border="0px" borderWidth="0px" onClick={props.click}><Link href="/profile" ><a>Профил</a></Link></Button>
+	<Button marginLeft={["none","none","none","auto"]} _active={{bg:"transparent"}}  _hover={{backgroundColor:"#85c59b"}} cursor="pointer" fontFamily="Rubik" color="white" bg="transparent" _focus={{outline: "none"}} border="0px" borderWidth="0px" onClick={props.click}><Link href="/profile" ><a>Профил</a></Link></Button>
 	)
 }
 
 function LogoutButton(props) {
 	return(
-	<Button _active={{bg:"transparent"}} _hover={{bg:"transparent"}} cursor="pointer" fontFamily="Rubik" color="white" bg="transparent" _focus={{outline: "none"}} border="0px" borderWidth="0px" onClick={Logout}><Link href="/" ><a>Излез</a></Link></Button>
+	<Button _active={{bg:"transparent"}}  _hover={{backgroundColor:"#85c59b"}} cursor="pointer" fontFamily="Rubik" color="white" bg="transparent" _focus={{outline: "none"}} border="0px" borderWidth="0px" onClick={Logout}><Link href="/" ><a>Излез</a></Link></Button>
 	)
 }
 

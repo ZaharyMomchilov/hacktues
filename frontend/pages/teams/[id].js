@@ -23,7 +23,7 @@ function Teams(props) {
 		confirmed = <span style={{color: "red"}} >Да</span>
 	}
 	else if(!props.teams.confirmed){
-		confirmed = <span style={{color: "red"}} >Не</span>
+		confirmed = <span style={{color: "green"}} >Не</span>
 	}
 
 	var j

@@ -28,7 +28,7 @@ const GetCards = (props) =>{
 
 const Panel = (props) => {
     return(
-        <Flex flexDirection="column" flexWrap="wrap" paddingBottom={["250px", "160px", "150px", "150px"]}>
+        <Flex marginLeft="auto" flexDirection="column" flexWrap="wrap" paddingBottom={["250px", "160px", "150px", "150px"]}>
         <Flex display="block" pt="10px" pl="10px" pr="10px" marginLeft={["20px", "20px", "100px", "100px"]} marginRight={["20px", "20px", "100px", "100px"]} marginTop="5%"  flexDirection="column" flexWrap="wrap" justifyContent="center" height="auto" borderColor="black" borderWidth="10px" rounded="lg" backgroundColor="white" overflow="hidden">
             <Text paddingLeft="10px">
             <span style={{"font-size":"25px","fontFamily":"llpixel"}}>Hack&nbsp;</span>

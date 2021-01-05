@@ -26,11 +26,11 @@ export default function Login({logIn}) {
 	const router = useRouter()
 	
 	return(
-	  	<Popover onClose={onClose} autoFocus="false" placement="bottom">
+	  	<Popover onClose={onClose} autoFocus="false" placement="right">
 			<PopoverTrigger>
-		  		<Button marginLeft={["none","none","none","auto"]} _active={{bg:"transparent"}} _hover={{bg:"transparent"}} cursor="pointer" fontFamily="Rubik" color="white" bg="transparent" _focus={{outline: "none"}} border="0px" borderWidth="0px" >Влез</Button>
+		  		<Button w="100%" _active={{bg:"transparent"}} _hover={{backgroundColor:"#85c59b"}} cursor="pointer" fontFamily="Rubik" color="white" bg="transparent" _focus={{outline: "none"}} border="0px" borderWidth="0px" >Влез</Button>
 			</PopoverTrigger>
-			<PopoverContent _focus={{outline:"none"}} color="white" bg="white"  borderColor="#a5cf9f">
+			<PopoverContent inset="0px auto auto" _focus={{outline:"none"}} color="white" bg="white"  borderColor="#a5cf9f">
 		  		<PopoverArrow />
 		  			<PopoverBody >
 					  <Formik initialValues={{ email: "", password: "" }} 

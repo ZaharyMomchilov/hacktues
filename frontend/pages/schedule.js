@@ -30,7 +30,7 @@ export default function Schedule(){
   const [sliderRef, slider] = useKeenSlider()
 
   	return (
-      <div className="navigation-wrapper">
+      <Box className="navigation-wrapper">
     	<Box paddingBottom={["50px","50px","100px","100px", "200px"]} ref={sliderRef} className="keen-slider">
     		<div  className={"keen-slider__slide number-slide1"}>{GetEntry(day1)}</div>
     		<div  className={"keen-slider__slide number-slide2"}>{GetEntry(day2)}</div>
@@ -64,7 +64,7 @@ export default function Schedule(){
         </div>
         </Box>
       )}
-      </div>
+      </Box>
   );
 };
 

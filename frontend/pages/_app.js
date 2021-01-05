@@ -3,6 +3,7 @@ import { ChakraProvider, Box, Slide,SlideFade, Button, Text, Link, Flex } from "
 import { extendTheme } from "@chakra-ui/react";
 import 'keen-slider/keen-slider.min.css'
 import Navbar from '../components/navbar/navbar'
+import Sidebar from '../components/navbar/sidebar'
 import Footer from '../components/footer/footer'
 import React, {useEffect} from 'react'
 import Cookies from 'universal-cookie';
@@ -81,7 +82,7 @@ function MyApp({ Component, pageProps }) {
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
   		<Navbar inteam={inTeam} loggedin={logged} />
-  	  	<Component {...pageProps} />
+		<Component {...pageProps} />	
 			<Cookie/>
   	  	{/* <Footer/> */}
   	</ChakraProvider>) 
