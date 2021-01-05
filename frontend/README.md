@@ -1,18 +1,21 @@
 ## TO-DO List
 
-- [] fixing navbar
+- [ ] side bar
+- - [ ] buttons
+- - [ ] fix every page according to the side bar
+- - [ ] mobile viewport
 
+- [ ] themes
+- - [ ] first 2 while resizing
 
-# profile && login page
-- [x] if not logged in, redirect
+- [ ] mentors
+- - [ ] add loading bar
 
-# no mobile detection needed... just change layout based on device width
-- [] update navbar
+- [ ] login
+- - [ ] remove discord login
+- - [ ] add avatar to registration data
 
-
-# rewrite discord skip login, cuz there is insecurity when loggin in to another accout
-
-# optimise _app.js, navbar.js, footer.js!!!!
+- [ ] optimise _app.js, navbar.js
 
 
 ------------------------------------------------------------------------------------
@@ -20,7 +23,6 @@
 
 # Update archive
 - [] Change background depending on versions
-- [x] Create a sub page instead of drop down menu to display versions
 
 # Robo ideas
 
