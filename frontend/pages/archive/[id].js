@@ -17,18 +17,18 @@ const Hacktues = ({currData}) => {
                 <Card img={currData.winners[1].image} name={currData.winners[1].name} teammates={currData.winners[1].participants} place={currData.winners[1].place} project={currData.winners[1].project}/>
                 <Card img={currData.winners[2].image} name={currData.winners[2].name} teammates={currData.winners[2].participants} place={currData.winners[2].place} project={currData.winners[2].project}/>
         </Flex>
-        <Flex flexDirection={["column","column","column", "row"]} flexWrap="wrap">
+        <Flex margin="15px"  backgroundColor="white" rounded="lg" flexDirection={["column","column","column", "row"]} flexWrap="wrap">
                 <Flex flex="1 1" flexDirection="column" flexWrap="wrap" justifyContent="center">
-                <Text textAlign="center" color="black" mt="1" p="10px" as="h2">Участници</Text>
-                <Text textAlign="center" color="black" fontWeight="semibold" as="h1" fontWeight="400" ><AiOutlineUser/> {currData.allParticipants}</Text>
+                <Text textAlign="center" color="black" mt="1" p="10px" ml={0} mr={0} pl={0} pr={0} fontFamily="Rubik" as="h2">Участници</Text>
+                <Text textAlign="center" color="black" fontWeight="semibold" fontFamily="Rubik" as="h1" fontWeight="400" ><AiOutlineUser/> {currData.allParticipants}</Text>
                 </Flex>
                 <Flex flex="1 1" flexDirection="column" flexWrap="wrap" justifyContent="center">
-                <Text textAlign="center" color="black" mt="1" p="10px" as="h2">Отбори</Text>
-                <Text textAlign="center"  color="black" fontWeight="semibold" as="h1" fontWeight="400" ><AiOutlineGift/> {currData.valuedProjects}</Text>
+                <Text textAlign="center" color="black" mt="1" p="10px" ml={0} mr={0} pl={0} pr={0} fontFamily="Rubik" as="h2">Отбори</Text>
+                <Text textAlign="center"  color="black" fontWeight="semibold" as="h1" fontFamily="Rubik" fontWeight="400" ><AiOutlineGift/> {currData.valuedProjects}</Text>
                 </Flex>
                 <Flex flex="1 1" flexDirection="column" flexWrap="wrap" justifyContent="center">
-                <Text textAlign="center" color="black" mt="1" p="10px" as="h2">Отличени отбори</Text>
-                <Text textAlign="center"  color="black" fontWeight="semibold" as="h1" fontWeight="400" ><AiOutlineTeam/> {currData.teams}</Text>
+                <Text textAlign="center" color="black" mt="1" p="10px" ml={0} mr={0} pl={0} pr={0} fontFamily="Rubik" as="h2">Отличени отбори</Text>
+                <Text textAlign="center"  color="black" fontWeight="semibold" as="h1" fontFamily="Rubik" fontWeight="400" ><AiOutlineTeam/> {currData.teams}</Text>
                 </Flex>
         </Flex>
         {/* <Numbers padding="1%" allParticipants={currData.allParticipants} teams={currData.teams} valuedProjects={currData.valuedProjects}/> */}

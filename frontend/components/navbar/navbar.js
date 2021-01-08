@@ -162,7 +162,8 @@ const Navbar = (props) => {
       </Box>
     </Flex>
 
-	{/* <Flex zIndex="11" position="fixed" flexDirection="column" flexWrap="wrap" alignSelf="center" top="0" left="0" height="100vh" w="5%" backgroundColor="#76b48c">
+{/* 
+	<Flex zIndex="11" position="fixed" flexDirection="column" flexWrap="wrap" alignSelf="center" top="0" left="0" height="100vh" w="5%" backgroundColor="#76b48c">
 		<IconButton _focus={{outline: "none"}} _hover={{backgroundColor:"#85c59b"}} colorScheme="white" marginTop="15px" backgroundColor="transparent" outline="none" border="none" zIndex="11" aria-label="Open Close" onClick={onTogglex} icon={<CloseIcon />} />
 		<Flex zIndex="11" w="20px" margin="auto" alignItems="center" justifyContent="center" flexDirection="column" flexWrap="nowrap">
             <Text textAlign="center" alignSelf="center" fontWeight="300" color="white">
@@ -180,12 +181,10 @@ const Navbar = (props) => {
                 </Link>
             </Text>
         </Flex>
-		<Text cursor="pointer" onClick={() => {router.push('/')}} textAlign="center" marginTop="auto" textColor="#105231" fontFamily="llpixel" fontWeight="300" fontSize="30px">GG</Text>
+		<Text cursor="pointer" onClick={() => {router.push('/')}} textAlign="center" textColor="#105231" fontFamily="llpixel" fontWeight="300" fontSize="30px">GG</Text>
 	</Flex>
-      <Slide direction="left" in={isOpenx} style={{height:"100%", width: "auto", zIndex: 10, 
-	  left: "5%",
-	   shadow:"md" }}>
-        <Flex rounded="0" flexDirection="column" flexWrap="wrap" height="100%" p="40px" color="white" bg="#76b48c" shadow="md">
+      <Slide direction="left" in={isOpenx} style={{height:"100%", width: "auto", left: "5%", shadow:"md" }}>
+        <Flex marginRight="50px" rounded="0" flexDirection="column" flexWrap="wrap" height="100%" p="40px" color="white" bg="#76b48c" shadow="md">
 		{team}
 		{login}
 		{logout}
