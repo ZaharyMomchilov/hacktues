@@ -42,3 +42,7 @@
 
 
 # ogranichi AI upotrebata
+
+
+- add minW=3rem maxW=5rem w=5% in rem sidebar
+- fix registration acceptance

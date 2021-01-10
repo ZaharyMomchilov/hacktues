@@ -208,26 +208,26 @@ export default function Register(props) {
 				<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field} isRequired>
   					<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="country">Клас</FormLabel>
   					<Select borderRadius={0} _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} variant="outline" id="form" fontFamily="Rubik" placeholder="Избери клас">
-					  	<option value="8a">8А</option>
-  						<option value="8b">8Б</option>
-  						<option value="8v">8В</option>
-						<option value="8g">8Г</option>
-					  	<option value="9a">9А</option>
-  						<option value="9b">9Б</option>
-  						<option value="9v">9В</option>
-						<option value="9g">9Г</option>
-					  	<option value="10a">10А</option>
-  						<option value="10b">10Б</option>
-  						<option value="10v">10В</option>
-						<option value="10g">10Г</option>
-					  	<option value="11a">11А</option>
-  						<option value="11b">11Б</option>
-  						<option value="11v">11В</option>
-						<option value="11g">11Г</option>
-					  	<option value="12a">12А</option>
-  						<option value="12b">12Б</option>
-  						<option value="12v">12В</option>
-						<option value="12g">12Г</option>
+					  	<option value="8А">8А</option>
+  						<option value="8Б">8Б</option>
+  						<option value="8В">8В</option>
+						<option value="8Г">8Г</option>
+					  	<option value="9А">9А</option>
+  						<option value="9Б">9Б</option>
+  						<option value="9В">9В</option>
+						<option value="9Г">9Г</option>
+					  	<option value="10А">10А</option>
+  						<option value="10Б">10Б</option>
+  						<option value="10В">10В</option>
+						<option value="10Г">10Г</option>
+					  	<option value="11А">11А</option>
+  						<option value="11Б">11Б</option>
+  						<option value="11В">11В</option>
+						<option value="11Г">11Г</option>
+					  	<option value="12А">12А</option>
+  						<option value="12Б">12Б</option>
+  						<option value="12В">12В</option>
+						<option value="12Г">12Г</option>
 					</Select>
 				</FormControl>
             )}

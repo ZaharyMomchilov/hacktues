@@ -81,9 +81,13 @@ function MyApp({ Component, pageProps }) {
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
-  		<Navbar inteam={inTeam} loggedin={logged} />
-		<Component {...pageProps} />	
-			<Cookie/>
+		<Flex >
+  			<Navbar inteam={inTeam} loggedin={logged} />
+			<Box flexGrow="1" flexShrink="1">
+				<Component {...pageProps} />
+			</Box>
+		</Flex>
+		<Cookie/>
   	  	{/* <Footer/> */}
   	</ChakraProvider>) 
 }

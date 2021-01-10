@@ -51,6 +51,15 @@ Yup.addMethod(Yup.string, 'equalTo', equalTo);
 
 
 const Navbar = (props) => {
+
+	const { isOpen : isOpenx , onToggle : onTogglex} = useDisclosure();
+
+	// if(localStorage.getItem == undefined){
+	// 	onTogglex()
+	// }
+	// else if(localStorage.getItem == "true")
+	// localStorage.setItem
+
   	const [show, setShow] = React.useState(false);
   	const handleToggle = () => setShow(!show);
 
@@ -59,7 +68,7 @@ const Navbar = (props) => {
   	const btnRef = React.useRef();
 
 	const { isMobile } = useDeviceDetect();
-	const { isOpen : isOpenx , onToggle : onTogglex} = useDisclosure();
+	
 	var login;
 	var logout;
 	var team;
@@ -117,7 +126,7 @@ const Navbar = (props) => {
 	
   	return (
 	<Box>
-    <Flex as="nav" align="center" justify="space-between" padding="10px" bg="#a5cf9f" color="white"{...props}>
+    {/* <Flex as="nav" align="center" justify="space-between" padding="10px" bg="#a5cf9f" color="white"{...props}>
       	<Flex width="auto" align="center" ml={5} mr={5}>
        		<Link textDecoration="none" href="/">
           		<a textDecoration="none">
@@ -160,9 +169,9 @@ const Navbar = (props) => {
         </svg>
       </Button>
       </Box>
-    </Flex>
+    </Flex> */}
 
-{/* 
+
 	<Flex zIndex="11" position="fixed" flexDirection="column" flexWrap="wrap" alignSelf="center" top="0" left="0" height="100vh" w="5%" backgroundColor="#76b48c">
 		<IconButton _focus={{outline: "none"}} _hover={{backgroundColor:"#85c59b"}} colorScheme="white" marginTop="15px" backgroundColor="transparent" outline="none" border="none" zIndex="11" aria-label="Open Close" onClick={onTogglex} icon={<CloseIcon />} />
 		<Flex zIndex="11" w="20px" margin="auto" alignItems="center" justifyContent="center" flexDirection="column" flexWrap="nowrap">
@@ -183,13 +192,13 @@ const Navbar = (props) => {
         </Flex>
 		<Text cursor="pointer" onClick={() => {router.push('/')}} textAlign="center" textColor="#105231" fontFamily="llpixel" fontWeight="300" fontSize="30px">GG</Text>
 	</Flex>
-      <Slide direction="left" in={isOpenx} style={{height:"100%", width: "auto", left: "5%", shadow:"md" }}>
-        <Flex marginRight="50px" rounded="0" flexDirection="column" flexWrap="wrap" height="100%" p="40px" color="white" bg="#76b48c" shadow="md">
-		{team}
-		{login}
-		{logout}
-        </Flex>
-      </Slide> */}
+    <Slide direction="left" in={isOpenx} style={{position: "absolute",height:"100%", width: "auto", left: "5%", shadow:"md" }}>
+      <Flex marginRight="50px" rounded="0" flexDirection="column" flexWrap="wrap" height="100%" p="40px" color="white" bg="#9accb7" shadow="md">
+	{team}
+	{login}
+	{logout}
+      </Flex>
+    </Slide>
     
 	<Flex display={{ md:"flex", lg: "none" }} width={{ xl: "100%", md: "100%" }} alignItems="center" flexGrow={1}>
     	<Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
