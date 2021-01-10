@@ -52,7 +52,7 @@ export default function Register(props) {
                 {
                   "Authorization": `Bearer ${response.data.access_token}`}},)
                 .then(function (response){
-                    console.log(response.data.id);
+                    console.log(response);
 					userID = response.data.id
 					avatar = response.data.avatar
                     // axios({
