@@ -21,7 +21,8 @@ export default function Register(props) {
     const CLIENT_ID = '743157046677078016'
     const CLIENT_SECRET = 'zz8dSlB1maL4tUIWDCCLpIpn8MVPYqKP'
 
-    var userID;
+	var userID;
+	var avatar
 
     if(router.query['code'] != undefined){
         let payload = new FormData();
@@ -51,8 +52,9 @@ export default function Register(props) {
                 {
                   "Authorization": `Bearer ${response.data.access_token}`}},)
                 .then(function (response){
-                    // console.log(response.data.id);
-                    userID = response.data.id
+                    console.log(response.data.id);
+					userID = response.data.id
+					avatar = response.data.avatar
                     // axios({
                     //     method: 'get',
                     //     url: `https://cdn.discordapp.com/avatars/${response.data.id}/${response.data.avatar}.png`,
@@ -105,6 +107,7 @@ export default function Register(props) {
 				onSubmit={(values, actions) => {
         			setTimeout(() => {
                             values["discord_id"] = userID;
+							values["avatar"] = avatar;
 							var data = JSON.stringify(values, null, 1)
 							console.log(data)
         					axios({
