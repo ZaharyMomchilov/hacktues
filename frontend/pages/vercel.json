@@ -1,7 +1,18 @@
 
   {
     "redirects": [
-      { "source": "/", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" }
+      { "source": "/", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/about", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/login", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/maketeam", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/mentors", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/profile", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/regulation", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/schedule", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/schedule", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/themes", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/teams", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" },
+      { "source": "/schedule", "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO" }
     ],
     "github": {
         "enabled": false
