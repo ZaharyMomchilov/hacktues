@@ -50,7 +50,7 @@ export default function Archive() {
 					<Icon marginTop="10px"  marginBottom="10px" w={10} h={10} color="#105231" as={RiPlantLine}></Icon>
 				</Flex>
 				<Flex justifyContent="center">
-				<Text textAlign="center" m="0"  pb="20px" pl="15px" fontFamily="Rubik" fontWeight="400" fontSize="30px"><span>Pallete</span>&nbsp;<span style={{"color":"#105231"}}>Nature</span></Text>
+				<Text textAlign="center" m="0"  pb="20px" bgGradient="linear(to-l, #7928CA,#FF0080)" bgClip="text" pl="15px" fontFamily="Rubik" fontWeight="400" fontSize="30px"><span>Pallete</span>&nbsp;<span style={{bgGradient:"linear(to-l, #7928CA,#FF0080)",bgClip:"text"}}>Nature</span></Text>
 				</Flex>
 				<Divider w="auto" ml="15px" mr="15px" backgroundColor="black" orientation="horizontal"/>
 				<Text pl="15px" pr="15px" w="100%">&emsp;{data[3].description}</Text>

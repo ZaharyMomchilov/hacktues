@@ -22,8 +22,7 @@ const axios = require('axios');
 
 import styled from '@emotion/styled'
 
-import Login from './login'
-import Reg from './form'
+import { Example } from './xd'
 
 import { motion, useSpring } from "framer-motion";
 import { FiInstagram, FiFacebook, FiYoutube, FiMail } from 'react-icons/fi';
@@ -172,7 +171,7 @@ const Navbar = (props) => {
     </Flex> */}
 
 
-	<Flex zIndex="11" position="fixed" flexDirection="column" flexWrap="wrap" alignSelf="center" top="0" left="0" height="100vh" w="5%" backgroundColor="#76b48c">
+	{/* <Flex zIndex="11" position="fixed" flexDirection="column" flexWrap="wrap" alignSelf="center" top="0" left="0" height="100vh" w="5%" backgroundColor="#76b48c">
 		<IconButton _focus={{outline: "none"}} _hover={{backgroundColor:"#85c59b"}} colorScheme="white" marginTop="15px" backgroundColor="transparent" outline="none" border="none" zIndex="11" aria-label="Open Close" onClick={onTogglex} icon={<CloseIcon />} />
 		<Flex zIndex="11" w="20px" margin="auto" alignItems="center" justifyContent="center" flexDirection="column" flexWrap="nowrap">
             <Text textAlign="center" alignSelf="center" fontWeight="300" color="white">
@@ -198,8 +197,10 @@ const Navbar = (props) => {
 	{login}
 	{logout}
       </Flex>
-    </Slide>
+    </Slide> */}
     
+	<Example/>
+
 	<Flex display={{ md:"flex", lg: "none" }} width={{ xl: "100%", md: "100%" }} alignItems="center" flexGrow={1}>
     	<Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
         	<DrawerOverlay />

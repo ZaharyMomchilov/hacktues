@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import { ChakraProvider, Box, Slide,SlideFade, Button, Text, Link, Flex } from "@chakra-ui/react"
+import { ChakraProvider, Box, Slide,SlideFade, Button, Text, Image, Flex } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react";
 import 'keen-slider/keen-slider.min.css'
 import Navbar from '../components/navbar/navbar'
@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }) {
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
-		<Flex >
+		<Flex>
   			<Navbar inteam={inTeam} loggedin={logged} />
 			<Box flexGrow="1" flexShrink="1">
 				<Component {...pageProps} />
