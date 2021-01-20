@@ -22,7 +22,7 @@ const axios = require('axios');
 
 import styled from '@emotion/styled'
 
-import { Example } from './xd'
+import { Sidebar } from './sidebar'
 
 import { motion, useSpring } from "framer-motion";
 import { FiInstagram, FiFacebook, FiYoutube, FiMail } from 'react-icons/fi';
@@ -124,8 +124,9 @@ const Navbar = (props) => {
 //    }, [router, isMobile, login, logout, props.loggedin])
 	
   	return (
-	<Box>
-    {/* <Flex as="nav" align="center" justify="space-between" padding="10px" bg="#a5cf9f" color="white"{...props}>
+		<Sidebar/>
+	// <Box>
+    /* <Flex as="nav" align="center" justify="space-between" padding="10px" bg="#a5cf9f" color="white"{...props}>
       	<Flex width="auto" align="center" ml={5} mr={5}>
        		<Link textDecoration="none" href="/">
           		<a textDecoration="none">
@@ -168,10 +169,10 @@ const Navbar = (props) => {
         </svg>
       </Button>
       </Box>
-    </Flex> */}
+    </Flex> */
 
 
-	{/* <Flex zIndex="11" position="fixed" flexDirection="column" flexWrap="wrap" alignSelf="center" top="0" left="0" height="100vh" w="5%" backgroundColor="#76b48c">
+	/* <Flex zIndex="11" position="fixed" flexDirection="column" flexWrap="wrap" alignSelf="center" top="0" left="0" height="100vh" w="5%" backgroundColor="#76b48c">
 		<IconButton _focus={{outline: "none"}} _hover={{backgroundColor:"#85c59b"}} colorScheme="white" marginTop="15px" backgroundColor="transparent" outline="none" border="none" zIndex="11" aria-label="Open Close" onClick={onTogglex} icon={<CloseIcon />} />
 		<Flex zIndex="11" w="20px" margin="auto" alignItems="center" justifyContent="center" flexDirection="column" flexWrap="nowrap">
             <Text textAlign="center" alignSelf="center" fontWeight="300" color="white">
@@ -197,11 +198,11 @@ const Navbar = (props) => {
 	{login}
 	{logout}
       </Flex>
-    </Slide> */}
+    </Slide> */
     
-	<Example/>
+	
 
-	<Flex display={{ md:"flex", lg: "none" }} width={{ xl: "100%", md: "100%" }} alignItems="center" flexGrow={1}>
+	/* <Flex display={{ md:"flex", lg: "none" }} width={{ xl: "100%", md: "100%" }} alignItems="center" flexGrow={1}>
     	<Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
         	<DrawerOverlay />
         	<DrawerContent style={{width:"200px", minWidth:"1rem"}} backgroundColor="#a5cf9f" color="#a5cf9f">
@@ -241,7 +242,7 @@ const Navbar = (props) => {
         </DrawerContent>
     </Drawer>
 	</Flex>
-</Box>
+</Box> */
 	// <Flex position="fixed" overflow="hidden" width="100%" height="auto" zIndex={999} color="black" backgroundColor="white" boxShadow="0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24)" id="header">
 		
 	// </Flex>

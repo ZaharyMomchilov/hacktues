@@ -1,6 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { List, Box } from '@chakra-ui/react'
+import { List, Box, Button } from '@chakra-ui/react'
+import Link from 'next/link'
 
 const variants = {
   open: {
@@ -19,17 +20,16 @@ const variants = {
   }
 };
 
-const Boxed = motion.custom(Box)
+const MotionBox = motion.custom(Box)
 
-export const MenuItem = () => {
+export const MenuItem = (props) => {
   return (
-    <Boxed margin="0" padding="0" listStyleType="none" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
+    <MotionBox  margin="0" padding="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <Box border="2px solid #009d60" width="40px" height="40px" borderRadius="50%" flex="40px 0" marginRight="20px" className="icon-placeholder"></Box>
-      <Box border="2px solid #009d60" border-radius="5px" width="200px" height="20px" flex="1" className="text-placeholder"></Box>
-    </Boxed>
+      <Button textColor="black" leftIcon={props.icon} textDecoration="none" _active={{bg:"transparent"}}  _hover={{backgroundColor:"#85c59b", textDecoration:"none"}} background="none" _focus={{outline:"none"}} fontFamily="Rubik"  border="0px" borderWidth="0px"><Link href={props.link}>{props.name}</Link></Button>
+    </MotionBox>
   );
 };

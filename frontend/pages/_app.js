@@ -83,7 +83,7 @@ function MyApp({ Component, pageProps }) {
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex>
   			<Navbar inteam={inTeam} loggedin={logged} />
-			<Box flexGrow="1" flexShrink="1">
+			<Box flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 				<Component {...pageProps} />
 			</Box>
 		</Flex>

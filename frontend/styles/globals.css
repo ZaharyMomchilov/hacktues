@@ -10,7 +10,7 @@ html {
   height: 100%;
 }
 body {
-  /* position: relative;
+  position: relative;
   padding-bottom: 6rem;
   min-height: 100%;
   padding: 0;
@@ -22,14 +22,13 @@ body {
 
 
   background: url("../public/background79.svg") no-repeat center center fixed;
-  /* filter: blur(4px); */
   /* background: url("https://hacktues.pythonanywhere.com/static/frontend/background.svg") no-repeat center center fixed; */
-  /* -webkit-background-size: cover; /* For WebKit*/
-  /* -moz-background-size: cover;    Mozilla */
-  /* -o-background-size: cover;      Opera */
-  /* background-size: cover;   */
+  -webkit-background-size: cover; 
+  -moz-background-size: cover;    
+  -o-background-size: cover;      
+   background-size: cover;  
 
-  width: 100vw;
+  /* width: 100vw;
   height: 100vh;
   background: linear-gradient(180deg, #0055ff 0%, rgb(0, 153, 255) 100%);
   overflow: hidden;
@@ -37,7 +36,7 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 a {

@@ -43,6 +43,7 @@
     "react": "16.13.1",
     "react-clamp": "^1.0.5",
     "react-clamp-lines": "^3.0.2",
+    "react-date-countdown-timer": "^1.0.9",
     "react-dom": "16.13.1",
     "react-full-page": "^0.1.11",
     "react-highlight-words": "^0.16.0",
