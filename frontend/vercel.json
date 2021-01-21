@@ -1,6 +1,7 @@
 
   {
     "redirects": [
+      { "source": "/", "destination": "https://www.youtube.com/watch?v=95rYb4o2sp4&ab_channel=PlanetaOfficial" },
       { "source": "/about", "destination": "https://www.youtube.com/watch?v=95rYb4o2sp4&ab_channel=PlanetaOfficial" },
       { "source": "/login", "destination": "https://www.youtube.com/watch?v=95rYb4o2sp4&ab_channel=PlanetaOfficial" },
       { "source": "/maketeam", "destination": "https://www.youtube.com/watch?v=95rYb4o2sp4&ab_channel=PlanetaOfficial" },
