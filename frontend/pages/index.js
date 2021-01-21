@@ -11,6 +11,7 @@ const MotionBox = motion.custom(Box)
 import {AiOutlineCalendar} from "react-icons/ai"
 import {MdPlace} from "react-icons/md"
 import Clock from '../components/countdown/clock'
+
 export default function Home() {
 
     var inW
@@ -29,6 +30,10 @@ export default function Home() {
     const easterEgg = () => {
 		  router.push("/secret/verywellkeptsecret/indeed/secret")
     }
+
+    // if(){
+    //   return <Loader/>
+    // }
 
     return( 
         <Box>

@@ -16,8 +16,8 @@ const Li = motion.custom(Flex)
 const itemIds = [0, 1, 2, 3, 4];
 
 export const Navigation = () => (
-  <Li position="relative" marginTop="auto" marginBottom="auto" flexDirection="column" borderRadius="5px" variants={variants}>
-    <MenuItem name="xd" link="/xd" icon={<PhoneIcon/>}/>
+  <Li position="relative" justifyContent="center" alignSelf="center" marginTop="auto" marginBottom="auto" flexDirection="column" borderRadius="5px" variants={variants}>
+    <MenuItem name="xd" icon={PhoneIcon} link="/xd"/>
   </Li>
 );
 

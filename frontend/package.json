@@ -59,7 +59,8 @@
     "remarkable": "^2.0.1",
     "tabletop": "^1.6.3",
     "universal-cookie": "^4.0.4",
-    "yup": "^0.30.0"
+    "yup": "^0.30.0",
+    "nextjs-progressbar": "latest"
   },
   "resolutions": {
     "body-scroll-lock": "3.0.3"

@@ -29,8 +29,12 @@ export default function Schedule(){
   const timer = React.useRef();
   const [sliderRef, slider] = useKeenSlider()
 
+  useEffect(() => {
+    if (slider){slider.refresh()}
+  }, [slider])
+
   	return (
-      <Box className="navigation-wrapper">
+      <Flex flexShrink="1" flexBasis="auto" className="navigation-wrapper">
     	<Box paddingBottom={["50px","50px","100px","100px", "200px"]} ref={sliderRef} className="keen-slider">
     		<div  className={"keen-slider__slide number-slide1"}>{GetEntry(day1)}</div>
     		<div  className={"keen-slider__slide number-slide2"}>{GetEntry(day2)}</div>
@@ -64,7 +68,7 @@ export default function Schedule(){
         </div>
         </Box>
       )}
-      </Box>
+      </Flex>
   );
 };
 

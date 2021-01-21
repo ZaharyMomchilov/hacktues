@@ -12,7 +12,7 @@ import jwt_decode from "jwt-decode";
 import { createBreakpoints } from "@chakra-ui/react"
 import { useControllableState } from "@chakra-ui/react"
 import Terms from '../components/termsofservice/terms'
-
+import NextNprogress from 'nextjs-progressbar';
 const cookies = new Cookies();
 
 const theme = extendTheme({
@@ -82,6 +82,7 @@ function MyApp({ Component, pageProps }) {
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex>
+		<NextNprogress color="#ff0000" height='3' options={{ showSpinner: false }}/>
   			<Navbar inteam={inTeam} loggedin={logged} />
 			<Box flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 				<Component {...pageProps} />
