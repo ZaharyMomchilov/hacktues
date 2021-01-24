@@ -32,7 +32,7 @@ const variant = {
     when: "beforeChildren"
   },
   closed: {
-    width:"0px",
+    width:"50px",
   transition: {
     when: "afterChildren"
   }
@@ -50,10 +50,10 @@ export const Sidebar = () => {
   const { height } = useDimensions(containerRef);
 
   return (
-    <Nav top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
-      <Div position="absolute" top="0" left="0" bottom="0" width="300px" background="#fff" className="background" variants={sidebar} />
-      <Navigation />
+    <Nav flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
       <MenuToggle toggle={() => toggleOpen()} />
+      <Navigation />
+      <Div w="100%"  h="100%" position="absolute" width="300px" background="#fff" className="background" variants={sidebar} />
     </Nav>
   );
 };

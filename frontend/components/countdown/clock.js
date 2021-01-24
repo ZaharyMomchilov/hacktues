@@ -29,18 +29,18 @@ const Clock = (props) => {
       }
   
     return (
-      <Flex fontSize="30px" flexDirection="row" flexWrap="wrap">
+      <Flex p="10px" fontSize="30px" flexDirection="row" flexWrap="wrap">
         <Flex marginLeft="auto" flexDirection="column" flexWrap="wrap" className="Clock-days">
-            <Text textColor="black" marginBottom="0" textAlign="center" fontSize="60px" fontFamily="Rubik">{leading0(state.days)}</Text><Text textColor="black" textAlign="center" fontSize="15px" fontFamily="Rubik">ДЕНА</Text>
+            <Text textColor="black" marginTop="0" marginBottom="0" textAlign="center" fontSize="60px" fontFamily="Rubik">{leading0(state.days)}</Text><Text textColor="black" textAlign="center" fontSize="15px" fontFamily="Rubik">ДЕНА</Text>
         </Flex>
         <Flex marginLeft="30px" marginRight="15px" flexDirection="column" flexWrap="wrap"  className="Clock-hours">
-			<Text textColor="black" marginBottom="0" textAlign="center" fontSize="60px" fontFamily="Rubik">{leading0(state.hours)}</Text><Text textColor="black" textAlign="center" fontSize="15px" fontFamily="Rubik">ЧАСА</Text>
+			<Text textColor="black" marginTop="0" marginBottom="0" textAlign="center" fontSize="60px" fontFamily="Rubik">{leading0(state.hours)}</Text><Text textColor="black" textAlign="center" fontSize="15px" fontFamily="Rubik">ЧАСА</Text>
         </Flex>
         <Flex marginLeft="15px" marginRight="30px" flexDirection="column" flexWrap="wrap"  className="Clock-minutes">
-			<Text textColor="black" marginBottom="0" textAlign="center" fontSize="60px" fontFamily="Rubik">{leading0(state.minutes)}</Text><Text textColor="black" textAlign="center" fontSize="15px" fontFamily="Rubik">МИНУТИ</Text>
+			<Text textColor="black" marginTop="0" marginBottom="0" textAlign="center" fontSize="60px" fontFamily="Rubik">{leading0(state.minutes)}</Text><Text textColor="black" textAlign="center" fontSize="15px" fontFamily="Rubik">МИНУТИ</Text>
         </Flex>
         <Flex marginRight="auto" flexDirection="column" flexWrap="wrap"  className="Clock-seconds">
-			<Text textColor="black" marginBottom="0" textAlign="center" fontSize="60px" fontFamily="Rubik">{leading0(state.seconds)}</Text><Text textColor="black" textAlign="center" fontSize="15px" fontFamily="Rubik">СЕКУНДИ</Text>
+			<Text textColor="black" marginTop="0" marginBottom="0" textAlign="center" fontSize="60px" fontFamily="Rubik">{leading0(state.seconds)}</Text><Text textColor="black" textAlign="center" fontSize="15px" fontFamily="Rubik">СЕКУНДИ</Text>
         </Flex>
       </Flex>
     );

@@ -13,7 +13,7 @@ const Path = props => (
 );
 
 export const MenuToggle = ({ toggle }) => (
-  <Button  _focus={{outline:"none"}} _hover={{background:"none"}} _active={{background:"none"}} outline="none" border="none" cursor="pointer" position="absolute" top="18px" left="15px" w="50px" height="50px" borderRadius="50%" background="transparent" onClick={toggle}>
+  <Button zIndex="2"  _focus={{outline:"none"}} _hover={{background:"none"}} _active={{background:"none"}} outline="none" border="none" cursor="pointer" position="absolute" top="18px" left="15px" w="50px" height="50px" borderRadius="50%" background="transparent" onClick={toggle}>
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
         variants={{
