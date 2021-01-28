@@ -39,7 +39,7 @@ export default function Schedule(){
     		<div  className={"keen-slider__slide number-slide1"}>{GetEntry(day1)}</div>
     		<div  className={"keen-slider__slide number-slide2"}>{GetEntry(day2)}</div>
     	</Box>
-      {slider && (
+      {/* {slider && (
         <>
           <ArrowLeft
             onClick={e => e.stopPropagation() || slider.prev()}
@@ -50,7 +50,7 @@ export default function Schedule(){
             disabled={currentSlide === slider.details().size - 1}
           />
         </>
-      )}
+      )} */}
       {slider && (
       <Box display={["block", "block", "block", "block", "none"]}>
         <div style={{"justifyContent": "center", "textAlign":"center"}} className="dots">

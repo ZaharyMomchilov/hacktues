@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }) {
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex>
-		<NextNprogress color="#ff0000" height='3' options={{ showSpinner: false }}/>
+		<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
   			<Navbar inteam={inTeam} loggedin={logged} />
 			<Box flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 				<Component {...pageProps} />

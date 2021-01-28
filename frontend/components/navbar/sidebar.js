@@ -29,10 +29,12 @@ const sidebar = {
 const variant = {
   open: {
     width:"300px",
+    marginRight:"0px",
     when: "beforeChildren"
   },
   closed: {
     width:"50px",
+    marginRight:"20px",
   transition: {
     when: "afterChildren"
   }
