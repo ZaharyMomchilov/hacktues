@@ -46,15 +46,17 @@ const variant = {
 const Nav = motion.custom(Flex)
 const Div = motion.custom(Box)
 
-export const Sidebar = () => {
+export const Sidebar = (props) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
 
+  console.log(props);
+
   return (
     <Nav flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
       <MenuToggle toggle={() => toggleOpen()} />
-      <Navigation />
+      <Navigation xd={props} />
       <Div w="100%"  h="100%" position="absolute" width="300px" background="#fff" className="background" variants={sidebar} />
     </Nav>
   );

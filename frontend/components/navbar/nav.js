@@ -30,11 +30,13 @@ const divider = {
 const Li = motion.custom(Flex)
 const Divide = motion.custom(Divider)
 
-export const Navigation = () => (
-  <Li zIndex="1" h="100%" w="100%"  position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
-    <MenuItem name="Профил" icon={PhoneIcon} link="/profile"/>
-    <MenuItem name="Излез" icon={PhoneIcon} link="" onClick={() => {console.log("xd")}}/>
-    <Divide w="80%" variants={divider}/>
+export const Navigation = (props) => (
+	<Li zIndex="1" h="100%" w="100%" position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
+		{/* {props.xd[0]} */}
+		<Flex marginTop="auto" variants={variants} zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
+    		<MenuItem name="Профил" icon={PhoneIcon} link="/profile"/>
+    		<MenuItem name="Излез" icon={PhoneIcon} link="" onClick={() => {console.log("xd")}}/>
+    	</Flex>
   </Li>
 );
 

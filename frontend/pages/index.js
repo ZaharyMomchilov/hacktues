@@ -41,7 +41,7 @@ export default function Home() {
         <Box>
           	<Konami code={[71,71,87,80]} action={easterEgg}/>
             
-			<Flex  justifyContent="center" alignItems="center" paddingTop="20px" paddingBottom="20px" flexDirection="column" overflow="hidden" flexWrap="wrap">
+			<Flex justifyContent="center" alignItems="center" paddingTop="20px" paddingBottom="20px" flexDirection="column" overflow="hidden" flexWrap="wrap">
             	<Flex padding="15px" backgroundColor="white" marginTop="3%"  marginBottom="20px" flexDirection="column" flexWrap="wrap" marginLeft="5%"  marginRight="5%" rounded="lg" w="100%" color="white">
                 	<Text textAlign="center" marginTop="auto" marginBottom="0px" wordBreak="break-word" fontFamily="llpixel" textColor="#009d60" fontSize="calc(1em + 10vmin)">Hack TUES&nbsp;<span style={{display:"inline-block", color:"#105231"}}>GG</span></Text>
                     <Clock deadline="March, 11, 2021" />
