@@ -35,13 +35,13 @@ function Profile(props) {
 			.matches(/^0\d{9}$/, 'използвай валиден телефон')
 	});
 
-	console.log(props.avatar.id);
+	console.log(props);
 
 	return(
 	<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
 	<Flex backgroundColor="white" p="25px" rounded="lg" flexDirection="column" flexWrap="wrap" margin="50px">
 		<Flex>
-			<Avatar src={`https://cdn.discordapp.com/avatars/${props.avatar.id}/${props.avatar.avatar}.png`}/>
+			{/* <Avatar src={`https://cdn.discordapp.com/avatars/${props.users.discord_id}/${props.users.avatar}.png`}/> */}
 			<Text fontSize="15px" fontFamily="Rubik" pl="15px">{props.users.first_name}&nbsp;{props.users.last_name}</Text>
 		</Flex>
 		<Formik validationSchema={SignupSchema} initialValues={{ first_name: props.users.first_name , last_name: props.users.last_name, email: props.users.email, form: props.users.form, alergies:props.users.alergies, tshirt_size:props.users.tshirt_size, food_preferences:props.users.food_preferences, is_online:props.users.is_online, phone: props.users.phone}}
@@ -207,16 +207,8 @@ export async function getServerSideProps(ctx){
 			  "Authorization": `Bearer ${cookies.get('auth')}`}
 			},
 			)
-			
-		var res = await axios({
-			method: 'get',
-			url: 'https://discordapp.com/api/users/@me',
-			headers: 
-			{
-			  "Authorization": `Bearer ${cookies.get('discord_auth')}`}},)
-
 			 
-			return {props: {users: response.data, avatar: res.data}}
+			return {props: {users: response.data}}
 	}
 
 }

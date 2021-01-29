@@ -23,6 +23,9 @@ const variants = {
 const MotionBox = motion.custom(Box)
 
 export const MenuItem = (props) => {
+  if(props.profile){
+    var avatar = <Avatar src={`https://cdn.discordapp.com/avatars/${props.ctx.props.avatar[0]}/${props.ctx.props.avatar[1]}.png`}/>
+  }
   return (
     <MotionBox w="80%" justifyContent="center" rounded="lg" margin="0" padding="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
       variants={variants}
@@ -30,6 +33,7 @@ export const MenuItem = (props) => {
       whileTap={{ scale: 0.95 }}
     >
       <Icon marginRight="5px" as={props.icon} />
+      {avatar}
       <Button textAlign="center" textColor="black" textDecoration="none" _active={{bg:"transparent"}} background="none" _focus={{outline:"none"}} fontFamily="Rubik"  border="0px" borderWidth="0px"><Link href={props.link}>{props.name}</Link></Button>
     </MotionBox>
   );

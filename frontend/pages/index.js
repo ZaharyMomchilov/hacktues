@@ -41,8 +41,8 @@ export default function Home() {
         <Box>
           	<Konami code={[71,71,87,80]} action={easterEgg}/>
             
-			<Flex justifyContent="center" alignItems="center" paddingTop="20px" paddingBottom="20px" flexDirection="column" overflow="hidden" flexWrap="wrap">
-            	<Flex padding="15px" backgroundColor="white" marginTop="3%"  marginBottom="20px" flexDirection="column" flexWrap="wrap" marginLeft="5%"  marginRight="5%" rounded="lg" w="100%" color="white">
+			<Flex marginLeft="20px" marginRight="20px" justifyContent="center" alignItems="center" paddingTop="20px" paddingBottom="20px" flexDirection="column" overflow="hidden" flexWrap="wrap">
+            	<Flex padding="15px" backgroundColor="white" marginTop="3%"  marginBottom="20px" flexDirection="column" flexWrap="wrap" rounded="lg" w="100%" color="white">
                 	<Text textAlign="center" marginTop="auto" marginBottom="0px" wordBreak="break-word" fontFamily="llpixel" textColor="#009d60" fontSize="calc(1em + 10vmin)">Hack TUES&nbsp;<span style={{display:"inline-block", color:"#105231"}}>GG</span></Text>
                     <Clock deadline="March, 11, 2021" />
                     <Flex justifyContent="space-around" flexDirection="row" flexWrap="wrap">
@@ -51,7 +51,7 @@ export default function Home() {
 				    </Flex>
                 </Flex>
            			
-				<Flex w="100%" marginRight="5%" marginLeft="5%" rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="column" flexWrap="wrap" justifyContent="center" alignItems="center">
+				<Flex w="100%" rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="column" flexWrap="wrap" justifyContent="center" alignItems="center">
 					<Flex rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center" >		  	
 						<Box marginRight="15px" background="#fff">
 							<Link display="flex" justifyContent="center" alignItems="center" h="100%">

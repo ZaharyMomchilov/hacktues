@@ -33,7 +33,7 @@ function checkToken(exp) {
 		console.log(true, 'token is not expired')
 		// console.log(exp.exp * 1000 - Date.now());
 		// console.log(cookies.get('auth'));
-		console.log(jwt_decode(cookies.get('auth')).user_id);
+		// console.log(jwt_decode(cookies.get('auth')).user_id);
 		// getUsers()
 	}
 	else{
@@ -46,7 +46,8 @@ function checkToken(exp) {
 function MyApp({ Component, pageProps }) {
 
 	const [logged, setLogin] = useControllableState({defaultValue:0})
-	const [inTeam, setTeam] = useControllableState({defaultValue:"false"})
+	const [inTeam, setTeam] = useControllableState({defaultValue:null})
+	const [discord, setDiscord] = useControllableState({defaultValue: null})
 
   	useEffect(() => {
 		if(cookies.get('CookieConsent')){
@@ -55,8 +56,8 @@ function MyApp({ Component, pageProps }) {
 				checkToken(jwt_decode(cookies.get('auth')))
 				if(jwt_decode(cookies.get('auth')).user_id != 3){
 					setLogin(1)
-
-					axios({
+					if(inTeam == null){
+						axios({
 						method: 'get',
 						url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}/`,
 						headers: 
@@ -65,9 +66,18 @@ function MyApp({ Component, pageProps }) {
 						  },)
 						.then(function (response){
 							console.log(response);
-							setTeam(response.data.team_set[0])
+							if(!response.data.team_set[0]){
+								setTeam("false")
+							}
+							else{
+								setDiscord([response.data.discord_id,response.data.avatar])
+								setTeam(response.data.team_set[0])
+						
+							}
 							
 						})
+					}
+					
 
 					// getUsers()
 			}
@@ -77,13 +87,15 @@ function MyApp({ Component, pageProps }) {
 			setLogin(0)
 			// getUsers()
 		}
-	}})
+	}
+}
+	)
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex>
 		<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
-  			<Navbar inteam={inTeam} loggedin={logged} />
+  			<Navbar avatar={discord} inteam={inTeam} loggedin={logged} />
 			<Box flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 				<Component {...pageProps} />
 			</Box>
@@ -100,9 +112,8 @@ const Cookie = () => {
 	function cookieConsentHandler(){
 		cookies.set('CookieConsent', true, { path: '/', maxAge: 604800});
 	}
-
-	if(!cookies.get('auth')){
-		if(!cookies.get('CookieConsent')){
+	if(!cookies.get('CookieConsent')){
+		if(!cookies.get('auth')){
 		return(
 			<Slide direction="bottom" in={value} style={{zIndex:10}}>
 				<Flex pb={["50px","50px","20px","20px"]} mr="50px" marginLeft={["0","0","auto","auto"]} w={["100%","100%","33%","33%"]} flexDirection="column" flexWrap="wrap" mb={["0px","0px","150px","150px"]} paddingLeft="20px" paddingRight="20px" paddingTop="20px" color="white" mt="4" rounded="lg" bg="#a5cf9f" shadow="md">

@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { Box, Input, InputGroup, InputRightElement, Select, InputLeftElement, Switch, Heading, Flex, Button, useToast, Text, Icon, Link, IconButton, useControllableState} from "@chakra-ui/react";
-import { Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider, MenuOptionGroup, MenuItemOption } from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuGroup, MenuDivider, MenuOptionGroup, MenuItemOption } from "@chakra-ui/react";
 import { Modal, ModalOverlay,ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -26,6 +26,7 @@ import { Sidebar } from './sidebar'
 
 import { motion, useSpring } from "framer-motion";
 import { FiInstagram, FiFacebook, FiYoutube, FiMail } from 'react-icons/fi';
+import { MenuItem } from "./menuitem";
 
 const MenuItems = ({ children }) => (
 	<Button textDecoration="none" _active={{bg:"transparent"}}  _hover={{backgroundColor:"#85c59b", textDecoration:"none"}} background="none" _focus={{outline:"none"}} fontFamily="Rubik" color="white" border="0px" borderWidth="0px">
@@ -82,12 +83,15 @@ const Navbar = (props) => {
 
    	if(props.loggedin == 0 && props.inteam == "false"){
 		team = <MenuItems display="none"><Link display="none" href="/maketeam/"><a>Създай отбор</a></Link></MenuItems>
+
 	   }
    	else if(props.loggedin == 1 && props.inteam == "false"){
 		   team = <MenuItems><Link href="/maketeam/"><a>Създай отбор</a></Link></MenuItems>
+		   
 	}
 	else{
 		team = <MenuItems><Link href={`/teams/${encodeURIComponent(props.inteam)}/`}><a>Моят отбор</a></Link></MenuItems>
+		team = "myteam"
 	}
 
 	if(props.loggedin && !isMobile){
@@ -97,16 +101,18 @@ const Navbar = (props) => {
 		logout = "logout"
 	}
 	else if(props.loggedin && isMobile){
-		login = <ProfileButton click={onClose}/>
-		logout = <LogoutButton click={onClose}/>	
+		// login = <ProfileButton click={onClose}/>
+		// logout = <LogoutButton click={onClose}/>	
+		login = "profile"
+		logout = "logout"
 	}
 	else if(!isMobile && cookies.get('discord_auth') == undefined){
-		login = 
-			<>
-				<MenuItems><Link href="/login"><a onClick={onClose}>Вход</a></Link></MenuItems>
-				<MenuItems marginLeft={["none","none","none","auto"]}><Link _hover={{textDecoration:"none"}} onClick={() => {onClose(); router.push('/')}} href="/registration/first_step"><a textDecoration="none" onClick={() => {onClose(); router.push('/')}}>Регистрация</a></Link></MenuItems>
-			</>;
-			console.log("xd");
+		// login = 
+		// 	<>
+		// 		<MenuItems><Link href="/login"><a onClick={onClose}>Вход</a></Link></MenuItems>
+		// 		<MenuItems marginLeft={["none","none","none","auto"]}><Link _hover={{textDecoration:"none"}} onClick={() => {onClose(); router.push('/')}} href="/registration/first_step"><a textDecoration="none" onClick={() => {onClose(); router.push('/')}}>Регистрация</a></Link></MenuItems>
+		// 	</>;
+		login = "login/register"
 	}
 	else if(isMobile){
 		login = 
@@ -114,19 +120,22 @@ const Navbar = (props) => {
 				<MenuItems><Link href="/login"><a onClick={onClose}>Вход</a></Link></MenuItems>
 				<MenuItems marginLeft={["none","none","none","auto"]}><Link _hover={{textDecoration:"none"}} onClick={() => {onClose(); router.push('/')}} href="/registration/first_step"><a textDecoration="none" onClick={() => {onClose(); router.push('/')}}>Регистрация</a></Link></MenuItems>
 			</>;
+			login = "login/register"
 	}
 	else{
 		login = 
 			<>
-				<MenuItems><Link  _hover={{textDecoration:"none"}} href="/login"><a onClick={onClose}>Вход</a></Link></MenuItems>
+				{/* <MenuItems><Link  _hover={{textDecoration:"none"}} href="/login"><a onClick={onClose}>Вход</a></Link></MenuItems>
 				{/* <Login logIn={handleChildClick} /> */}
-				<MenuItems marginLeft={["none","none","none","auto"]}><Link _hover={{textDecoration:"none"}} href="/registration/first_step"><a textDecoration="none">Регистрация</a></Link></MenuItems>
+				{/* <MenuItems marginLeft={["none","none","none","auto"]}><Link _hover={{textDecoration:"none"}} href="/registration/first_step"><a textDecoration="none">Регистрация</a></Link></MenuItems> */}
+				login = <MenuItem name="Профил" icon={PhoneIcon} link="/profile"/>
+				logout = <MenuItem name="Излез" icon={PhoneIcon} link="" onClick={() => {console.log("xd")}}/>
 			</>;
 	}
 //    }, [router, isMobile, login, logout, props.loggedin])
 	
   	return (
-		<Sidebar login={login} logout={logout} team={team}/>
+		<Sidebar props={props}/>
 	// <Box>
     /* <Flex as="nav" align="center" justify="space-between" padding="10px" bg="#a5cf9f" color="white"{...props}>
       	<Flex width="auto" align="center" ml={5} mr={5}>

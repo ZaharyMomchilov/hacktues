@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "./dim";
 import { MenuToggle } from "./button";
-import { Navigation } from "./nav";
+import Navigation from "./nav";
 import { Box, Flex } from '@chakra-ui/react'
 
 const sidebar = {
@@ -51,12 +51,10 @@ export const Sidebar = (props) => {
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
 
-  console.log(props);
-
   return (
     <Nav flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
       <MenuToggle toggle={() => toggleOpen()} />
-      <Navigation xd={props} />
+      <Navigation ctx={props} />
       <Div w="100%"  h="100%" position="absolute" width="300px" background="#fff" className="background" variants={sidebar} />
     </Nav>
   );
