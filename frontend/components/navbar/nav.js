@@ -6,6 +6,11 @@ import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 import {isMobile} from 'react-device-detect';
 import { useMediaQuery } from "@chakra-ui/react"
 import {useRouter} from 'next/router'
+import {GrSchedule, GrDocumentText} from 'react-icons/gr'
+import {RiTeamLine} from 'react-icons/ri'
+import {FiArchive} from 'react-icons/fi'
+import {AiOutlineTeam} from 'react-icons/ai'
+import {BiExit, BiLogIn} from 'react-icons/bi'
 const variants = {
   open: {
     transition: { staggerChildren: 0.07 }
@@ -52,18 +57,18 @@ export default function Navigation(props){
     team = <MenuItem name="Създай отбор" icon={PhoneIcon} link="/maketeam"/> 
   }
   else{
-    team = <MenuItem name="Моят отбор" icon={PhoneIcon} link={`/teams/${encodeURIComponent(props.ctx.props.inteam)}/`}/>
+    team = <MenuItem name="Моят отбор" icon={AiOutlineTeam} link={`/teams/${encodeURIComponent(props.ctx.props.inteam)}/`}/>
   }
 
   if(!props.ctx.props.loggedin){
-    login= <MenuItem name="Вход" icon={PhoneIcon} link="/login"/>
+    login= <MenuItem name="Вход" icon={BiLogIn} link="/login"/>
     logout= <MenuItem name="Регистрация" icon={PhoneIcon} link="/registration/first_step"/>
   }
   else{
     login= <MenuItem name="Профил" 
     // profile={<Avatar src={`https://cdn.discordapp.com/avatars/${props.ctx.props.avatar[0]}/${props.ctx.props.avatar[1]}.png`}/>} 
     link="/profile"/>
-    logout= <MenuItem name="Излез" icon={PhoneIcon} link="/profile"/>
+    logout= <MenuItem name="Излез" icon={BiExit} link="/profile"/>
   }
 
 
@@ -71,16 +76,15 @@ export default function Navigation(props){
   return (<Li justifyContent="center" alignItems="center" zIndex="1" h="100%" w="100%" position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
   {/* {props.xd[0]} */}
   <Flex marginTop="15px"  zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
-      <MenuItem name="Програма" icon={PhoneIcon} link="/schedule"/>
+      <MenuItem name="Програма" icon={GrSchedule} link="/schedule"/>
       <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/>
       <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/>
-      <MenuItem name="Отбори" icon={PhoneIcon} link="/teams"/>
-      <MenuItem name="Архив" icon={PhoneIcon} link="/archive"/>
-      <MenuItem name="Регламент" icon={PhoneIcon} link="/regulation"/>
+      <MenuItem name="Отбори" icon={RiTeamLine} link="/teams"/>
+      <MenuItem name="Архив" icon={FiArchive} link="/archive"/>
+      <MenuItem name="Регламент" icon={GrDocumentText} link="/regulation"/>
       <MenuItem name="За Hack TUES" icon={PhoneIcon} link="/about"/>
   </Flex>
   <Flex marginTop="auto" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
-      
       {team}
       {login}
       {logout}

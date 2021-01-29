@@ -29,6 +29,10 @@ function Teams(props) {
 	var j
 	var tech = []
 
+	// useEffect(() => {
+	// 	console.log(chosenTech)
+	// }, [chosenTech])
+
 	if(props.user.is_captain){
 		if(router.query.id == props.user.team_set[0]){
 			const technology = labels
@@ -85,6 +89,7 @@ function Teams(props) {
 					</Flex>
 					<Formik initialValues={{ name: props.teams.name, project_name: props.teams.project_name , github_link: props.teams.github_link, project_description: props.teams.project_description}} onSubmit={(values, actions) => {
         			setTimeout(() => {
+							
 							// if(people.length > 4){
 							// 	actions.setSubmitting(false);
 							// 	actions.setFieldError("users", "Твърде много участници избрани")
@@ -92,7 +97,7 @@ function Teams(props) {
                             // let selected = people.map(a => a.value);
                             // values['users'] = selected
 							// values['users'].push(jwt_decode(cookies.get('auth')).user_id)
-                            // values['technologies'] = chosenTech
+                            values['technologies'] = chosenTech
 							var data = JSON.stringify(values, null, 1)
         					axios({
         						method: 'patch',
