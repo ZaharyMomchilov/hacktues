@@ -282,15 +282,6 @@ export default function Register(props) {
 							</FormControl>
 						)}
 					</Field>
-			<Field name="is_online">
-				{({ field, form }) => (
-					<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field}>
-					<FormLabel alignSelf="center" paddingTop="15px" paddingBottom="10px" fontFamily="Rubik" fontSize="15px" htmlFor="text">Искам да съм изцяло онлайн</FormLabel>
-					<Switch colorScheme="green" alignSelf="center" css={{boxShadow:"none"}} id="is_online" />
-					</FormControl>
-				)}
-			</Field>
-
 			<Field name="regulation">
 				{({ field, form }) => (
 					<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
@@ -298,9 +289,13 @@ export default function Register(props) {
 					</FormControl>
 				)}
 			</Field>
-
-
-			{/* <Button variant="ghost">Login with Discord</Button> */}
+			<Field name="GDPR">
+				{({ field, form }) => (
+					<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
+					<CustomCheckbox jsx={{}} colorScheme="green" isRequired id="GDPR" fontStyle="Rubik" >Съгласен съм с <Link href="/gdpr"><a style={{color:"green", }} onClick={onClose}>Общият регламент за защита на данните</a></Link></CustomCheckbox>
+					</FormControl>
+				)}
+			</Field>
 
 			<Button display="flex" flexGrow={1} w="33%" justifyContent="center" mt={4} colorScheme="green" border="0"
 			 isLoading={props.isSubmitting} type="submit"

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "./menuitem";
-import { Flex, Divider, Avatar } from '@chakra-ui/react'
+import { Flex, Divider, Avatar, Box } from '@chakra-ui/react'
 import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 import {isMobile} from 'react-device-detect';
 import { useMediaQuery } from "@chakra-ui/react"
@@ -11,6 +11,9 @@ import {RiTeamLine} from 'react-icons/ri'
 import {FiArchive} from 'react-icons/fi'
 import {AiOutlineTeam} from 'react-icons/ai'
 import {BiExit, BiLogIn} from 'react-icons/bi'
+import Cookies from 'universal-cookie';
+import Link from 'next/link'
+
 const variants = {
   open: {
     transition: { staggerChildren: 0.07 }
@@ -43,6 +46,7 @@ export default function Navigation(props){
   const [isSmalledThan480] = useMediaQuery("(max-width: 480px)")
 
   var router = useRouter()
+  const cookies = new Cookies()
 
   var login
   var logout
@@ -50,8 +54,8 @@ export default function Navigation(props){
 
   console.log(props)
 
-  if(props.ctx.props.loggedin == 0 && props.ctx.props.inteam == "false"){
-    team = <MenuItem name="Създай отбор" icon={PhoneIcon} link="/maketeam"/>
+  if(props.ctx.props.loggedin == 0 && props.ctx.props.inteam == null){
+    team = <Box display="none" ></Box>
   }
   else if(props.ctx.props.loggedin == 1 && props.ctx.props.inteam == "false"){
     team = <MenuItem name="Създай отбор" icon={PhoneIcon} link="/maketeam"/> 
@@ -68,7 +72,7 @@ export default function Navigation(props){
     login= <MenuItem name="Профил" 
     // profile={<Avatar src={`https://cdn.discordapp.com/avatars/${props.ctx.props.avatar[0]}/${props.ctx.props.avatar[1]}.png`}/>} 
     link="/profile"/>
-    logout= <MenuItem name="Излез" icon={BiExit} link="/profile"/>
+    logout= <MenuItem name="Излез" icon={BiExit}/>
   }
 
 
@@ -77,8 +81,8 @@ export default function Navigation(props){
   {/* {props.xd[0]} */}
   <Flex marginTop="15px"  zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
       <MenuItem name="Програма" icon={GrSchedule} link="/schedule"/>
-      <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/>
-      <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/>
+      {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
+      {/* <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/> */}
       <MenuItem name="Отбори" icon={RiTeamLine} link="/teams"/>
       <MenuItem name="Архив" icon={FiArchive} link="/archive"/>
       <MenuItem name="Регламент" icon={GrDocumentText} link="/regulation"/>

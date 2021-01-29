@@ -1,16 +1,16 @@
 import React from 'react'
 import axios from 'axios'
-import Cookies from 'universal-cookie';
 import {Box, Flex, Text, Input, InputGroup, InputLeftElement, Select, Switch, Textarea, Button, useToast, Tag, TagLabel, Checkbox } from "@chakra-ui/react";
 import { Formik, Field } from 'formik';
 import { FormControl, FormLabel, FormErrorMessage} from "@chakra-ui/react";
 import _ from 'lodash';
-const cookies = new Cookies()
 import { useRouter } from 'next/router'
 import * as Yup from 'yup';
 import { CUIAutoComplete } from '../components/autocomplete/chakra-ui-autocomplete.esm'
 import labels from '../components/teams/icons'
 import jwt_decode from "jwt-decode";
+import Cookies from 'universal-cookie';
+const cookies = new Cookies()
 
 const Teams = (props) => {
 

@@ -18,6 +18,16 @@
 - [ ] optimise _app.js, navbar.js
 
 
+
+
+- [] VMware logo
+- [] logged out My team button navbar
+- [] 1336p resolution bugs out
+- [] remove mentor page
+- [] fix schedule
+- [] make email confirmation page
+
+
 ------------------------------------------------------------------------------------
 ## NICE TO HAVE
 

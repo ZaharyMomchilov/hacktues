@@ -22,7 +22,7 @@ export default function Archive() {
 				<Text textAlign="center" m="0" pb="20px" pl="15px" fontFamily="Rubik" fontWeight="400" fontSize="30px"><span>Code</span>&nbsp;<span style={{"color":"#FF0800"}}>Red</span></Text>
 			</Flex>
 				<Divider w="auto" ml="15px" mr="15px" backgroundColor="black" orientation="horizontal"/>
-				<Text wordBreak="break-word" pl="15px" pr="15px" w="100%">&emsp;{data[0].description}</Text>
+				<Text textAlign="justify" wordBreak="break-word" pl="15px" pr="15px" w="100%">&emsp;{data[0].description}</Text>
             </Flex>
             <Flex rounded="lg" flexGrow="0" flexShrink="0" flexBasis={["100%","100%","100%","33%"]} mt="25px" ml="50px" mr="50px" fontFamily="Rubik" h={["auto","auto","450px","450px","400px"]} flexDirection="column" flexWrap="wrap" w={["auto","auto","450px","450px"]} backgroundColor="white">
 				<Flex justifyContent="center" alignItems="center">
@@ -32,7 +32,7 @@ export default function Archive() {
 				<Text textAlign="center" m="0" pb="20px" pl="15px" fontFamily="Rubik" fontWeight="400" fontSize="30px"><span>Deep In The</span>&nbsp;<span style={{"color":"#1338BE"}}>Blue</span></Text>
 				</Flex>
 				<Divider w="auto" ml="15px" mr="15px" backgroundColor="black" orientation="horizontal"/>
-				<Text pl="15px" pr="15px" w="100%">&emsp;{data[1].description}</Text>
+				<Text textAlign="justify" pl="15px" pr="15px" w="100%">&emsp;{data[1].description}</Text>
             </Flex>
             <Flex rounded="lg" flexGrow="0" flexShrink="0" flexBasis={["100%","100%","100%","33%"]} mt="25px" ml="50px" mr="50px" fontFamily="Rubik" h={["auto","auto","450px","450px","400px"]} flexDirection="column" flexWrap="wrap" w={["auto","auto","450px","450px"]} backgroundColor="white">
 				<Flex justifyContent="center" alignItems="center">
@@ -43,7 +43,7 @@ export default function Archive() {
 				<Text textAlign="center" m="0"  pb="20px" pl="15px" fontFamily="Rubik" fontWeight="400" fontSize="30px"><span style={{"color":"#4B371C"}}>Browny</span>&nbsp;<span>Soil</span></Text>
 				</Flex>
 				<Divider w="auto" ml="15px" mr="15px" backgroundColor="black"  orientation="horizontal"/>
-				<Text pl="15px" pr="15px" w="100%">&emsp;{data[2].description}</Text>
+				<Text textAlign="justify" pl="15px" pr="15px" w="100%">&emsp;{data[2].description}</Text>
             </Flex>
             <Flex rounded="lg" flexGrow="0" flexShrink="0" flexBasis={["100%","100%","100%","33%"]} mt="25px" ml="50px" mr="50px" fontFamily="Rubik" h={["auto","auto","450px","450px","400px"]} flexDirection="column" flexWrap="wrap" w={["auto","auto","450px","450px"]} backgroundColor="white">
 			<Flex justifyContent="center" alignItems="center">
@@ -53,7 +53,7 @@ export default function Archive() {
 				<Text textAlign="center" m="0"  pb="20px" bgGradient="linear(to-l, #7928CA,#FF0080)" bgClip="text" pl="15px" fontFamily="Rubik" fontWeight="400" fontSize="30px"><span>Pallete</span>&nbsp;<span style={{bgGradient:"linear(to-l, #7928CA,#FF0080)",bgClip:"text"}}>Nature</span></Text>
 				</Flex>
 				<Divider w="auto" ml="15px" mr="15px" backgroundColor="black" orientation="horizontal"/>
-				<Text pl="15px" pr="15px" w="100%">&emsp;{data[3].description}</Text>
+				<Text textAlign="justify" pl="15px" pr="15px" w="100%">&emsp;{data[3].description}</Text>
             </Flex>
         </Flex>
     )

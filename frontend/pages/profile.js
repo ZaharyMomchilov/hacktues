@@ -37,14 +37,38 @@ function Profile(props) {
 
 	console.log(props);
 
+	var form
+	switch(props.users.form){
+		case "8А": form = "8a"; break;
+		case "8Б": form = "8b"; break;
+		case "8В": form = "8v"; break;
+		case "8Г": form = "8g"; break;
+		case "9А": form = "9a"; break;
+		case "9Б": form = "9b"; break;
+		case "9В": form = "9v"; break;
+		case "9Г": form = "9g"; break;
+		case "10А": form = "10a"; break;
+		case "10Б": form = "10b"; break;
+		case "10В": form = "10v"; break;
+		case "10Г": form = "10g"; break;
+		case "11А": form = "11a"; break;
+		case "11Б": form = "11b"; break;
+		case "11В": form = "11v"; break;
+		case "11Г": form = "11g"; break;
+		case "12А": form = "12a"; break;
+		case "12Б": form = "12b"; break;
+		case "12В": form = "12v"; break;
+		case "12Г": form = "12g"; break;
+	}
+
 	return(
 	<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
 	<Flex backgroundColor="white" p="25px" rounded="lg" flexDirection="column" flexWrap="wrap" margin="50px">
 		<Flex>
-			{/* <Avatar src={`https://cdn.discordapp.com/avatars/${props.users.discord_id}/${props.users.avatar}.png`}/> */}
+			<Avatar src={`https://cdn.discordapp.com/avatars/${props.users.discord_id}/${props.users.avatar}.png`}/>
 			<Text fontSize="15px" fontFamily="Rubik" pl="15px">{props.users.first_name}&nbsp;{props.users.last_name}</Text>
 		</Flex>
-		<Formik validationSchema={SignupSchema} initialValues={{ first_name: props.users.first_name , last_name: props.users.last_name, email: props.users.email, form: props.users.form, alergies:props.users.alergies, tshirt_size:props.users.tshirt_size, food_preferences:props.users.food_preferences, is_online:props.users.is_online, phone: props.users.phone}}
+		<Formik validationSchema={SignupSchema} initialValues={{ first_name: props.users.first_name , last_name: props.users.last_name, email: props.users.email, form: form, alergies:props.users.alergies, tshirt_size:props.users.tshirt_size, food_preferences:props.users.food_preferences, is_online:props.users.is_online, phone: props.users.phone}}
 		onSubmit={(values, actions) => {
         	setTimeout(() => {
 					var data = JSON.stringify(values, null, 1)
@@ -66,8 +90,9 @@ function Profile(props) {
           				actions.setSubmitting(false)
         			}, 1000)
       		}}> 
-			{(props) => (
-				<Form style={{display:"flex",flexDirection:"row",flexWrap:"wrap", paddingTop:"10px"}} onSubmit={props.handleSubmit}>
+			{function(props){ console.log(props)
+				return(
+				<Form {...props} style={{display:"flex",flexDirection:"row",flexWrap:"wrap", paddingTop:"10px"}} onSubmit={props.handleSubmit}>
 				<Field name="first_name">
 					{({ field, form}) => (
 					<FormControl flexGrow={1} w={["100%","100%","33%","33%", "33%"]} mr="5px" isRequired isInvalid={form.errors.first_name && form.touched.first_name}>
@@ -97,9 +122,9 @@ function Profile(props) {
 				</Field>
 		  <Field name="form">
             {({ field, form }) => (
-				<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field} isRequired>
-  					<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="country">Клас</FormLabel>
-  					<Select borderRadius={0} _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} variant="outline" id="form" fontFamily="Rubik" placeholder="Избери клас">
+				<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" isInvalid={form.errors.form && form.touched.form} {...field} isRequired>
+  					<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="form">Клас</FormLabel>
+  					<Select borderRadius={0} _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} variant="outline" id="form" fontFamily="Rubik" placeholder="">
 					  	<option value="8a">8А</option>
   						<option value="8b">8Б</option>
   						<option value="8v">8В</option>
@@ -149,7 +174,7 @@ function Profile(props) {
 				{({ field, form }) => (
 					<FormControl flexGrow={1} w={["100%","100%","33%","33%"]} mr="5px" {...field} isInvalid={form.errors.tshirt && form.touched.tshirt} isRequired>
 						<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="text">Размер тениска</FormLabel>
-						<Select borderRadius={0}  _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="tshirt_size" type="text" fontFamily="Rubik" placeholder="Избери размер">
+						<Select borderRadius={0}  _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="tshirt_size" type="text" fontFamily="Rubik" placeholder="">
 							<option value="s">S</option>
 							<option value="m">M</option>
 							<option value="l">L</option>
@@ -170,17 +195,9 @@ function Profile(props) {
 							</FormControl>
 						)}
 					</Field>
-			<Field name="is_online">
-				{({ field, form }) => (
-					<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","33%","33%"]} mr="5px" isInvalid={form.errors.tshirt && form.touched.tshirt} {...field}>
-					<FormLabel paddingTop="15px" paddingBottom="10px" fontFamily="Rubik" fontSize="15px" htmlFor="text">Искам да съм изцяло онлайн</FormLabel>
-						<CheckboxArrayControl name="is_online" value="is_online">:D</CheckboxArrayControl>
-					</FormControl>
-				)}
-			</Field>
 			<AutoSave debounceMs={2000} />
         </Form>
-      )}
+				)}}
     </Formik>
 	</Flex>
 	</Box>)
