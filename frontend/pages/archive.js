@@ -45,7 +45,7 @@ export default function Archive() {
 					<Divider ml="15px" mr="15px" style={{"color":"white"}} w="100%" orientation="horizontal"/>
 				</Flex>
 				<Flex pl="15px" pr="15px" w="100%">
-					<TextTruncate style={{"color":"white"}} pl="15px" pr="15px" w="100%" line={4} element="p" truncateText="..." text={data[1].description}/>
+					<TextTruncate style={{"color":"white"}} pl="15px" pr="15px" w="100%" line={4} element="p" truncateText="..." text={data[2].description}/>
 				</Flex>
 				<Link href="/archive/hacktues3">
 					<a><Button as="button" bg="#09c0de" fontFamily="Rubik" fontWeight="600" fontSize="1rem" fontWeight="semibold" rounded="md" color="white" h="2.5rem" px={4} ml={3} border="0" colorScheme="#09c0de" color="#fff" ml="15px" >Научи повече</Button></a>
@@ -59,7 +59,7 @@ export default function Archive() {
 					<Divider ml="15px" mr="15px" style={{"color":"white"}} w="100%" orientation="horizontal"/>
 				</Flex>
 				<Flex pl="15px" pr="15px" w="100%">
-					<TextTruncate style={{"color":"white"}} pl="15px" pr="15px" w="100%" line={4} element="p" truncateText="..." text={data[2].description}/>
+					<TextTruncate style={{"color":"white"}} pl="15px" pr="15px" w="100%" line={4} element="p" truncateText="..." text={data[3].description}/>
 				</Flex>
 				<Link href="/archive/hacktues30">
 					<a><Button as="button" bg="#09c0de" fontFamily="Rubik" fontWeight="600" fontSize="1rem" fontWeight="semibold" rounded="md" color="white" h="2.5rem" px={4} ml={3} border="0" colorScheme="#09c0de" color="#fff" ml="15px" >Научи повече</Button></a>
@@ -73,7 +73,7 @@ export default function Archive() {
 					<Divider ml="15px" mr="15px" style={{"color":"white"}} w="100%" orientation="horizontal"/>
 				</Flex>
 				<Flex pl="15px" pr="15px" w="100%">
-					<TextTruncate style={{"color":"white"}} pl="15px" pr="15px" w="100%" line={4} element="p" truncateText="..." text={data[3].description}/>
+					<TextTruncate style={{"color":"white"}} pl="15px" pr="15px" w="100%" line={4} element="p" truncateText="..." text={data[4].description}/>
 				</Flex>
 				<Link href="/archive/hacktues365">
 					<a><Button as="button" bg="#99d02b" fontFamily="Rubik" fontWeight="600" fontSize="1rem" fontWeight="semibold" rounded="md" color="white" h="2.5rem" px={4} ml={3} border="0" colorScheme="#09c0de" color="#fff" ml="15px" >Научи повече</Button></a>

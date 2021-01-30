@@ -24,11 +24,11 @@ const Hacktues = ({currData}) => {
                 </Flex>
                 <Flex flex="1 1" flexDirection="column" flexWrap="wrap" justifyContent="center">
                 <Text textAlign="center" color="black" mt="1" p="10px" ml={0} mr={0} pl={0} pr={0} fontFamily="Rubik" as="h2">Отбори</Text>
-                <Text textAlign="center"  color="black" fontWeight="semibold" as="h1" fontFamily="Rubik" fontWeight="400" ><AiOutlineGift/> {currData.valuedProjects}</Text>
+                <Text textAlign="center"  color="black" fontWeight="semibold" as="h1" fontFamily="Rubik" fontWeight="400" ><AiOutlineGift/> {currData.teams}</Text>
                 </Flex>
                 <Flex flex="1 1" flexDirection="column" flexWrap="wrap" justifyContent="center">
                 <Text textAlign="center" color="black" mt="1" p="10px" ml={0} mr={0} pl={0} pr={0} fontFamily="Rubik" as="h2">Отличени отбори</Text>
-                <Text textAlign="center"  color="black" fontWeight="semibold" as="h1" fontFamily="Rubik" fontWeight="400" ><AiOutlineTeam/> {currData.teams}</Text>
+                <Text textAlign="center"  color="black" fontWeight="semibold" as="h1" fontFamily="Rubik" fontWeight="400" ><AiOutlineTeam/> {currData.valuedProjects}</Text>
                 </Flex>
         </Flex>
         {/* <Numbers padding="1%" allParticipants={currData.allParticipants} teams={currData.teams} valuedProjects={currData.valuedProjects}/> */}

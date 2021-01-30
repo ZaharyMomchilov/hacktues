@@ -9,7 +9,7 @@ import {useRouter} from 'next/router'
 import {GrSchedule, GrDocumentText} from 'react-icons/gr'
 import {RiTeamLine} from 'react-icons/ri'
 import {FiArchive} from 'react-icons/fi'
-import {AiOutlineTeam, AiOutlineUserAdd} from 'react-icons/ai'
+import {AiOutlineTeam, AiOutlineUserAdd, AiOutlineUsergroupAdd} from 'react-icons/ai'
 import {BiExit, BiLogIn} from 'react-icons/bi'
 import Cookies from 'universal-cookie';
 import Link from 'next/link'
@@ -57,8 +57,8 @@ export default function Navigation(props){
   if(props.ctx.props.loggedin == 0 && props.ctx.props.inteam == null){
     team = <Box display="none" ></Box>
   }
-  else if(props.ctx.props.loggedin == 1 && props.ctx.props.inteam == null){
-    team = <MenuItem name="Създай отбор" icon={PhoneIcon} link="/maketeam"/> 
+  else if(props.ctx.props.loggedin == 1 && props.ctx.props.inteam == null || props.ctx.props.inteam == "false"){
+    team = <MenuItem name="Създай отбор" icon={AiOutlineUsergroupAdd} link="/maketeam"/> 
   }
   else{
     team = <MenuItem name="Моят отбор" icon={AiOutlineTeam} link={`/teams/${encodeURIComponent(props.ctx.props.inteam)}/`}/>

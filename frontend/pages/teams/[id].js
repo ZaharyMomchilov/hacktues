@@ -267,8 +267,7 @@ export async function getServerSideProps(ctx){
 		method: 'get',
 		url: `https://hacktues.pythonanywhere.com/teams/${ctx.query.id}/`,
 		headers: 
-		{ "Content-type": "Application/json",
-		  "Authorization": `Bearer ${cookies.get('auth')}`}
+		{ "Content-type": "Application/json"}
 		},
 		)
 
