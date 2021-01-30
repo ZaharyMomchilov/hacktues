@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from "react"
-import { Flex, Box, Text, Button, Link, Image } from "@chakra-ui/react";
+import { Flex, Box, Text, Button, Link, Image, Img } from "@chakra-ui/react";
 import { useRouter } from 'next/router'
 import Cookies from 'universal-cookie';
 import Konami from 'react-konami-code';
@@ -13,6 +13,7 @@ import {MdPlace} from "react-icons/md"
 import Clock from '../components/countdown/clock'
 import { Center } from "@chakra-ui/react"
 import { List, ListItem, ListIcon, UnorderedList, Grid } from "@chakra-ui/react"
+import { BiImageAlt } from 'react-icons/bi';
 
 export default function Home() {
 
@@ -75,7 +76,7 @@ export default function Home() {
 						</Box>
 						<Box marginRight="15px" background="#fff">
 							<Link display="flex" justifyContent="center" alignItems="center" h="100%">
-								<Image display="block" width="250px" h="100px" objectFit="contain" title="VMWare" src="/Logos/Alpha - VMWare/VMW_09Q3_LOGO_Corp_Gray.png"></Image>
+								<Img display="block" width="250px" h="100px" objectFit="contain" title="VMWare" src="/Logos/Alpha - VMWare/VMW_09Q3_LOGO_Corp_Gray.png"></Img>
 							</Link>
 						</Box>
 					</Flex>

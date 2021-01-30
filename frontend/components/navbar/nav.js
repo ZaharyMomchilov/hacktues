@@ -9,7 +9,7 @@ import {useRouter} from 'next/router'
 import {GrSchedule, GrDocumentText} from 'react-icons/gr'
 import {RiTeamLine} from 'react-icons/ri'
 import {FiArchive} from 'react-icons/fi'
-import {AiOutlineTeam} from 'react-icons/ai'
+import {AiOutlineTeam, AiOutlineUserAdd} from 'react-icons/ai'
 import {BiExit, BiLogIn} from 'react-icons/bi'
 import Cookies from 'universal-cookie';
 import Link from 'next/link'
@@ -57,7 +57,7 @@ export default function Navigation(props){
   if(props.ctx.props.loggedin == 0 && props.ctx.props.inteam == null){
     team = <Box display="none" ></Box>
   }
-  else if(props.ctx.props.loggedin == 1 && props.ctx.props.inteam == "false"){
+  else if(props.ctx.props.loggedin == 1 && props.ctx.props.inteam == null){
     team = <MenuItem name="Създай отбор" icon={PhoneIcon} link="/maketeam"/> 
   }
   else{
@@ -66,7 +66,7 @@ export default function Navigation(props){
 
   if(!props.ctx.props.loggedin){
     login= <MenuItem name="Вход" icon={BiLogIn} link="/login"/>
-    logout= <MenuItem name="Регистрация" icon={PhoneIcon} link="/registration/first_step"/>
+    logout= <MenuItem name="Регистрация" icon={AiOutlineUserAdd} link="/registration/first_step"/>
   }
   else{
     login= <MenuItem name="Профил" 
@@ -80,10 +80,10 @@ export default function Navigation(props){
   return (<Li justifyContent="center" alignItems="center" zIndex="1" h="100%" w="100%" position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
   {/* {props.xd[0]} */}
   <Flex marginTop="15px"  zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
-      <MenuItem name="Програма" icon={GrSchedule} link="/schedule"/>
+      <MenuItem name="Програма" top="-1px" icon={GrSchedule} link="/schedule"/>
       {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
       {/* <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/> */}
-      <MenuItem name="Отбори" icon={RiTeamLine} link="/teams"/>
+      <MenuItem name="Отбори" top="-1px" icon={RiTeamLine} link="/teams"/>
       <MenuItem name="Архив" icon={FiArchive} link="/archive"/>
       <MenuItem name="Регламент" icon={GrDocumentText} link="/regulation"/>
       <MenuItem name="За Hack TUES" icon={PhoneIcon} link="/about"/>

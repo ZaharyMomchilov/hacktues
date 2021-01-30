@@ -47,7 +47,7 @@ export const MenuItem = (props) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <Icon marginRight="5px" as={props.icon} />
+      <Icon left="0px" position="relative" top={props.top} marginRight="5px" as={props.icon} />
       {avatar}
       <Button textAlign="center" textColor="black" textDecoration="none" _active={{bg:"transparent"}} background="none" _focus={{outline:"none"}} fontFamily="Rubik"  border="0px" borderWidth="0px">{link}</Button>
     </MotionBox>
