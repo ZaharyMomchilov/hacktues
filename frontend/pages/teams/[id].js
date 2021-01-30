@@ -254,20 +254,13 @@ export async function getServerSideProps(ctx){
 
 	const cookies = new Cookies(ctx.req.headers.cookie);
 
-	if(jwt_decode(cookies.get('auth')).user_id == 3){
-		return {
-      		redirect: {
-       		permanent: false,
-        	destination: '/',
-      	},
-	}
-	}
-	else{
+	
 		var response = await axios({
 		method: 'get',
 		url: `https://hacktues.pythonanywhere.com/teams/${ctx.query.id}/`,
 		headers: 
-		{ "Content-type": "Application/json"}
+		{ "Content-type": "Application/json",
+		"Authorization": `Bearer ${cookies.get('auth')}`}
 		},
 		)
 
@@ -291,7 +284,7 @@ export async function getServerSideProps(ctx){
 		)
 				
 	return {props: {teams: response.data,  user: res.data, users: users.data }}
-	}
+	
 
 }
 
