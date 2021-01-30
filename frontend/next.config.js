@@ -2,9 +2,6 @@ module.exports = {
     "noImplicitAny": false,
     entry: "./index.js",
     mode: "development",
-    images: {
-        domains: ['drive.google.com', 'googleusercontent.com'],
-      },
     webpack: (config, { isServer }) => {
         // Fixes npm packages that depend on `fs` module
         if (!isServer) {
