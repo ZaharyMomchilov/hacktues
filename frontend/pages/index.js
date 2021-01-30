@@ -76,7 +76,7 @@ export default function Home() {
 						</Box>
 						<Box marginRight="15px" background="#fff">
 							<Link display="flex" justifyContent="center" alignItems="center" h="100%">
-								<Img display="block" width="250px" h="100px" objectFit="contain" title="VMWare" src="/Logos/Alpha - VMWare/VMW_09Q3_LOGO_Corp_Gray.png"></Img>
+								<Img display="block" width="250px" h="100px" objectFit="contain" title="VMWare" src="/Logos/Alpha - VMWare/vmware.png"></Img>
 							</Link>
 						</Box>
 					</Flex>
