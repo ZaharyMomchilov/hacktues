@@ -15,7 +15,7 @@ import { useControllableState } from "@chakra-ui/react"
 import Terms from '../components/termsofservice/terms'
 import NextNprogress from 'nextjs-progressbar';
 const cookies = new Cookies();
-
+import { motion, useCycle } from "framer-motion";
 
 const theme = extendTheme({
 	styles: {
@@ -38,11 +38,13 @@ function checkToken(exp) {
 		// console.log(jwt_decode(cookies.get('auth')).user_id);
 		// getUsers()
 		// getNewToken()
+		// refreshToken()
 	}
 	else{
 		console.log('token is expired')
 		// console.log(cookies.get('auth'));
-		getNewToken()
+		// getNewToken()
+		refreshToken()
 	}
 }
 
@@ -51,6 +53,15 @@ function MyApp({ Component, pageProps }) {
 	const [logged, setLogin] = useControllableState({defaultValue:0});
 	const [inTeam, setTeam] = useControllableState({defaultValue:null});
 	const [discord, setDiscord] = useControllableState({defaultValue: null});
+
+	const fl = {open: {opacity: 1}, closed: {opacity: 1}}
+	const div = {
+		open: {opacity : 1, overflow:"hidden", transition: {when: "beforeChildren"}, transitionEnd: { display: "none" }}, 
+		closed:{opacity: 0, overflow:"visible",transitionEnd: { display: "none" }}}
+
+
+	const Fl = motion.custom(Flex)
+	const Div = motion.custom(Flex)
 
 	// const breakpoints = createBreakpoints({
 	// 	sm: "30em",
@@ -95,7 +106,7 @@ function MyApp({ Component, pageProps }) {
 			}
 		}
 		else{
-			getNewToken();
+			// getNewToken();
 			setLogin(0)
 			// getUsers()
 		}
@@ -105,13 +116,13 @@ function MyApp({ Component, pageProps }) {
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
-		<Flex>
+		<Fl variants={fl} flexDirection={["column","column","row","row"]} flexWrap="wrap">
 		<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
   			<Navbar avatar={discord} inteam={inTeam} loggedin={logged} />
-			<Box flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
+			<Div variants={div} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 				<Component {...pageProps} />
-			</Box>
-		</Flex>
+			</Div>
+		</Fl>
 		<Cookie/>
   	  	{/* <Footer/> */}
   	</ChakraProvider>) 
@@ -151,6 +162,23 @@ function getNewToken() {
 	.then(function (response) {
 		cookies.set('auth', response.data.access, { path: '/' })
 		cookies.set('refresh', response.data.refresh, { path: '/' })
+	})
+}
+
+function refreshToken() {
+	axios({
+		method: 'post',
+		url: `https://hacktues.pythonanywhere.com/token/refresh/`,
+		headers: 
+		{ "Content-type": "Application/json"},
+		data: {refresh: `${cookies.get('refresh')}`}  
+	})
+	.then(function (response) {
+		console.log(response);
+		cookies.set('auth', response.data.access, { path: '/' })
+		if(response.data.refresh != undefined){
+			cookies.set('refresh', response.data.access, { path: '/' })
+		}
 	})
 }
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "./menuitem";
-import { Flex, Divider, Avatar, Box } from '@chakra-ui/react'
+import { Flex, Divider, Avatar, Box, Text } from '@chakra-ui/react'
 import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 import {isMobile} from 'react-device-detect';
 import { useMediaQuery } from "@chakra-ui/react"
@@ -9,7 +9,7 @@ import {useRouter} from 'next/router'
 import {GrSchedule, GrDocumentText} from 'react-icons/gr'
 import {RiTeamLine} from 'react-icons/ri'
 import {FiArchive} from 'react-icons/fi'
-import {AiOutlineTeam, AiOutlineUserAdd, AiOutlineUsergroupAdd} from 'react-icons/ai'
+import {AiOutlineTeam, AiOutlineUserAdd, AiOutlineUsergroupAdd, AiOutlineUser} from 'react-icons/ai'
 import {BiExit, BiLogIn} from 'react-icons/bi'
 import Cookies from 'universal-cookie';
 import Link from 'next/link'
@@ -41,6 +41,25 @@ const divider = {
 const Li = motion.custom(Flex)
 const Divide = motion.custom(Divider)
 
+const mlink = {
+  open: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      y: { stiffness: 1000, velocity: -100 }
+    }
+  },
+  closed: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      y: { stiffness: 1000 }
+    }
+  }
+};
+
+const MotionText = motion.custom(Text)
+
 
 export default function Navigation(props){
   const [isSmalledThan480] = useMediaQuery("(max-width: 480px)")
@@ -69,7 +88,7 @@ export default function Navigation(props){
     logout= <MenuItem name="Регистрация" icon={AiOutlineUserAdd} link="/registration/first_step"/>
   }
   else{
-    login= <MenuItem name="Профил" 
+    login= <MenuItem name="Профил" icon={AiOutlineUser}
     // profile={<Avatar src={`https://cdn.discordapp.com/avatars/${props.ctx.props.avatar[0]}/${props.ctx.props.avatar[1]}.png`}/>} 
     link="/profile"/>
     logout= <MenuItem name="Излез" icon={BiExit}/>
@@ -80,6 +99,13 @@ export default function Navigation(props){
   return (<Li justifyContent="center" alignItems="center" zIndex="1" h="100%" w="100%" position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
   {/* {props.xd[0]} */}
   <Flex marginTop="15px"  zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
+      <Link textDecoration="none" href="/">
+          		<a textDecoration="none">
+            		<MotionText variants={mlink}  textDecoration="none" fontFamily="llpixel" color="#009d60" fontSize="1.25rem" fontWeight="200" size="lg">
+              			Hack TUES <span style={{"color":"#105231"}}>GG</span>
+            		</MotionText>
+          		</a>
+        	</Link>
       <MenuItem name="Програма" top="-1px" icon={GrSchedule} link="/schedule"/>
       {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
       {/* <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/> */}

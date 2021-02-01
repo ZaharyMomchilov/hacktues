@@ -35,29 +35,28 @@ export const MenuItem = (props) => {
   }
 
   if(!props.link){
-    console.log("xd");
-    var link = <Text cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.reload("/");}}>{props.name}</Text>
+    var link = <Text  cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.reload("/");}}>{props.name}</Text>
   }
   else{
     var link = <Link cursor="pointer" href={props.link}>{props.name}</Link>
   }
 
   if(props.icon == "GG"){
-   var icon = <Text position="relative" top={props.top} fontFamily="llpixel" marginRight="10px" fontSize="17px" textColor="currentColor">GG</Text>
+   var icon = <Text  position="relative" top={props.top} fontFamily="llpixel" marginRight="10px" fontSize="17px" textColor="currentColor">GG</Text>
   }
   else{
-   var icon = <Icon left="0px" position="relative" top={props.top} as={props.icon} />
+   var icon = <Icon  left="0px" position="relative" top={props.top} as={props.icon} />
   }
 
   return (
-    <MotionBox w="80%" justifyContent="center" rounded="lg" margin="0" padding="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
+    <MotionBox w="80%" _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" padding="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
       {icon}
       {avatar}
-      <Button textAlign="center" textColor="black" textDecoration="none" _active={{bg:"transparent"}} background="none" _focus={{outline:"none"}} fontFamily="Rubik"  border="0px" borderWidth="0px">{link}</Button>
+      <Button textAlign="center" textColor="black" textDecoration="none" background="none"  fontFamily="Rubik"  border="0px" borderWidth="0px">{link}</Button>
     </MotionBox>
   );
 };
