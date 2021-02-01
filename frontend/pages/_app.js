@@ -54,14 +54,14 @@ function MyApp({ Component, pageProps }) {
 	const [inTeam, setTeam] = useControllableState({defaultValue:null});
 	const [discord, setDiscord] = useControllableState({defaultValue: null});
 
-	const fl = {open: {opacity: 1}, closed: {opacity: 1}}
-	const div = {
-		open: {opacity : 1, overflow:"hidden", transition: {when: "beforeChildren"}, transitionEnd: { display: "none" }}, 
-		closed:{opacity: 0, overflow:"visible",transitionEnd: { display: "none" }}}
+	// const fl = {open: {opacity: 1}, closed: {opacity: 1}}
+	// const div = {
+	// 	open: {opacity : 1, overflow:"hidden", transition: {when: "beforeChildren"}, transitionEnd: { display: "none" }}, 
+	// 	closed:{opacity: 0, overflow:"visible",transitionEnd: { display: "none" }}}
 
 
 	const Fl = motion.custom(Flex)
-	const Div = motion.custom(Flex)
+	const Div = motion.custom(Box)
 
 	// const breakpoints = createBreakpoints({
 	// 	sm: "30em",
@@ -116,10 +116,10 @@ function MyApp({ Component, pageProps }) {
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
-		<Fl variants={fl} flexDirection={["column","column","row","row"]} flexWrap="wrap">
+		<Fl flexDirection={["column","column","row","row"]} flexWrap="wrap">
 		<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
   			<Navbar avatar={discord} inteam={inTeam} loggedin={logged} />
-			<Div variants={div} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
+			<Div flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 				<Component {...pageProps} />
 			</Div>
 		</Fl>

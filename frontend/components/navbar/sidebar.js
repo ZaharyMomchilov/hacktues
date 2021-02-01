@@ -23,50 +23,50 @@ export const Sidebar = (props) => {
   var sidebar
   var variant
 
-  if(!isLargerThan428){
-    // router.reload()
-    sidebar = {
-      open: (height = 1000) => ({
-        clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-        overflow:"hidden",
-        transition: {
-          type: "spring",
-          stiffness: 20,
-          restDelta: 2
-        }
-      }),
-      closed: {
-        clipPath: "circle(30px at 40px 40px)",
-        overflow:"visible",
-        transition: {
-          delay: 0.3,
-          type: "spring",
-          stiffness: 400,
-          damping: 40
-        }
-      }
-    }
+  // if(!isLargerThan428){
+  //   // router.reload()
+  //   sidebar = {
+  //     open: (height = 1000) => ({
+  //       clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+  //       overflow:"hidden",
+  //       transition: {
+  //         type: "spring",
+  //         stiffness: 20,
+  //         restDelta: 2
+  //       }
+  //     }),
+  //     closed: {
+  //       clipPath: "circle(30px at 40px 40px)",
+  //       overflow:"visible",
+  //       transition: {
+  //         delay: 0.3,
+  //         type: "spring",
+  //         stiffness: 400,
+  //         damping: 40
+  //       }
+  //     }
+  //   }
 
-    variant = {
-      open: {
-        height:"100vh",
-        marginRight:"0px",
-        opacity: 1,
-        overflow:"hidden"
-      },
-      closed: {
-        opracity: 0,
-        // height:"0px",
-        height:"70px",
-        overflow:"visible",
-        // marginRight:"20px",
-      transition: {
-        when: "afterChildren"
-      }
-      }
-    };
-  }
-  else{
+  //   variant = {
+  //     open: {
+  //       height:"100vh",
+  //       marginRight:"0px",
+  //       opacity: 1,
+  //       overflow:"hidden"
+  //     },
+  //     closed: {
+  //       opracity: 0,
+  //       // height:"0px",
+  //       height:"70px",
+  //       overflow:"visible",
+  //       // marginRight:"20px",
+  //     transition: {
+  //       when: "afterChildren"
+  //     }
+  //     }
+  //   };
+  // }
+  // else{
     sidebar = {
       open: (height = 1000) => ({
         clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
@@ -101,7 +101,7 @@ export const Sidebar = (props) => {
       }
       }
     };
-  }
+  // }
 
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
