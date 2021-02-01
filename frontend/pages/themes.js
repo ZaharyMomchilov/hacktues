@@ -61,7 +61,7 @@ export default function Archive() {
   					//   stroke-linecap="round"
   					//   stroke-linejoin="round"
   					//   stroke-width="1"
-  					  stroke="url(#gradient) #FF0080;"
+  					//   stroke="url(#gradient) #FF0080;"
   					>
      			</Icon>
 				</Flex>

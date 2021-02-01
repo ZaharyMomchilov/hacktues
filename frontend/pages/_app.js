@@ -31,15 +31,16 @@ const theme = extendTheme({
 	})
 
 function checkToken(exp) {
-    if (Date.now() <= exp.exp * 1000) {
-		console.log(true, 'token is not expired')
-		// console.log(exp.exp * 1000 - Date.now());
+    if (Date.now() - 36000000 <= exp.exp * 1000) {
+		console.log('token is not expired')
+		// console.log(exp/.exp * 1000 - Date.now() - 36000000);
 		// console.log(cookies.get('auth'));
 		// console.log(jwt_decode(cookies.get('auth')).user_id);
 		// getUsers()
+		// getNewToken()
 	}
 	else{
-		console.log(false, 'token is expired')
+		console.log('token is expired')
 		// console.log(cookies.get('auth'));
 		getNewToken()
 	}
@@ -64,7 +65,6 @@ function MyApp({ Component, pageProps }) {
   	useEffect(() => {
 		if(cookies.get('CookieConsent')){
 			if(cookies.get('auth')){
-			// console.log(cookies.get('auth'));
 				checkToken(jwt_decode(cookies.get('auth')))
 				if(jwt_decode(cookies.get('auth')).user_id != 3){
 					setLogin(1)
@@ -77,7 +77,7 @@ function MyApp({ Component, pageProps }) {
 						  "Authorization": `Bearer ${cookies.get('auth')}`}
 						  },)
 						.then(function (response){
-							console.log(response);
+							// console.log(response);
 							if(!response.data.team_set[0]){
 								setTeam("false")
 							}
