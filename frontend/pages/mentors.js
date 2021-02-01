@@ -31,17 +31,18 @@ const Mentors = () => {
     getImages();
   }, []);
 
-    for(let i = 0; i < rows.length; i++){
-      if(rows[i].valid == "x"){
+  for(let i = 0; i < rows.length; i++){
+    if(rows[i].valid == "x"){
         if(rows[i]._rawData[2] != undefined)
           var res = rows[i]._rawData[2].split("id=");
 			if(res[1] != undefined){
 				cards.push(<Mentor key={i} organization={rows[i]["Организация"]} graduated={rows[i]["Завършили ли сте ТУЕС?"]} position={rows[i]["Позиция"]} technologies={rows[i]["Технологии, които владеете:"]} availability={rows[i]["Моля отбележете кога ще можете да участвате"]} name={rows[i]["Име и фамилия"]}  image={"https://drive.google.com/uc?export=view&id=" + res[1]}></Mentor>)
 			}
-        }
     }
+  }
 
 return <Flex justifyContent="center" alignItems="center" flexDirection={["column","column","row","row"]} flexWrap="wrap" pb={["300px", "300px", "300px", "200px"]} pt="25px">{cards}</Flex>
 }
+
 
 export default Mentors

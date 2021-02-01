@@ -20,10 +20,10 @@ function Teams(props) {
 	var confirmed
 
 	if(props.teams.confirmed){
-		confirmed = <span style={{color: "red"}} >Да</span>
+		confirmed = <span style={{color: "green"}} >Да</span>
 	}
 	else if(!props.teams.confirmed){
-		confirmed = <span style={{color: "green"}} >Не</span>
+		confirmed = <span style={{color: "red"}} >Не</span>
 	}
 
 	var j
@@ -98,6 +98,7 @@ function Teams(props) {
                             // values['users'] = selected
 							// values['users'].push(jwt_decode(cookies.get('auth')).user_id)
                             values['technologies'] = chosenTech
+							console.log(values)
 							var data = JSON.stringify(values, null, 1)
         					axios({
         						method: 'patch',

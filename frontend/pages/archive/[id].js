@@ -1,17 +1,18 @@
 import React from 'react'
-import { Flex, Box, Text } from '@chakra-ui/react'
+import { Flex, Box, Text, extendTheme  } from '@chakra-ui/react'
 import Card  from "../../components/archive/card"
 import About  from "../../components/archive/about"
 import Numbers  from "../../components/archive/numbers"
 import archive from "./archive.json";
 import { AiOutlineTeam, AiOutlineUser, AiOutlineGift} from 'react-icons/ai';
 
+
 var data = JSON.parse(JSON.stringify(archive));
 
 const Hacktues = ({currData}) => {     
 
     return(
-    <Flex display="block" width="100%" flexDirection="column" flexWrap="wrap" pb="150px" pt="50px" justifyContent="center" paddingLeft={["auto","auto","100px","200px"]} paddingRight={["auto","auto","100px","200px"]} borderColor="black">
+    <Flex display="block" width="100%" flexDirection="column" flexWrap="wrap" pb="150px" pt="50px" justifyContent="center" paddingLeft={["auto","auto","100px","125px"]} paddingRight={["auto","auto","100px","125px"]} borderColor="black">
         <Flex flexDirection={["column","column","column", "row"]} flexWrap="wrap">
                 <Card img={currData.winners[0].image} name={currData.winners[0].name} teammates={currData.winners[0].participants} place={currData.winners[0].place} project={currData.winners[0].project}/>
                 <Card img={currData.winners[1].image} name={currData.winners[1].name} teammates={currData.winners[1].participants} place={currData.winners[1].place} project={currData.winners[1].project}/>

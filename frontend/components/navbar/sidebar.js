@@ -43,6 +43,8 @@ const variant = {
 
 
 
+
+
 const Nav = motion.custom(Flex)
 const Div = motion.custom(Box)
 

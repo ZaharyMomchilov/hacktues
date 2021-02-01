@@ -29,6 +29,7 @@ export const MenuItem = (props) => {
   var router = useRouter()
   const cookies = new Cookies()
 
+
   if(props.profile){
     var avatar = <Avatar src={`https://cdn.discordapp.com/avatars/${props.ctx.props.avatar[0]}/${props.ctx.props.avatar[1]}.png`}/>
   }
@@ -41,13 +42,20 @@ export const MenuItem = (props) => {
     var link = <Link cursor="pointer" href={props.link}>{props.name}</Link>
   }
 
+  if(props.icon == "GG"){
+   var icon = <Text position="relative" top={props.top} fontFamily="llpixel" marginRight="10px" fontSize="17px" textColor="currentColor">GG</Text>
+  }
+  else{
+   var icon = <Icon left="0px" position="relative" top={props.top} as={props.icon} />
+  }
+
   return (
     <MotionBox w="80%" justifyContent="center" rounded="lg" margin="0" padding="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
       variants={variants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <Icon left="0px" position="relative" top={props.top} marginRight="5px" as={props.icon} />
+      {icon}
       {avatar}
       <Button textAlign="center" textColor="black" textDecoration="none" _active={{bg:"transparent"}} background="none" _focus={{outline:"none"}} fontFamily="Rubik"  border="0px" borderWidth="0px">{link}</Button>
     </MotionBox>

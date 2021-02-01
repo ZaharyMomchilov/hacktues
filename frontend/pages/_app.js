@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { ChakraProvider, Box, Slide,SlideFade, Button, Text, Image, Flex } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react";
 import 'keen-slider/keen-slider.min.css'
+import '../styles/react-big-calendar.css'
 import Navbar from '../components/navbar/navbar'
 import Sidebar from '../components/navbar/sidebar'
 import Footer from '../components/footer/footer'
@@ -9,11 +10,12 @@ import React, {useEffect} from 'react'
 import Cookies from 'universal-cookie';
 import axios from 'axios'
 import jwt_decode from "jwt-decode";
-import { createBreakpoints } from "@chakra-ui/react"
+import { createBreakpoints } from "@chakra-ui/theme-tools"
 import { useControllableState } from "@chakra-ui/react"
 import Terms from '../components/termsofservice/terms'
 import NextNprogress from 'nextjs-progressbar';
 const cookies = new Cookies();
+
 
 const theme = extendTheme({
 	styles: {
@@ -45,9 +47,19 @@ function checkToken(exp) {
 
 function MyApp({ Component, pageProps }) {
 
-	const [logged, setLogin] = useControllableState({defaultValue:0})
-	const [inTeam, setTeam] = useControllableState({defaultValue:null})
-	const [discord, setDiscord] = useControllableState({defaultValue: null})
+	const [logged, setLogin] = useControllableState({defaultValue:0});
+	const [inTeam, setTeam] = useControllableState({defaultValue:null});
+	const [discord, setDiscord] = useControllableState({defaultValue: null});
+
+	// const breakpoints = createBreakpoints({
+	// 	sm: "30em",
+	// 	md: "48em",
+	// 	mid: "55em",
+	// 	lg: "62em",
+	// 	xl: "80em",
+	// 	"2xl": "96em",
+	//   });
+	// const theme = extendTheme(breakpoints);
 
   	useEffect(() => {
 		if(cookies.get('CookieConsent')){

@@ -23,13 +23,13 @@ const Card = (props) => {
 			<Flex cursor="pointer" width="400px" flexDirection="column" flexWrap="wrap" alignSelf="stretch" h="auto" m="15px" padding="15px" backgroundColor="white" rounded="lg" overflow="hidden">
 				<Flex paddingBottom="15px" flexDirection="row" flexWrap="wrap">
 					<Avatar name={props.name} />
-						<Text  fontSize="15px" fontFamily="Rubik" mb="auto" ml="15px" mt="auto">{props.name}</Text>
+						<Text fontSize="15px" fontFamily="Rubik" mb="auto" ml="15px" mt="auto">{props.name}</Text>
 				</Flex>
-				<Text wordBreak="break-word" m="0" p="0" lineHeight="1.5" fontWeight="400"><strong fontWeight="700">Технологии:</strong></Text>
+				<Text fontFamily="Rubik" wordBreak="break-word" m="0" p="0" lineHeight="1.5" fontWeight="400"><strong fontWeight="700">Технологии:</strong></Text>
 				<Flex paddingTop={["10px","10px","10px","15px"]} flexDirection="row" flexWrap="wrap">{tech}</Flex>
 				<Flex paddingTop={["10px","10px","10px","15px"]} justifyContent="center" flexDirection="column">
-						<Text wordBreak="break-word" m="0" lineHeight="1.5" fontWeight="400"><strong fontWeight="700">Участници:</strong></Text>
-						<Text wordBreak="keep-all" m="0" pt={["0","0","0","15px"]} fontWeight="300" as="h3">
+						<Text fontFamily="Rubik" wordBreak="break-word" m="0" lineHeight="1.5"><strong fontWeight="700">Участници:</strong></Text>
+						<Text lineHeight="1.5" fontFamily="Rubik" wordBreak="keep-all" m="0" pt={["0","0","0","15px"]} >
 							{teammates}
 						</Text>
 				</Flex>

@@ -6,8 +6,6 @@ import labels from '../teams/icons'
 
 const Mentor = (props) => {
 
-
-	console.log(props);
 	var availability = props.availability.split(', ');
 	let avail = []
 	availability.map((data, index) => {
@@ -30,7 +28,7 @@ const Mentor = (props) => {
 
 
 		return (
-			<Flex cursor="pointer" width={["auto", "auto", "400px","400px"]} flexDirection="column" flexWrap="wrap" alignSelf="stretch" h="auto" m={["15px"]} padding="15px" backgroundColor="white" rounded="lg" overflow="hidden">
+			<Flex width={["auto", "auto", "400px","400px"]} flexDirection="column" flexWrap="wrap" alignSelf="stretch" h="auto" m={["15px"]} padding="15px" backgroundColor="white" rounded="lg" overflow="hidden">
 				<Flex paddingBottom="5px" flexDirection="column" alignItems="center"  flexWrap="wrap">
 					<Avatar size="2xl" src={props.image}/>
 					<Text pt="5px" fontSize="16px" fontFamily="Rubik" mb="auto" ml="15px" mt="auto">{props.name}</Text>

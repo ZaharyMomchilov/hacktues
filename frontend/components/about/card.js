@@ -9,8 +9,8 @@ const Card = (props) => {
         </Text>
         <Image objectFit="contain" width="100%" h="400px" backgroundPosition={["","","",""]} rounded="lg" paddingLeft="10px" mt="0" paddingRight="10px" src={props.picture}/>
         <Flex paddingLeft="10px" justifyContent="center" flexDirection="column">
-            <Text fontFamily="Rubik" wordBreak="break-word" m="0" fontWeight="300" as="h4"><strong>Позиция: </strong>{props.position}</Text>
-            <Text fontFamily="Rubik" wordBreak="break-word" m="0" pt="5px" fontWeight="300" as="h4"><strong>Клас: </strong>{props.class}</Text>
+            <Text fontFamily="Rubik" wordBreak="break-word" m="0" ><strong>Позиция: </strong>{props.position}</Text>
+            <Text fontFamily="Rubik" wordBreak="break-word" m="0" pt="5px" ><strong>Клас: </strong>{props.class}</Text>
         </Flex>
       </Flex>
     );

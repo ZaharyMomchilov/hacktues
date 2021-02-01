@@ -26,6 +26,7 @@
 - [] remove mentor page
 - [] fix schedule
 - [] make email confirmation page
+- [] refresh cookie
 
 
 ------------------------------------------------------------------------------------
