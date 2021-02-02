@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "./dim";
 import { MenuToggle } from "./button";
@@ -23,82 +23,86 @@ export const Sidebar = (props, onShowClick) => {
   console.log(props);
 
 
-  if(!isLargerThan428){
-    sidebar = {
-      open: (height = 1000) => ({
-        clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-        overflow:"hidden",
-        transition: {
-          type: "spring",
-          stiffness: 20,
-          restDelta: 2
-        }
-      }),
-      closed: {
-        clipPath: "circle(30px at 40px 40px)",
-        overflow:"visible",
-        transition: {
-          delay: 0.3,
-          type: "spring",
-          stiffness: 400,
-          damping: 40
+  // useEffect(() => {
+    if(!isLargerThan428){
+      sidebar = {
+        open: (height = 1000) => ({
+          clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+          overflow:"hidden",
+          transition: {
+            type: "spring",
+            stiffness: 20,
+            restDelta: 2
+          }
+        }),
+        closed: {
+          clipPath: "circle(30px at 40px 40px)",
+          overflow:"visible",
+          transition: {
+            delay: 0.3,
+            type: "spring",
+            stiffness: 400,
+            damping: 40
+          }
         }
       }
+  
+      variant = {
+        open: {
+          height:"100vh",
+          marginRight:"0px",
+          overflow:"hidden"
+        },
+        closed: {
+          // height:"0px",
+          height:"70px",
+          overflow:"visible",
+          // marginRight:"20px",
+        transition: {
+          when: "afterChildren"
+        }
+        }
+      };
     }
-
-    variant = {
-      open: {
-        height:"100vh",
-        marginRight:"0px",
-        overflow:"hidden"
-      },
-      closed: {
-        // height:"0px",
-        height:"70px",
-        overflow:"visible",
-        // marginRight:"20px",
-      transition: {
-        when: "afterChildren"
-      }
-      }
-    };
-  }
-  else{
-    sidebar = {
-      open: (height = 1000) => ({
-        clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-        transition: {
-          type: "spring",
-          stiffness: 20,
-          restDelta: 2
+    else{
+      sidebar = {
+        open: (height = 1000) => ({
+          clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+          transition: {
+            type: "spring",
+            stiffness: 20,
+            restDelta: 2
+          }
+        }),
+        closed: {
+          clipPath: "circle(30px at 40px 40px)",
+          transition: {
+            delay: 0.3,
+            type: "spring",
+            stiffness: 400,
+            damping: 40
+          }
         }
-      }),
-      closed: {
-        clipPath: "circle(30px at 40px 40px)",
+      };
+  
+      variant = {
+        open: {
+          width:"300px",
+          marginRight:"0px",
+          height:"100vh",
+        },
+        closed: {
+          width:"50px",
+          marginRight:"20px",
         transition: {
-          delay: 0.3,
-          type: "spring",
-          stiffness: 400,
-          damping: 40
+          when: "afterChildren"
         }
-      }
-    };
+        }
+      };
+    }
+  // }, [isLargerThan428, sidebar, variant])
 
-    variant = {
-      open: {
-        width:"300px",
-        marginRight:"0px",
-        height:"100vh",
-      },
-      closed: {
-        width:"50px",
-        marginRight:"20px",
-      transition: {
-        when: "afterChildren"
-      }
-      }
-    };
-  }
+  
 
 
   const [isOpen, toggleOpen] = useCycle(false, true);

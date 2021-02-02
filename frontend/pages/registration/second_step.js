@@ -31,7 +31,7 @@ export default function Register(props) {
         payload.append("grant_type",'authorization_code')
         payload.append("redirect_uri",'https://hacktues-git-wave2.zaharymomchilov.vercel.app/registration/second_step')
         payload.append("code", router.query['code'])
-        payload.append("scope","identify email")
+		payload.append("scope","identify email")
 
     axios({
         method: 'post',
@@ -69,7 +69,10 @@ export default function Register(props) {
                     console.log(error.response);
                     }
             })
-        }
+		}
+		else if(router.query['code'] == "access_denied"){
+			router.push('/')
+		}
 
 
 	const SignupSchema = Yup.object().shape({
@@ -249,14 +252,14 @@ export default function Register(props) {
             )}
           	</Field>
 
-			<Field name="alergies" >
+			{/* <Field name="alergies" >
 				{({ field, form }) => (
 				<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field} isInvalid={form.errors.alergies && form.touched.alergies}>
 				<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="text">Алергии</FormLabel>
 				<Input type="text" id="alergies"  _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field}/>
 				</FormControl>
 				)}
-			</Field>
+			</Field> */}
 			<Field name="tshirt_size">
 				{({ field, form }) => (
 					<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field} isInvalid={form.errors.tshirt && form.touched.tshirt} isRequired>
@@ -270,7 +273,7 @@ export default function Register(props) {
 					</FormControl>
 				)}
 			</Field>
-				<Field name="food_preferences">
+				{/* <Field name="food_preferences">
 				{({ field, form }) => (
 							<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field} isInvalid={form.errors.tshirt && form.touched.tshirt} isRequired>
 								<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="text">Консумирате ли месо?</FormLabel>
@@ -281,7 +284,7 @@ export default function Register(props) {
 								</Select>
 							</FormControl>
 						)}
-					</Field>
+					</Field> */}
 			<Field name="regulation">
 				{({ field, form }) => (
 					<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
