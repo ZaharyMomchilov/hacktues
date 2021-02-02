@@ -1,9 +1,8 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Icon, Box, Button, Text } from '@chakra-ui/react'
+import { Icon, Box, Button, Text, Link } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import Cookies from 'universal-cookie';
-import Link from 'next/link'
 
 const variants = {
   open: {
@@ -34,7 +33,7 @@ export const MenuItem = (props) => {
 
 
   if(!props.link){
-    var link = <Text  cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>{props.name}</Text>
+    var link = <Link href="/" cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>{props.name}</Link>
   }
   else{
     var link = <Link cursor="pointer" href={props.link}>{props.name}</Link>
