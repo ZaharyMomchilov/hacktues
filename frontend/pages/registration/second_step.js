@@ -70,7 +70,7 @@ export default function Register(props) {
                     }
             })
 		}
-		else if(router.query['code'] == "access_denied"){
+		else if(router.query['error'] == "access_denied"){
 			router.push('/')
 		}
 
