@@ -131,7 +131,7 @@ export default function Register(props) {
         									});
 											
 
-											router.push('/')
+											router.push('/registration/confirmation')
         					    	}})
         					    .catch(function (error) {
 									if (error.response) {
