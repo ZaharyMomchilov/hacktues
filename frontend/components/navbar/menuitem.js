@@ -31,8 +31,10 @@ export const MenuItem = (props) => {
 
 
 
+
+
   if(!props.link){
-    var link = <Text  cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.reload("/");}}>{props.name}</Text>
+    var link = <Text  cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>{props.name}</Text>
   }
   else{
     var link = <Link cursor="pointer" href={props.link}>{props.name}</Link>

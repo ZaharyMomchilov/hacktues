@@ -14,9 +14,10 @@ import { createBreakpoints } from "@chakra-ui/theme-tools"
 import { useControllableState } from "@chakra-ui/react"
 import Terms from '../components/termsofservice/terms'
 import NextNprogress from 'nextjs-progressbar';
-const cookies = new Cookies();
 import { motion, useCycle } from "framer-motion";
 import { AnimateSharedLayout } from "framer-motion"
+import Router from 'next/router'
+const cookies = new Cookies();
 
 const breakpoints = createBreakpoints({
 	sm: "320px",
@@ -85,6 +86,14 @@ function MyApp({ Component, pageProps }) {
 	// const theme = extendTheme(breakpoints);
 
   	useEffect(() => {
+
+		if(cookies.get('auth')){
+			if(jwt_decode(cookies.get('auth')).user_id == 3){
+				setTeam(null)
+				setLogin(0)
+			}
+		}
+
 		if(cookies.get('CookieConsent')){
 			if(cookies.get('auth')){
 				checkToken(jwt_decode(cookies.get('auth')))

@@ -10,12 +10,11 @@ import { CUIAutoComplete } from '../components/autocomplete/chakra-ui-autocomple
 import labels from '../components/teams/icons'
 import jwt_decode from "jwt-decode";
 import Cookies from 'universal-cookie';
-const cookies = new Cookies()
 
 const Teams = (props) => {
 
 	const technology = labels
-
+	const cookies = new Cookies()
 	var router = useRouter()
 	const toast = useToast()
 	var tech = []
@@ -46,9 +45,18 @@ const Teams = (props) => {
     var items = []
 	var i
 	
-	var users = users.filter(function(item) {
-    	return item.email !== "hacktues"
-	})
+	// try {
+	// 	console.log(jwt_decode(cookies.get('auth')))
+	// 	// valid token format
+	//   } catch(error) {
+	// 	console.log(error);
+	//   }
+
+	// console.log(jwt_decode(cookies.get('auth')));
+
+	// && item.id != jwt_decode(cookies.get('auth')).user_id
+
+
 
     for(i = 0; i < users.length; i++){
         items.push({value: users[i].id, label: `${users[i].first_name} ${users[i].last_name} - ${users[i].form}`})
@@ -190,17 +198,45 @@ export async function getServerSideProps(ctx){
 	}
 	}
 	else{
-	var response = await axios({
+		var response = await axios({
 			method: 'get',
 			url: "https://hacktues.pythonanywhere.com/users/",
 			headers: 
 			{ "Content-type": "Application/json",
 			  "Authorization": `Bearer ${cookies.get('auth')}`}
 			},
-			)
-			
-	return {props: {users: response.data}}	}
+		)
 
+		// console.log(response);
+		
+
+		for(var i = 0; i < response.data.length; i++){
+			if(response.data[i].id == jwt_decode(cookies.get('auth')).user_id){
+				if(response.data[i].team_set.length > 0){
+					return {
+						redirect: {
+						permanent: false,
+					  	destination: '/',
+					}
+				}
+			}
+		}
+		else{
+			var users = response.data.filter(function(item) {
+				return item.email !== "hacktues" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id})
+			}
+			return {props: {users: users}}
+		}
+	}
+
+		// if(jwt_decode(cookies.get('auth')).user_id == ){
+		// 	return {
+		// 		  redirect: {
+		// 		   permanent: false,
+		// 		destination: '/',
+		// 	  },
+		// }
+	
 }
 
 function equalTo(ref, msg) {
