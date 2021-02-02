@@ -18,6 +18,13 @@ const cookies = new Cookies();
 import { motion, useCycle } from "framer-motion";
 import { AnimateSharedLayout } from "framer-motion"
 
+const breakpoints = createBreakpoints({
+	sm: "320px",
+	md: "768px",
+	lg: "1200px",
+	xl: "1500px",
+  })
+
 const theme = extendTheme({
 	styles: {
 	  global: {
@@ -28,7 +35,7 @@ const theme = extendTheme({
 		  backgroundSize: "cover",
 		},
 		},
-	  },
+	  }, breakpoints
 	})
 
 function checkToken(exp) {
