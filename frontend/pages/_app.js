@@ -51,7 +51,7 @@ function checkToken(exp) {
 	else{
 		console.log('token is expired')
 		// console.log(cookies.get('auth'));
-		// getNewToken()
+		getNewToken()
 		refreshToken()
 	}
 }
@@ -117,7 +117,7 @@ function MyApp({ Component, pageProps }) {
 			}
 		}
 		else{
-			// getNewToken();
+			getNewToken();
 			setLogin(0)
 			// getUsers()
 		}
