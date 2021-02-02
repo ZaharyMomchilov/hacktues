@@ -23,35 +23,9 @@ export default function Register(props) {
 	var userID;
 	var avatar
 
-	const SignupSchema = Yup.object().shape({
-		first_name: Yup.string()
-			.min(2, 'Твърде кратко!')
-		  	.max(50, 'Твърде дълго!')
-			.matches(/^[^\w]+$/, 'използвай кирилица')
-		  	.matches(/[а-я]/, 'използвай поне една малка буква')
-			.matches(/[А-Я]/, 'използвай поне една голяма буква')
-		  	.required('Задължително'),
-		last_name: Yup.string()
-		  	.min(2, 'Too Short!')
-		  	.max(50, 'Too Long!')
-		  	.matches(/^[^\w]+$/, 'използвай кирилица')
-			.matches(/[а-я]/, 'използвай поне една малка буква')
-			.matches(/[А-Я]/, 'използвай поне една голяма буква')
-		 	.required('Задължително'),
-		email: Yup.string().email('Невалиден имейл').required('Задължително'),
-		reemail: Yup.string().email('Невалиден имейл').equalTo(Yup.ref('email'), 'Имейлите не са еднакви').required('Задължително'),
-		password: Yup.string()
-				.matches(/[A-Z]/, 'използвай минимум 1 главна буква')
-				.matches(/[a-z]/, 'използвай минимум 1 малка буква')
-				.matches(/\d/, 'използвай минимум 1 цифра')
-				.matches(/[^\d\w\s]/, 'използвай минимум 1 специален символ')
-				.matches(/.{8}/, 'използвай минимум 8 символа'),
-		repassword: Yup.string().equalTo(Yup.ref('password'), 'Паролите не са еднакви').required('Задължително'),
-		phone: Yup.string()
-				.matches(/^0\d{9}$/, 'използвай валиден телефон')
-	});
 	var router = useRouter()
-    if(router.query['code'] != undefined){
+
+	if(router.query['code'] != undefined){
         let payload = new FormData();
         payload.append("client_id",CLIENT_ID)
         payload.append("client_secret",CLIENT_SECRET)
@@ -96,6 +70,34 @@ export default function Register(props) {
                     console.log(error.response);
                     }
 			})
+
+			const SignupSchema = Yup.object().shape({
+				first_name: Yup.string()
+					.min(2, 'Твърде кратко!')
+					  .max(50, 'Твърде дълго!')
+					.matches(/^[^\w]+$/, 'използвай кирилица')
+					  .matches(/[а-я]/, 'използвай поне една малка буква')
+					.matches(/[А-Я]/, 'използвай поне една голяма буква')
+					  .required('Задължително'),
+				last_name: Yup.string()
+					  .min(2, 'Too Short!')
+					  .max(50, 'Too Long!')
+					  .matches(/^[^\w]+$/, 'използвай кирилица')
+					.matches(/[а-я]/, 'използвай поне една малка буква')
+					.matches(/[А-Я]/, 'използвай поне една голяма буква')
+					 .required('Задължително'),
+				email: Yup.string().email('Невалиден имейл').required('Задължително'),
+				reemail: Yup.string().email('Невалиден имейл').equalTo(Yup.ref('email'), 'Имейлите не са еднакви').required('Задължително'),
+				password: Yup.string()
+						.matches(/[A-Z]/, 'използвай минимум 1 главна буква')
+						.matches(/[a-z]/, 'използвай минимум 1 малка буква')
+						.matches(/\d/, 'използвай минимум 1 цифра')
+						.matches(/[^\d\w\s]/, 'използвай минимум 1 специален символ')
+						.matches(/.{8}/, 'използвай минимум 8 символа'),
+				repassword: Yup.string().equalTo(Yup.ref('password'), 'Паролите не са еднакви').required('Задължително'),
+				phone: Yup.string()
+						.matches(/^0\d{9}$/, 'използвай валиден телефон')
+			});
 			
 			return (
 				<Box marginLeft="15px" marginRight="15px" paddingBottom="200px">
