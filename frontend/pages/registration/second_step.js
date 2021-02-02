@@ -125,7 +125,7 @@ export default function Register(props) {
 														duration: 9000
 													  });
 													  
-		  
+													  var router = useRouter()
 													  router.push('/')
 											  }})
 										  .catch(function (error) {
