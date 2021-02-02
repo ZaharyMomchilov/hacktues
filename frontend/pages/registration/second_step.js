@@ -15,7 +15,6 @@ export default function Register(props) {
 	const [show, setShow] = React.useState(false);
 	const handleClick = () => setShow(!show);
 
-	var router = useRouter()
 	const toast = useToast()
 
     const CLIENT_ID = '743157046677078016'
@@ -212,23 +211,23 @@ export default function Register(props) {
 									<option value="8А">8А</option>
 									<option value="8Б">8Б</option>
 									<option value="8В">8В</option>
-								  <option value="8Г">8Г</option>
+								  	<option value="8Г">8Г</option>
 									<option value="9А">9А</option>
 									<option value="9Б">9Б</option>
 									<option value="9В">9В</option>
-								  <option value="9Г">9Г</option>
+								  	<option value="9Г">9Г</option>
 									<option value="10А">10А</option>
 									<option value="10Б">10Б</option>
 									<option value="10В">10В</option>
-								  <option value="10Г">10Г</option>
+								  	<option value="10Г">10Г</option>
 									<option value="11А">11А</option>
 									<option value="11Б">11Б</option>
 									<option value="11В">11В</option>
-								  <option value="11Г">11Г</option>
+								  	<option value="11Г">11Г</option>
 									<option value="12А">12А</option>
 									<option value="12Б">12Б</option>
 									<option value="12В">12В</option>
-								  <option value="12Г">12Г</option>
+								  	<option value="12Г">12Г</option>
 							  </Select>
 						  </FormControl>
 					  )}
