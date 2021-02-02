@@ -142,7 +142,7 @@ let Schedule = () => (
     }
     }
     messages={{event:"Събитие",date:"Дата",time:"Време"}}
-    style={{background:"white", borderRadius:"10px", marginLeft:"50px", marginRight:"50px", height:"auto", border:"none"}}
+    style={{background:"white", borderRadius:"10px", marginLeft:"50px", marginRight:"50px", height:"auto", border:"none", marginTop:"50px", padding:"5px"}}
   />
 )
 

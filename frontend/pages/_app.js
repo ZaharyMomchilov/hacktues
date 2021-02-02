@@ -4,7 +4,7 @@ import { extendTheme } from "@chakra-ui/react";
 import 'keen-slider/keen-slider.min.css'
 import '../styles/react-big-calendar.css'
 import Navbar from '../components/navbar/navbar'
-import Sidebar from '../components/navbar/sidebar'
+import {Sidebar} from '../components/navbar/sidebar'
 import Footer from '../components/footer/footer'
 import React, {useEffect} from 'react'
 import Cookies from 'universal-cookie';
@@ -16,6 +16,7 @@ import Terms from '../components/termsofservice/terms'
 import NextNprogress from 'nextjs-progressbar';
 const cookies = new Cookies();
 import { motion, useCycle } from "framer-motion";
+import { AnimateSharedLayout } from "framer-motion"
 
 const theme = extendTheme({
 	styles: {
@@ -50,15 +51,18 @@ function checkToken(exp) {
 
 function MyApp({ Component, pageProps }) {
 
+	
+	const [isOpen, toggleOpen] = useCycle(false, true);
 	const [logged, setLogin] = useControllableState({defaultValue:0});
 	const [inTeam, setTeam] = useControllableState({defaultValue:null});
 	const [discord, setDiscord] = useControllableState({defaultValue: null});
 
-	// const fl = {open: {opacity: 1}, closed: {opacity: 1}}
-	// const div = {
-	// 	open: {opacity : 1, overflow:"hidden", transition: {when: "beforeChildren"}, transitionEnd: { display: "none" }}, 
-	// 	closed:{opacity: 0, overflow:"visible",transitionEnd: { display: "none" }}}
-
+	const div = {
+		open: {
+			width:"0%", height:"0px"
+			}, 
+		closed:{
+			display:"unset"}}
 
 	const Fl = motion.custom(Flex)
 	const Div = motion.custom(Box)
@@ -117,9 +121,9 @@ function MyApp({ Component, pageProps }) {
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Fl flexDirection={["column","column","row","row"]} flexWrap="wrap">
-		<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
-  			<Navbar avatar={discord} inteam={inTeam} loggedin={logged} />
-			<Div flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
+			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
+  			<Sidebar avatar={discord} inteam={inTeam} loggedin={logged} />
+			<Div variants={div} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 				<Component {...pageProps} />
 			</Div>
 		</Fl>

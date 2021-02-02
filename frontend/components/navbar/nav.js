@@ -73,19 +73,19 @@ export default function Navigation(props){
 
   console.log(props)
 
-  if(props.ctx.props.loggedin == 0 && props.ctx.props.inteam == null){
+  if(props.ctx.loggedin == 0 && props.ctx.inteam == null){
     team = <Box display="none" ></Box>
   }
-  else if(props.ctx.props.loggedin == 1 && props.ctx.props.inteam == null || props.ctx.props.inteam == "false"){
+  else if(props.ctx.loggedin == 1 && props.ctx.inteam == null || props.ctx.inteam == "false"){
     team = <MenuItem name="Създай отбор" icon={AiOutlineUsergroupAdd} link="/maketeam"/> 
   }
   else{
-    team = <MenuItem name="Моят отбор" icon={AiOutlineTeam} link={`/teams/${encodeURIComponent(props.ctx.props.inteam)}/`}/>
+    team = <MenuItem name="Моят отбор" icon={AiOutlineTeam} link={`/teams/${encodeURIComponent(props.ctx.inteam)}/`}/>
   }
 
-  if(!props.ctx.props.loggedin){
+  if(!props.ctx.loggedin){
     login= <MenuItem name="Вход" icon={BiLogIn} link="/login"/>
-    logout= <MenuItem name="Регистрация" icon={AiOutlineUserAdd} link="/registration/first_step"/>
+    logout= <MenuItem name="Регистрация" reg icon={AiOutlineUserAdd} link="/registration/first_step"/>
   }
   else{
     login= <MenuItem name="Профил" icon={AiOutlineUser}
@@ -93,8 +93,6 @@ export default function Navigation(props){
     link="/profile"/>
     logout= <MenuItem name="Излез" icon={BiExit}/>
   }
-
-
 
   return (<Li justifyContent="center" alignItems="center" zIndex="1" h="100%" w="100%" position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
   {/* {props.xd[0]} */}
