@@ -50,7 +50,7 @@ export default function Register(props) {
 		phone: Yup.string()
 				.matches(/^0\d{9}$/, 'използвай валиден телефон')
 	});
-
+	var router = useRouter()
     if(router.query['code'] != undefined){
         let payload = new FormData();
         payload.append("client_id",CLIENT_ID)
@@ -124,7 +124,7 @@ export default function Register(props) {
 														duration: 9000
 													  });
 													  
-													  var router = useRouter()
+													  
 													  router.push('/')
 											  }})
 										  .catch(function (error) {
