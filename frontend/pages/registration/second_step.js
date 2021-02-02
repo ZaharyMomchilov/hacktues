@@ -129,8 +129,6 @@ export default function Register(props) {
         									  status: "success",
         									  duration: 9000
         									});
-											
-
 											router.push('/registration/confirmation')
         					    	}})
         					    .catch(function (error) {
