@@ -79,9 +79,10 @@ const Teams = (props) => {
         <Formik justifyContent="center" initialValues={{name: '', project_name: '', project_description: '', github_link: ''}}
 				onSubmit={(values, actions) => {
         			setTimeout(() => {
+							console.log(people)
 							if(people.length > 4){
 								actions.setSubmitting(false);
-								actions.setFieldError("users", "Твърде много участници избрани")
+								actions.setFieldError("users", "Твърде много участници избрани участници")
 							}
                             let selected = people.map(a => a.value);
                             values['users'] = selected
@@ -108,9 +109,13 @@ const Teams = (props) => {
         					    	}})
         					    .catch(function (error) {
 									if (error.response) {
+										if(error.response.data == "reached maximum users in the team limit"){
+											actions.setFieldError("users", "надвишен е максималният брой участници")
+										}
 										for (const [key, value] of Object.entries(error.response.data)) {
   											console.log(`${key}: ${value}`);
 											actions.setFieldError(key, value)
+											
 										}
 								}})						
           									actions.setSubmitting(false)
@@ -219,7 +224,7 @@ export async function getServerSideProps(ctx){
 		if(user.data.team_set[0] != null){
 			return {
 				redirect: {
-				permanent: true,
+				permanent: false,
 				  destination: '/',
 			}
 		}
