@@ -78,7 +78,10 @@ export default function Navigation(props){
     if(props.ctx.loggedin == 0 && props.ctx.inteam == null || props.ctx.inteam == "false"){
       team = <Box display="none" ></Box>
     }
-    else if(props.ctx.loggedin == 1 && props.ctx.inteam == null || props.ctx.inteam == "false"){
+    else if(props.ctx.loggedin == 1 && props.ctx.inteam == null){
+      team = <MenuItem name="Създай отбор" icon={AiOutlineUsergroupAdd} link="/maketeam"/> 
+    }
+    else if(props.ctx.loggedin == 1 && props.ctx.inteam == "false"){
       team = <MenuItem name="Създай отбор" icon={AiOutlineUsergroupAdd} link="/maketeam"/> 
     }
     else if(props.ctx.loggedin == 1 && props.ctx.inteam){

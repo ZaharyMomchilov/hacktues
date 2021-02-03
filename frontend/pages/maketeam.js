@@ -215,7 +215,7 @@ export async function getServerSideProps(ctx){
 				if(response.data[i].team_set.length > 0){
 					return {
 						redirect: {
-						permanent: false,
+						permanent: true,
 					  	destination: '/',
 					}
 				}
