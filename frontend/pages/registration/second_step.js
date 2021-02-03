@@ -136,7 +136,7 @@ export default function Register(props) {
 										for (const [key, value] of Object.entries(error.response.data)) {
   											console.log(`${key}: ${value}`);
 											actions.setFieldError(key, value)
-											// console.log({"xd:": error.response})
+											console.log(error.response.data)
 										}
 									}
 									else if(error.response.data.discord_id){
