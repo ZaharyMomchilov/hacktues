@@ -17,13 +17,15 @@ const Error = (props) => {
 
 export async function getServerSideProps(ctx){
 
-	return {
-      		redirect: {
-            source: "/registration/second_step",
-       		permanent: false,
-        	destination: '/',
-      	}
-}
+    console.log(ctx.query);
+
+// 	return {
+//       		redirect: {
+//             source: "/registration/second_step",
+//        		permanent: false,
+//         	destination: '/',
+//       	}
+// }
 }
 
 export default Error;
