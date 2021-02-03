@@ -123,13 +123,15 @@ export default function Register(props) {
 								  },)
         					    .then(function (response) {
         					        if(response.status == 201){
+										var routed = useRouter()
+										routed.push('/registration/confirmation')
 										toast({
         									  title: "Потвърждаване на акаунт",
         									  description: "Акаунтът беше успешно създаден и трябва да се потвърди, чрез имейл",
         									  status: "success",
         									  duration: 9000
         									})
-											router.push('/registration/confirmation')
+											
         					    	}})
         					    .catch(function (error) {
 									if (error.response) {
