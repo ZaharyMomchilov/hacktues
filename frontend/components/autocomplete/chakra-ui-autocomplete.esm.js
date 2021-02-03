@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, createElement } from 'react';
 import { useMultipleSelection, useCombobox } from 'downshift';
-import matchSorter from 'match-sorter';
+import {matchSorter} from 'match-sorter';
 import Highlighter from 'react-highlight-words';
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect';
 import { FormLabel } from '@chakra-ui/form-control';
