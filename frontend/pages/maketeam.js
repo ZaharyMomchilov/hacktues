@@ -189,13 +189,15 @@ export async function getServerSideProps(ctx){
 	
 	const cookies = new Cookies(ctx.req.headers.cookie);
 
+	console.log(jwt_decode(cookies.get('auth')).user_id);
+
 	if(jwt_decode(cookies.get('auth')).user_id == 3){
-		return {
-      		redirect: {
-       		permanent: false,
-        	destination: '/',
-      	},
-	}
+		// return {
+      	// 	redirect: {
+       	// 	permanent: false,
+        // 	destination: '/',
+      	// },
+	// }
 	}
 	else{
 		var response = await axios({
@@ -207,27 +209,56 @@ export async function getServerSideProps(ctx){
 			},
 		)
 
-		// console.log(response);
-		
+		var user = await axios({
+			method: 'get',
+			url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}`,
+			headers: 
+			{ "Content-type": "Application/json",
+			  "Authorization": `Bearer ${cookies.get('auth')}`}
+			},
+		)
 
-		for(var i = 0; i < response.data.length; i++){
-			if(response.data[i].id == jwt_decode(cookies.get('auth')).user_id){
-				if(response.data[i].team_set.length > 0){
-					return {
-						redirect: {
-						permanent: true,
-					  	destination: '/',
-					}
-				}
-			}
-		}
-		else{
+		console.log(user.data.team_set);
+
+		
+		// if(user.data.team_set.length > 0){
+			
+		// 	console.log(user.data.team_set);
+		// 	// return {
+		// 	// 	redirect: {
+		// 	// 	permanent: true,
+		// 	// 	  destination: '/',
+		// 	// }
+		// // }
+		// }
+		// else{
 			var users = response.data.filter(function(item) {
 				return item.email !== "hacktues" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id})
 			}
 			return {props: {users: users}}
 		}
-	}
+
+
+	// 	for(var i = 0; i < response.data.length; i++){
+	// 		console.log("vurtim li")
+	// 		if(response.data[i].id == jwt_decode(cookies.get('auth')).user_id){
+	// 			console.log("we've got a match")
+	// 			if(response.data[i].team_set.length > 0){
+	// 				return {
+	// 					redirect: {
+	// 					permanent: true,
+	// 				  	destination: '/',
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	else{
+	// 		var users = response.data.filter(function(item) {
+	// 			return item.email !== "hacktues" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id})
+	// 		}
+	// 		return {props: {users: users}}
+	// 	}
+	// }
 
 		// if(jwt_decode(cookies.get('auth')).user_id == ){
 		// 	return {
@@ -237,7 +268,7 @@ export async function getServerSideProps(ctx){
 		// 	  },
 		// }
 	
-}
+// }
 
 function equalTo(ref, msg) {
 	return Yup.mixed().test({
