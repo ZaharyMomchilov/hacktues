@@ -130,7 +130,7 @@ export default function Register(props) {
         									  duration: 9000
         									})
 											
-										routed.push('/registration/confirmation')
+										router.push('/registration/confirmation')
         					    	}})
         					    .catch(function (error) {
 									if (error.response) {
