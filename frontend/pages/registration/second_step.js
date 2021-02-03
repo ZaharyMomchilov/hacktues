@@ -136,10 +136,10 @@ export default function Register(props) {
 										for (const [key, value] of Object.entries(error.response.data)) {
   											console.log(`${key}: ${value}`);
 											actions.setFieldError(key, value)
-											console.log({"xd:": error.response})
+											// console.log({"xd:": error.response})
 										}
 									}
-									else if(error.response.discord_id){
+									else if(error.response.data.discord_id){
 										console.log({"xd1:": error.response})
 										actions.setFieldError("email", error.response.discord_id[0])
 									}
