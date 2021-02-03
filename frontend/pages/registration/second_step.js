@@ -137,7 +137,11 @@ export default function Register(props) {
   											console.log(`${key}: ${value}`);
 											actions.setFieldError(key, value)
 										}
-								}})						
+									}
+									else if(error.response.discord_id){
+										actions.setFieldError("email", error.response.discord_id)
+									}
+								})						
 											console.log(JSON.stringify(values, null, 1))
           									actions.setSubmitting(false)
         								}, 1000);
