@@ -110,7 +110,7 @@ function MyApp({ Component, pageProps }) {
 						.then(function (response){
 							// console.log(response);
 							if(!response.data.team_set[0]){
-								setTeam("false")
+								setTeam(null)
 							}
 							else{
 								setDiscord([response.data.discord_id,response.data.avatar])

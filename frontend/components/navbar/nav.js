@@ -75,7 +75,10 @@ export default function Navigation(props){
   console.log(props)
 
   // useEffect(() => {
-    if(props.ctx.loggedin == 0 && props.ctx.inteam == null || props.ctx.inteam == "false"){
+    if(props.ctx.loggedin == 0 && props.ctx.inteam == null){
+      team = <Box display="none" ></Box>
+    }
+    else if(props.ctx.loggedin == 0 && props.ctx.inteam == "false"){
       team = <Box display="none" ></Box>
     }
     else if(props.ctx.loggedin == 1 && props.ctx.inteam == null){
