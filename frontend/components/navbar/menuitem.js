@@ -32,18 +32,11 @@ export const MenuItem = (props) => {
 
 
 
-  if(!props.link){
-    var link = <Link href="/" cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>{props.name}</Link>
-  }
-  else{
-    var link = <Link cursor="pointer" href={props.link}>{props.name}</Link>
-  }
-
   if(props.reg){
-    var button = <Button textAlign="center" _hover={{bg:"#009d60"}} _focus={{outline:"none"}} textColor="black" textDecoration="none" background="none"  fontFamily="Rubik"  border="0px" variant="solid" borderWidth="0px">{link}</Button>
+    var button = <Button cursor="pointer" textAlign="center" _hover={{bg:"#009d60"}} _focus={{outline:"none"}} textColor="black" textDecoration="none" background="none"  fontFamily="Rubik"  border="0px" variant="solid" borderWidth="0px"><Text cursor="pointer" _hover={{textDecoration:"none"}}>{props.name}</Text></Button>
   }
   else{
-    var button = <Button textAlign="center" _hover={{bg:"#009d60"}} _focus={{outline:"none"}} textColor="black" textDecoration="none" background="none"  fontFamily="Rubik"  border="0px" borderWidth="0px">{link}</Button>
+    var button = <Button cursor="pointer" textAlign="center" _hover={{bg:"#009d60"}} _focus={{outline:"none"}} textColor="black" textDecoration="none" background="none"  fontFamily="Rubik"  border="0px" borderWidth="0px"><Text cursor="pointer" _hover={{textDecoration:"none"}}>{props.name}</Text></Button>
   }
 
   if(props.icon == "GG"){
@@ -53,14 +46,30 @@ export const MenuItem = (props) => {
    var icon = <Icon  left="0px" position="relative" top={props.top} as={props.icon} />
   }
 
-  return (
-    <MotionBox w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
-      variants={variants}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      {icon}
-      {button}
-    </MotionBox>
-  );
+  if(!props.link){
+    return (
+      <Link cursor="pointer" _focus={{outline:"none"}} href="/" cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>
+      <MotionBox w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
+        variants={variants}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        {icon}
+        {button}
+      </MotionBox>
+      </Link>)
+  }
+  else{
+    return (
+      <Link cursor="pointer" _focus={{outline:"none"}} cursor="pointer" href={props.link}>
+      <MotionBox w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
+        variants={variants}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        {icon}
+        {button}
+      </MotionBox>
+      </Link>)
+  }
 };
