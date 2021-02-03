@@ -134,11 +134,11 @@ export default function Register(props) {
         					    .catch(function (error) {
 									if (error.response) {
 										for (const [key, value] of Object.entries(error.response.data)) {
-  											console.log(`${key}: ${value}`);
+  											// console.log(`${key}: ${value}`);
 											actions.setFieldError(key, value)
-											console.log(error.response.data.discord_id[0])
+											// console.log(error.response.data.discord_id[0])
 											if(error.response.data.discord_id[0]){
-												actions.setFieldError("email", error.response.discord_id[0])
+												actions.setFieldError("email", error.response.data.discord_id[0])
 											}
 										}
 									}
