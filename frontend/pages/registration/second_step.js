@@ -1,4 +1,4 @@
-import { Box, Button, Input, InputGroup, InputLeftElement, InputRightElement, Icon, Select, Switch, useToast, Checkbox, Link, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Input, InputGroup, InputLeftElement, InputRightElement, Icon, Select, Switch, useToast, Checkbox, Link, useDisclosure, Flex } from "@chakra-ui/react";
 import { Formik, Field } from 'formik';
 import { FormControl, FormLabel, FormErrorMessage } from "@chakra-ui/react";
 const axios = require('axios');
@@ -124,11 +124,11 @@ export default function Register(props) {
         					    .then(function (response) {
         					        if(response.status == 201){
 										toast({
-        									  title: "Създаване на акаунт",
-        									  description: "Акаунтът беше успешно създаден.",
+        									  title: "Потвърждаване на акаунт",
+        									  description: "Акаунтът беше успешно създаден и трябва да се потвърди, чрез имейл",
         									  status: "success",
         									  duration: 9000
-        									});
+        									})
 											router.push('/registration/confirmation')
         					    	}})
         					    .catch(function (error) {
@@ -288,20 +288,22 @@ export default function Register(props) {
 							</FormControl>
 						)}
 					</Field> */}
-			<Field name="regulation">
-				{({ field, form }) => (
-					<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
-					<CustomCheckbox jsx={{}} colorScheme="green" isRequired id="regulation" fontStyle="Rubik" >Съгласен съм с <Link href="/regulation"><a style={{color:"green", }} onClick={onClose}>регламента на хакатона</a></Link></CustomCheckbox>
-					</FormControl>
-				)}
-			</Field>
-			<Field name="GDPR">
-				{({ field, form }) => (
-					<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
-					<CustomCheckbox jsx={{}} colorScheme="green" isRequired id="GDPR" fontStyle="Rubik" >Съгласен съм с <Link href="/gdpr"><a style={{color:"green", }} onClick={onClose}>Общият регламент за защита на данните</a></Link></CustomCheckbox>
-					</FormControl>
-				)}
-			</Field>
+			<Flex flexDirection="row">
+				<Field name="regulation">
+					{({ field, form }) => (
+						<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
+						<CustomCheckbox jsx={{}} colorScheme="green" isRequired id="regulation" fontStyle="Rubik" >Съгласен съм с <Link href="/regulation"><a style={{color:"green", }} onClick={onClose}>регламента на хакатона</a></Link></CustomCheckbox>
+						</FormControl>
+					)}
+				</Field>
+				<Field name="GDPR">
+					{({ field, form }) => (
+						<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
+						<CustomCheckbox jsx={{}} colorScheme="green" isRequired id="GDPR" fontStyle="Rubik" >Съгласен съм с <Link href="/gdpr"><a style={{color:"green", }} onClick={onClose}>Общият регламент за защита на данните</a></Link></CustomCheckbox>
+						</FormControl>
+					)}
+				</Field>
+			</Flex>
 
 			<Button display="flex" flexGrow={1} w="33%" justifyContent="center" mt={4} colorScheme="green" border="0"
 			 isLoading={props.isSubmitting} type="submit"

@@ -90,7 +90,7 @@ export default function Archive() {
 					<TextTruncate style={{"color":"white"}} pl="15px" pr="15px" w="100%" line={5} element="p" truncateText="..." text={data[5].description}/>
 				</Flex>
 				<Link href="/archive/hacktues6">
-					<a><Button cursor="pointer" bg="#3d2238" fontFamily="Rubik" fontWeight="600" fontSize="1rem" fontWeight="semibold" rounded="md" color="white" h="2.5rem" px={4} ml={3} border="0" colorScheme="#09c0de" color="#fff" ml="15px" >Научи повече</Button></a>
+					<a><Button cursor="pointer" bg="#fdad20" fontFamily="Rubik" fontWeight="600" fontSize="1rem" fontWeight="semibold" rounded="md" color="white" h="2.5rem" px={4} ml={3} border="0" colorScheme="#09c0de" color="#fff" ml="15px" >Научи повече</Button></a>
 				</Link>
             </Flex>
         </Flex>
