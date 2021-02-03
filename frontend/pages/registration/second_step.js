@@ -319,7 +319,7 @@ export default function Register(props) {
 
 const CustomCheckbox = styled(Checkbox)`
   .chakra-checkbox__control{
-    color: beige;
+    color: #105231;
   }
 `
 
