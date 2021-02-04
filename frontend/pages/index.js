@@ -97,8 +97,15 @@ export default function Home() {
 					<Flex justifyContent="center" alignItems="center" flexDirection="column" flexWrap="wrap">
 						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Beta спонсори</Text>
 						<Flex rounded="lg" justifyContent="center" alignItems="center" background="#fff" flexDirection="row" flexWrap="wrap" >		  	
+
+								<Link isExternal href="https://www.nemetschek.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
+									<Box transform="translate(0px, 5px)" background="#fff" marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
+										<Image transform="scale(1.2)" display="block" width="100%" h="100%" objectFit="contain" title="Nemetschek" src="/Logos/Beta - Nemetschek/Nemetschek-logo 2.png"></Image>
+									</Box>
+								</Link>
+
 								<Link isExternal href="http://www.a1.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, 0px)",xl:"translate(60px, 8px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
+									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, 0px)",xl:"translate(0px, 8px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
 										<Image transform="scale(0.5)" display="block" width="100%" h="100%" objectFit="contain" title="A1" src="/Logos/Beta - A1/A1_01_08RED_3_L_1.png"></Image>
 									</Box>
 								</Link>
@@ -108,13 +115,6 @@ export default function Home() {
 										<Image transform="scale(0.75)" display="block" width="100%" h="100%" objectFit="contain" title="Strypes" src="/Logos/Beta - Strypes/strypes-logo-transparent.png"></Image>
 									</Box>
 								</Link>
-
-								<Link isExternal href="https://www.nemetschek.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform="translate(0px, 5px)" background="#fff" marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
-										<Image transform="scale(1.2)" display="block" width="100%" h="100%" objectFit="contain" title="Nemetschek" src="/Logos/Beta - Nemetschek/Nemetschek-logo 2.png"></Image>
-									</Box>
-								</Link>
-
 								
 						</Flex>
 					</Flex>
