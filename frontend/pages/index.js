@@ -193,11 +193,19 @@ export default function Home() {
 											<Image transform="scale(0.85)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Galactic Banitsa/98.galacticbanitsa.svg"></Image>
 										</Box>
 									</Link>
+
+									<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
+										<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, 5px)",xl:"translate(0px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="150px">
+											<Image transform="scale(0.45)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/ELSYS/ELSYS-30-Logo-Colour-Dark.svg"></Image>
+										</Box>
+									</Link>
+
 									<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
 										<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-5px, 5px)",xl:"translate(-5px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="150px">
 											<Image transform="scale(0.85)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Cloud Balkan/logo1024.svg"></Image>
 										</Box>
 									</Link>
+
 
 								</Flex>
 
