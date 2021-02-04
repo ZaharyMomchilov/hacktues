@@ -187,7 +187,7 @@ export default function Home() {
 									</Box>
 								</Link>
 								
-								<Flex justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" width="100%">
+								{/* <Flex justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" width="100%"> */}
 									<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
 										<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, 5px)",xl:"translate(0px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="150px">
 											<Image transform="scale(0.85)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Galactic Banitsa/98.galacticbanitsa.svg"></Image>
@@ -207,28 +207,28 @@ export default function Home() {
 									</Link>
 
 
-								</Flex>
+								{/* </Flex> */}
 
 								<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
 									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-5px, 5px)",xl:"translate(-5px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /4)" h="150px">
-										<Image transform="scale(0.7)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Campus X/Logo_Vertical@2x.png"></Image>
+										<Image transform="scale(0.8)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Campus X/Logo_Vertical@2x.png"></Image>
 									</Box>
 								</Link>
 
 								<Link isExternal href="https://careers.paysafe.com/locations/sofia/" display="flex" justifyContent="center" alignItems="center" h="100%">
 									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-14px, 4px)",xl:"translate(-14px, 4px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /4)" h="150px">
-										<Image transform="scale(0.5)"  display="block" width="100%" h="100%" objectFit="contain" title="Paysafe" src="/Logos/Partners/Bulged/bulged_logo.png"></Image>
+										<Image transform="scale(0.65)"  display="block" width="100%" h="100%" objectFit="contain" title="Paysafe" src="/Logos/Partners/Bulged/bulged_logo.png"></Image>
 									</Box>
 								</Link>
 
 								<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
 									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-5px, 5px)",xl:"translate(-5px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /4)" h="150px">
-										<Image transform="scale(0.5)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Ora/ora-logo.svg"></Image>
+										<Image transform="scale(0.65)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Ora/ora-logo.svg"></Image>
 									</Box>
 								</Link>
 								<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
 									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-5px, 5px)",xl:"translate(-5px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 / 4)" h="150px">
-										<Image transform="scale(0.6)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/initLab/initlab-01.svg"></Image>
+										<Image transform="scale(0.75)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/initLab/initlab-01.svg"></Image>
 									</Box>
 								</Link>
 
