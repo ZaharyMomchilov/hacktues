@@ -21,6 +21,11 @@ const cookies = new Cookies();
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 
+
+axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
 Sentry.init({
 	dsn: "https://47d68f3b1c084b459d17b4013d403960@o516791.ingest.sentry.io/5623722",
 	integrations: [new Integrations.BrowserTracing()],
@@ -77,12 +82,19 @@ function MyApp({ Component, pageProps }) {
 	const [inTeam, setTeam] = useControllableState({defaultValue:null});
 	const [discord, setDiscord] = useControllableState({defaultValue: null});
 
-	const div = {
+	const dived = {
 		open: {
 			width:"0%", height:"0px"
 			}, 
 		closed:{
 			display:"unset"}}
+
+	const div = {
+		open: {
+			opacity:1
+			}, 
+		closed:{
+			opacity:1}}
 
 	// const Fl = motion.custom(Flex)
 	const Div = motion.custom(Box)
@@ -117,7 +129,9 @@ function MyApp({ Component, pageProps }) {
 						url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}/`,
 						headers: 
 						{ "Content-type": "Application/json",
-						  "Authorization": `Bearer ${cookies.get('auth')}`}
+						  Authorization: `Bearer ${cookies.get('auth')}`,
+						  "Access-Control-Allow-Origin": "*",
+						  }
 						  },)
 						.then(function (response){
 							// console.log(response);
@@ -148,10 +162,10 @@ function MyApp({ Component, pageProps }) {
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
-		<Flex flexDirection={["column","column","row","row"]} flexWrap="wrap">
+		<Flex as={motion.div} variants={div} flexDirection={["column","column","row","row"]} flexWrap="wrap">
 			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
   			<Sidebar avatar={discord} inteam={inTeam} loggedin={logged} />
-			<Box as={motion.div} variants={div} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
+			<Box as={motion.div} variants={dived} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 				<Component {...pageProps} />
 			</Box>
 		</Flex>
