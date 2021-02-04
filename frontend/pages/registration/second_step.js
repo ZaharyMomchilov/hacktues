@@ -28,18 +28,18 @@ export default function Register(props) {
 		first_name: Yup.string()
 			.min(2, 'Твърде кратко!')
 		  	.max(50, 'Твърде дълго!')
-			.matches(/^[^\w]+$/, 'използвай кирилица')
 		  	.matches(/[а-я]/, 'използвай поне една малка буква')
 			.matches(/[А-Я]/, 'използвай поне една голяма буква')
+			.matches(/^[А-Я][а-я]+$/, 'използвай само кирилица')
 		  	.required('Задължително'),
 		last_name: Yup.string()
 		  	.min(2, 'Too Short!')
 		  	.max(50, 'Too Long!')
-		  	.matches(/^[^\w]+$/, 'използвай кирилица')
 			.matches(/[а-я]/, 'използвай поне една малка буква')
 			.matches(/[А-Я]/, 'използвай поне една голяма буква')
+			.matches(/^[А-Я][а-я]+$/, 'използвай само кирилица')
 		 	.required('Задължително'),
-		email: Yup.string().email('Невалиден имейл').required('Задължително'),
+		email: Yup.string().email('Невалиден имейл').matches(/^[А-Я][а-я]+$/, 'използвай само кирилица').required('Задължително'),
 		reemail: Yup.string().email('Невалиден имейл').equalTo(Yup.ref('email'), 'Имейлите не са еднакви').required('Задължително'),
 		password: Yup.string()
 				.matches(/[A-Z]/, 'използвай минимум 1 главна буква')

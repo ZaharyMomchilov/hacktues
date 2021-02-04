@@ -22,6 +22,7 @@ const variants = {
 };
 
 const MotionBox = motion.custom(Box)
+const MotionLink = motion.custom(Link)
 
 export const MenuItem = (props) => {
 
@@ -48,7 +49,8 @@ export const MenuItem = (props) => {
 
   if(!props.link){
     return (
-      <Link cursor="pointer" _focus={{outline:"none"}} href="/" cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>
+      
+      <MotionLink variants={variants} cursor="pointer" _focus={{outline:"none"}} href="/" cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>
       <MotionBox w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
         variants={variants}
         whileHover={{ scale: 1.1 }}
@@ -57,11 +59,12 @@ export const MenuItem = (props) => {
         {icon}
         {button}
       </MotionBox>
-      </Link>)
+      </MotionLink>
+      )
   }
   else{
     return (
-      <Link cursor="pointer" _focus={{outline:"none"}} cursor="pointer" href={props.link}>
+      <MotionLink display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}}>
       <MotionBox w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
         variants={variants}
         whileHover={{ scale: 1.1 }}
@@ -70,6 +73,6 @@ export const MenuItem = (props) => {
         {icon}
         {button}
       </MotionBox>
-      </Link>)
+        </MotionLink>)
   }
 };

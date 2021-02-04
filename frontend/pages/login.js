@@ -84,9 +84,13 @@ export default function Login() {
 						</InputGroup>
 				</FormControl>)}
 			</Field>
+			<Flex flexDirection="column" flexWrap="wrap">
+			<Link _focus={{outline:"none"}} mt={4} href="/change_password">Забравена парола?</Link>
 			<Button mt={4} colorScheme="green" border="0" isLoading={props.isSubmitting} type="submit">
 				Логин
 			</Button>
+
+			</Flex>
 		</form>
 		)}
 		</Formik>

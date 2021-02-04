@@ -164,14 +164,14 @@ function Profile(props) {
             )}
           	</Field>
 
-			<Field name="alergies" >
+			{/* <Field name="alergies" >
 				{({ field, form }) => (
 				<FormControl flexGrow={1} w={["100%","100%","33%","33%"]} mr="5px" {...field} isInvalid={form.errors.alergies && form.touched.alergies}>
 				<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="text">Алергии</FormLabel>
 				<Input _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} id="alergies" _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field}/>
 				</FormControl>
 				)}
-			</Field>
+			</Field> */}
 			<Field name="tshirt_size">
 				{({ field, form }) => (
 					<FormControl flexGrow={1} w={["100%","100%","33%","33%"]} mr="5px" {...field} isInvalid={form.errors.tshirt && form.touched.tshirt} isRequired>
@@ -185,7 +185,7 @@ function Profile(props) {
 					</FormControl>
 				)}
 			</Field>
-				<Field name="food_preferences">
+				{/* <Field name="food_preferences">
 				{({ field, form }) => (
 							<FormControl flexGrow={1} w={["100%","100%","33%","33%"]} w="33%" mr="5px" {...field} isInvalid={form.errors.tshirt && form.touched.tshirt} isRequired>
 								<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="text">Консумирате ли месо?</FormLabel>
@@ -196,7 +196,7 @@ function Profile(props) {
 								</Select>
 							</FormControl>
 						)}
-					</Field>
+					</Field> */}
 			<AutoSave debounceMs={2000} />
         </Form>
 				)}}
