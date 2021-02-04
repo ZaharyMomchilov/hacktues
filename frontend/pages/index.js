@@ -202,7 +202,7 @@ export default function Home() {
 
 									<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
 										<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-5px, 5px)",xl:"translate(-5px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="150px">
-											<Image transform="scale(0.85)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Cloud Balkan/logo1024.svg"></Image>
+											<Image transform="scale(0.95)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Cloud Balkan/logo1024.svg"></Image>
 										</Box>
 									</Link>
 
@@ -211,7 +211,7 @@ export default function Home() {
 
 								<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
 									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-5px, 5px)",xl:"translate(-5px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /4)" h="150px">
-										<Image transform="scale(0.8)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Campus X/Logo_Vertical@2x.png"></Image>
+										<Image transform="scale(0.9)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Partners/Campus X/Logo_Vertical@2x.png"></Image>
 									</Box>
 								</Link>
 
