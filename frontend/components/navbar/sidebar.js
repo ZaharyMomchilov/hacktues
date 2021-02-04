@@ -110,10 +110,10 @@ export const Sidebar = (props, onShowClick) => {
   const { height } = useDimensions(containerRef);
 
   return (
-    <Nav zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
+    <Flex as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
       <MenuToggle toggle={() => {toggleOpen()}}  />
       <Navigation ctx={props} />
       <Div  h="100%" position="absolute" width={["100%","100%","300px","300px"]} background="#fff" className="background" variants={sidebar} />
-    </Nav>
+    </Flex>
   );
 };

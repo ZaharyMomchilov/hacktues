@@ -37,4 +37,7 @@ module.exports = {
       output: {
           filename: "bundle.js"
       },
+      env: {
+        hostname: process.env.hostname,
+      },
   };

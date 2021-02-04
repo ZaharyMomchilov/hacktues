@@ -26,25 +26,30 @@ const Player = (props) => {
       cookies.set('refresh', response.data.refresh, { path: '/' })
     })
   }
-
-    var captain
-    var position
-    if(props.captain){
-        captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => makecaptain()}>Направи капитан</Button>
-        position = "Капитан"
-    }
-    else if(!props.captain){
-        captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
-        position = "Участник"
-    }
+  
+  var captain
+  var position
+  if(props.captain){
+      captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => makecaptain()}>Направи капитан</Button>
+      position = "Капитан"
+  }
+  else if(!props.captain){
+      captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
+      position = "Участник"
+  }
+  else if(props.leave){
+    captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
+    position = "Участник"
+}
 
     return (
-      <Flex background="white" p="50px" flexDirection="column" flexWrap="wrap" alignSelf="stretch" flex="1 1" h="auto" m="15px" rounded="lg" overflow="hidden">
+      <Flex background="white" p="50px" flexDirection="column" flexWrap="wrap" alignSelf="stretch" w="350px" h="250px" m="15px" rounded="lg" overflow="hidden">
         <Flex paddingBottom={["10px","10px","10px","25px"]} justifyContent="center" flexDirection="column">
             <Text wordBreak="break-word" m="0" pt={["0","0","0","15px"]} fontFamily="Rubik">{props.name}</Text>
             <Text wordBreak="break-word" m="0" pt={["5px","5px","10px","15px"]} fontFamily="Rubik">{position}</Text>
         </Flex>
         {captain}
+        {leave}
       </Flex>
     );
 }

@@ -91,7 +91,7 @@ const Teams = (props) => {
 							var data = JSON.stringify(values, null, 1)
         					axios({
         						method: 'post',
-        						url: 'https://hacktues.pythonanywhere.com/teams/',
+        						url: `http://${process.env.hostname}/teams/`,
         						headers: 
         						{ "Content-type": "Application/json",
         						  "Authorization": `Bearer ${cookies.get('auth')}`},
@@ -205,7 +205,7 @@ export async function getServerSideProps(ctx){
 	else{
 		var response = await axios({
 			method: 'get',
-			url: "https://hacktues.pythonanywhere.com/users/",
+			url: `http://${process.env.hostname}/users/`,
 			headers: 
 			{ "Content-type": "Application/json",
 			  "Authorization": `Bearer ${cookies.get('auth')}`}
@@ -214,7 +214,7 @@ export async function getServerSideProps(ctx){
 
 		var user = await axios({
 			method: 'get',
-			url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}`,
+			url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}`,
 			headers: 
 			{ "Content-type": "Application/json",
 			  "Authorization": `Bearer ${cookies.get('auth')}`}

@@ -17,6 +17,8 @@
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "@lottiefiles/react-lottie-player": "^2.2.2",
+    "@sentry/react": "^6.1.0",
+    "@sentry/tracing": "^6.1.0",
     "axios": "^0.21.1",
     "chakra-ui-autocomplete": "^1.2.3",
     "child_process": "^1.0.2",

@@ -115,7 +115,7 @@ export default function Register(props) {
 							console.log(data)
         					axios({
         						method: 'post',
-        						url: 'https://hacktues.pythonanywhere.com/users/',
+        						url: `https://${process.env.hostname}/users/`,
         						headers: 
         						{ "Content-type": "Application/json",
         						  "Authorization": `Bearer ${cookies.get('auth')}`},

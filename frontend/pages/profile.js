@@ -77,7 +77,7 @@ function Profile(props) {
 					console.log(data)
         			axios({
         				method: 'patch',
-        				url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}/`,
+        				url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}/`,
         				headers: 
         				{ "Content-type": "Application/json",
         				  "Authorization": `Bearer ${cookies.get('auth')}`},
@@ -220,7 +220,7 @@ export async function getServerSideProps(ctx){
 	else{
 		var response = await axios({
 			method: 'get',
-			url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}`,
+			url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}`,
 			headers: 
 			{ "Content-type": "Application/json",
 			  "Authorization": `Bearer ${cookies.get('auth')}`}

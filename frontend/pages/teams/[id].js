@@ -14,7 +14,7 @@ import Player from '../../components/teams/player'
 
 function Teams(props) {
 	
-	console.log(props.teams.users.length);
+	console.log(props);
 
 	const router = useRouter()
 	const toast = useToast()
@@ -111,7 +111,7 @@ function Teams(props) {
 							var data = JSON.stringify(values, null, 1)
         					axios({
         						method: 'patch',
-        						url: `https://hacktues.pythonanywhere.com/teams/${router.query.id}/`,
+        						url: `http://${process.env.hostname}/teams/${router.query.id}/`,
         						headers: 
         						{ "Content-type": "Application/json",
         						  "Authorization": `Bearer ${cookies.get('auth')}`},
@@ -368,7 +368,7 @@ export async function getServerSideProps(ctx){
 	
 		var response = await axios({
 		method: 'get',
-		url: `https://hacktues.pythonanywhere.com/teams/${ctx.query.id}/`,
+		url: `http://${process.env.hostname}/teams/${ctx.query.id}/`,
 		headers: 
 		{ "Content-type": "Application/json",
 		"Authorization": `Bearer ${cookies.get('auth')}`}
@@ -378,7 +378,7 @@ export async function getServerSideProps(ctx){
 
 	  var res = await axios({
 		method: 'get',
-		url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}`,
+		url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}`,
 		headers: 
 		{ "Content-type": "Application/json",
 		  "Authorization": `Bearer ${cookies.get('auth')}`}
@@ -387,7 +387,7 @@ export async function getServerSideProps(ctx){
 
 		var users = await axios({
 			method: 'get',
-			url: `https://hacktues.pythonanywhere.com/users/`,
+			url: `http://${process.env.hostname}/users/`,
 			headers: 
 			{ "Content-type": "Application/json",
 			  "Authorization": `Bearer ${cookies.get('auth')}`}

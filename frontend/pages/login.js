@@ -30,9 +30,11 @@ export default function Login() {
 				var data = JSON.stringify(values, null, 1)
 				axios({
 					method: 'post',
-					url: 'https://hacktues.pythonanywhere.com/token/',
+					url: `http://${process.env.hostname}/token/`,
 					headers: 
-					{ "Content-type": "Application/json"},
+					{ "Content-type": "Application/json",
+					"Authorization": `Bearer ${cookies.get('auth')}`
+					},
 					data: data  
 					  },)
 					.then(function (response) {

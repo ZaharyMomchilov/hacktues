@@ -18,6 +18,18 @@ import { motion, useCycle } from "framer-motion";
 import { AnimateSharedLayout } from "framer-motion"
 import Router from 'next/router'
 const cookies = new Cookies();
+import * as Sentry from "@sentry/react";
+import { Integrations } from "@sentry/tracing";
+
+Sentry.init({
+	dsn: "https://47d68f3b1c084b459d17b4013d403960@o516791.ingest.sentry.io/5623722",
+	integrations: [new Integrations.BrowserTracing()],
+  
+	// We recommend adjusting this value in production, or using tracesSampler
+	// for finer control
+	tracesSampleRate: 1.0,
+  });
+
 
 const breakpoints = createBreakpoints({
 	sm: "320px",
@@ -72,7 +84,7 @@ function MyApp({ Component, pageProps }) {
 		closed:{
 			display:"unset"}}
 
-	const Fl = motion.custom(Flex)
+	// const Fl = motion.custom(Flex)
 	const Div = motion.custom(Box)
 
 	// const breakpoints = createBreakpoints({
@@ -102,7 +114,7 @@ function MyApp({ Component, pageProps }) {
 					if(inTeam == null){
 						axios({
 						method: 'get',
-						url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}/`,
+						url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}/`,
 						headers: 
 						{ "Content-type": "Application/json",
 						  "Authorization": `Bearer ${cookies.get('auth')}`}
@@ -136,13 +148,13 @@ function MyApp({ Component, pageProps }) {
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
-		<Fl flexDirection={["column","column","row","row"]} flexWrap="wrap">
+		<Flex flexDirection={["column","column","row","row"]} flexWrap="wrap">
 			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
   			<Sidebar avatar={discord} inteam={inTeam} loggedin={logged} />
-			<Div variants={div} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
+			<Box as={motion.div} variants={div} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 				<Component {...pageProps} />
-			</Div>
-		</Fl>
+			</Box>
+		</Flex>
 		<Cookie/>
   	  	{/* <Footer/> */}
   	</ChakraProvider>) 
@@ -175,7 +187,7 @@ const Cookie = () => {
 function getNewToken() {
 	axios({
 		method: 'post',
-		url: 'https://hacktues.pythonanywhere.com/token/',
+		url: `http://${process.env.hostname}/token/`,
 		header: 'Content-Type: application/json',
 		data: {"email": "hacktues","password": "Go Green"}
 	})
@@ -188,7 +200,7 @@ function getNewToken() {
 function refreshToken() {
 	axios({
 		method: 'post',
-		url: `https://hacktues.pythonanywhere.com/token/refresh/`,
+		url: `http://${process.env.hostname}/token/refresh/`,
 		headers: 
 		{ "Content-type": "Application/json"},
 		data: {refresh: `${cookies.get('refresh')}`}  
@@ -205,7 +217,7 @@ function refreshToken() {
 function getUsers() {
 	axios({
 		method: 'get',
-		url: 'https://hacktues.pythonanywhere.com/users/',
+		url: `http://${process.env.hostname}/users/`,
 		headers: 
 		{ "Content-type": "Application/json",
 		  "Authorization": `Bearer ${cookies.get('auth')}`}
