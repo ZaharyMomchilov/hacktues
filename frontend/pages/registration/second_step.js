@@ -39,7 +39,7 @@ export default function Register(props) {
 			.matches(/[А-Я]/, 'използвай поне една голяма буква')
 			.matches(/^[А-Я][а-я]+$/, 'използвай само кирилица')
 		 	.required('Задължително'),
-		email: Yup.string().email('Невалиден имейл').matches(/^[А-Я][а-я]+$/, 'използвай само кирилица').required('Задължително'),
+		email: Yup.string().email('Невалиден имейл').required('Задължително'),
 		reemail: Yup.string().email('Невалиден имейл').equalTo(Yup.ref('email'), 'Имейлите не са еднакви').required('Задължително'),
 		password: Yup.string()
 				.matches(/[A-Z]/, 'използвай минимум 1 главна буква')

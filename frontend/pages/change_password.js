@@ -25,22 +25,23 @@ export default function Login({logIn}) {
 	return(
 		<Box marginLeft="15px" marginRight="15px">
 	  	<Box margin="auto" w={["100%","100%","25%","25%"]} minWidth={["none","none","35rem","35rem"]} backgroundColor="white" p="25px" mt="50px" rounded="lg">
-			<Formik initialValues={{ email: "", password: "" }} 
+			<Formik initialValues={{ email: "" }} 
 	onSubmit={(values, actions) => {
 		setTimeout(() => {
-				var data = JSON.stringify(values, null, 1)
+				console.log(values.email)
+				// var data = JSON.stringify(values, null, 1)
 				axios({
 					method: 'post',
-					url: 'https://hacktues.pythonanywhere.com/token/',
+					url: 'https://hacktues.pythonanywhere.com/users/forgotten_password/',
 					headers: 
-					{ "Content-type": "Application/json"},
-					data: data  
+					{ "Content-type": "Application/json",
+					"Authorization": `Bearer ${cookies.get('auth')}`
+
+					},
+					data: {"email":values.email}  
 					  },)
 					.then(function (response) {
-						console.log(response);
-					  	cookies.set('auth', response.data.access, { path: '/' })
-						cookies.set('refresh', response.data.refresh, { path: '/' })
-						toast({ title: "Влизането успешно.", description: "Влизането в профила е успешно.",status: "success", duration: 9000})
+						toast({ title: "Промяна на парола.", description: "Влезте в имейлът Ви, за да смените паролата.",status: "success", duration: 9000})
 						router.push('/')
 					})
 					.catch(function (error) {
