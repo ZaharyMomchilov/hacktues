@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Cookies from 'universal-cookie';
-import {Box, Avatar, Flex, Text, Input, Textarea, Tag, TagLabel, useToast, useControllableState } from "@chakra-ui/react";
+import {Box, Avatar, Flex, Text, Input, Textarea, Tag, TagLabel, useToast, Button } from "@chakra-ui/react";
 import { Formik, Field, Form, useFormikContext} from 'formik';
 import { FormControl, FormLabel, FormErrorMessage} from "@chakra-ui/react";
 import labels from '../../components/teams/icons'
@@ -99,7 +99,6 @@ function Teams(props) {
 					</Flex>
 					<Formik initialValues={{ name: props.teams.name, project_name: props.teams.project_name , github_link: props.teams.github_link, project_description: props.teams.project_description}} onSubmit={(values, actions) => {
         			setTimeout(() => {
-							
 							// if(people.length > 4){
 							// 	actions.setSubmitting(false);
 							// 	actions.setFieldError("users", "Твърде много участници избрани")
@@ -118,15 +117,9 @@ function Teams(props) {
         						  "Authorization": `Bearer ${cookies.get('auth')}`},
 								data: data  
 								  },)
-        					    .then(function (response) {
-        					        if(response.status == 200){
-										toast({
-        									  title: "Промени",
-        									  description: "Промените бяха успешно запазени.",
-        									  status: "success",
-        									  duration: 9000
-        									});
-        					    	}})
+								  .then(function (response) {
+							toast({ title: "Промени по отбора", description: "Промените бяха направени успешно.", status: "success", duration: 4500})
+        			    	})
         					    .catch(function (error) {
 									if (error.response) {
 										for (const [key, value] of Object.entries(error.response.data)) {
@@ -150,7 +143,7 @@ function Teams(props) {
 							  </Field>
 							<Field name="project_name">
 								{({ field, form}) => (
-								<FormControl flexGrow={1} w={["100%","100%","33%","33%", "33%"]} mr="5px" isRequired isInvalid={form.errors.first_name && form.touched.first_name}>
+								<FormControl flexGrow={1} w={["100%","100%","33%","33%", "33%"]} mr="5px"  isInvalid={form.errors.first_name && form.touched.first_name}>
 									<FormLabel fontFamily="Rubik" fontSize="15px">Име на проекта</FormLabel>
 									<Input _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="project_name" />
 									<FormErrorMessage border={0}>{form.errors.first_name}</FormErrorMessage>
@@ -160,7 +153,7 @@ function Teams(props) {
 							
 							<Field name="project_description">
 								{({ field, form }) => (
-								<FormControl flexGrow={1} w="100%" mr="5px" isRequired isInvalid={form.errors.email && form.touched.email}>
+								<FormControl flexGrow={1} w="100%" mr="5px"  isInvalid={form.errors.email && form.touched.email}>
 									<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="email">Описание на проекта</FormLabel>
 										<Textarea resize="none" fontSize="14px" fontFamily="Rubik"  _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="project_description" />
 									<FormErrorMessage border={0}>{form.errors.email}</FormErrorMessage>
@@ -169,26 +162,47 @@ function Teams(props) {
 							</Field>
 							<Field name="github_link">
 								{({ field, form }) => (
-								<FormControl flexGrow={1} w="100%" mr="5px" isRequired isInvalid={form.errors.last_name && form.touched.last_name}>
+								<FormControl flexGrow={1} w="100%" mr="5px"  isInvalid={form.errors.last_name && form.touched.last_name}>
 									<FormLabel fontFamily="Rubik" fontSize="15px" htmlFor="text">Линк/ове към GitHub хранилище/а:</FormLabel>
 										<Input _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="github_link" />
 									<FormErrorMessage border={0}>{form.errors.last_name}</FormErrorMessage>
 								</FormControl>
 								)}
-						</Field>			
-					<Flex flexDirection="column" flexWrap="wrap">
+						</Field>	
+						<Field name="tech">
+								{({ field, form }) => (
+								<FormControl flexGrow={1} w="100%" mr="5px"  isInvalid={form.errors.last_name && form.touched.last_name}>
+									<FormLabel fontFamily="Rubik" fontSize="15px" htmlFor="text">Линк/ове към GitHub хранилище/а:</FormLabel>
+										{/* <Input _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="github_link" /> */}
+										{tech}
+									<FormErrorMessage border={0}>{form.errors.last_name}</FormErrorMessage>
+
+
+								</FormControl>
+								)}
+						</Field>	
+
+					{/* <Flex flexDirection="column" flexWrap="wrap">
 						<Text fontFamily="Rubik" fontSize="15px" m={0} p={0} pt="15px">Технологии</Text>
 						<Flex paddingTop="15px" flexDirection="row" flexWrap="wrap">	
 							  {tech}
 						</Flex>
+					</Flex> */}
+
+					
+
+					<Flex flexDirection="column" flexWrap="wrap">
+						<Text fontFamily="Rubik" fontSize="15px">Потвърден:&nbsp;{confirmed}</Text>
+						{/* <AutoSave props={props} debounceMs={2000} /> */}
+						<Button mt={4} colorScheme="green" border="0" cursor="pointer" isLoading={props.isSubmitting} type="submit">Промени</Button>
 					</Flex>
-						<AutoSave debounceMs={2000} />
+
 					</Form>
 				  )}
 				</Formik>
-				<Text fontFamily="Rubik" fontSize="15px">Потвърден:&nbsp;{confirmed}</Text>
+				
 				</Flex>
-				<Flex margin="50px" p="25px" background="white" rounded="lg" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center">
+				<Flex margin="50px" p="25px" rounded="lg" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center">
 						{players}
 				</Flex>
 				
@@ -321,13 +335,26 @@ function Teams(props) {
 							)}
 					</Field>
 	
+					<Field name="tech">
+							{({ field, form }) => (
+							<FormControl flexGrow={1} w="100%" mr="5px" isDisabled isInvalid={form.errors.last_name && form.touched.last_name}>
+								<FormLabel fontFamily="Rubik" fontSize="15px" htmlFor="text">Линк/ове към GitHub хранилище/а:</FormLabel>
+									<Input isDisabled _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="github_link" />
+								<FormErrorMessage border={0}>{form.errors.last_name}</FormErrorMessage>
+							</FormControl>
+							)}
+					</Field>
+
 					<Flex paddingTop="15px" flexDirection="row" flexWrap="wrap" width="100%">
 						  {tech}
+					</Flex>
+					<Flex flexDirection="column" flexWrap="wrap">
+						<Text>Потвърден:&nbsp;{confirmed}</Text>	
 					</Flex>
 				</Form>
 			  )}
 			</Formik>
-			<Text>Потвърден:&nbsp;{confirmed}</Text>
+			
 			</Flex>
 			</Box>
 		)
@@ -372,7 +399,7 @@ export async function getServerSideProps(ctx){
 
 }
 
-const AutoSave = ({ debounceMs = 2000 }) => {
+const AutoSave = (props,{ debounceMs = 2000 }) => {
 	const formik = useFormikContext();
 	const [isSaved, setIsSaved] = useState(null);
 	const debouncedSubmit = useCallback(
@@ -382,8 +409,18 @@ const AutoSave = ({ debounceMs = 2000 }) => {
 	  [formik.submitForm, debounceMs]
 	);
   
+	console.log(props);
 	useEffect(() => debouncedSubmit, [debouncedSubmit, formik.values],);
-	return(<Box></Box>)
+	return (
+		<Flex>
+		  {!!formik.isSubmitting
+			? <Button mt={4} colorScheme="green" border="0" cursor="pointer" isLoading>Промени</Button>
+			: isSaved
+			? <Button mt={4} colorScheme="green" border="0" cursor="pointer" onClick={() => {debouncedSubmit()}} >Промени</Button>
+			: null}
+		</Flex>
+		
+	  );
   };
 
 export default Teams

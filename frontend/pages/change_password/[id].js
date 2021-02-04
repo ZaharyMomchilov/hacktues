@@ -13,7 +13,9 @@ import Router from 'next/router'
 
 const cookies = new Cookies();
 
-export default function Login({logIn}) {
+
+
+export default function Pass({logIn}) {
 	
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [show, setShow] = React.useState(false);
@@ -81,4 +83,43 @@ export default function Login({logIn}) {
 	</Box>
 	</Box>
 	)
+}
+
+
+export async function getServerSideProps(ctx){
+
+	const cookies = new Cookies(ctx.req.headers.cookie);
+
+	
+        var response = await axios({
+        method: 'get',
+		url: `https://hacktues.pythonanywhere.com/teams/${ctx.query.id}/`,
+		headers: 
+		{ "Content-type": "Application/json",
+		"Authorization": `Bearer ${cookies.get('auth')}`}
+		},
+		)
+
+
+	    var res = await axios({
+		method: 'get',
+		url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}`,
+		headers: 
+		{ "Content-type": "Application/json",
+		  "Authorization": `Bearer ${cookies.get('auth')}`}
+		},
+		)
+
+		var users = await axios({
+			method: 'get',
+			url: `https://hacktues.pythonanywhere.com/users/`,
+			headers: 
+			{ "Content-type": "Application/json",
+			  "Authorization": `Bearer ${cookies.get('auth')}`}
+			},
+		)
+				
+	return {props: {teams: response.data,  user: res.data, users: users.data }}
+	
+
 }

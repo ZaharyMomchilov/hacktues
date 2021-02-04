@@ -53,39 +53,40 @@ export default function Home() {
 				    	<Button _hover={{background:"#009d60"}} border="0" textDecoration="none" fontStyle="Rubik" leftIcon={<AiOutlineCalendar/>} colorScheme="#105231" variant="outline"><Link textDecoration="none" href="/schedule"><a style={{textDecoration:"none"}}>11-14.03.2021</a></Link></Button>	
 				    </Flex>
                 </Flex>
+
            			
 				<Flex w="100%" rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="column" flexWrap="wrap" justifyContent="center" alignItems="center">
 					<Flex justifyContent="center" alignItems="center" flexDirection="column" flexWrap="wrap">
 						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Alpha спонсори</Text>
-						<Flex rounded="lg" justifyContent="center" alignItems="center" background="#fff" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center" >		  			
+						<Flex wrap="wrap" rounded="lg" justifyContent="center" alignItems="center" background="#fff" justifyContent="center">		  			
 								
 								
-								<Link isExternal href="https://www.chaosgroup.com/careers" transform="translate(0px, 10px)" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box marginRight="15px" background="#fff" w="350px" h="150px">
+								<Link marginBottom="-1rem" marginLeft="-1rem" isExternal href="https://www.chaosgroup.com/careers" transform="translate(0px, 10px)" display="flex" justifyContent="center" alignItems="center" h="100%">
+									<Box marginBottom="1rem" marginLeft="1rem" width="calc(900px * 1 /3)" background="#fff" h="150px">
 										<Image transform="scale(1)" display="block" width="100%" h="100%" objectFit="contain" title="Chaos Group" src="/FinalLogos/Chaos_Group_logo_b.svg"></Image>
 									</Box>
 								</Link>
-								<Link isExternal href="https://www.experian.bg/" transform="translate(0px, 9px)" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, -1px)", md: "translate(0px, -1px)", lg:"translate(15px, -1px)", xl:"translate(15px, -1px)"}} background="#fff" w="350px" h="150px">
+								<Link marginBottom="-1rem" marginLeft="-1rem" isExternal href="https://www.experian.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
+									<Box transform={{sm:"translate(0px, -1px)", md: "translate(0px, 5px)", lg:"translate(40px, 5px)", xl:"translate(40px, 5px)"}} background="#fff" marginBottom="1rem" marginLeft="1rem" width="calc(900px * 1 /3)" h="150px">
 										<Image transform="scale(0.9)" display="block" width="100%" h="100%" objectFit="contain" title="Experian" src="/FinalLogos/Experian BM TM CMYK N.svg"></Image>
 									</Box>
 								</Link>
-								<Link isExternal href="https://www.sap.com/bulgaria/index.html" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, 5px)",md:"translate(0px, 5px)",lg:"translate(50px, 5px)",xl:"translate(-25px, 5px)"}} marginRight="15px" background="#fff" w="350px" h="150px">
+								<Link marginBottom="-1rem" marginLeft="-1rem" isExternal href="https://www.sap.com/bulgaria/index.html" display="flex" justifyContent="center" alignItems="center" h="100%" >
+									<Box transform={{sm:"translate(0px, 5px)",md:"translate(25px, 5px)",lg:"translate(25px, 5px)",xl:"translate(25px, 5px)"}} marginBottom="1rem" marginLeft="1rem" width="calc(900px * 1 /3)" h="150px">
 										<Image transform="scale(0.5)" display="block" width="100%" h="100%" objectFit="contain" title="SAP" src="/Logos/Alpha - SAP/SAP_grad_R_pref.png"></Image>
 									</Box>
 								</Link>
 								
-								<Link isExternal href="http://telebid-pro.com/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform="translate(0px, 1px)" marginRight="15px" background="#fff" w="350px" h="150px">
+								<Link marginBottom="-1rem" marginLeft="-1rem" isExternal href="http://telebid-pro.com/" display="flex" display="flex" justifyContent="center" alignItems="center" h="100%">
+									<Box transform="translate(0px, 1px)" marginBottom="1rem" marginLeft="1rem" width="calc(900px * 1 /3)" h="150px">
 										<Image  transform="scale(0.70)" display="block" width="300px" width="100%" h="100%" objectFit="contain" title="TelebidPro" src="/Logos/Alpha - TelebidPro/Telebid Pro light.svg"></Image>
 									</Box>
 								</Link>
 
 								
 								
-								<Link isExternal href="https://www.facebook.com/vmwarebg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box marginRight="15px" background="#fff" transform="translate(0px, 4px)" w="350px" h="150px">
+								<Link isExternal href="https://www.facebook.com/vmwarebg/" display="flex" justifyContent="center" alignItems="center" h="100%" >
+									<Box background="#fff" transform="translate(0px, 12px)" marginBottom="1rem" marginLeft="1rem" width="calc(900px * 1 /3)" h="150px">
 										<Image transform="scale(0.8)" display="block" width="100%" h="100%" objectFit="contain" title="VMWare" src='/FinalLogos/VMW_09Q3_LOGO_Corp_Gray.svg'></Image>
 									</Box>
 								</Link>
@@ -95,7 +96,7 @@ export default function Home() {
 						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Beta спонсори</Text>
 						<Flex rounded="lg" justifyContent="center" alignItems="center" background="#fff" flexDirection="row" flexWrap="wrap" >		  	
 								<Link isExternal href="http://www.a1.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, 0px)",xl:"translate(110px, 0px)"}} marginRight="15px" background="#fff" w="350px" h="150px">
+									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, 0px)",xl:"translate(60px, 8px)"}} marginBottom="1rem" marginLeft="1rem" width="calc(900px * 1 /3)" h="150px">
 										<Image transform="scale(0.5)" display="block" width="100%" h="100%" objectFit="contain" title="A1" src="/Logos/Beta - A1/A1_01_08RED_3_L_1.png"></Image>
 									</Box>
 								</Link>
@@ -105,7 +106,7 @@ export default function Home() {
 									</Box>
 								</Link>
 								<Link isExternal href="https://www.facebook.com/StrypesBulgaria" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform="translate(0px, 13px)" marginRight="15px" background="#fff" w="350px" h="150px">
+									<Box transform="translate(0px, 5px)" marginRight="15px" background="#fff" w="350px" h="150px">
 										<Image transform="scale(0.8)" display="block" width="100%" h="100%" objectFit="contain" title="Strypes" src="/Logos/Beta - Strypes/strypes-logo-transparent.png"></Image>
 									</Box>
 								</Link>
@@ -116,35 +117,35 @@ export default function Home() {
 						<Flex rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center" >
 								
 								<Link isExternal href="https://asteasolutions.com/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, -10px)",md:"translate(0px, -10px)",lg:"translate(25px, -10px)",xl:"translate(25px, -10px)"}} marginRight="15px" background="#fff" w="350px" h="150px">
+									<Box transform={{sm:"translate(0px, -10px)",md:"translate(0px, -10px)",lg:"translate(25px, -10px)",xl:"translate(25px, -10px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="150px">
 										<Image transform="scale(0.70)" display="block" width="100%" h="100%" objectFit="contain" title="Astea Solutions" src="/Logos/Gamma - Astea Solutions/astea_logo.svg"></Image>
 									</Box>
 								</Link>
 
 								<Link isExternal href="http://web.cpdbg.com/" display="flex" justifyContent="center" alignItems="center" h="100%">
-							  		<Box transform="translate(0px, 2px)" marginRight="15px" background="#fff" w="350px" h="100px">
+							  		<Box transform="translate(0px, 2px)" marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="150px" h="100px">
 										<Image transform="scale(0.80)" display="block" width="100%" h="100%" objectFit="contain" title="CPD" src="/Logos/Gamma - CPD/CPD_a_DaisyTechCompany.png"></Image>
 									</Box>
 								</Link>
 								<Link isExternal href="https://devrix.com/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, -7px)",md:"translate(0px, -7px)",lg:"translate(-8px, -7px)",xl:"translate(-8px, -7px)"}} marginRight="15px" background="#fff" w="350px" h="100px">
+									<Box transform={{sm:"translate(0px, -7px)",md:"translate(0px, -7px)",lg:"translate(-8px, -7px)",xl:"translate(-8px, -7px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
 										<Image transform="scale(0.9)" display="block" width="100%" h="100%" objectFit="contain" title="DevriX" src="/FinalLogos/DevriX_Logo.svg"></Image>
 									</Box>
 								</Link>
 								<Link isExternal href="https://bosch.io/about-us/locations/sofia/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, 2px)",md:"translate(0px, 2px)",lg:"translate(-25px, 2px)",xl:"translate(-5px, 2px)"}} marginRight="15px" background="#fff" w="350px" h="100px">
-										<Image transform="scale(0.90)" display="block" width="100%" h="100%" objectFit="contain" title="Bosch" src="/Logos/Gamma - Bosch/BOSCH_ENGLISH_RGB.svg"></Image>
+									<Box transform={{sm:"translate(0px, 2px)",md:"translate(0px, 2px)",lg:"translate(-25px, -5px)",xl:"translate(-25px, -5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
+										<Image transform="scale(0.8)" display="block" width="100%" h="100%" objectFit="contain" title="Bosch" src="/Logos/Gamma - Bosch/BOSCH_ENGLISH_RGB.svg"></Image>
 									</Box>
 								</Link>
 								
 								<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, -16px)",md:"translate(0px, -16px)",lg:"translate(-5px, -16px)",xl:"translate(-5px, -16px)"}} marginTop="10px" marginRight="15px" background="#fff" w="350px" h="100px">
+									<Box transform={{sm:"translate(0px, -16px)",md:"translate(0px, -16px)",lg:"translate(-5px, -16px)",xl:"translate(-5px, -16px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
 										<Image transform="scale(1)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Gamma - Dopamine/Копие на DOPAMINE logo Black.png"></Image>
 									</Box>
 								</Link>
 								<Link isExternal href="https://careers.paysafe.com/locations/sofia/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, -14px)",md:"translate(0px, -14px)",lg:"translate(-14px, -14px)",xl:"translate(-14px, -14px)"}} marginTop="15px" marginRight="15px" background="#fff" w="350px" h="100px">
-										<Image transform="scale(0.6)"  display="block" width="100%" h="100%" objectFit="contain" title="Paysafe" src="/FinalLogos/Logo Paysafe_1.svg"></Image>
+									<Box transform={{sm:"translate(0px, -14px)",md:"translate(0px, -14px)",lg:"translate(-14px, -11px)",xl:"translate(-14px, -11px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
+										<Image transform="scale(0.65)"  display="block" width="100%" h="100%" objectFit="contain" title="Paysafe" src="/FinalLogos/Logo Paysafe_1.svg"></Image>
 									</Box>
 								</Link>
 						</Flex>
