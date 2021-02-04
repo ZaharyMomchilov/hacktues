@@ -16,7 +16,9 @@ const variants = {
   closed: {
     y: 50,
     opacity: 0,
-    display:"none",
+    transitionEnd:{
+      display:"none",
+    },
     transition: {
       y: { stiffness: 1000 }
     }
@@ -63,6 +65,16 @@ export const MenuItem = (props) => {
       </MotionBox>
       </MotionLink>
       )
+  }
+  else if(!props.name && !props.icon){
+    return (
+      <MotionLink display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}}>
+      <MotionBox w="100%" p="3px" background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer" variants={variants}>
+        <Text href="/"  textDecoration="none" fontFamily="llpixel" color="#009d60" fontSize="1.25rem" fontWeight="200" size="lg">
+              			Hack TUES <span style={{"color":"#105231"}}>GG</span>
+        </Text>
+      </MotionBox>
+        </MotionLink>)
   }
   else{
     return (
