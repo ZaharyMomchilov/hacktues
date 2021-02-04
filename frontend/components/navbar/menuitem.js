@@ -69,9 +69,9 @@ export const MenuItem = (props) => {
   else if(!props.name && !props.icon){
     return (
       <MotionLink display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}}>
-      <MotionBox w="100%" p="3px" background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer" variants={variants}>
+      <MotionBox w="100%" p="3px" background="none"  justifyContent="center" rounded="lg" margin="0" display="flex" alignItems="center" cursor="pointer" variants={variants}>
         <Text href="/"  textDecoration="none" fontFamily="llpixel" color="#009d60" fontSize="1.25rem" fontWeight="200" size="lg">
-              			Hack TUES <span style={{"color":"#105231"}}>GG</span>
+              		Hack TUES	<span style={{"color":"#105231"}}>GG</span>
         </Text>
       </MotionBox>
         </MotionLink>)

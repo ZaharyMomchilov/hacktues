@@ -84,7 +84,7 @@ export default function Navigation(props){
               		</MotionText> */}
             		{/* </a>
           	</Link> */}
-        <MenuItem top="-1px" link="/"/>
+            <MenuItem top="-1px" link="/"/>
         <MenuItem name="Програма" top="-1px" icon={GrSchedule} link="/schedule"/>
         {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
         {/* <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/> */}
@@ -92,8 +92,10 @@ export default function Navigation(props){
         <MenuItem name="Архив" icon={FiArchive} link="/archive"/>
         <MenuItem name="Регламент" icon={GrDocumentText} link="/regulation"/>
         <MenuItem name="За Hack TUES" top="-1px" icon="GG" link="/about"/>
+        
     </Flex>
     <Flex marginTop="100%" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
+      
         {team}
         {login}
         {logout}
