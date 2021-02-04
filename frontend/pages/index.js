@@ -98,19 +98,19 @@ export default function Home() {
 						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Beta спонсори</Text>
 						<Flex rounded="lg" justifyContent="center" alignItems="center" background="#fff" flexDirection="row" flexWrap="wrap" >		  	
 								<Link isExternal href="http://www.a1.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, 0px)",xl:"translate(60px, 8px)"}} marginBottom="1rem" marginLeft="1rem" width="calc(900px * 1 /3)" h="125px">
+									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, 0px)",xl:"translate(60px, 8px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
 										<Image transform="scale(0.5)" display="block" width="100%" h="100%" objectFit="contain" title="A1" src="/Logos/Beta - A1/A1_01_08RED_3_L_1.png"></Image>
 									</Box>
 								</Link>
 
 								<Link isExternal href="https://www.facebook.com/StrypesBulgaria" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform="translate(0px, 16px)" marginBottom="1rem" marginLeft="1rem" width="calc(900px * 1 /3)" h="125px">
+									<Box transform="translate(0px, 16px)" marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
 										<Image transform="scale(0.75)" display="block" width="100%" h="100%" objectFit="contain" title="Strypes" src="/Logos/Beta - Strypes/strypes-logo-transparent.png"></Image>
 									</Box>
 								</Link>
 
 								<Link isExternal href="https://www.nemetschek.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform="translate(0px, 5px)" background="#fff" marginBottom="1rem" marginLeft="1rem" width="calc(900px * 1 /3)" h="125px">
+									<Box transform="translate(0px, 5px)" background="#fff" marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
 										<Image transform="scale(1.2)" display="block" width="100%" h="100%" objectFit="contain" title="Nemetschek" src="/Logos/Beta - Nemetschek/Nemetschek-logo 2.png"></Image>
 									</Box>
 								</Link>
@@ -128,38 +128,35 @@ export default function Home() {
 									</Box>
 								</Link>
 
-								<Link isExternal href="https://careers.paysafe.com/locations/sofia/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, -14px)",md:"translate(0px, -14px)",lg:"translate(-14px, 4px)",xl:"translate(-14px, 4px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
-										<Image transform="scale(0.6)"  display="block" width="100%" h="100%" objectFit="contain" title="Paysafe" src="/FinalLogos/Logo Paysafe_1.svg"></Image>
-									</Box>
-								</Link>
-
-								<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, -16px)",md:"translate(0px, -16px)",lg:"translate(-5px, 5px)",xl:"translate(-5px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
-										<Image transform="scale(0.85)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Gamma - Dopamine/Копие на DOPAMINE logo Black.png"></Image>
-									</Box>
-								</Link>
-
 								<Link isExternal href="http://web.cpdbg.com/" display="flex" justifyContent="center" alignItems="center" h="100%">
-							  		<Box transform="translate(0px, 12px)" marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="150px" h="100px">
+							  		<Box transform={["translate(0px, 0px)","translate(0px, 0px)","translate(0px, 12px)","translate(0px, 12px)"]} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="150px" h="100px">
 										<Image transform="scale(0.67)" display="block" width="100%" h="100%" objectFit="contain" title="CPD" src="/Logos/Gamma - CPD/CPD_a_DaisyTechCompany.png"></Image>
 									</Box>
 								</Link>
 								<Link isExternal href="https://devrix.com/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, -7px)",md:"translate(0px, -7px)",lg:"translate(-8px, 8px)",xl:"translate(-8px, 8px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
+									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-8px, 8px)",xl:"translate(-8px, 8px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
 										<Image transform="scale(0.7)" display="block" width="100%" h="100%" objectFit="contain" title="DevriX" src="/FinalLogos/DevriX_Logo.svg"></Image>
 									</Box>
 								</Link>
 								
 								<Link isExternal href="https://bosch.io/about-us/locations/sofia/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, 2px)",md:"translate(0px, 2px)",lg:"translate(-25px, 10px)",xl:"translate(-25px, 10px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
+									<Box transform={{sm:"translate(-10px, 2px)",md:"translate(-10px, 2px)",lg:"translate(-25px, 10px)",xl:"translate(-25px, 10px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
 										<Image transform="scale(0.8)" display="block" width="100%" h="100%" objectFit="contain" title="Bosch" src="/Logos/Gamma - Bosch/BOSCH_ENGLISH_RGB.svg"></Image>
 									</Box>
 								</Link>
 								
-								
+								<Link isExternal href="https://careers.paysafe.com/locations/sofia/" display="flex" justifyContent="center" alignItems="center" h="100%">
+									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-14px, 4px)",xl:"translate(-14px, 4px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
+										<Image transform="scale(0.6)"  display="block" width="100%" h="100%" objectFit="contain" title="Paysafe" src="/FinalLogos/Logo Paysafe_1.svg"></Image>
+									</Box>
+								</Link>
 
-								
+								<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
+									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-5px, 5px)",xl:"translate(-5px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
+										<Image transform="scale(0.85)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Gamma - Dopamine/Копие на DOPAMINE logo Black.png"></Image>
+									</Box>
+								</Link>
+
 						</Flex>
 					</Flex>
 				</Flex>
