@@ -8,6 +8,7 @@ const variants = {
   open: {
     y: 0,
     opacity: 1,
+    display:"flex",
     transition: {
       y: { stiffness: 1000, velocity: -100 }
     }
@@ -15,6 +16,7 @@ const variants = {
   closed: {
     y: 50,
     opacity: 0,
+    display:"none",
     transition: {
       y: { stiffness: 1000 }
     }

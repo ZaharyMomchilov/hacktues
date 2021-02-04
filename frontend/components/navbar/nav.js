@@ -45,14 +45,18 @@ const Divide = motion.custom(Divider)
 const mlink = {
   open: {
     y: 0,
+    x: 0,
     opacity: 1,
+    display:"flex",
     transition: {
+      when: "afterChildren",
       y: { stiffness: 1000, velocity: -100 }
     }
   },
   closed: {
     y: 50,
     opacity: 0,
+    display:"none",
     transition: {
       y: { stiffness: 1000 }
     }
@@ -73,6 +77,10 @@ export default function Navigation(props){
   var team
 
   console.log(props)
+
+
+  
+
 
   // useEffect(() => {
     if(props.ctx.loggedin == 0 && props.ctx.inteam == null){
@@ -104,16 +112,16 @@ export default function Navigation(props){
   // }, [login,team,logout, props])
 
 
-  return (<Li justifyContent="center" alignItems="center" zIndex="1" h="100%" w="100%" position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
+  return (<Li justifyContent="center" alignItems="center" zIndex="1" w="100%" position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
   {/* {props.xd[0]} */}
   <Flex marginTop="15px"  zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
-      <Link textDecoration="none" href="/">
-          		<a textDecoration="none">
-            		<MotionText variants={mlink}  textDecoration="none" fontFamily="llpixel" color="#009d60" fontSize="1.25rem" fontWeight="200" size="lg">
+      {/* <Link textDecoration="none" href="/">
+          		<a textDecoration="none"> */}
+            		<MotionText href="/" variants={mlink}  textDecoration="none" fontFamily="llpixel" color="#009d60" fontSize="1.25rem" fontWeight="200" size="lg">
               			Hack TUES <span style={{"color":"#105231"}}>GG</span>
             		</MotionText>
-          		</a>
-        	</Link>
+          		{/* </a>
+        	</Link> */}
       <MenuItem name="Програма" top="-1px" icon={GrSchedule} link="/schedule"/>
       {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
       {/* <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/> */}
