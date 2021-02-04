@@ -123,8 +123,8 @@ export default function Home() {
 						<Flex rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center" >
 								
 								<Link isExternal href="https://asteasolutions.com/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, 5px)",md:"translate(0px, -10px)",lg:"translate(25px, 3px)",xl:"translate(25px, 3px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="150px">
-										<Image transform="scale(0.55)" display="block" width="100%" h="100%" objectFit="contain" title="Astea Solutions" src="/Logos/Gamma - Astea Solutions/astea_logo.svg"></Image>
+									<Box transform={{sm:"translate(0px, 5px)",md:"translate(0px, -10px)",lg:"translate(0px, 3px)",xl:"translate(25px, 3px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
+										<Image transform="scale(0.85)" display="block" width="100%" h="100%" objectFit="contain" title="Astea Solutions" src="/Logos/Gamma - Astea Solutions/astea_logo.svg"></Image>
 									</Box>
 								</Link>
 
