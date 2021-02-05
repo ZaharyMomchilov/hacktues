@@ -33,8 +33,7 @@ export default function Login() {
 					url: `http://${process.env.hostname}/token/`,
 					headers: 
 					{ "Content-type": "Application/json",
-					"Authorization": `Bearer ${cookies.get('auth')}`,
-					"Access-Control-Allow-Origin": "*",
+					"Authorization": `Bearer ${cookies.get('auth')}`
 					},
 					data: data  
 					  },)

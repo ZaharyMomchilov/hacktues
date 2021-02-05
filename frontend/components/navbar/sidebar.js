@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef, useEffect } from "react";
+import { useRef, useContext  } from "react";
 import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "./dim";
 import { MenuToggle } from "./button";
@@ -7,7 +7,7 @@ import Navigation from "./nav";
 import { Box, Flex } from '@chakra-ui/react'
 import { useMediaQuery } from "@chakra-ui/react"
 import { useRouter } from 'next/router'
-
+import NavProvider from '../../pages/_app'
 
 
 const Nav = motion.custom(Flex)
@@ -16,6 +16,13 @@ const Div = motion.custom(Box)
 export const Sidebar = (props, onShowClick) => {
 
   const [isLargerThan428] = useMediaQuery("(min-width: 428px)")
+  // const { nav, setNav } = useContext(NavProvider);
+  
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
+  const { height } = useDimensions(containerRef);
+
+  // const handleNav = () => setNav(isOpen)
 
   var sidebar
   var variant
@@ -102,18 +109,11 @@ export const Sidebar = (props, onShowClick) => {
     }
   // }, [isLargerThan428, sidebar, variant])
 
-  
-
-
-  const [isOpen, toggleOpen] = useCycle(false, true);
-  const containerRef = useRef(null);
-  const { height } = useDimensions(containerRef);
-
   return (
     <Flex as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
       <MenuToggle toggle={() => {toggleOpen()}}  />
       <Navigation ctx={props} />
-      <Div  h="100%" position="absolute" width={["100%","100%","300px","300px"]} background="#fff" className="background" variants={sidebar} />
+      <Box as={motion.div} h="100%" position="absolute" width={["100%","100%","300px","300px"]} background="#fff" className="background" variants={sidebar} />
     </Flex>
   );
 };

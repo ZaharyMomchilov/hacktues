@@ -6,7 +6,7 @@ import '../styles/react-big-calendar.css'
 import Navbar from '../components/navbar/navbar'
 import {Sidebar} from '../components/navbar/sidebar'
 import Footer from '../components/footer/footer'
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Cookies from 'universal-cookie';
 import axios from 'axios'
 import jwt_decode from "jwt-decode";
@@ -21,6 +21,8 @@ const cookies = new Cookies();
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 
+
+export const NavProvider = React.createContext(false);
 
 // axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
 // axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
@@ -81,13 +83,15 @@ function MyApp({ Component, pageProps }) {
 	const [logged, setLogin] = useControllableState({defaultValue:0});
 	const [inTeam, setTeam] = useControllableState({defaultValue:null});
 	const [discord, setDiscord] = useControllableState({defaultValue: null});
+	const [xd, setXd] = useState(false);
 
 	const dived = {
 		open: {
-			width:"0%", height:"0px"
+			// display:"initial"
 			}, 
-		closed:{
-			display:"unset"}}
+		// closed:{
+		// 	display:"none"}
+		}
 
 	const div = {
 		open: {
@@ -129,8 +133,7 @@ function MyApp({ Component, pageProps }) {
 						url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}/`,
 						headers: 
 						{ "Content-type": "Application/json",
-						  Authorization: `Bearer ${cookies.get('auth')}`,
-						  "Access-Control-Allow-Origin": "*",
+						  "Authorization": `Bearer ${cookies.get('auth')}`
 						  }
 						  },)
 						.then(function (response){
@@ -164,10 +167,12 @@ function MyApp({ Component, pageProps }) {
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex as={motion.div} variants={div} flexDirection={["column","column","row","row"]} flexWrap="wrap">
 			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
-  			<Sidebar avatar={discord} inteam={inTeam} loggedin={logged} />
-			<Box as={motion.div} variants={dived} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
-				<Component {...pageProps} />
-			</Box>
+			<NavProvider.Provider value={{xd, setXd}}>
+  				<Sidebar as={motion.div} avatar={discord} inteam={inTeam} loggedin={logged} />
+				<Box initial={false} animate={xd ? "open" : "closed"} as={motion.div} variants={dived} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
+					<Component as={motion.div} {...pageProps} />
+				</Box>
+			</NavProvider.Provider>
 		</Flex>
 		<Cookie/>
   	  	{/* <Footer/> */}

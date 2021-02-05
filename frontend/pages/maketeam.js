@@ -231,8 +231,9 @@ export async function getServerSideProps(ctx){
 		}
 		else{
 			var users = response.data.filter(function(item) {
-				return item.email !== "hacktues" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id})
-			}
+				return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != ''
+			})
+			console.log(users)
 			return {props: {users: users}}
 		}
 
@@ -266,6 +267,7 @@ export async function getServerSideProps(ctx){
 		// 	  },
 		// }
 	
+}
 }
 
 function equalTo(ref, msg) {
