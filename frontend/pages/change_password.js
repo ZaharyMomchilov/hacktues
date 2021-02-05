@@ -6,6 +6,7 @@ import { Formik, Field, Form } from 'formik';
 import Cookies from 'universal-cookie';
 import { ViewIcon, ViewOffIcon} from '@chakra-ui/icons'
 
+import * as Yup from 'yup';
 import { useRouter } from "next/router";
 
 const cookies = new Cookies();
