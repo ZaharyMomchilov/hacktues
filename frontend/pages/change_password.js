@@ -33,7 +33,7 @@ export default function Login({logIn}) {
 					// var data = JSON.stringify(values, null, 1)
 					axios({
 						method: 'post',
-						url: `https://${process.env.hostname}/users/forgotten_password/`,
+						url: `https://${process.env.hostname}/users/change_password/`,
 						headers: 
 						{ "Content-type": "Application/json",
 						"Authorization": `Bearer ${cookies.get('auth')}`
@@ -45,13 +45,13 @@ export default function Login({logIn}) {
 						}  
 						  },)
 						.then(function (response) {
-							toast({ title: "Промяна на парола.", description: "Влезте в имейлът Ви, за да смените паролата.",status: "success", duration: 9000})
+							toast({ title: "Промяна на парола.", description: "Успешно сменихте паролата.",status: "success", duration: 9000})
 							router.push('/')
 						})
 						.catch(function (error) {
 							if (error.response) {
 								toast({
-									title: "Влизането не е успешно.",
+									title: "Промяната не е успешна.",
 									description: error.response.data.detail,
 									status: "error",
 									duration: 9000
@@ -63,16 +63,21 @@ export default function Login({logIn}) {
 						}}>
 	{props => (
 			<form onSubmit={props.handleSubmit}>
-			<Field name="password">
+			<Field name="password" >
 				{({ field, form }) => (
-					  <FormControl isRequired isInvalid={form.errors.email && form.touched.email}>
-						<FormLabel color="black" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="text">
-								Нова парола
-						</FormLabel>
-						<Input _focus={{outline:"none"}} outline="lightgrey" variant="outline" {...field} id="email1" />
-						<FormErrorMessage>{form.errors.email}</FormErrorMessage>
-					  </FormControl>
-				)}
+				<FormControl isRequired isInvalid={form.errors.password && form.touched.password}>
+					<FormLabel paddingTop="15px" paddingBottom="5px" color="black" fontFamily="Rubik" fontSize="15px" htmlFor="password">
+						Нова парола
+					</FormLabel>
+					<InputGroup size="md">
+						<Input id="password1" pr="4.5rem" type={show ? "text" : "password"} isRequired {...field} isInvalid={form.errors.password && form.touched.password}/>
+							<InputRightElement width="4.5rem">
+								<Button fontFamily="Rubik" fontSize="15px" border="0" colorScheme="green" _focus={{outline:"none"}} h="1.75rem" size="sm" onClick={handleClick}>
+									{show ? <ViewIcon/> : <ViewOffIcon/>}
+								</Button>
+							</InputRightElement>
+						</InputGroup>
+				</FormControl>)}
 			</Field>
 			<Button mt={4} colorScheme="green" border="0" isLoading={props.isSubmitting} type="submit">
 				Смени паролата
@@ -109,7 +114,7 @@ export default function Login({logIn}) {
 						.catch(function (error) {
 							if (error.response) {
 								toast({
-									title: "Влизането не е успешно.",
+									title: "Възникна грешка.",
 									description: error.response.data.detail,
 									status: "error",
 									duration: 9000
