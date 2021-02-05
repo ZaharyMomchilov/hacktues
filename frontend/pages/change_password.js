@@ -24,7 +24,9 @@ export default function Login({logIn}) {
 
 	var token = router.query.token
 	var token_id = router.query.token_id
-	token.replace("", "+")
+	if(router.query.token){
+		token.replace("", "+")
+	}
 
 
 	if(router.query.token && router.query.token_id){
