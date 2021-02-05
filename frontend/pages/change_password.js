@@ -22,7 +22,7 @@ export default function Login({logIn}) {
 	var router = useRouter()
 	const toast = useToast()
 
-	if(router.query.token & router.query.token_id){
+	if(router.query.token && router.query.token_id){
 		return(
 			<Box marginLeft="15px" marginRight="15px">
 			  <Box margin="auto" w={["100%","100%","25%","25%"]} minWidth={["none","none","35rem","35rem"]} backgroundColor="white" p="25px" mt="50px" rounded="lg">
