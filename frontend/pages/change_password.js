@@ -44,7 +44,7 @@ export default function Login({logIn}) {
 						},
 						data: {"password":values.password,
 								"token_id":tokenParams[0],
-								"token":token[1]
+								"token":tokenParams[1]
 						}  
 						  },)
 						.then(function (response) {
