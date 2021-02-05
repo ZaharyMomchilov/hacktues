@@ -119,7 +119,7 @@ export default function Register(props) {
         						headers: 
         						{ "Content-type": "Application/json",
         						  "Authorization": `Bearer ${cookies.get('auth')}`,
-								  'Access-Control-Allow-Origin' : '*',},
+								  },
 								data: data  
 								  },)
         					    .then(function (response) {
