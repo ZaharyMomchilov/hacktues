@@ -30,17 +30,17 @@ const Player = (props) => {
   var captain
   var position
   if(props.captain){
-      captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => makecaptain()}>Направи капитан</Button>
+      leave = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
       position = "Капитан"
   }
-  else if(!props.captain){
-      captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
-      position = "Участник"
-  }
-  else if(props.leave){
+  else if(props.player){
     captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
     position = "Участник"
 }
+  else if(props.teammate){
+    captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => makecaptain()}>Направи капитан</Button>
+    position = "Участник"
+  }
 
     return (
       <Flex background="white" p="50px" flexDirection="column" flexWrap="wrap" alignSelf="stretch" w="350px" h="250px" m="15px" rounded="lg" overflow="hidden">

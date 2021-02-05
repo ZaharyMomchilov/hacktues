@@ -6,9 +6,11 @@ import Link from 'next/link'
 const Card = (props) => {
 
 		var j;
-		
-		const teammates = props.teammates.map((data, index) =>
-			data = data.split('\n').map(str => <Text key={index} p={0} m={0}>{str}</Text>)
+		const teammates = []
+		props.teammates.map((data, index) =>
+		{
+			teammates.push(<Text p={0} m={0}>{`${data.first_name} ${data.last_name} - ${data.form}`}</Text>)
+		}
     	);
 
 		var tech = []

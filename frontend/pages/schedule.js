@@ -102,7 +102,7 @@
 import React from 'react'
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar'
 import events from '../components/schedule/events'
-
+import {Link, Text} from '@chakra-ui/react'
 import * as dates from '../components/schedule/dates'
 import moment from 'moment'
 
@@ -121,17 +121,18 @@ function EventAgenda({ event }) {
   return (
     <span>
       <em style={{ color: '#009d60' }}>{event.title}</em>
-      <p>{event.desc}</p>
+      <Text>{event.desc}</Text>
+      <a style={{textDecoration:"none"}}>Очакваме те&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>Google Meet</Link></a>
     </span>
   )
 }
 
 let Schedule = () => (
   <Calendar
+    length={1000}
     toolbar={false}
     events={events}
     localizer={localizer}
-    defaultDate={new Date(2021, 3, 1)}
     defaultView={Views.AGENDA}
     components={{
       event: Event,
@@ -142,7 +143,7 @@ let Schedule = () => (
     }
     }
     messages={{event:"Събитие",date:"Дата",time:"Време"}}
-    style={{background:"white", borderRadius:"10px", marginLeft:"50px", marginRight:"50px", height:"auto", border:"none", marginTop:"50px", padding:"5px"}}
+    style={{fontFamily:"Rubik",background:"white", borderRadius:"10px", marginLeft:"50px", marginRight:"50px", height:"auto", border:"none", marginTop:"50px", padding:"5px"}}
   />
 )
 

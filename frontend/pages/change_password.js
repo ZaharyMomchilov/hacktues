@@ -3,21 +3,47 @@ import { Box, Button, Input, InputGroup, InputRightElement, useToast, Flex, Text
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakra-ui/react";
 import _ from 'lodash';
 import { Formik, Field, Form } from 'formik';
-import { useDisclosure} from "@chakra-ui/react";
-const axios = require('axios');
 import Cookies from 'universal-cookie';
 import { ViewIcon, ViewOffIcon} from '@chakra-ui/icons'
 
 import { useRouter } from "next/router";
-import Router from 'next/router'
 
 const cookies = new Cookies();
+const axios = require('axios');
 
 export default function Login({logIn}) {
-	
-	const { isOpen, onOpen, onClose } = useDisclosure();
+
 	const [show, setShow] = React.useState(false);
 	const handleClick = () => setShow(!show);
+
+	const SignupSchema = Yup.object().shape({
+		first_name: Yup.string()
+			.min(2, 'Твърде кратко!')
+		  	.max(50, 'Твърде дълго!')
+		  	.matches(/[а-я]/, 'използвай поне една малка буква')
+			.matches(/[А-Я]/, 'използвай поне една голяма буква')
+			.matches(/^[А-Я][а-я]+$/, 'използвай само кирилица')
+		  	.required('Задължително'),
+		last_name: Yup.string()
+		  	.min(2, 'Too Short!')
+		  	.max(50, 'Too Long!')
+			.matches(/[а-я]/, 'използвай поне една малка буква')
+			.matches(/[А-Я]/, 'използвай поне една голяма буква')
+			.matches(/^[А-Я][а-я]+$/, 'използвай само кирилица')
+		 	.required('Задължително'),
+		email: Yup.string().email('Невалиден имейл').required('Задължително'),
+		reemail: Yup.string().email('Невалиден имейл').equalTo(Yup.ref('email'), 'Имейлите не са еднакви').required('Задължително'),
+		password: Yup.string()
+				.matches(/[A-Z]/, 'използвай минимум 1 главна буква')
+				.matches(/[a-z]/, 'използвай минимум 1 малка буква')
+				.matches(/\d/, 'използвай минимум 1 цифра')
+				.matches(/[^\d\w\s]/, 'използвай минимум 1 специален символ')
+				.matches(/.{8}/, 'използвай минимум 8 символа'),
+		repassword: Yup.string().equalTo(Yup.ref('password'), 'Паролите не са еднакви').required('Задължително'),
+		phone: Yup.string()
+				.matches(/^0\d{9}$/, 'използвай валиден телефон')
+	});
+
 
 	var router = useRouter()
 	const toast = useToast()
@@ -26,12 +52,11 @@ export default function Login({logIn}) {
 		var path = router.asPath
 		var split = _.split(path, '?token_id=')
 		var tokenParams = _.split(split[1], '&token=')
-		// var token = _.split(tokenParams[1], '/')
 		
 		return(
 			<Box marginLeft="15px" marginRight="15px">
 			  <Box margin="auto" w={["100%","100%","25%","25%"]} minWidth={["none","none","35rem","35rem"]} backgroundColor="white" p="25px" mt="50px" rounded="lg">
-				<Formik initialValues={{ }} 
+				<Formik validationSchema={SignupSchema} initialValues={{ }} 
 		onSubmit={(values, actions) => {
 			setTimeout(() => {
 					axios({
@@ -98,15 +123,12 @@ export default function Login({logIn}) {
 				<Formik initialValues={{ email: "" }} 
 		onSubmit={(values, actions) => {
 			setTimeout(() => {
-					console.log(values.email)
-					// var data = JSON.stringify(values, null, 1)
 					axios({
 						method: 'post',
 						url: `https://${process.env.hostname}/users/forgotten_password/`,
 						headers: 
 						{ "Content-type": "Application/json",
 						"Authorization": `Bearer ${cookies.get('auth')}`
-	
 						},
 						data: {"email":values.email}  
 						  },)

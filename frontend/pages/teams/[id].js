@@ -31,17 +31,16 @@ function Teams(props) {
 	var j
 	var tech = []
 
-	// useEffect(() => {
-	// 	console.log(chosenTech)
-	// }, [chosenTech])
-
 	var players = []
 
-	for(var k = 0; k< props.teams.users.length; k++){
-		players.push(<Player captain={props.user.is_captain} user_id={props.user.id} team_id={props.user.team_set[0]} name={props.teams.users[k]} ></Player>)
-	}
+	if(props.user.is_captain && props.captain.team_set[0] == props.user.team_set[0]){
 
-	if(props.user.is_captain){
+		// players.push(<Player captain={props.captain.is_captain} user_id={props.captain.id} team_id={props.user.team_set[0]} name={`${props.user.first_name} ${props.user.last_name}`} ></Player>)
+		
+		// for(var k = 0; k< props.teams.users.length; k++){
+		// 	if(`props.captain.`)
+		// 	players.push(<Player key={k} captain={props.user.is_captain} user_id={props.user.id} team_id={props.user.team_set[0]} name={props.teams.users[k]} ></Player>)
+		// }
 
 		if(router.query.id == props.user.team_set[0]){
 			const technology = labels
@@ -172,7 +171,7 @@ function Teams(props) {
 						<Field name="tech">
 								{({ field, form }) => (
 								<FormControl flexGrow={1} w="100%" mr="5px"  isInvalid={form.errors.last_name && form.touched.last_name}>
-									<FormLabel fontFamily="Rubik" fontSize="15px" htmlFor="text">Линк/ове към GitHub хранилище/а:</FormLabel>
+									<FormLabel fontFamily="Rubik" fontSize="15px" htmlFor="text">Технологии</FormLabel>
 										{/* <Input _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="github_link" /> */}
 										{tech}
 									<FormErrorMessage border={0}>{form.errors.last_name}</FormErrorMessage>
@@ -375,6 +374,15 @@ export async function getServerSideProps(ctx){
 		},
 		)
 
+		var captain = await axios({
+			method: 'get',
+			url: `http://${process.env.hostname}/users/${response.data.captain}/`,
+			headers: 
+			{ "Content-type": "Application/json",
+			"Authorization": `Bearer ${cookies.get('auth')}`}
+			},
+		)
+
 
 	  var res = await axios({
 		method: 'get',
@@ -394,7 +402,7 @@ export async function getServerSideProps(ctx){
 			},
 		)
 				
-	return {props: {teams: response.data,  user: res.data, users: users.data }}
+	return {props: {teams: response.data,  user: res.data, users: users.data, captain: captain.data }}
 	
 
 }
