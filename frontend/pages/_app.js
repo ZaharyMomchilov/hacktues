@@ -22,9 +22,9 @@ import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 
 
-axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+// axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
+// axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+// axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 Sentry.init({
 	dsn: "https://47d68f3b1c084b459d17b4013d403960@o516791.ingest.sentry.io/5623722",
