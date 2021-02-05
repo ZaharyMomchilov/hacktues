@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, Input, InputGroup, InputRightElement, useToast, Flex, Text, Link } from "@chakra-ui/react";
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakra-ui/react";
-
+import _ from 'lodash';
 import { Formik, Field, Form } from 'formik';
 import { useDisclosure} from "@chakra-ui/react";
 const axios = require('axios');
@@ -22,22 +22,18 @@ export default function Login({logIn}) {
 	var router = useRouter()
 	const toast = useToast()
 
-	var token = router.query.token
-	var token_id = router.query.token_id
-	if(router.query.token){
-		token.replace("", "+")
-	}
-
-
 	if(router.query.token && router.query.token_id){
+		var path = router.asPath
+		var split = _.split(path, '?token_id=')
+		var tokenParams = _.split(split[1], '&token=')
+		var token = _.split(tokenParams[1], '/')
+		
 		return(
 			<Box marginLeft="15px" marginRight="15px">
 			  <Box margin="auto" w={["100%","100%","25%","25%"]} minWidth={["none","none","35rem","35rem"]} backgroundColor="white" p="25px" mt="50px" rounded="lg">
 				<Formik initialValues={{ }} 
 		onSubmit={(values, actions) => {
 			setTimeout(() => {
-					console.log(values.email)
-					// var data = JSON.stringify(values, null, 1)
 					axios({
 						method: 'post',
 						url: `https://${process.env.hostname}/users/change_password/`,
@@ -47,8 +43,8 @@ export default function Login({logIn}) {
 	
 						},
 						data: {"password":values.password,
-								"token_id":token_id,
-								"token":token
+								"token_id":tokenParams[0],
+								"token":token[0]
 						}  
 						  },)
 						.then(function (response) {

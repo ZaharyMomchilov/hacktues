@@ -147,13 +147,13 @@ export default function Home() {
 								
 								<Link isExternal href="https://careers.paysafe.com/locations/sofia/" display="flex" justifyContent="center" alignItems="center" h="100%">
 									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-14px, 4px)",xl:"translate(-14px, 4px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
-										<Image transform="scale(0.6)"  display="block" width="100%" h="100%" objectFit="contain" title="Paysafe" src="/FinalLogos/Logo Paysafe_1.svg"></Image>
+										<Image transform="scale(0.7)"  display="block" width="100%" h="100%" objectFit="contain" title="Paysafe" src="/FinalLogos/Logo Paysafe_1.svg"></Image>
 									</Box>
 								</Link>
 
 								<Link isExternal href="https://www.dopamine.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-5px, 5px)",xl:"translate(-5px, 5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
-										<Image transform="scale(0.85)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Gamma - Dopamine/Копие на DOPAMINE logo Black.png"></Image>
+									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(-5px, 4px)",xl:"translate(-5px, 4px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="100px">
+										<Image transform="scale(0.96)" display="block" width="100%" h="100%" objectFit="contain" title="Dopamine" src="/Logos/Gamma - Dopamine/Копие на DOPAMINE logo Black.png"></Image>
 									</Box>
 								</Link>
 
