@@ -73,10 +73,10 @@ export default function Navigation(props){
   // }, [login,team,logout, props])
 
 
-  return (<Li justifyContent="center" alignItems="center" zIndex="1" w="100%" position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
+  return (<Flex as={motion.div} justifyContent="center" alignItems="center" zIndex="1" w="100%" position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
   {/* {props.xd[0]} */}
     <Flex justifyContent="center" alignItems="center" flexDirection="column" position="relative" h="100%">
-      <Flex marginTop="15px" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
+      <Flex marginBottom="auto" marginTop="15px" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
         {/* <Link textDecoration="none" href="/">
             		<a textDecoration="none"> */}
               		{/* <MotionText href="/" variants={mlink}  textDecoration="none" fontFamily="llpixel" color="#009d60" fontSize="1.25rem" fontWeight="200" size="lg">
@@ -102,6 +102,6 @@ export default function Navigation(props){
       </Flex>  
       </Flex>
   
-</Li>)
+</Flex>)
 }
 

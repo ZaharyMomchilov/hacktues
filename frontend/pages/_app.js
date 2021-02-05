@@ -87,10 +87,10 @@ function MyApp({ Component, pageProps }) {
 
 	const dived = {
 		open: {
-			// display:"initial"
+			display:"none"
 			}, 
-		// closed:{
-		// 	display:"none"}
+		closed:{
+			display:"initial"}
 		}
 
 	const div = {
@@ -167,12 +167,12 @@ function MyApp({ Component, pageProps }) {
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex as={motion.div} variants={div} flexDirection={["column","column","row","row"]} flexWrap="wrap">
 			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
-			<NavProvider.Provider value={{xd, setXd}}>
+			{/* <NavProvider.Provider value={{xd, setXd}}> */}
   				<Sidebar as={motion.div} avatar={discord} inteam={inTeam} loggedin={logged} />
 				<Box initial={false} animate={xd ? "open" : "closed"} as={motion.div} variants={dived} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 					<Component as={motion.div} {...pageProps} />
 				</Box>
-			</NavProvider.Provider>
+			{/* </NavProvider.Provider> */}
 		</Flex>
 		<Cookie/>
   	  	{/* <Footer/> */}

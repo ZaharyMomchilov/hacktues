@@ -37,13 +37,12 @@ function Teams(props) {
 
 	var players = []
 
-
 	for(var k = 0; k< props.teams.users.length; k++){
 		players.push(<Player captain={props.user.is_captain} user_id={props.user.id} team_id={props.user.team_set[0]} name={props.teams.users[k]} ></Player>)
 	}
 
-
 	if(props.user.is_captain){
+
 		if(router.query.id == props.user.team_set[0]){
 			const technology = labels
 			
@@ -99,13 +98,13 @@ function Teams(props) {
 					</Flex>
 					<Formik initialValues={{ name: props.teams.name, project_name: props.teams.project_name , github_link: props.teams.github_link, project_description: props.teams.project_description}} onSubmit={(values, actions) => {
         			setTimeout(() => {
-							// if(people.length > 4){
-							// 	actions.setSubmitting(false);
-							// 	actions.setFieldError("users", "Твърде много участници избрани")
-							// }
-                            // let selected = people.map(a => a.value);
-                            // values['users'] = selected
-							// values['users'].push(jwt_decode(cookies.get('auth')).user_id)
+							if(people.length > 4){
+								actions.setSubmitting(false);
+								actions.setFieldError("users", "Твърде много участници избрани")
+							}
+                            let selected = people.map(a => a.value);
+                            values['users'] = selected
+							values['users'].push(jwt_decode(cookies.get('auth')).user_id)
                             values['technologies'] = chosenTech
 							console.log(values)
 							var data = JSON.stringify(values, null, 1)
@@ -122,10 +121,11 @@ function Teams(props) {
         			    	})
         					    .catch(function (error) {
 									if (error.response) {
-										for (const [key, value] of Object.entries(error.response.data)) {
-  											console.log(`${key}: ${value}`);
-											actions.setFieldError(key, value)
-										}
+										console.log(error.response)
+										// for (const [key, value] of Object.entries(error.response.data)) {
+  										// 	console.log(`${key}: ${value}`);
+										// 	actions.setFieldError(key, value)
+										// }
 								}})						
           									actions.setSubmitting(false)
         								}, 1000);

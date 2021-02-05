@@ -112,11 +112,13 @@ const Teams = (props) => {
 										if(error.response.data == "reached maximum users in the team limit"){
 											actions.setFieldError("users", "надвишен е максималният брой участници")
 										}
-										for (const [key, value] of Object.entries(error.response.data)) {
-  											console.log(`${key}: ${value}`);
-											actions.setFieldError(key, value)
+										// for (const [key, value] of Object.entries(error.response.data)) {
+  										// 	// console.log(`${key}: ${value}`);
+										// 	// actions.setFieldError(key, value)
+										// 	вдж
 											
-										}
+										// }
+										console.log(error.response)
 								}})						
           									actions.setSubmitting(false)
         								}, 1000);

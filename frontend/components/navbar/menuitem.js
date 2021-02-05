@@ -54,39 +54,39 @@ export const MenuItem = (props) => {
   if(!props.link){
     return (
       
-      <MotionLink variants={variants} cursor="pointer" _focus={{outline:"none"}} href="/" cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>
-      <MotionBox w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
+      <Link as={motion.div}  display="flex" alignItems="center" justifyContent="center"  variants={variants} cursor="pointer" _focus={{outline:"none"}} href="/" cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>
+      <Box as={motion.div} w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
         variants={variants}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
         {icon}
         {button}
-      </MotionBox>
-      </MotionLink>
+      </Box>
+      </Link>
       )
   }
   else if(!props.name && !props.icon){
     return (
-      <MotionLink display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}}>
-      <MotionBox w="100%" p="3px" background="none"  justifyContent="center" rounded="lg" margin="0" display="flex" alignItems="center" cursor="pointer" variants={variants}>
+      <Link as={motion.div} display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}}>
+      <Box as={motion.div} w="100%" p="3px" background="none"  justifyContent="center" rounded="lg" margin="0" display="flex" alignItems="center" cursor="pointer" variants={variants}>
         <Text href="/"  textDecoration="none" fontFamily="llpixel" color="#009d60" fontSize="1.25rem" fontWeight="200" size="lg">
               		Hack TUES	<span style={{"color":"#105231"}}>GG</span>
         </Text>
-      </MotionBox>
-        </MotionLink>)
+      </Box>
+        </Link>)
   }
   else{
     return (
-      <MotionLink display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}}>
-      <MotionBox w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
+      <Link as={motion.div} display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}}>
+      <Box as={motion.div} w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
         variants={variants}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
         {icon}
         {button}
-      </MotionBox>
-        </MotionLink>)
+      </Box>
+        </Link>)
   }
 };
