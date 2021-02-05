@@ -130,7 +130,7 @@ function MyApp({ Component, pageProps }) {
 					if(inTeam == null){
 						axios({
 						method: 'get',
-						url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}/`,
+						url: `https://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}/`,
 						headers: 
 						{ "Content-type": "Application/json",
 						  "Authorization": `Bearer ${cookies.get('auth')}`
@@ -206,7 +206,7 @@ const Cookie = () => {
 function getNewToken() {
 	axios({
 		method: 'post',
-		url: `http://${process.env.hostname}/token/`,
+		url: `https://${process.env.hostname}/token/`,
 		header: 'Content-Type: application/json',
 		data: {"email": "hacktues","password": "Go Green"}
 	})
@@ -219,7 +219,7 @@ function getNewToken() {
 function refreshToken() {
 	axios({
 		method: 'post',
-		url: `http://${process.env.hostname}/token/refresh/`,
+		url: `https://${process.env.hostname}/token/refresh/`,
 		headers: 
 		{ "Content-type": "Application/json"},
 		data: {refresh: `${cookies.get('refresh')}`}  
@@ -236,7 +236,7 @@ function refreshToken() {
 function getUsers() {
 	axios({
 		method: 'get',
-		url: `http://${process.env.hostname}/users/`,
+		url: `https://${process.env.hostname}/users/`,
 		headers: 
 		{ "Content-type": "Application/json",
 		  "Authorization": `Bearer ${cookies.get('auth')}`}

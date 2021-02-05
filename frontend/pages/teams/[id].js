@@ -111,7 +111,7 @@ function Teams(props) {
 							var data = JSON.stringify(values, null, 1)
         					axios({
         						method: 'patch',
-        						url: `http://${process.env.hostname}/teams/${router.query.id}/`,
+        						url: `https://${process.env.hostname}/teams/${router.query.id}/`,
         						headers: 
         						{ "Content-type": "Application/json",
         						  "Authorization": `Bearer ${cookies.get('auth')}`},

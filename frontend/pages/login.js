@@ -30,7 +30,7 @@ export default function Login() {
 				var data = JSON.stringify(values, null, 1)
 				axios({
 					method: 'post',
-					url: `http://${process.env.hostname}/token/`,
+					url: `https://${process.env.hostname}/token/`,
 					headers: 
 					{ "Content-type": "Application/json",
 					"Authorization": `Bearer ${cookies.get('auth')}`

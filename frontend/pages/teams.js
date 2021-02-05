@@ -23,7 +23,7 @@ export async function getServerSideProps(ctx){
 
 	var response = await axios({
 			method: 'get',
-			url: `http://${process.env.hostname}/teams/`,
+			url: `https://${process.env.hostname}/teams/`,
 			headers: 
 			{ "Content-type": "Application/json",
             "Authorization": `Bearer ${cookies.get('auth')}`
