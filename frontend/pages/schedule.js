@@ -118,11 +118,26 @@ function Event({ event }) {
 }
 
 function EventAgenda({ event }) {
+
+  
+  if(event.link){
+    var heading = "Очакваме те"
+    var place = "Google Meet"
+  }
+  else if(event.youtube){
+    var heading = "Гледай ни"
+    var place = "Youtube"
+  }
+  else if(event.discord){
+    var heading = "Нещо свързано с Discord"
+    var place = "Discord"
+  }
+
   return (
     <span>
       <em style={{ color: '#009d60' }}>{event.title}</em>
       <Text>{event.desc}</Text>
-      <a style={{textDecoration:"none"}}>Очакваме те&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>Google Meet</Link></a>
+      <a style={{textDecoration:"none"}}>{heading}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{place}</Link></a>
     </span>
   )
 }
