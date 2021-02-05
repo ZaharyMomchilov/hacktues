@@ -26,7 +26,7 @@ export default function Login({logIn}) {
 		var path = router.asPath
 		var split = _.split(path, '?token_id=')
 		var tokenParams = _.split(split[1], '&token=')
-		var token = _.split(tokenParams[1], '/')
+		// var token = _.split(tokenParams[1], '/')
 		
 		return(
 			<Box marginLeft="15px" marginRight="15px">
@@ -44,7 +44,7 @@ export default function Login({logIn}) {
 						},
 						data: {"password":values.password,
 								"token_id":tokenParams[0],
-								"token":token[0]
+								"token":token[1]
 						}  
 						  },)
 						.then(function (response) {
