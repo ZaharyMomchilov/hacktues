@@ -60,7 +60,7 @@ function Teams(props) {
 
 			technology.map((data, index) => {
 					if(alreadyChosenTech.includes(data.label)){
-						tech.push(<Tag onClick={function(){
+						tech.push(<Tag type="submit" onClick={function(){
 							if(!chosenTech.includes(data.label)){
 								chosenTech.push(data.label)
 								tagRefs.current[index].current.style.background = "rgb(0, 255, 255)"
@@ -74,7 +74,7 @@ function Teams(props) {
 						}} ref={tagRefs.current[index]} cursor="pointer" key={data.id} mt="5px" mr="5px" boxShadow="0px 0px 5px" background="rgb(0, 255, 255)"><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)	
 					}
 					else{
-						tech.push(<Tag onClick={function(){
+						tech.push(<Tag type="submit" onClick={function(){
 							if(!chosenTech.includes(data.label)){
 								chosenTech.push(data.label)
 								tagRefs.current[index].current.style.background = "rgb(0, 255, 255)"
@@ -100,13 +100,13 @@ function Teams(props) {
 					</Flex>
 					<Formik initialValues={{ name: props.teams.name, project_name: props.teams.project_name , github_link: props.teams.github_link, project_description: props.teams.project_description}} onSubmit={(values, actions) => {
         			setTimeout(() => {
-							if(people.length > 4){
-								actions.setSubmitting(false);
-								actions.setFieldError("users", "Твърде много участници избрани")
-							}
-                            let selected = people.map(a => a.value);
-                            values['users'] = selected
-							values['users'].push(jwt_decode(cookies.get('auth')).user_id)
+							// if(people.length > 4){
+							// 	actions.setSubmitting(false);
+							// 	actions.setFieldError("users", "Твърде много участници избрани")
+							// }
+                            // let selected = people.map(a => a.value);
+                            // values['users'] = selected
+							// values['users'].push(jwt_decode(cookies.get('auth')).user_id)
                             values['technologies'] = chosenTech
 							console.log(values)
 							var data = JSON.stringify(values, null, 1)
@@ -119,7 +119,7 @@ function Teams(props) {
 								data: data  
 								  },)
 								  .then(function (response) {
-							toast({ title: "Промени по отбора", description: "Промените бяха направени успешно.", status: "success", duration: 4500})
+							// toast({ title: "Промени по отбора", description: "Промените бяха направени успешно.", status: "success", duration: 4500})
         			    	})
         					    .catch(function (error) {
 									if (error.response) {
@@ -195,8 +195,8 @@ function Teams(props) {
 
 					<Flex flexDirection="column" flexWrap="wrap">
 						<Text fontFamily="Rubik" fontSize="15px">Потвърден:&nbsp;{confirmed}</Text>
-						{/* <AutoSave props={props} debounceMs={2000} /> */}
-						<Button mt={4} colorScheme="green" border="0" cursor="pointer" isLoading={props.isSubmitting} type="submit">Промени</Button>
+						<AutoSave props={props} debounceMs={2000} />
+						{/* <Button mt={4} colorScheme="green" border="0" cursor="pointer" isLoading={props.isSubmitting} type="submit">Промени</Button> */}
 					</Flex>
 
 					</Form>
@@ -456,18 +456,18 @@ const AutoSave = (props,{ debounceMs = 2000 }) => {
 	  }, debounceMs),
 	  [formik.submitForm, debounceMs]
 	);
-  
-	console.log(props);
 	useEffect(() => debouncedSubmit, [debouncedSubmit, formik.values],);
 	return (
 		<Flex>
 		  {!!formik.isSubmitting
-			? <Button mt={4} colorScheme="green" border="0" cursor="pointer" isLoading>Промени</Button>
+		  ? "Запазване..."
 			: isSaved
-			? <Button mt={4} colorScheme="green" border="0" cursor="pointer" onClick={() => {debouncedSubmit()}} >Промени</Button>
+			? "Промените бяха запазени"
 			: null}
 		</Flex>
 		
+		/* ? <Button mt={4} colorScheme="green" border="0" cursor="pointer" isLoading>Промени</Button> */
+		/* ? <Button mt={4} colorScheme="green" border="0" cursor="pointer" onClick={() => {debouncedSubmit()}} >Промени</Button> */
 	  );
   };
 
