@@ -21,7 +21,6 @@ const cookies = new Cookies();
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 
-
 export const NavProvider = React.createContext(false);
 
 // axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
@@ -83,14 +82,19 @@ function MyApp({ Component, pageProps }) {
 	const [logged, setLogin] = useControllableState({defaultValue:0});
 	const [inTeam, setTeam] = useControllableState({defaultValue:null});
 	const [discord, setDiscord] = useControllableState({defaultValue: null});
-	const [xd, setXd] = useState(false);
 
 	const dived = {
 		open: {
-			display:"none"
+			display:"none",
+			overflow:"hidden",
 			}, 
 		closed:{
-			display:"initial"}
+			display:"initial",
+			overflow:"visible",
+		transition:{
+			when: "beforeChildren"
+		}
+		}
 		}
 
 	const div = {
@@ -99,19 +103,6 @@ function MyApp({ Component, pageProps }) {
 			}, 
 		closed:{
 			opacity:1}}
-
-	// const Fl = motion.custom(Flex)
-	const Div = motion.custom(Box)
-
-	// const breakpoints = createBreakpoints({
-	// 	sm: "30em",
-	// 	md: "48em",
-	// 	mid: "55em",
-	// 	lg: "62em",
-	// 	xl: "80em",
-	// 	"2xl": "96em",
-	//   });
-	// const theme = extendTheme(breakpoints);
 
   	useEffect(() => {
 
@@ -165,13 +156,15 @@ function MyApp({ Component, pageProps }) {
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
-		<Flex as={motion.div} variants={div} flexDirection={["column","column","row","row"]} flexWrap="wrap">
+		<Flex flexDirection={["column","column","row","row"]} flexWrap="wrap">
 			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
 			{/* <NavProvider.Provider value={{xd, setXd}}> */}
-  				<Sidebar as={motion.div} avatar={discord} inteam={inTeam} loggedin={logged} />
-				<Box initial={false} animate={xd ? "open" : "closed"} as={motion.div} variants={dived} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
-					<Component as={motion.div} {...pageProps} />
-				</Box>
+  				<AnimateSharedLayout>
+					<Sidebar layout as={motion.div} avatar={discord} inteam={inTeam} loggedin={logged} />
+					<Box layout  initial={false} animate={isOpen ? "open" : "closed"} as={motion.div} variants={dived} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
+						<Component layout as={motion.div} {...pageProps} />
+					</Box>
+				  </AnimateSharedLayout>
 			{/* </NavProvider.Provider> */}
 		</Flex>
 		<Cookie/>

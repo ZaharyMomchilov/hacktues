@@ -5,12 +5,12 @@ import { FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakr
 import { Formik, Field, Form } from 'formik';
 import { useDisclosure} from "@chakra-ui/react";
 const axios = require('axios');
-import Cookies from 'universal-cookie';
 import { ViewIcon, ViewOffIcon} from '@chakra-ui/icons'
 
 import { useRouter } from "next/router";
 import Router from 'next/router'
 
+import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 export default function Login() {

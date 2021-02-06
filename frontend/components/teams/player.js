@@ -1,36 +1,46 @@
 import { Box, Flex, Text, Button } from "@chakra-ui/react";
+import {useRouter} from 'next/router'
+import axios from 'axios'
 
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 const Player = (props) => {
+
+  var router = useRouter()
 
   function leave() {
     axios({
       method: 'post',
-      url: `https://hacktues.pythonanywhere.com/users/${props.user_id}/leave_team`,
-      header: 'Content-Type: application/json'
-    })
+      url: `https://${process.env.hostname}/users/${props.user_id}/leave_team/`,
+      headers: 
+					{ "Content-type": "Application/json",
+					"Authorization": `Bearer ${cookies.get('auth')}`
+					}})
     .then(function (response) {
-      cookies.set('auth', response.data.access, { path: '/' })
-      cookies.set('refresh', response.data.refresh, { path: '/' })
+      router.push('/');
     })
   }
 
   function makecaptain(props) {
     axios({
       method: 'post',
-      url: `https://hacktues.pythonanywhere.com/teams/${props.team_id}/change_captain/`,
-      header: 'Content-Type: application/json',
+      url: `https://${process.env.hostname}/teams/${props.team_id}/change_captain/`,
+      headers: 
+      { "Content-type": "Application/json",
+      "Authorization": `Bearer ${cookies.get('auth')}`
+      },
       data: {"users": props.id}
     })
     .then(function (response) {
-      cookies.set('auth', response.data.access, { path: '/' })
-      cookies.set('refresh', response.data.refresh, { path: '/' })
+      router.reload();
     })
   }
   
   var captain
   var position
+  var remove
   if(props.captain){
-      leave = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
+      // leave = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
       position = "Капитан"
   }
   else if(props.player){
@@ -39,6 +49,10 @@ const Player = (props) => {
 }
   else if(props.teammate){
     captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => makecaptain()}>Направи капитан</Button>
+    remove = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => remove()}>Премахни</Button>
+    position = "Участник"
+  }
+  else if(props.outside){
     position = "Участник"
   }
 
@@ -49,6 +63,7 @@ const Player = (props) => {
             <Text wordBreak="break-word" m="0" pt={["5px","5px","10px","15px"]} fontFamily="Rubik">{position}</Text>
         </Flex>
         {captain}
+        {remove}
         {leave}
       </Flex>
     );
