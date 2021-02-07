@@ -168,7 +168,7 @@ function EventAgenda({ event }) {
 
 let Schedule = () => (
   <Calendar
-    length={1000}
+    length={500}
     toolbar={false}
     events={events}
     localizer={localizer}
@@ -182,7 +182,7 @@ let Schedule = () => (
     }
     }
     messages={{event:"Събитие",date:"Дата",time:"Време"}}
-    style={{fontFamily:"Rubik",background:"white", borderRadius:"10px", marginLeft:"50px", marginRight:"50px", height:"auto", border:"none", marginTop:"50px", marginBottom:"50px", padding:"5px"}}
+    style={{fontFamily:"Rubik",background:"white", borderRadius:"10px", marginLeft:"25px", marginRight:"25px", height:"auto", border:"none", marginTop:"50px", marginBottom:"50px", padding:"5px"}}
   />
 )
 
