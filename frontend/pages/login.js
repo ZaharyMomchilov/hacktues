@@ -38,7 +38,6 @@ export default function Login() {
 					data: data  
 					  },)
 					.then(function (response) {
-						console.log(response);
 					  	cookies.set('auth', response.data.access, { path: '/' })
 						cookies.set('refresh', response.data.refresh, { path: '/' })
 						toast({ title: "Влизането успешно.", description: "Влизането в профила е успешно.",status: "success", duration: 9000})

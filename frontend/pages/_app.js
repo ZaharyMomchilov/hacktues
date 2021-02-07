@@ -70,7 +70,7 @@ function checkToken(exp) {
 		console.log('token is not expired')
 		// console.log(exp/.exp * 1000 - Date.now() - 36000000);
 		// console.log(cookies.get('auth'));
-		// console.log(jwt_decode(cookies.get('auth')).user_id);
+		// console.log(jwt_decode(scookies.get('auth')).user_id);
 		// getUsers()
 		// getNewToken()
 		// refreshToken()
@@ -78,7 +78,7 @@ function checkToken(exp) {
 	else{
 		console.log('token is expired')
 		// console.log(cookies.get('auth'));
-		// getNewToken()
+		getNewToken()
 		refreshToken()
 	}
 }
@@ -175,7 +175,7 @@ function MyApp({ Component, pageProps }) {
 	const logUrl = url => toggleOpen(false)
 	// const alertUrl = url => alert(url)
 	
-	routerEvents.once('routeChangeStart', logUrl)
+	routerEvents.on('routeChangeStart', logUrl)
 
 
   // useEffect(() => {
