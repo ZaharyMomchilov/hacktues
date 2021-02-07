@@ -1,7 +1,14 @@
 import axios from 'axios'
 import Cookies from 'universal-cookie';
 import jwt_decode from "jwt-decode";
-import {Box, Avatar, Flex, Text, Input, InputGroup, InputLeftElement, Select, Switch, useToast } from "@chakra-ui/react";
+import {Box, Avatar, Flex, Text, Input, InputGroup, InputLeftElement, Select, Switch, useToast, Button, Modal,
+	ModalOverlay,
+	ModalContent,
+	ModalHeader,
+	ModalFooter,
+	ModalBody,
+	ModalCloseButton, useDisclosure } from "@chakra-ui/react";
+import Link from 'next/link'
 import { Formik, Field, Form, useFormikContext, useField } from 'formik';
 import { PhoneIcon } from '@chakra-ui/icons'
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText,} from "@chakra-ui/react";
@@ -12,9 +19,10 @@ import * as Yup from 'yup';
 
 function Profile(props) {
 
-	console.log(props);
 	const toast = useToast()
-
+	const { isOpen, onOpen, onClose } = useDisclosure()
+	const { isOpen: isOpened, onOpen: onOpened, onClose: onClosed } = useDisclosure()
+	
 	const SignupSchema = Yup.object().shape({
 	  	first_name: Yup.string()
 			.min(2, 'Твърде кратко!')
@@ -35,7 +43,24 @@ function Profile(props) {
 			.matches(/^0\d{9}$/, 'използвай валиден телефон')
 	});
 
-	console.log(props);
+	const handleDelete = ({props}) => {
+
+		axios({
+			method: 'delete',
+			url: `https://${process.env.hostname}/users/${props.props.users.id}/`,
+			headers: 
+			{ "Content-type": "Application/json",
+			  "Authorization": `Bearer ${cookies.get('auth')}`},
+			  },)
+			.catch(function (error) {
+				if (error.response) {
+					console.log(error.response)
+					// for (const [key, value] of Object.entries(error.response.data)) {
+					  // 	console.log(`${key}: ${value}`);
+					// 	actions.setFieldError(key, value)
+					// }
+			}})	
+	}
 
 	var form
 	switch(props.users.form){
@@ -61,7 +86,8 @@ function Profile(props) {
 		case "12Г": form = "12Г"; break;
 	}
 
-	console.log(`https://cdn.discordapp.com/avatars/${props.users.discord_id}/${props.users.avatar}.png`);
+	// console.log(props);
+	// console.log(`https://cdn.discordapp.com/avatars/${props.users.discord_id}/${props.users.avatar}.png`);
 
 	return(
 	<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
@@ -92,7 +118,7 @@ function Profile(props) {
           				actions.setSubmitting(false)
         			}, 1000)
       		}}> 
-			{function(props){ console.log(props)
+			{function(props){
 				return(
 				<Form {...props} style={{display:"flex",flexDirection:"row",flexWrap:"wrap", paddingTop:"10px"}} onSubmit={props.handleSubmit}>
 				<Field name="first_name">
@@ -197,7 +223,49 @@ function Profile(props) {
 							</FormControl>
 						)}
 					</Field> */}
-			<AutoSave debounceMs={2000} />
+					<Flex flexDirection="row" flexWrap="wrap" w="100%">
+					<Button w="25%" mt={4} mr={3} colorScheme="red" border="0" cursor="pointer" onClick={onOpened}>Изтрий профила</Button>
+					<Button w="25%" mt={4} colorScheme="green" border="0" cursor="pointer" onClick={onOpen}>Запази</Button>
+					
+					<Modal isOpen={isOpen} onClose={onClose}>
+					  <ModalOverlay />
+					  <ModalContent>
+						<ModalCloseButton _focus={{outline:"none", border:"0", background:"transparent"}} />
+						<ModalHeader>
+						  Сигурни ли сте, че искате да запазите?
+						</ModalHeader>
+
+						<ModalFooter>
+						  <Button colorScheme="green" border="0" cursor="pointer" mr={3} onClick={onClose}>
+							Откажи
+						  </Button>
+						  <Button colorScheme="green" border="0" cursor="pointer" isLoading={props.isSubmitting} onClick={() => {props.submitForm(); onClose(); router.reload()}} type="submit">Промени</Button>
+						</ModalFooter>
+					  </ModalContent>
+					</Modal>
+
+					<Modal isOpen={isOpened} onClose={onClosed}>
+      					  <ModalOverlay />
+      					  <ModalContent>
+      					    <ModalCloseButton _focus={{outline:"none", border:"0", background:"transparent"}} />
+      					    <ModalHeader>
+      					      Сигурни ли сте, че искате да изтриете профила?
+      					    </ModalHeader>
+
+      					    <ModalFooter>
+      					      <Button colorScheme="green" border="0" cursor="pointer" mr={3} onClick={onClosed}>
+      					        Откажи
+      					      </Button>
+      					      <Link href="/">
+								{/* <Link> */}
+									<Button href="/" colorScheme="red" border="0" cursor="pointer" isLoading={props.isSubmitting} onClick={() => {handleDelete(props); onClosed(); router.push('/')}} type="submit">Промени</Button>
+								{/* </Link> */}
+								</Link>
+      					    </ModalFooter>
+      					  </ModalContent>
+      					</Modal>
+
+					</Flex>
         </Form>
 				)}}
     </Formik>

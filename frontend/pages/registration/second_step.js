@@ -81,8 +81,9 @@ export default function Register(props) {
                   "Authorization": `Bearer ${response.data.access_token}`}},)
                 .then(function (response){
                     console.log(response);
-					userID = response.data.id
-					avatar = response.data.avatar
+					localStorage
+					localStorage.setItem('userID', response.data.id);
+					localStorage.setItem('avatar', response.data.avatar);
                     // axios({
                     //     method: 'get',
                     //     url: `https://cdn.discordapp.com/avatars/${response.data.id}/${response.data.avatar}.png`,
@@ -109,8 +110,8 @@ export default function Register(props) {
 			<Formik initialValues={{first_name: '', last_name: '', email: '', password: ''}} validationSchema={SignupSchema}
 				onSubmit={(values, actions) => {
         			setTimeout(() => {
-                            values["discord_id"] = userID;
-							values["avatar"] = avatar;
+                            values["discord_id"] = localStorage.getItem('userID');
+							values["avatar"] = localStorage.getItem('avatar');
 							var data = JSON.stringify(values, null, 1)
 							console.log(data)
         					axios({

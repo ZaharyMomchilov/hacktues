@@ -10,7 +10,16 @@ import {useRouter} from 'next/router'
 import { CUIAutoComplete } from '../../components/autocomplete/chakra-ui-autocomplete.esm'
 import {useState, useCallback, useEffect} from 'react'
 import Player from '../../components/teams/player'
-
+import {
+	Modal,
+	ModalOverlay,
+	ModalContent,
+	ModalHeader,
+	ModalFooter,
+	ModalBody,
+	ModalCloseButton,
+	useDisclosure
+  } from "@chakra-ui/react"
 
 function Teams(props) {
 	
@@ -90,6 +99,60 @@ function Teams(props) {
 					
 			})
 
+			const { isOpen, onOpen, onClose } = useDisclosure()
+			const { isOpen: isOpened, onOpen: onOpened, onClose: onClosed } = useDisclosure()
+
+			var users = props.users
+    		var items = []
+			var i
+	
+	// try {
+	// 	console.log(jwt_decode(cookies.get('auth')))
+	// 	// valid token format
+	//   } catch(error) {
+	// 	console.log(error);
+	//   }
+
+	// console.log(jwt_decode(cookies.get('auth')));
+
+	// && item.id != jwt_decode(cookies.get('auth')).user_id
+
+
+
+    for(i = 0; i < users.length; i++){
+        items.push({value: users[i].id, label: `${users[i].first_name} ${users[i].last_name} - ${users[i].form}`})
+    }
+    var people
+    const [pickerItems, setPickerItems] = React.useState(items);
+    const [selectedItems, setSelectedItems] = React.useState([]);
+
+    people = selectedItems
+
+    const handleSelectedItemsChange = (selectedItems) => {
+        if (selectedItems) {
+            setSelectedItems(selectedItems);
+        }
+    };
+
+	const handleDelete = props => {
+		axios({
+			method: 'delete',
+			url: `https://${process.env.hostname}/teams/${router.query.id}/`,
+			headers: 
+			{ "Content-type": "Application/json",
+			  "Authorization": `Bearer ${cookies.get('auth')}`},
+			  },)
+			.catch(function (error) {
+				if (error.response) {
+					console.log(error.response)
+					// for (const [key, value] of Object.entries(error.response.data)) {
+					  // 	console.log(`${key}: ${value}`);
+					// 	actions.setFieldError(key, value)
+					// }
+			}})	
+	}
+
+
 
 			return(
 				<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
@@ -100,13 +163,13 @@ function Teams(props) {
 					</Flex>
 					<Formik initialValues={{ name: props.teams.name, project_name: props.teams.project_name , github_link: props.teams.github_link, project_description: props.teams.project_description}} onSubmit={(values, actions) => {
         			setTimeout(() => {
-							// if(people.length > 4){
-							// 	actions.setSubmitting(false);
-							// 	actions.setFieldError("users", "Твърде много участници избрани")
-							// }
-                            // let selected = people.map(a => a.value);
-                            // values['users'] = selected
-							// values['users'].push(jwt_decode(cookies.get('auth')).user_id)
+							if(people.length > 4){
+								actions.setSubmitting(false);
+								actions.setFieldError("users", "Твърде много участници избрани")
+							}
+                            let selected = people.map(a => a.value);
+                            values['users'] = selected
+							values['users'].push(jwt_decode(cookies.get('auth')).user_id)
                             values['technologies'] = chosenTech
 							console.log(values)
 							var data = JSON.stringify(values, null, 1)
@@ -170,7 +233,17 @@ function Teams(props) {
 									<FormErrorMessage border={0}>{form.errors.last_name}</FormErrorMessage>
 								</FormControl>
 								)}
-						</Field>	
+						</Field>
+						<Field name="users">
+						{({ field, form }) => (
+						<FormControl paddingTop="15px" flexGrow={1} w="100%" mr="5px" isInvalid={form.errors.users && form.touched.users}>
+						<FormLabel fontFamily="Rubik" fontSize="15px" htmlFor="text">Избери участници</FormLabel>
+							<CUIAutoComplete id="users" {...field} placeholder="Добави участници" toggleButtonStyleProps={{display:"none"}} tagStyleProps={{ padding: "5px",sx:{ "& button": { border: "none"},},
+  }} items={pickerItems} selectedItems={selectedItems} onSelectedItemsChange={(changes) =>   handleSelectedItemsChange(changes.selectedItems)}/>
+                            <FormErrorMessage paddingBottom="15px" border={0}>{form.errors.users}</FormErrorMessage>
+                        </FormControl>
+						)}
+				</Field>	
 						<Field name="tech">
 								{({ field, form }) => (
 								<FormControl flexGrow={1} w="100%" mr="5px"  isInvalid={form.errors.last_name && form.touched.last_name}>
@@ -195,8 +268,50 @@ function Teams(props) {
 
 					<Flex flexDirection="column" flexWrap="wrap">
 						<Text fontFamily="Rubik" fontSize="15px">Потвърден:&nbsp;{confirmed}</Text>
-						<AutoSave props={props} debounceMs={2000} />
-						{/* <Button mt={4} colorScheme="green" border="0" cursor="pointer" isLoading={props.isSubmitting} type="submit">Промени</Button> */}
+						{/* <AutoSave props={props} debounceMs={2000} /> */}
+						
+						<Flex flexDirection="row" wrap="wrap">
+							<Button mt={4} mr={3} colorScheme="red" border="0" cursor="pointer" onClick={onOpened}>Изтрий отбора</Button>
+							<Button mt={4}  colorScheme="green" border="0" cursor="pointer" onClick={onOpen}>Запази промените</Button>
+
+						</Flex>
+
+      					<Modal isOpen={isOpen} onClose={onClose}>
+      					  <ModalOverlay />
+      					  <ModalContent>
+      					    <ModalCloseButton _focus={{outline:"none", border:"0", background:"transparent"}} />
+      					    <ModalHeader>
+      					      Сигурни ли сте, че искате да запазите?
+      					    </ModalHeader>
+
+      					    <ModalFooter>
+      					      <Button colorScheme="green" border="0" cursor="pointer" mr={3} onClick={onClose}>
+      					        Откажи
+      					      </Button>
+      					      <Button colorScheme="green" border="0" cursor="pointer" isLoading={props.isSubmitting} onClick={() => {props.submitForm(); onClose();router.reload()}} type="submit">Промени</Button>
+      					    </ModalFooter>
+      					  </ModalContent>
+      					</Modal>
+
+						
+
+      					<Modal isOpen={isOpened} onClose={onClosed}>
+      					  <ModalOverlay />
+      					  <ModalContent>
+      					    <ModalCloseButton _focus={{outline:"none", border:"0", background:"transparent"}} />
+      					    <ModalHeader>
+      					      Сигурни ли сте, че искате да изтриете отбора?
+      					    </ModalHeader>
+
+      					    <ModalFooter>
+      					      <Button colorScheme="green" border="0" cursor="pointer" mr={3} onClick={onClosed}>
+      					        Откажи
+      					      </Button>
+      					      <Button colorScheme="red" border="0" cursor="pointer" isLoading={props.isSubmitting} onClick={() => {handleDelete(); onClosed(); router.push('/')}} type="submit">Изтрий</Button>
+      					    </ModalFooter>
+      					  </ModalContent>
+      					</Modal>
+					
 					</Flex>
 
 					</Form>
@@ -441,10 +556,12 @@ export async function getServerSideProps(ctx){
 			  "Authorization": `Bearer ${cookies.get('auth')}`}
 			},
 		)
-				
-	return {props: {teams: response.data,  user: res.data, users: users.data, captain: captain.data }}
-	
-
+		
+			var users = users.data.filter(function(item) {
+				return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != ''
+			})
+			// return {props: {users: users}}
+			return {props: {teams: response.data,  user: res.data, users: users, captain: captain.data }}
 }
 
 const AutoSave = (props,{ debounceMs = 2000 }) => {

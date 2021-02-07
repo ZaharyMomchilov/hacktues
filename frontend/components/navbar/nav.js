@@ -17,7 +17,7 @@ import Link from 'next/link'
 
 const variants = {
   open: {
-    transition: { staggerChildren: 0.07 }
+    transition: { staggerChildren: 0.15 }
   },
   closed: {
     transition: { when: "afterChildren" }
@@ -73,7 +73,7 @@ export default function Navigation(props){
   // }, [login,team,logout, props])
 
 
-  return (<Flex as={motion.div} justifyContent="center" alignItems="center" zIndex="1" w={["100%","100%","300px","300px"]} position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
+  return (<Flex as={motion.div} justifyContent="center" alignItems="center" h="100%" zIndex="1" w={["100%","100%","300px","300px"]} position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
   {/* {props.xd[0]} */}
     <Flex justifyContent="center" alignItems="center" flexDirection="column" position="relative" h="100%">
       <Flex marginBottom="auto" marginTop="15px" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
@@ -94,7 +94,7 @@ export default function Navigation(props){
         <MenuItem name="За Hack TUES" top="-1px" icon="GG" link="/about"/>
         
     </Flex>
-    <Flex marginTop="100%" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
+    <Flex marginTop="auto" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
       
         {team}
         {login}

@@ -44,12 +44,12 @@ const Player = (props) => {
       position = "Капитан"
   }
   else if(props.player){
-    captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
+    captain = <Button  colorScheme="red" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
     position = "Участник"
 }
   else if(props.teammate){
-    captain = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => makecaptain()}>Направи капитан</Button>
-    remove = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => remove()}>Премахни</Button>
+    captain = <Button mb={3} colorScheme="green" border="0" cursor="pointer" onClick={() => makecaptain()}>Направи капитан</Button>
+    remove = <Button colorScheme="red" border="0" cursor="pointer" onClick={() => remove()}>Премахни</Button>
     position = "Участник"
   }
   else if(props.outside){
@@ -57,14 +57,17 @@ const Player = (props) => {
   }
 
     return (
-      <Flex background="white" p="50px" flexDirection="column" flexWrap="wrap" alignSelf="stretch" w="350px" h="250px" m="15px" rounded="lg" overflow="hidden">
+      <Flex background="white" p="50px" flexDirection="row" flexWrap="wrap" alignItems="center" w="350px" h="250px" m="15px" rounded="lg" overflow="hidden">
         <Flex paddingBottom={["10px","10px","10px","25px"]} justifyContent="center" flexDirection="column">
             <Text wordBreak="break-word" m="0" pt={["0","0","0","15px"]} fontFamily="Rubik">{props.name}</Text>
             <Text wordBreak="break-word" m="0" pt={["5px","5px","10px","15px"]} fontFamily="Rubik">{position}</Text>
         </Flex>
+        <Flex flexDirection="column">
         {captain}
         {remove}
         {leave}
+
+        </Flex>
       </Flex>
     );
 }

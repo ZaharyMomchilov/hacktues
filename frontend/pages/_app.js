@@ -147,7 +147,7 @@ function MyApp({ Component, pageProps }) {
 	)
 
 
-	const [isLargerThan428] = useMediaQuery("(min-width: 428px)")
+	const [isLargerThan797] = useMediaQuery("(min-width: 797px)")
   // const { nav, setNav } = useContext(NavProvider);
   
   const [isOpen, toggleOpen] = useCycle(false, true);
@@ -163,7 +163,7 @@ function MyApp({ Component, pageProps }) {
 
 
   // useEffect(() => {
-    if(!isLargerThan428){
+    if(!isLargerThan797){
 
 		dived = {
 			open: {
@@ -178,6 +178,7 @@ function MyApp({ Component, pageProps }) {
 				display:"initial",
 				overflow:"visible",
 				transition:{
+					stiffness: 10000,
 					when:"beforeChildren",
 					delay: 0.6,
 					transitionEnd:{opacity:1}
@@ -215,7 +216,7 @@ function MyApp({ Component, pageProps }) {
         },
         closed: {
           // height:"0px",
-          height:"70px",
+          height:"80px",
           overflow:"visible",
           // marginRight:"20px",
         transition: {
