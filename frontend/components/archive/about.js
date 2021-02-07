@@ -1,24 +1,21 @@
 import React from 'react'
-import { Box } from "@chakra-ui/core";
-import { Collapse } from '@chakra-ui/core';
-import { Button } from '@chakra-ui/core';
-import { Text } from '@chakra-ui/core'
+import { Box, Collapse, Button, Text } from "@chakra-ui/react"
+import { useDisclosure } from "@chakra-ui/react"
 
 const About = (props) => {
 
-    const [show, setShow] = React.useState(false);
-    const handleToggle = () => setShow(!show);
+    const { isOpen, onToggle } = useDisclosure()
 
     return(
-    <Box paddingTop="1%" position="relative" height="auto" borderColor="black" borderWidth="10px" rounded="lg" overflow="hidden">
-        <Text fontWeight="semibold" color="black" mt="1" as="h2" lineHeight="tight">
+    <Box mr={["15px","15px","none","none"]} ml={["15px","15px","none","none"]} backgroundColor="white" pt="10px" display="block" pb="25px" mb={["100px", "30px"]} borderColor="black" borderWidth="10px" rounded="lg" overflow="hidden">
+        <Text pl="25px" fontFamily="Rubik" fontWeight="semibold" color="black" mt="15px" as="h2" lineHeight="tight">
             За събитието
         </Text>
-        <Collapse startingHeight={110} isOpen={show}>
-            <Text color="black" fontWeight="400" as="h3">{props.description}</Text>
+        <Collapse animateOpacity startingHeight={100} in={isOpen}>
+            <Text pr="25px" pl="25px" color="black" fontFamily="Rubik" fontWeight="400" as="h3">{props.description}</Text>
         </Collapse>
-        <Button variant="solid" borderWidth="0px" variantColor="green" size="sm" onClick={handleToggle} mt="1rem">
-            Покажи {show ? "по-малко" : "повече"}
+        <Button fontFamily="Rubik" fontWeight="200" ml="25px" _focus={{outline:"none"}} variant="solid" borderWidth="0px" onClick={onToggle} colorScheme="green" size="sm" mt="1rem">
+            Покажи {isOpen ? "по-малко" : "повече"}
         </Button>
     </Box>
 );

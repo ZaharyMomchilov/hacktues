@@ -1,13 +1,12 @@
 import React from 'react'
-import { Box, Flex } from "@chakra-ui/core";
-import { Text } from '@chakra-ui/core'
-import { Divider, Accordion,
+import { Box, Flex, Text } from "@chakra-ui/react"
+import { Accordion,
     AccordionItem,
-    AccordionHeader,
+    AccordionButton,
     AccordionPanel,
-    AccordionIcon, } from "@chakra-ui/core";
-import ReactMarkdown from 'react-markdown'
+    AccordionIcon, } from "@chakra-ui/react";
 
+import {AddIcon, MinusIcon } from '@chakra-ui/icons'
 
 function GetPanelData(params) {
     let content = [];
@@ -21,20 +20,26 @@ const Panel = (props) => {
 
     return(
     <AccordionItem>
-        <Flex marginLeft={["10%", "10%", "100px", "100px"]} marginRight={["10%", "10%", "100px", "100px"]} marginBottom="10px" marginTop="10px"  flexDirection="column" flexWrap="wrap" justifyContent="center" height="auto" borderColor="black" borderWidth="10px" rounded="lg" backgroundColor="white" overflow="hidden">
-            <AccordionHeader _focus={{outline:0}}>
-                <Text textAlign="left" paddingLeft="10px" color="black" mt="0" mb="0" as="h2">
+    {({ isExpanded }) => (
+        <Flex cursor="pointer" marginLeft={["25px", "25px", "100px", "250px"]} marginRight={["25px", "25px", "100px", "250px"]} marginTop="10px"  flexDirection="row" flexWrap="wrap" justifyContent="center" height="auto" borderColor="black" borderWidth="10px" rounded="lg" backgroundColor="white" overflow="hidden">
+            <AccordionButton cursor="pointer" border="0" backgroundColor="white" _focus={{outline:0, background:"white"}}>
+                <Text cursor="pointer" fontFamily="Rubik" textAlign="left" paddingLeft="10px" color="black" mt="0" mb="0" as="h3">
                     {props.title}
                 </Text>
-            </AccordionHeader>
+                {isExpanded ? (
+            <MinusIcon marginLeft="auto" marginRight="10px" fontSize="12px" />
+          ) : (
+            <AddIcon marginLeft="auto" marginRight="10px" fontSize="12px" />
+          )}
+            </AccordionButton>
             <AccordionPanel pb={4}>
-            <Text paddingLeft="10px">
+            <Text textAlign="justify" paddingLeft={["0px","0px","0px","10px"]}>
                 {props.description}
             </Text>
             </AccordionPanel>
         </Flex>
+    )}
     </AccordionItem>
-    );
+);
 }
-
-export default GetPanelData;
+export default GetPanelData

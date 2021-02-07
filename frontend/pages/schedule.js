@@ -1,29 +1,165 @@
+// import React, {useEffect} from 'react'
+// import Day from "../components/schedule/day"
+// import { IoIosLaptop, IoMdPin } from "react-icons/io";
+// import { Flex, Box, Button, chakra} from '@chakra-ui/react'
+// import { AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
+// import { IconButton } from "@chakra-ui/react"
+
+// import Entry from "../components/schedule/entry"
+// import { useKeenSlider } from 'keen-slider/react'
+// import {ArrowForwardIcon, ArrowBackIcon} from '@chakra-ui/icons'
+// var emojiLaptop = <IoIosLaptop/>;
+// var emojiPin = <IoMdPin/>;
+// var TechPark = "https://goo.gl/maps/dtZjXyfVKV42cetB9"
+
+// const day1 = [
+//   { title: 'Официално откриване на събитието', notime:0, time1: '17:30', time2:'18:00', link: TechPark, emoji:emojiPin, place:"Sofia Tech Park",}, 
+//   { title: 'Образователна лекция', notime:0, time1: '18:15', time2: '19:00', link: TechPark, emoji: emojiPin, place:"Sofia Tech Park",}, 
+//   { title: 'Образователна лекция (онлайн)', notime:0, time1: '19:15', time2: '20:30', link: TechPark, emoji: emojiPin, place:"Sofia Tech Park",},
+//   { title: 'Образователни уъркшопи', notime:0, time1: '19:15', time2: '20:30', emoji: emojiPin, place:"Sofia Tech Park",},
+//   { title: 'Образователни уъркшопи', notime:0, time1: '19:15', time2: '20:30', emoji: emojiPin, place:"Sofia Tech Park",},];
+
+// const day2 = [
+//   { title: 'Работа по проектите', notime:1, emoji:emojiLaptop, place:"Онлайн",},];
+
+// export default function Schedule(){
+
+//   const [currentSlide, setCurrentSlide] = React.useState(0);
+//   const [pause, setPause] = React.useState(false);
+//   const timer = React.useRef();
+//   const [sliderRef, slider] = useKeenSlider()
+
+//   useEffect(() => {
+//     if (slider){slider.refresh()}
+//   }, [slider])
+
+//   	return (
+//       <Flex flexShrink="1" flexBasis="auto" className="navigation-wrapper">
+//     	<Box paddingBottom={["50px","50px","100px","100px", "200px"]} ref={sliderRef} className="keen-slider">
+//     		<div  className={"keen-slider__slide number-slide1"}>{GetEntry(day1)}</div>
+//     		<div  className={"keen-slider__slide number-slide2"}>{GetEntry(day2)}</div>
+//     	</Box>
+//       {/* {slider && (
+//         <>
+//           <ArrowLeft
+//             onClick={e => e.stopPropagation() || slider.prev()}
+//             disabled={currentSlide === 0}
+//           />
+//           <ArrowRight
+//             onClick={e => e.stopPropagation() || slider.next()}
+//             disabled={currentSlide === slider.details().size - 1}
+//           />
+//         </>
+//       )} */}
+//       {slider && (
+//       <Box display={["block", "block", "block", "block", "none"]}>
+//         <div style={{"justifyContent": "center", "textAlign":"center"}} className="dots">
+//           {[...Array(slider.details().size).keys()].map((idx) => {
+//             return (
+//               <button style={{"outline":"none","border":"none","width":"10px","height":"10px","background":"#ffff","borderRadius":"50%","margin":"0 5px","padding":"5px","cursor":"pointer", "marginBottom":"250px"}}
+//                 key={idx}
+//                 onClick={() => {
+//                   slider.moveToSlideRelative(idx)
+//                 }}
+//                 className={"dot" + (currentSlide === idx ? " active" : "")}
+//               />
+//             )
+//           })}
+//         </div>
+//         </Box>
+//       )}
+//       </Flex>
+//   );
+// };
+
+// function GetEntry(props) {
+//   let content = [];
+//     for (let x = 0; x < props.length; x++) { 
+//         content.push(<Entry key={x} marginTop="25px" notime={props[x].notime} title={props[x].title} time1={props[x].time1} time2={props[x].time2} link={props[x].link} emoji={props[x].emoji} place={props[x].place}/>);
+//     }
+//     return content;
+// }
+
+
+// function ArrowLeft(props) {
+//   const disabeld = props.disabled ? " arrow--disabled" : "";
+//   return (
+//     	<Box left="450px" style={{height:"auto", width:"auto", position:"absolute", top:"50%", transform:"translateY(-50%)"}}>
+//       		<IconButton border="0" _hover={{background:"white"}} _focus={{outline:"none"}} display={{base:"none",sm:"none",md:"none",lg:"none",xl:"block"}} size="lg" backgroundColor="white" color="green.500" onClick={props.onClick} className={"arrow arrow--left" + disabeld} icon={<ArrowBackIcon height="35px" width="35px"/>} />
+//     	</Box>
+//   );
+// }
+
+// function ArrowRight(props) {
+//   	const disabeld = props.disabled ? " arrow--disabled" : "";
+//   	return (
+//     	<Box minW="1091" right="450px" style={{height:"auto", width:"auto", position:"absolute", top:"50%", left:"auto", transform:"translateY(-50%)"}}>
+//       		<IconButton border="0" _hover={{background:"white"}} _focus={{outline:"none"}} display={{base:"none",sm:"none",md:"none",lg:"none",xl:"block"}} size="lg" backgroundColor="white" color="green.500" onClick={props.onClick} className={"arrow arrow--left" + disabeld} icon={<ArrowForwardIcon height="35px" width="35px" />} />
+//   		</Box>
+//   );
+// }
+
 import React from 'react'
-import Day from "../components/schedule/day"
-import { IoIosLaptop, IoMdPin } from "react-icons/io";
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import { Calendar, momentLocalizer, Views } from 'react-big-calendar'
+import events from '../components/schedule/events'
+import {Link, Text} from '@chakra-ui/react'
+import * as dates from '../components/schedule/dates'
+import moment from 'moment'
 
-var emojiLaptop = <IoIosLaptop/>;
-var emojiPin = <IoMdPin/>;
-var TechPark = "https://goo.gl/maps/dtZjXyfVKV42cetB9"
-
-const day1 = [
-  { title: 'Официално откриване на събитието', notime:0, time1: '17:30', time2:'18:00', link: TechPark, emoji:emojiPin, place:"Sofia Tech Park",}, 
-  { title: 'Образователна лекция', notime:0, time1: '18:15', time2: '19:00', link: TechPark, emoji: emojiPin, place:"Sofia Tech Park",}, 
-  { title: 'Образователна лекция (онлайн)', notime:0, time1: '19:15', time2: '20:30', link: TechPark, emoji: emojiPin, place:"Sofia Tech Park",},
-  { title: 'Образователни уъркшопи', notime:0, time1: '19:15', time2: '20:30', emoji: emojiPin, place:"Sofia Tech Park",},
-  { title: 'Образователни уъркшопи', notime:0, time1: '19:15', time2: '20:30', emoji: emojiPin, place:"Sofia Tech Park",},];
-
-const day2 = [
-  { title: 'Работа по проектите', notime:1, emoji:emojiLaptop, place:"Онлайн",},];
-
-export default function Schedule(){
+moment.locale('bg');
+const localizer = momentLocalizer(moment)
+function Event({ event }) {
   return (
-      <CarouselProvider naturalSlideWidth={100} naturalSlideHeight={400} totalSlides={2}>
-        <Slider lockOnWindowScroll="true" moveThreshold="0.2">
-          <Slide index={0}><Day schedule={day1} lenght={day1.length}/></Slide>
-          <Slide index={1}><Day schedule={day2} lenght={day2.length}/></Slide>
-        </Slider>
-      </CarouselProvider>
-  );
-};
+    <span>
+      <strong>{event.title}</strong>
+      {event.desc && ':  ' + event.desc}
+    </span>
+  )
+}
+
+function EventAgenda({ event }) {
+
+  
+  if(event.link){
+    var heading = "Очакваме те"
+    var place = "Google Meet"
+  }
+  else if(event.youtube){
+    var heading = "Гледай ни"
+    var place = "Youtube"
+  }
+  else if(event.discord){
+    var heading = "Нещо свързано с Discord"
+    var place = "Discord"
+  }
+
+  return (
+    <span>
+      <em style={{ color: '#009d60' }}>{event.title}</em>
+      <Text>{event.desc}</Text>
+      <a style={{textDecoration:"none"}}>{heading}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{place}</Link></a>
+    </span>
+  )
+}
+
+let Schedule = () => (
+  <Calendar
+    length={1000}
+    toolbar={false}
+    events={events}
+    localizer={localizer}
+    defaultView={Views.AGENDA}
+    components={{
+      event: Event,
+      agenda: {
+        event: EventAgenda,
+      },
+    
+    }
+    }
+    messages={{event:"Събитие",date:"Дата",time:"Време"}}
+    style={{fontFamily:"Rubik",background:"white", borderRadius:"10px", marginLeft:"50px", marginRight:"50px", height:"auto", border:"none", marginTop:"50px", marginBottom:"50px", padding:"5px"}}
+  />
+)
+
+export default Schedule
