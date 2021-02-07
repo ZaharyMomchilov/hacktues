@@ -334,14 +334,14 @@ export default function Register(props) {
 				<Field name="regulation">
 					{({ field, form }) => (
 						<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
-						<CustomCheckbox jsx={{}} colorScheme="green" isRequired id="regulation" fontStyle="Rubik" >Съгласен съм с <Link isExternal href="/regulation"><a style={{color:"green", }} onClick={onClose}>регламента на хакатона</a></Link></CustomCheckbox>
+						<CustomCheckbox _focus={{outline:"none",border:0}} jsx={{}} colorScheme="green" isRequired id="regulation" fontStyle="Rubik" >Съгласен съм с <Link isExternal href="/regulation"><a style={{color:"green", }} onClick={onClose}>регламента на хакатона</a></Link></CustomCheckbox>
 						</FormControl>
 					)}
 				</Field>
 				<Field name="GDPR">
 					{({ field, form }) => (
 						<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
-						<CustomCheckbox jsx={{}} colorScheme="green" isRequired id="GDPR" fontStyle="Rubik" >Съгласен съм с <Link isExternal href="/gdpr"><a style={{color:"green", }} onClick={onClose}>Общият регламент за защита на данните</a></Link></CustomCheckbox>
+							<CustomCheckbox _focus={{outline:"none",border:0}} jsx={{}} colorScheme="green" isRequired id="GDPR" fontStyle="Rubik" >Съгласен съм с <Link isExternal href="/gdpr"><a style={{color:"green", }} onClick={onClose}>Общият регламент за защита на данните</a></Link></CustomCheckbox>
 						</FormControl>
 					)}
 				</Field>
