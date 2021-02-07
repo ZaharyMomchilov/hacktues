@@ -29,30 +29,6 @@ export async function getServerSideProps(ctx){
               "Authorization": `Bearer ${cookies.get('auth')}`,
               },
         })
-        .then(function(response) {
-            if(response.status == 502){
-                    axios({
-                        method: 'post',
-                        url: `https://${process.env.hostname}/token/refresh/`,
-                        headers: 
-                        { "Content-type": "Application/json"},
-                        data: {refresh: `${cookies.get('refresh')}`}  
-                    })
-                    .then(function (response) {
-                        console.log(response);
-                        cookies.set('auth', response.data.access, { path: '/' })
-                        if(response.data.refresh != undefined){
-                            cookies.set('refresh', response.data.access, { path: '/' })
-                        }
-                        axios({
-                            method: 'get',
-                            url: `https://${process.env.hostname}/teams/`,
-                            headers: 
-                            { "Content-type": "Application/json",
-                              "Authorization": `Bearer ${cookies.get('auth')}`,
-                              },
-            }
-        )})}})
 
 	return {props: {teams: response.data}}
 
