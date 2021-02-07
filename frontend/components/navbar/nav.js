@@ -18,7 +18,7 @@ import Link from 'next/link'
 const variants = {
   open: {
     height:"100%",
-    transition: { staggerChildren: 0.7,
+    transition: { staggerChildren: 0.07,
       when: "beforeChildren" }
   },
   closed: {
