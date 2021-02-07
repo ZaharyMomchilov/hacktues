@@ -70,16 +70,15 @@ function checkToken(exp) {
 		console.log('token is not expired')
 		// console.log(exp/.exp * 1000 - Date.now() - 36000000);
 		// console.log(cookies.get('auth'));
-		// console.log(jwt_decode(scookies.get('auth')).user_id);
+		console.log(jwt_decode(cookies.get('auth')).user_id);
 		// getUsers()
 		// getNewToken()
 		// refreshToken()
 	}
 	else{
 		console.log('token is expired')
-		// console.log(cookies.get('auth'));
+		console.log(jwt_decode(cookies.get('auth')).user_id);
 		getNewToken()
-		refreshToken()
 	}
 }
 
@@ -152,13 +151,9 @@ function MyApp({ Component, pageProps }) {
 							else{
 								setDiscord([response.data.discord_id,response.data.avatar])
 								setTeam(response.data.team_set[0])
-						
 							}
-							
 						})
-					}
-					
-
+					}	
 					// getUsers()
 			}
 		}
@@ -171,10 +166,7 @@ function MyApp({ Component, pageProps }) {
 }
 	)
 
-	// router.events.on('routeChangeStart', onLoad())
 	const logUrl = url => toggleOpen(false)
-	// const alertUrl = url => alert(url)
-	
 	routerEvents.once('routeChangeStart', logUrl)
 
 
@@ -297,9 +289,6 @@ function MyApp({ Component, pageProps }) {
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex flexDirection={["column","column","row","row"]} flexWrap="wrap">
 			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
-			{/* <NavProvider.Provider value={{xd, setXd}}> */}
-  				{/* <AnimateSharedLayout> */}
-					{/* <Sidebar layout as={motion.div} avatar={discord} inteam={inTeam} loggedin={logged} /> */}
 					<Flex layout as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
     				  <MenuToggle toggle={() => {toggleOpen()}}  />
     				  <Navigation ctx={{avatar: discord, inteam: inTeam, loggedin:logged}} />
@@ -308,11 +297,8 @@ function MyApp({ Component, pageProps }) {
 					<Box animate={isOpen ? "open" : "closed"} as={motion.div} variants={dived} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 						<Component {...pageProps} />
 					</Box>
-				  {/* </AnimateSharedLayout> */}
-			{/* </NavProvider.Provider> */}
 		</Flex>
 		<Cookie/>
-  	  	{/* <Footer/> */}
   	</ChakraProvider>) 
 }
 

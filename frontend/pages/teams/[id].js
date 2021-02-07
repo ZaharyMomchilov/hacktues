@@ -527,16 +527,25 @@ export async function getServerSideProps(ctx){
 		{ "Content-type": "Application/json",
 		"Authorization": `Bearer ${cookies.get('auth')}`}
 		},
-		)
+		).catch(function (error) {
+			if (error.response) {
+				console.log(error.response);
+			}
+			})
 
-		var captain = await axios({
-			method: 'get',
-			url: `http://${process.env.hostname}/users/${response.data.captain}/`,
-			headers: 
-			{ "Content-type": "Application/json",
-			"Authorization": `Bearer ${cookies.get('auth')}`}
-			},
-		)
+		// var captain = await axios({
+		// 	method: 'get',
+		// 	url: `http://${process.env.hostname}/users/${response.data.captain}/`,
+		// 	headers: 
+		// 	{ "Content-type": "Application/json",
+		// 	"Authorization": `Bearer ${cookies.get('auth')}`}
+		// 	},
+		// )
+		// .catch(function (error) {
+		// 	if (error.response) {
+		// 		console.log(error.response);
+		// 	}
+		// 	})
 
 
 	  var res = await axios({
@@ -547,6 +556,11 @@ export async function getServerSideProps(ctx){
 		  "Authorization": `Bearer ${cookies.get('auth')}`}
 		},
 		)
+		.catch(function (error) {
+			if (error.response) {
+				console.log(error.response);
+			}
+			})
 
 		var users = await axios({
 			method: 'get',
@@ -556,12 +570,19 @@ export async function getServerSideProps(ctx){
 			  "Authorization": `Bearer ${cookies.get('auth')}`}
 			},
 		)
+		.catch(function (error) {
+			if (error.response) {
+				console.log(error.response);
+			}
+			})
 		
 			var users = users.data.filter(function(item) {
 				return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != ''
 			})
 			// return {props: {users: users}}
-			return {props: {teams: response.data,  user: res.data, users: users, captain: captain.data }}
+			return {props: {teams: response.data,  user: res.data, users: users,
+			//  captain: captain.data 
+			}}
 }
 
 const AutoSave = (props,{ debounceMs = 2000 }) => {

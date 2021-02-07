@@ -121,25 +121,49 @@ function EventAgenda({ event }) {
 
   
   if(event.link){
-    var heading = "Очакваме те"
-    var place = "Google Meet"
+    // var heading = "Очакваме те"
+    // var place = "Google Meet"
+    return (
+      <span>
+        <em style={{ color: '#009d60' }}>{event.title}</em>
+        <Text>{event.desc}</Text>
+        <a style={{textDecoration:"none"}}>{"Очакваме те"}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{"Google Meet"}</Link></a>
+      </span>
+    )
   }
   else if(event.youtube){
-    var heading = "Гледай ни"
-    var place = "Youtube"
+    // var heading = "Гледай ни"
+    // var place = "Youtube"
+    return (
+      <span>
+        <em style={{ color: '#009d60' }}>{event.title}</em>
+        <Text>{event.desc}</Text>
+        <a style={{textDecoration:"none"}}>{"Гледай ни"}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{"Youtube"}</Link></a>
+      </span>
+    )
   }
   else if(event.discord){
-    var heading = "Нещо свързано с Discord"
-    var place = "Discord"
+    // var heading = "Нещо свързано с Discord"
+    // var place = "Discord"
+    return (
+      <span>
+        <em style={{ color: '#009d60' }}>{event.title}</em>
+        <Text>{event.desc}</Text>
+        <a style={{textDecoration:"none"}}>{"Нещо свързано с Discord"}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{"Discord"}</Link></a>
+      </span>
+    )
+  }
+  else{
+    return (
+      <span>
+        <em style={{ color: '#009d60' }}>{event.title}</em>
+        <Text>{event.desc}</Text>
+        <a style={{textDecoration:"none"}}><Link textDecoration="underline" target="_blank" href={event.link}></Link></a>
+      </span>
+    )
+  
   }
 
-  return (
-    <span>
-      <em style={{ color: '#009d60' }}>{event.title}</em>
-      <Text>{event.desc}</Text>
-      <a style={{textDecoration:"none"}}>{heading}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{place}</Link></a>
-    </span>
-  )
 }
 
 let Schedule = () => (
