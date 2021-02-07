@@ -174,7 +174,6 @@ function EventAgenda({ event }) {
 let Schedule = () => (
   <Calendar
     culture='bg'
-    formats={formats}
     length={500}
     toolbar={false}
     events={events}
