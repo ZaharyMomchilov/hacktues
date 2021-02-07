@@ -24,10 +24,10 @@ export async function getServerSideProps(ctx){
 	var response = await axios({
 			method: 'get',
 			url: `https://${process.env.hostname}/teams/`,
-			headers: 
-			{ "Content-type": "Application/json",
-            "Authorization": `Bearer ${cookies.get('auth')}`
-			},
+            headers: 
+            { "Content-type": "Application/json",
+              "Authorization": `Bearer ${cookies.get('auth')}`,
+              },
         })
 
 	return {props: {teams: response.data}}
