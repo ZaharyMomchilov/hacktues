@@ -1,8 +1,9 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Icon, Box, Button, Text, Link } from '@chakra-ui/react'
+import { Icon, Box, Button, Text, Link as ChakraLink } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import Cookies from 'universal-cookie';
+import Link from 'next/link'
 
 const variants = {
   open: {
@@ -54,7 +55,7 @@ export const MenuItem = (props) => {
   if(!props.link){
     return (
       
-      <Link as={motion.div}  display="flex" alignItems="center" justifyContent="center"  variants={variants} cursor="pointer" _focus={{outline:"none"}} href="/" cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>
+      <ChakraLink as={motion.div}  display="flex" alignItems="center" justifyContent="center"  variants={variants} cursor="pointer" _focus={{outline:"none"}} href="/" cursor="pointer" onClick={() => {cookies.remove('auth'); cookies.remove('refresh'); router.push("/");}}>
       <Box as={motion.div} w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
         variants={variants}
         whileHover={{ scale: 1.1 }}
@@ -63,14 +64,14 @@ export const MenuItem = (props) => {
         {icon}
         {button}
       </Box>
-      </Link>
+      </ChakraLink>
       )
   }
   else if(!props.name && !props.icon){
     return (
-      <Link as={motion.div} display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}}>
+      <Link as={motion.div} display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" href="/">
       <Box as={motion.div} w="100%" p="3px" background="none"  justifyContent="center" rounded="lg" margin="0" display="flex" alignItems="center" cursor="pointer" variants={variants}>
-        <Text href="/"  textDecoration="none" fontFamily="llpixel" color="#009d60" fontSize="1.25rem" fontWeight="200" size="lg">
+        <Text textDecoration="none" fontFamily="llpixel" color="#009d60" fontSize="1.25rem" fontWeight="200" size="lg">
               		Hack TUES	<span style={{"color":"#105231"}}>GG</span>
         </Text>
       </Box>
@@ -78,10 +79,10 @@ export const MenuItem = (props) => {
   }
   else{
     return (
+      <ChakraLink as={motion.div} display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}} href={props.link}>
       <Button as={motion.div} variants={variants} p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }} cursor="pointer" textAlign="center" _hover={{bg:"#009d60"}} _focus={{outline:"none"}} textColor="black" textDecoration="none" background="none"  fontFamily="Rubik"  border="0px" borderWidth="0px"><Text cursor="pointer" _hover={{textDecoration:"none"}}>
-      <Link as={motion.div} display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}}>
       {/* <Box as={motion.div} w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
         variants={variants}
         whileHover={{ scale: 1.1 }}
@@ -91,7 +92,7 @@ export const MenuItem = (props) => {
         {/* {button} */}
         {props.name}
       {/* </Box> */}
-        </Link>
-        </Text></Button>)
+        </Text></Button>
+        </ChakraLink>)
   }
 };

@@ -102,7 +102,7 @@ export default function Regulation() {
     return (
         <Box pb={["200px", "50px"]} pt="50px">
             <Flex marginLeft={["25px", "25px", "100px", "250px"]} marginRight={["25px", "25px", "100px", "250px"]} mb="50px" background="white" p="15px" rounded="lg">
-                <Text fontFamily="Rubik" fontSize="17px">&emsp;
+                <Text textAlign="justify" fontFamily="Rubik" fontSize="17px">&emsp;
                 {`Скъпи съученици, поздравяваме Ви за избора да участвате в седмото издание на училищния хакатон Hack TUES GG. Тук ще намерите цялата информация, необходима за участие в хакатона и неговото провеждане. Поради епидемичната обстановка в страната Hack TUES GG ще бъде за първи път изцяло онлайн. Важното е, че хакатон ще има независимо от обстоятелствата!`}
                 </Text>
             </Flex>
@@ -110,7 +110,7 @@ export default function Regulation() {
                 <GetPanelData lenght={panels.length} panels={panels}/>
             </Accordion>
             <Flex marginLeft={["25px", "25px", "100px", "250px"]} marginRight={["25px", "25px", "100px", "250px"]} mt="50px" background="white" p="15px" rounded="lg">
-                <Text fontFamily="Rubik" fontSize="17px">
+                <Text textAlign="justify" fontFamily="Rubik" fontSize="17px">
                     {"Искрено се надяваме, че ще се забавлявате и че ще измислите уникални проекти и решения."}
                 </Text>
             </Flex>

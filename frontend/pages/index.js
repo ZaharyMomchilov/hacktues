@@ -57,7 +57,7 @@ export default function Home() {
            			
 				<Flex w="100%" rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="column" flexWrap="wrap" justifyContent="center" alignItems="center">
 					<Flex justifyContent="center" alignItems="center" flexDirection="column" flexWrap="wrap">
-						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Alpha спонсори</Text>
+						<Text marginBottom="5px" fontFamily="Rubik" fontSize="1.4rem" textAlign="center">Alpha спонсори</Text>
 						<Flex wrap="wrap" rounded="lg" justifyContent="center" alignItems="center" background="#fff" justifyContent="center">		  			
 								
 								
@@ -95,7 +95,7 @@ export default function Home() {
 						</Flex>
 					</Flex>
 					<Flex justifyContent="center" alignItems="center" flexDirection="column" flexWrap="wrap">
-						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Beta спонсори</Text>
+						<Text marginBottom="5px" fontFamily="Rubik" fontSize="1.4rem" textAlign="center">Beta спонсори</Text>
 						<Flex rounded="lg" justifyContent="center" alignItems="center" background="#fff" flexDirection="row" flexWrap="wrap" >		  	
 
 								<Link isExternal href="https://www.nemetschek.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
@@ -119,7 +119,7 @@ export default function Home() {
 						</Flex>
 					</Flex>
 					<Flex justifyContent="center" alignItems="center" flexDirection="column" flexWrap="wrap">
-						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Gamma спонсори</Text>
+						<Text marginBottom="5px" fontFamily="Rubik" fontSize="1.4rem" textAlign="center">Gamma спонсори</Text>
 						<Flex rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center" >
 								
 								<Link isExternal href="https://asteasolutions.com/" display="flex" justifyContent="center" alignItems="center" h="100%">
@@ -161,7 +161,7 @@ export default function Home() {
 					</Flex>
 
 					<Flex justifyContent="center" alignItems="center" flexDirection="column" flexWrap="wrap">
-						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Партньори</Text>
+						<Text marginBottom="5px" fontFamily="Rubik" fontSize="1.4rem" textAlign="center">Партньори</Text>
 						<Flex rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center" >
 								
 								<Link isExternal href="https://aztues.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">

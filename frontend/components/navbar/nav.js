@@ -72,16 +72,16 @@ export default function Navigation(props, {toggle}){
     {/* <Flex justifyContent="center" alignItems="center" flexDirection="column" position="relative" h="100%"> */}
       <Flex marginBottom="auto" marginTop="15px" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
             <MenuItem top="-1px" link="/"/>
-        <MenuItem name="Програма" top="-1px" icon={GrSchedule} link="/schedule"/>
+        <MenuItem name="Програма" top="-1px" icon={GrSchedule} link="/schedule/"/>
         {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
         {/* <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/> */}
-        <MenuItem name="Отбори" top="-1px" icon={RiTeamLine} link="/teams"/>
-        <MenuItem name="Архив" icon={FiArchive} link="/archive"/>
-        <MenuItem name="Регламент" icon={GrDocumentText} link="/regulation"/>
-        <MenuItem name="За Hack TUES" top="-1px" icon="GG" link="/about"/>
+        <MenuItem name="Отбори" top="-1px" icon={RiTeamLine} link="/teams/"/>
+        <MenuItem name="Архив" icon={FiArchive} link="/archive/"/>
+        <MenuItem name="Регламент" icon={GrDocumentText} link="/regulation/"/>
+        <MenuItem name="За Hack TUES" top="-1px" icon="GG" link="/about/"/>
         
     </Flex>
-    <Flex marginTop="auto" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
+    <Flex alignItems="center" marginTop="auto" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
       
         {team}
         {login}
