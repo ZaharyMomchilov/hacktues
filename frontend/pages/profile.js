@@ -91,7 +91,7 @@ function Profile(props) {
 
 	return(
 	<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
-	<Flex backgroundColor="white" p="25px" rounded="lg" flexDirection="column" flexWrap="wrap" margin="50px">
+	<Flex backgroundColor="white" p="25px" rounded="lg" flexDirection="column" flexWrap="wrap" margin={["25px","25px","50px","50px"]}>
 		<Flex>
 			<Avatar src={`https://cdn.discordapp.com/avatars/${props.users.discord_id}/${props.users.avatar}.png`}/>
 			<Text fontSize="15px" fontFamily="Rubik" pl="15px">{props.users.first_name}&nbsp;{props.users.last_name}</Text>
@@ -224,11 +224,11 @@ function Profile(props) {
 						)}
 					</Field> */}
 					<Flex flexDirection="row" flexWrap="wrap" w="100%">
-					<Button w="25%" mt={4} mr={3} colorScheme="red" border="0" cursor="pointer" onClick={onOpened}>Изтрий профила</Button>
-					<Button w="25%" mt={4} colorScheme="green" border="0" cursor="pointer" onClick={onOpen}>Запази</Button>
+					<Button mt={4} mr={3} colorScheme="red" border="0" cursor="pointer" onClick={onOpened}>Изтрий профила</Button>
+					<Button mt={4} colorScheme="green" border="0" cursor="pointer" onClick={onOpen}>Запази</Button>
 					
 					<Modal isOpen={isOpen} onClose={onClose}>
-					  <ModalOverlay />
+					  {/* <ModalOverlay /> */}
 					  <ModalContent>
 						<ModalCloseButton _focus={{outline:"none", border:"0", background:"transparent"}} />
 						<ModalHeader>
@@ -245,7 +245,7 @@ function Profile(props) {
 					</Modal>
 
 					<Modal isOpen={isOpened} onClose={onClosed}>
-      					  <ModalOverlay />
+      					  {/* <ModalOverlay /> */}
       					  <ModalContent>
       					    <ModalCloseButton _focus={{outline:"none", border:"0", background:"transparent"}} />
       					    <ModalHeader>

@@ -175,7 +175,7 @@ function MyApp({ Component, pageProps }) {
 	const logUrl = url => toggleOpen(false)
 	// const alertUrl = url => alert(url)
 	
-	routerEvents.on('routeChangeStart', logUrl)
+	routerEvents.once('routeChangeStart', logUrl)
 
 
   // useEffect(() => {

@@ -78,15 +78,20 @@ export const MenuItem = (props) => {
   }
   else{
     return (
+      <Button as={motion.div} variants={variants} p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }} cursor="pointer" textAlign="center" _hover={{bg:"#009d60"}} _focus={{outline:"none"}} textColor="black" textDecoration="none" background="none"  fontFamily="Rubik"  border="0px" borderWidth="0px"><Text cursor="pointer" _hover={{textDecoration:"none"}}>
       <Link as={motion.div} display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}}>
-      <Box as={motion.div} w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
+      {/* <Box as={motion.div} w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
         variants={variants}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-      >
+      > */}
         {icon}
-        {button}
-      </Box>
-        </Link>)
+        {/* {button} */}
+        {props.name}
+      {/* </Box> */}
+        </Link>
+        </Text></Button>)
   }
 };
