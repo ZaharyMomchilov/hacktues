@@ -64,17 +64,10 @@ export default function Navigation(props, {toggle}){
   // }, [login,team,logout, props])
 
 
-  return (<Flex as={motion.div} justifyContent="center" alignItems="center" h="100%" zIndex="1" w={["100%","100%","300px","300px"]} position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
+  return (<Flex as={motion.div} justifyContent="center" alignItems="center" zIndex="1" w={["100%","100%","300px","300px"]} position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
   {/* {props.xd[0]} */}
-    <Flex justifyContent="center" alignItems="center" flexDirection="column" position="relative" h="100%">
+    {/* <Flex justifyContent="center" alignItems="center" flexDirection="column" position="relative" h="100%"> */}
       <Flex marginBottom="auto" marginTop="15px" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
-        {/* <Link textDecoration="none" href="/">
-            		<a textDecoration="none"> */}
-              		{/* <MotionText href="/" variants={mlink}  textDecoration="none" fontFamily="llpixel" color="#009d60" fontSize="1.25rem" fontWeight="200" size="lg">
-                			Hack TUES <span style={{"color":"#105231"}}>GG</span>
-              		</MotionText> */}
-            		{/* </a>
-          	</Link> */}
             <MenuItem top="-1px" link="/"/>
         <MenuItem name="Програма" top="-1px" icon={GrSchedule} link="/schedule"/>
         {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
@@ -91,7 +84,7 @@ export default function Navigation(props, {toggle}){
         {login}
         {logout}
       </Flex>  
-      </Flex>
+      {/* </Flex> */}
   
 </Flex>)
 }

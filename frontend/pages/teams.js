@@ -30,7 +30,7 @@ export async function getServerSideProps(ctx){
               },
         })
         .then(function(response) {
-            if(response.status == 401){
+            if(response.status == 502){
                     axios({
                         method: 'post',
                         url: `https://${process.env.hostname}/token/refresh/`,
@@ -45,28 +45,14 @@ export async function getServerSideProps(ctx){
                             cookies.set('refresh', response.data.access, { path: '/' })
                         }
                         axios({
-                            method: 'post',
-                            url: `https://${process.env.hostname}/users/`,
+                            method: 'get',
+                            url: `https://${process.env.hostname}/teams/`,
                             headers: 
                             { "Content-type": "Application/json",
                               "Authorization": `Bearer ${cookies.get('auth')}`,
                               },
-                            data: data  
-                              },)
-                            .then(function (response) {
-                                if(response.status == 201){
-                                    toast({
-                                          title: "Потвърждаване на акаунт",
-                                          description: "Акаунтът беше успешно създаден и трябва да се потвърди, чрез имейл",
-                                          status: "success",
-                                          duration: 9000
-                                        })
-
-                                    router.push('/registration/confirmation')
-                                }})
-
             }
-        )}})
+        )})}})
 
 	return {props: {teams: response.data}}
 
