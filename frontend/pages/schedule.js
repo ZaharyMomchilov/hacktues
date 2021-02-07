@@ -100,14 +100,19 @@
 // }
 
 import React from 'react'
-import { Calendar, momentLocalizer, Views } from 'react-big-calendar'
+import { Calendar, momentLocalizer , Views } from 'react-big-calendar'
 import events from '../components/schedule/events'
 import {Link, Text} from '@chakra-ui/react'
 import * as dates from '../components/schedule/dates'
-import moment from 'moment'
+// import moment from 'moment'
+import 'moment/locale/bg' 
+require("moment/min/locales.min");
 
+var moment = require('moment');
 moment.locale('bg');
+
 const localizer = momentLocalizer(moment)
+
 function Event({ event }) {
   return (
     <span>
@@ -125,7 +130,7 @@ function EventAgenda({ event }) {
     // var place = "Google Meet"
     return (
       <span>
-        <Link textDecoration="none" _hover={{textDecoration:"none"}} as="em" href={event.link} style={{ color: '#009d60' }}>{event.title}</Link>
+        <Link textDecoration="none" _hover={{textDecoration:"none"}} as="em" isExternal href={event.link} style={{ color: '#009d60' }}>{event.title}</Link>
         <Text>{event.desc}</Text>
         <a style={{textDecoration:"none"}}>{"Очакваме те"}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{"Google Meet"}</Link></a>
       </span>
@@ -136,7 +141,7 @@ function EventAgenda({ event }) {
     // var place = "Youtube"
     return (
       <span>
-        <Link textDecoration="none" _hover={{textDecoration:"none"}} as="em" href={event.youtube} style={{ color: '#009d60' }}>{event.title}</Link>
+        <Link textDecoration="none" _hover={{textDecoration:"none"}} as="em" isExternal href={event.youtube} style={{ color: '#009d60' }}>{event.title}</Link>
         <Text>{event.desc}</Text>
         <a style={{textDecoration:"none"}}>{"Гледай ни"}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{"Youtube"}</Link></a>
       </span>
@@ -147,7 +152,7 @@ function EventAgenda({ event }) {
     // var place = "Discord"
     return (
       <span>
-        <Link textDecoration="none" _hover={{textDecoration:"none"}} as="em" href={event.discord} style={{ color: '#009d60' }}>{event.title}</Link>
+        <Link textDecoration="none" _hover={{textDecoration:"none"}} as="em" isExternal href={event.discord} style={{ color: '#009d60' }}>{event.title}</Link>
         <Text>{event.desc}</Text>
         <a style={{textDecoration:"none"}}>{"Нещо свързано с Discord"}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{"Discord"}</Link></a>
       </span>
@@ -156,7 +161,7 @@ function EventAgenda({ event }) {
   else{
     return (
       <span>
-        <Link textDecoration="none" _hover={{textDecoration:"none"}} as="em" style={{ color: '#009d60' }}>{event.title}</Link>
+        <Link textDecoration="none" _hover={{textDecoration:"none"}} as="em" isExternal style={{ color: '#009d60' }}>{event.title}</Link>
         <Text>{event.desc}</Text>
         <a style={{textDecoration:"none"}}><Link textDecoration="underline" target="_blank"></Link></a>
       </span>
@@ -168,6 +173,8 @@ function EventAgenda({ event }) {
 
 let Schedule = () => (
   <Calendar
+    culture='bg'
+    formats={formats}
     length={500}
     toolbar={false}
     events={events}

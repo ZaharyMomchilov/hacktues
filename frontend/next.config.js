@@ -1,4 +1,6 @@
+
 module.exports = {
+    
     "noImplicitAny": false,
     entry: "./index.js",
     mode: "development",
