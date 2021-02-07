@@ -52,7 +52,8 @@ export default function Login() {
         						status: "error",
         						duration: 9000
         					})
-						}})
+						}
+						})
 								console.log(JSON.stringify(values, null, 1))
 								actions.setSubmitting(false)
 							}, 1000);

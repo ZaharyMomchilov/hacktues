@@ -27,7 +27,7 @@ const variants = {
 const Li = motion.custom(Flex)
 
 
-export default function Navigation(props){
+export default function Navigation(props, {toggle}){
   const [isSmalledThan480] = useMediaQuery("(max-width: 480px)")
 
   var router = useRouter()
@@ -37,12 +37,6 @@ export default function Navigation(props){
   var logout
   var team
 
-  console.log(props)
-
-
-  
-
-
   // useEffect(() => {
     if(props.ctx.loggedin == 0 && props.ctx.inteam == null){
       team = <Box display="none" ></Box>
@@ -51,9 +45,6 @@ export default function Navigation(props){
       team = <Box display="none" ></Box>
     }
     else if(props.ctx.loggedin == 1 && props.ctx.inteam == null){
-      team = <MenuItem name="Създай отбор" icon={AiOutlineUsergroupAdd} link="/maketeam"/> 
-    }
-    else if(props.ctx.loggedin == 1 && props.ctx.inteam == "false"){
       team = <MenuItem name="Създай отбор" icon={AiOutlineUsergroupAdd} link="/maketeam"/> 
     }
     else if(props.ctx.loggedin == 1 && props.ctx.inteam){

@@ -133,7 +133,46 @@ export default function Register(props) {
         									})
 											
 										router.push('/registration/confirmation')
+        					    	}
+									else if(response.status == 401){
+										axios({
+											method: 'post',
+											url: `https://${process.env.hostname}/token/refresh/`,
+											headers: 
+											{ "Content-type": "Application/json"},
+											data: {refresh: `${cookies.get('refresh')}`}  
+										})
+										.then(function (response) {
+											console.log(response);
+											cookies.set('auth', response.data.access, { path: '/' })
+											if(response.data.refresh != undefined){
+												cookies.set('refresh', response.data.access, { path: '/' })
+											}
+											axios({
+        						method: 'post',
+        						url: `https://${process.env.hostname}/users/`,
+        						headers: 
+        						{ "Content-type": "Application/json",
+        						  "Authorization": `Bearer ${cookies.get('auth')}`,
+								  },
+								data: data  
+								  },)
+        					    .then(function (response) {
+        					        if(response.status == 201){
+										toast({
+        									  title: "Потвърждаване на акаунт",
+        									  description: "Акаунтът беше успешно създаден и трябва да се потвърди, чрез имейл",
+        									  status: "success",
+        									  duration: 9000
+        									})
+											
+										router.push('/registration/confirmation')
         					    	}})
+
+										})
+									}
+									
+									})
         					    .catch(function (error) {
 									if (error.response) {
 										for (const [key, value] of Object.entries(error.response.data)) {

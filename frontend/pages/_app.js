@@ -22,12 +22,13 @@ import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 
 export const NavProvider = React.createContext(false);
-
+import _ from 'lodash';
 import { useDimensions } from "../components/navbar/dim";
 import { MenuToggle } from "../components/navbar/button";
 import Navigation from "../components/navbar/nav";
 import { useMediaQuery } from "@chakra-ui/react"
 import { useRouter } from 'next/router'
+import routerEvents from 'next-router-events'
 
 
 // axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
@@ -77,7 +78,7 @@ function checkToken(exp) {
 	else{
 		console.log('token is expired')
 		// console.log(cookies.get('auth'));
-		getNewToken()
+		// getNewToken()
 		refreshToken()
 	}
 }
@@ -95,6 +96,30 @@ function MyApp({ Component, pageProps }) {
 			}, 
 		closed:{
 			opacity:1}}
+
+
+		const [isLargerThan797] = useMediaQuery("(min-width: 797px)")
+		// const { nav, setNav } = useContext(NavProvider);
+		
+		const [isOpen, toggleOpen] = useCycle(false, true);
+		const containerRef = useRef(null);
+		const { height } = useDimensions(containerRef);
+		 
+		// const handleNav = () => setNav(isOpen)
+		 
+		var sidebar
+		var variant
+		var dived
+		 //   console.log(props);
+
+
+	const onLoad = () => {
+		console.log("fired");
+		toggleOpen(false)
+	}
+
+	var router = useRouter()
+
 
   	useEffect(() => {
 
@@ -120,8 +145,8 @@ function MyApp({ Component, pageProps }) {
 						  }
 						  },)
 						.then(function (response){
-							// console.log(response);
-							if(!response.data.team_set[0]){
+							console.log(_.isEmpty(response.data.team_set));
+							if(_.isEmpty(response.data.team_set)){
 								setTeam(null)
 							}
 							else{
@@ -146,20 +171,11 @@ function MyApp({ Component, pageProps }) {
 }
 	)
 
-
-	const [isLargerThan797] = useMediaQuery("(min-width: 797px)")
-  // const { nav, setNav } = useContext(NavProvider);
-  
-  const [isOpen, toggleOpen] = useCycle(false, true);
-  const containerRef = useRef(null);
-  const { height } = useDimensions(containerRef);
-
-  // const handleNav = () => setNav(isOpen)
-
-  var sidebar
-  var variant
-  var dived
-//   console.log(props);
+	// router.events.on('routeChangeStart', onLoad())
+	const logUrl = url => toggleOpen(false)
+	// const alertUrl = url => alert(url)
+	
+	routerEvents.once('routeChangeStart', logUrl)
 
 
   // useEffect(() => {
@@ -274,6 +290,7 @@ function MyApp({ Component, pageProps }) {
 //     </Flex>
 //   );
 
+	
 
 
   	return (
