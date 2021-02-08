@@ -15,8 +15,6 @@ import { Center } from "@chakra-ui/react"
 import { List, ListItem, ListIcon, UnorderedList, Grid } from "@chakra-ui/react"
 import { BiImageAlt } from 'react-icons/bi';
 
-
-
 export default function Home() {
 
     var inW
