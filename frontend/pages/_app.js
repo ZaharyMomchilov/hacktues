@@ -25,6 +25,8 @@ import { useMediaQuery } from "@chakra-ui/react"
 import { useRouter } from 'next/router'
 import routerEvents from 'next-router-events'
 
+import Head from 'next/head'
+
 
 // axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
 // axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
@@ -227,8 +229,13 @@ function MyApp({ Component, pageProps }) {
     }
 
   	return (
+		
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex flexDirection={["column","column","row","row"]} flexWrap="wrap">
+			<Head>
+        			<title>Hack TUES GG</title>
+        			<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+     			 </Head>
 			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
 				<Flex as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
     				<MenuToggle toggle={() => {toggleOpen()}}  />
