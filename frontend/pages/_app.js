@@ -305,7 +305,7 @@ function MyApp({ Component, pageProps }) {
 						<Component {...pageProps} />
 					</Box>
 		</Flex>
-		<Cookie/>
+		{/* <Cookie/> */}
   	</ChakraProvider>) 
 }
 
