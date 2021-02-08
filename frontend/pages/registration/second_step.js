@@ -81,16 +81,8 @@ export default function Register(props) {
                   "Authorization": `Bearer ${response.data.access_token}`}},)
                 .then(function (response){
                     console.log(response);
-					router.reload()
 					localStorage.setItem('userID', response.data.id);
 					localStorage.setItem('avatar', response.data.avatar);
-                    // axios({
-                    //     method: 'get',
-                    //     url: `https://cdn.discordapp.com/avatars/${response.data.id}/${response.data.avatar}.png`,
-                    //     },)
-                    //     .then(function (response){
-                    //         console.log(response.config.url);
-                    //     })
                   })
             })
             .catch(function (error) {

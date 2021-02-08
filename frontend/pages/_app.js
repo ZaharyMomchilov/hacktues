@@ -1,21 +1,16 @@
 import '../styles/globals.css'
-import { ChakraProvider, Box, Slide,SlideFade, Button, Text, Image, Flex, Link } from "@chakra-ui/react"
+import { ChakraProvider, Box, Slide, Button, Text, Flex, Link } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react";
 import 'keen-slider/keen-slider.min.css'
 import '../styles/react-big-calendar.css'
-import Navbar from '../components/navbar/navbar'
-import {Sidebar} from '../components/navbar/sidebar'
-import Footer from '../components/footer/footer'
-import React, {useEffect, useRef, useContext} from 'react'
+import React, {useEffect, useRef} from 'react'
 import Cookies from 'universal-cookie';
 import axios from 'axios'
 import jwt_decode from "jwt-decode";
 import { createBreakpoints } from "@chakra-ui/theme-tools"
 import { useControllableState } from "@chakra-ui/react"
-import Terms from '../components/termsofservice/terms'
 import NextNprogress from 'nextjs-progressbar';
 import { motion, useCycle } from "framer-motion";
-import { AnimateSharedLayout } from "framer-motion"
 import Router from 'next/router'
 const cookies = new Cookies();
 import * as Sentry from "@sentry/react";
@@ -90,35 +85,21 @@ function MyApp({ Component, pageProps }) {
 	const [discord, setDiscord] = useControllableState({defaultValue: null});
 
 		const [isLargerThan797] = useMediaQuery("(min-width: 797px)")
-		// const { nav, setNav } = useContext(NavProvider);
 		
 		const [isOpen, toggleOpen] = useCycle(false, true);
 		const containerRef = useRef(null);
 		const { height } = useDimensions(containerRef);
 		 
-		// const handleNav = () => setNav(isOpen)
-		 
 		var sidebar
 		var variant
 		var dived
-		 //   console.log(props);
 
-
-	
 		const logUrl = url => toggleOpen(false)
 		routerEvents.on('routeChangeStart', logUrl)
 
 	var router = useRouter()
 
-
   	useEffect(() => {
-
-		// if(cookies.get('auth')){
-		// 	if(jwt_decode(cookies.get('auth')).user_id == 3){
-		// 		setTeam(null)
-		// 		setLogin(0)
-		// 	}
-		// }
 
 		if(cookies.get('CookieConsent')){
 				if(cookies.get('auth')){
@@ -267,14 +248,14 @@ function MyApp({ Component, pageProps }) {
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex flexDirection={["column","column","row","row"]} flexWrap="wrap">
 			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
-					<Flex as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
-    				  <MenuToggle toggle={() => {toggleOpen()}}  />
-    				  <Navigation ctx={{avatar: discord, inteam: inTeam, loggedin:logged}} />
-    				  <Box as={motion.div} h="100%" position="absolute" width={["100%","100%","300px","300px"]} background="#fff" className="background" variants={sidebar} />
-    				</Flex>
-					<Box animate={isOpen ? "open" : "closed"} as={motion.div} variants={dived} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
-						<Component {...pageProps} />
-					</Box>
+				<Flex as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
+    				<MenuToggle toggle={() => {toggleOpen()}}  />
+    				<Navigation ctx={{avatar: discord, inteam: inTeam, loggedin:logged}} />
+    				<Box as={motion.div} h="100%" position="absolute" width={["100%","100%","300px","300px"]} background="#fff" className="background" variants={sidebar} />
+    			</Flex>
+			<Box animate={isOpen ? "open" : "closed"} as={motion.div} variants={dived} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
+				<Component {...pageProps} />
+			</Box>
 		</Flex>
 		<Cookie/>
   	</ChakraProvider>) 

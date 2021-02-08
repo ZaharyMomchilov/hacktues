@@ -60,6 +60,7 @@ export default function Login({logIn}) {
 				<Formik validationSchema={SignupSchema} initialValues={{ }} 
 		onSubmit={(values, actions) => {
 			setTimeout(() => {
+					console.log("v requesta sme")
 					axios({
 						method: 'post',
 						url: `https://${process.env.hostname}/users/change_password/`,
@@ -97,13 +98,14 @@ export default function Login({logIn}) {
 						Нова парола
 					</FormLabel>
 					<InputGroup size="md">
-						<Input id="password1" pr="4.5rem" type={show ? "text" : "password"} isRequired {...field} isInvalid={form.errors.password && form.touched.password}/>
+						<Input id="password" pr="4.5rem" type={show ? "text" : "password"} isRequired {...field} isInvalid={form.errors.password && form.touched.password}/>
 							<InputRightElement width="4.5rem">
 								<Button fontFamily="Rubik" fontSize="15px" border="0" colorScheme="green" _focus={{outline:"none"}} h="1.75rem" size="sm" onClick={handleClick}>
 									{show ? <ViewIcon/> : <ViewOffIcon/>}
 								</Button>
 							</InputRightElement>
 						</InputGroup>
+						<FormErrorMessage>{form.errors.email}</FormErrorMessage>
 				</FormControl>)}
 			</Field>
 			<Button mt={4} colorScheme="green" border="0" isLoading={props.isSubmitting} type="submit">
@@ -130,7 +132,7 @@ export default function Login({logIn}) {
 						data: {"email":values.email}  
 						  },)
 						.then(function (response) {
-							toast({ title: "Промяна на парола.", description: "Влезте в имейлът Ви, за да смените паролата.",status: "success", duration: 9000})
+							toast({ title: "Промяна на парола.", description: "Влезте в имейла, за да смените паролата.",status: "success", duration: 9000})
 							router.push('/')
 						})
 						.catch(function (error) {
