@@ -277,7 +277,7 @@ export async function getServerSideProps(ctx){
 
 	const cookies = new Cookies(ctx.req.headers.cookie);
 
-	if(jwt_decode(cookies.get('auth')).user_id == 3){
+	if(!cookies.get('auth')){
 		return {
       		redirect: {
        		permanent: false,
