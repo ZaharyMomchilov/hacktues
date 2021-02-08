@@ -5,7 +5,7 @@
         {
             "name": "Виктория Димитрова",
             "class":"11Г",
-            "picture":"https://hacktues.pythonanywhere.com/static/frontend/viki.jpg"
+            "picture":"/About/viki.jpg"
         }
     ]},{
         "id": "PR",
@@ -13,7 +13,7 @@
             {
                 "name": "Гергана Узунова",
                 "class":"11Г",
-                "picture":"https://hacktues.pythonanywhere.com/static/frontend/geri.jpg"
+                "picture":"/About/geri.jpg"
             }
         ]},
     {
@@ -22,12 +22,12 @@
             {
                 "name": "Захари Момчилов",
                 "class":"11Г",
-                "picture":"https://hacktues.pythonanywhere.com/static/frontend/hari.png"
+                "picture":"/About/hari.png"
             },
             {
                 "name": "Йоан Джелекарски",
                 "class":"11Г",
-                "picture":"https://hacktues.pythonanywhere.com/static/frontend/yoan.jpg"
+                "picture":"/About/yoan.jpg"
             }
         ]
     },
@@ -37,12 +37,12 @@
             {
                 "name": "Ния Маркова",
                 "class":"11Г",
-                "picture":"https://hacktues.pythonanywhere.com/static/frontend/niya.jpg"
+                "picture":"/About/niya.jpg"
             },
             {
                 "name": "Теодора Стоичкова",
                 "class":"11Г",
-                "picture":"https://hacktues.pythonanywhere.com/static/frontend/tedi.png"
+                "picture":"/About/tedi.png"
             }
         ]},
             {
@@ -51,12 +51,12 @@
             {
                 "name": "Славянка Йовчева",
                 "class":"11Г",
-                "picture":"https://hacktues.pythonanywhere.com/static/frontend/slavi.jpg"
+                "picture":"/About/slavi.jpg"
             },
             {
                 "name": "Виолета Кабаджова",
                 "class":"11А",
-                "picture":"https://hacktues.pythonanywhere.com/static/frontend/vili.jpeg"
+                "picture":"/About/vili.jpeg"
             }]},
         {
             "id": "Дизайн",
@@ -64,11 +64,11 @@
                 {
                     "name": "Кайра Бояджиева",
                     "class":"10В",
-                    "picture":"https://hacktues.pythonanywhere.com/static/frontend/kayra.jpg"
+                    "picture":"/About/kayra.jpg"
                 },
                 {
                     "name": "Ивайла Панайотова",
                     "class":"9В",
-                    "picture":"https://hacktues.pythonanywhere.com/static/frontend/ivayla.jpg"
+                    "picture":"/About/ivayla.jpg"
                 }]}
 ]

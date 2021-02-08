@@ -7,9 +7,6 @@
     "start": "next start",
     "dev": "next dev"
   },
-  "engines": {
-    "node": "^14.15.4"
-},
   "dependencies": {
     "@atayahmet/react-axios-token-provider": "^1.0.0",
     "@babel/plugin-syntax-flow": "^7.12.1",

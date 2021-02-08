@@ -7,7 +7,7 @@
                 "participants": "Телерик Арсов, Антонио Милев, Мартин Дацев",
                 "name": "Go6o",
                 "project": "система за автоматизирана оценка на тестове, на основата на технология за разпознаване на изображения",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht-1.jpg",
+                "image": "/Archive/ht-1.jpg",
                 "special_prizes": "възможност за двуседмична практика в \"Nemetschek България\", безплатно обучение за първия модул Fundamentals на \"SoftUni\" и специалната награда на \"ChaosGroup\""
             },
             {
@@ -15,7 +15,7 @@
                 "participants": "Антонио Миндов, Дария Никитова, Кристиана Иванова, Петър Петров, Ясен Алексиев",
                 "name": "R&T",
                 "project": "Визуализация на код с блок-схеми",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht-2.jpg",
+                "image": "/Archive/ht-2.jpg",
                 "special_prizes": "\"MusalaSoft\" и \"StandByte\""
             },
             {
@@ -23,7 +23,7 @@
                 "participants": "Габриел Гарвалов, Дейвид-Николас Петров, Илиян Кордев, Филип Пепегов, Кристиан Томов",
                 "name": "Coding Masters",
                 "project": "Система за обмен на информация и знания между учениците",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht-3.jpg"
+                "image": "/Archive/ht-3.jpg"
             }
         ],
         "allParticipants": 84,
@@ -66,7 +66,7 @@
                 "participants": "Лазар Френкев, Александър Вербовский, Андрей Стрински, Християн Генчев, Алекс Стефанов",
                 "name": "Зор",
                 "project": "Artsteler: 2D Platformer с puzzle game елементи (забавна игра, създадена за Android)",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht3-1.jpg",
+                "image": "/Archive/ht3-1.jpg",
                 "special_prizes": "възможност да довършат проекта си с екип на \"TelebidPro\", индивидуална сума за закупуване на хардуер и възможност за безплатно обучение в един семестър в \"SoftUni\""
             },
             {
@@ -74,14 +74,14 @@
                 "participants": "Телерик Арсов, Стефан Бабуков, Николай Милчев, Мартин Дацев",
                 "name": "To6o",
                 "project": "Micromanipulator: симулация на генетичен алгоритъм",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht3-2.jpg"
+                "image": "/Archive/ht3-2.jpg"
             },
             {
                 "place": "third",
                 "participants": "Георги Корчаков, Кристиян Йочев, Йордан Златанов, Симеон Георгиев, Александър Стоичков",
                 "name": "Top8",
                 "project": "Image Marker: уеб приложение за създаване и редактиране на изображения, което работи на всякакви платформи",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht3-3.jpg"
+                "image": "/Archive/ht3-3.jpg"
             }
         ],
         "allParticipants": 136,
@@ -97,7 +97,7 @@
                 "participants": "Телерик Арсов, Ивона Мирчева, Владислав Георгиев, Мартин Дацев, Петър Милев",
                 "name": "COCOBE",
                 "project": "Приложение за резюмиране на текст, използващо невронни мрежи и машинно самообучение",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/h30xt-1.jpg",
+                "image": "/Archive/h30xt-1.jpg",
                 "special_prizes": "специална награда на \"TelebidPro\" с възможност за стаж и менторство"
             },
             {
@@ -105,14 +105,14 @@
                 "participants": "Георги Любенов, Виктор Велев, Антон Янчев, Самуил Георгиев",
                 "name": "Old and Bald",
                 "project": "Приложение, базирано на машинно самообучение, за чатбот на историческа тема, което предлага резюме на текстове по дадена тема, спрямо интересите на ползвателите",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/h30xt-2.jpg"
+                "image": "/Archive/h30xt-2.jpg"
             },
             {
                 "place": "third",
                 "participants": "Михаил Киров, Петър Николов, Денис Бързанов, Тони Пеловски, Стефан Стефанов",
                 "name": "IDK",
                 "project": "Игрална конзола",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/h30xt-3.jpg"
+                "image": "/Archive/h30xt-3.jpg"
             }
         ],
         "allParticipants": 206,
@@ -128,14 +128,14 @@
                 "participants": "Виктор Велев, Петър Герасимов, Теодор Станишев",
                 "name": "Elsyser",
                 "project": "VoiceCV: Вградено устройство (в шапка или очила) с камера и изкуствен интелект в помощ на незрящите хора - играе ролята на личен асистент, който информира с глас за околните обекти чрез снимки в близка и далечна перспектива",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht365-1.jpg"
+                "image": "/Archive/ht365-1.jpg"
             },
             {
                 "place": "second",
                 "participants": "Владислав Георгиев, Мартин Дацев, Антонио Милев, Телерик Арсов",
                 "name": "Какводой",
                 "project": "GeoSolver: приложение за решаване на геометрични задачи, което сканира условието и генерира електронен чертеж и решение на задачата",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht365-2.jpg",
+                "image": "/Archive/ht365-2.jpg",
                 "special_prizes": "специална награда от \"Data Science Society\""
             },
             {
@@ -143,7 +143,7 @@
                 "participants": "Мартин Йорданов, Самуил Георгиев, Антон Янчев, Огнян Барух, Георги Любенов",
                 "name": "Babba4e",
                 "project": "Product Chain: система за проверка на автентичността на продукти чрез сканиране на уникален QR код на всеки продукт, който дава информация за пътя на продукта, използваща блокчейн технология, за да предпази потребителите от фалшиви стоки на пазара",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht365-3.jpg",
+                "image": "/Archive/ht365-3.jpg",
                 "special_prizes": "специална награда от \"TelebidPro\""
             }
         ],
@@ -160,21 +160,21 @@
                 "participants": "Ангел Пенчев, Симеон Георгиев, Боян Иванов, Богдан Миронов, Мирослав Мирчев",
                 "name": "Fanton",
                 "project": "DRUN: Автоматизирана система за доставка на пратки с дронове.",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht365-1.jpg"
+                "image": "/Archive/ht365-1.jpg"
             },
             {
                 "place": "second",
                 "participants": "Илиана Генова, Венелин Атанасов, Боряна Стефанова, Стефан Антонов, Иваело Кръстев",
                 "name": "789",
                 "project": "Пейо: преработено радио на около 60 години, така че да използва нови технологии",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht365-2.jpg"
+                "image": "/Archive/ht365-2.jpg"
             },
             {
                 "place": "third",
                 "participants": "Анета Цветкова, Калин Дойчев, Костадин Костадинов, Евгени Димов",
                 "name": "Нишки",
                 "project": "NotInfo: браузър разширение за Chrome, коeто следи дали съдържание, което човек чете не е пропаганда.",
-                "image": "https://hacktues.pythonanywhere.com/static/frontend/ht365-3.jpg"
+                "image": "/Archive/ht365-3.jpg"
             }
         ],
 	"allParticipants": 125,

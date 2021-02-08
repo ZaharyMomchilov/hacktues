@@ -27,7 +27,6 @@ const variants = {
   }
 };
 
-const Li = motion.custom(Flex)
 
 
 export default function Navigation(props, {toggle}){
@@ -39,6 +38,8 @@ export default function Navigation(props, {toggle}){
   var login
   var logout
   var team
+
+  console.log(props);
 
   // useEffect(() => {
     if(props.ctx.loggedin == 0 && props.ctx.inteam == null){

@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import { ChakraProvider, Box, Slide,SlideFade, Button, Text, Image, Flex } from "@chakra-ui/react"
+import { ChakraProvider, Box, Slide,SlideFade, Button, Text, Image, Flex, Link } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react";
 import 'keen-slider/keen-slider.min.css'
 import '../styles/react-big-calendar.css'
@@ -76,9 +76,10 @@ function checkToken(exp) {
 		// refreshToken()
 	}
 	else{
-		console.log('token is expired')
+		// console.log('token is expired')
 		console.log(jwt_decode(cookies.get('auth')).user_id);
-		getNewToken()
+		// getNewToken()
+		refreshToken()
 	}
 }
 
@@ -129,11 +130,12 @@ function MyApp({ Component, pageProps }) {
 			}
 		}
 
-		if(cookies.get('CookieConsent')){
+		// if(cookies.get('CookieConsent')){
 			if(cookies.get('auth')){
 				checkToken(jwt_decode(cookies.get('auth')))
 				if(jwt_decode(cookies.get('auth')).user_id != 3){
 					setLogin(1)
+					checkToken(jwt_decode(cookies.get('auth')))
 					if(inTeam == null){
 						axios({
 						method: 'get',
@@ -153,6 +155,11 @@ function MyApp({ Component, pageProps }) {
 								setTeam(response.data.team_set[0])
 							}
 						})
+						.catch(function(error){
+							if(error.response.data.code == "user_not_found"){
+								refreshToken()
+							}
+						})
 					}	
 					// getUsers()
 			}
@@ -163,7 +170,7 @@ function MyApp({ Component, pageProps }) {
 			// getUsers()
 		}
 	}
-}
+// }
 	)
 
 	const logUrl = url => toggleOpen(false)
@@ -314,7 +321,7 @@ const Cookie = () => {
 		return(
 			<Slide direction="bottom" in={value} style={{zIndex:10}}>
 				<Flex pb={["50px","50px","20px","20px"]} mr="50px" marginLeft={["0","0","auto","auto"]} w={["100%","100%","33%","33%"]} flexDirection="column" flexWrap="wrap" mb={["0px","0px","150px","150px"]} paddingLeft="20px" paddingRight="20px" paddingTop="20px" color="white" mt="4" rounded="lg" bg="#a5cf9f" shadow="md">
-					<Text alignSelf="center">Съгласявам се с <Terms/> на HackTUES 7</Text>
+					<Text alignSelf="center">Този уебсайт използва бисквитки. Научи повече <Link textDecoration="underline" isExternal href="https://hacktues.pythonanywhere.com/static/frontend/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%B7%D0%B0%20%D0%B1%D0%B8%D1%81%D0%BA%D0%B2%D0%B8%D1%82%D0%BA%D0%B8.pdf" >тук</Link></Text>
 					<Button alignSelf="center" border="0" colorScheme="white" backgroundColor="transparent" onClick={() => {setValue(false); cookieConsentHandler();getNewToken()}}>Съгласявам се</Button>
 					</Flex>
 			</Slide>

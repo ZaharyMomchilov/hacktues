@@ -341,7 +341,7 @@ export default function Register(props) {
 				<Field name="GDPR">
 					{({ field, form }) => (
 						<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
-							<CustomCheckbox _focus={{outline:"none",border:0}} jsx={{}} colorScheme="green" isRequired id="GDPR" fontStyle="Rubik" >Съгласен съм с <Link isExternal href="/gdpr"><a style={{color:"green", }} onClick={onClose}>Общият регламент за защита на данните</a></Link></CustomCheckbox>
+							<CustomCheckbox _focus={{outline:"none",border:0}} jsx={{}} colorScheme="green" isRequired id="GDPR" fontStyle="Rubik" >Съгласен съм с <Link isExternal href="hacktues.pythonanywhere.com/static/frontend/Политика за поверителност.pdf"><a style={{color:"green", }} onClick={onClose}>политиката за поверителност на Hack TUES GG</a></Link></CustomCheckbox>
 						</FormControl>
 					)}
 				</Field>

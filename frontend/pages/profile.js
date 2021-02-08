@@ -16,6 +16,7 @@ import {useCallback, useEffect, useState} from 'react'
 import _ from 'lodash';
 const cookies = new Cookies()
 import * as Yup from 'yup';
+import { useRouter } from "next/router";
 
 function Profile(props) {
 
@@ -42,16 +43,20 @@ function Profile(props) {
 	 	phone: Yup.string()
 			.matches(/^0\d{9}$/, 'използвай валиден телефон')
 	});
+	var router = useRouter()
 
-	const handleDelete = ({props}) => {
+	const handleDelete = () => {
 
 		axios({
 			method: 'delete',
-			url: `https://${process.env.hostname}/users/${props.props.users.id}/`,
+			url: `https://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}/`,
 			headers: 
 			{ "Content-type": "Application/json",
 			  "Authorization": `Bearer ${cookies.get('auth')}`},
 			  },)
+			.then(function(resp){
+				router.push('/')
+			})
 			.catch(function (error) {
 				if (error.response) {
 					console.log(error.response)
@@ -258,7 +263,7 @@ function Profile(props) {
       					      </Button>
       					      <Link href="/">
 								{/* <Link> */}
-									<Button href="/" colorScheme="red" border="0" cursor="pointer" isLoading={props.isSubmitting} onClick={() => {handleDelete(props); onClosed(); router.push('/')}} type="submit">Промени</Button>
+									<Button href="/" colorScheme="red" border="0" cursor="pointer" isLoading={props.isSubmitting} onClick={() => {handleDelete(); onClosed()}} type="submit">Промени</Button>
 								{/* </Link> */}
 								</Link>
       					    </ModalFooter>
@@ -270,6 +275,10 @@ function Profile(props) {
 				)}}
     </Formik>
 	</Flex>
+		<Flex rounded="lg" margin={["25px","25px","50px","50px"]} background="white">
+				Изглегли декларация
+		</Flex>
+
 	</Box>)
 }
 
