@@ -50,7 +50,7 @@ export default function Home() {
                     <Clock deadline="March, 11, 2021" />
                     <Flex justifyContent="space-around" flexDirection="row" flexWrap="wrap">
                       	<Button _hover={{background:"#009d60"}} border="0" textDecoration="none" fontStyle="Rubik" leftIcon={<MdPlace/>} colorScheme="#105231" variant="outline"><Link textDecoration="none" isExternal href="https://www.youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ"><a style={{textDecoration:"none", fontFamily:"Rubik"}}>Онлайн</a></Link></Button>	
-				    	<Button _hover={{background:"#009d60"}} border="0" textDecoration="none" fontStyle="Rubik" leftIcon={<AiOutlineCalendar/>} colorScheme="#105231" variant="outline"><Link textDecoration="none" href="/schedule"><a style={{textDecoration:"none", fontFamily:"Rubik"}}>11-14.03.2021</a></Link></Button>	
+				    	<Button _hover={{background:"#009d60"}} border="0" textDecoration="none" fontStyle="Rubik" leftIcon={<AiOutlineCalendar/>} colorScheme="#105231" variant="outline"><Link textDecoration="none" href="https://www.youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ"><a style={{textDecoration:"none", fontFamily:"Rubik"}}>11-14.03.2021</a></Link></Button>	
 				    </Flex>
                 </Flex>
 
