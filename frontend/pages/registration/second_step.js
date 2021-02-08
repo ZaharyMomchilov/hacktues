@@ -81,7 +81,7 @@ export default function Register(props) {
                   "Authorization": `Bearer ${response.data.access_token}`}},)
                 .then(function (response){
                     console.log(response);
-					localStorage
+					router.reload()
 					localStorage.setItem('userID', response.data.id);
 					localStorage.setItem('avatar', response.data.avatar);
                     // axios({
