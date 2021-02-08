@@ -65,8 +65,6 @@ export default function Login({logIn}) {
 						url: `https://${process.env.hostname}/users/change_password/`,
 						headers: 
 						{ "Content-type": "Application/json",
-						"Authorization": `Bearer ${cookies.get('auth')}`
-	
 						},
 						data: {"password":values.password,
 								"token_id":tokenParams[0],
@@ -128,9 +126,7 @@ export default function Login({logIn}) {
 						method: 'post',
 						url: `https://${process.env.hostname}/users/forgotten_password/`,
 						headers: 
-						{ "Content-type": "Application/json",
-						"Authorization": `Bearer ${cookies.get('auth')}`
-						},
+						{ "Content-type": "Application/json",},
 						data: {"email":values.email}  
 						  },)
 						.then(function (response) {

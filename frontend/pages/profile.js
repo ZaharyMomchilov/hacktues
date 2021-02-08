@@ -315,8 +315,7 @@ export async function getServerSideProps(ctx){
 			method: 'get',
 			url: `https://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}`,
 			headers: 
-			{ "Content-type": "Application/json",
-			  "Authorization": `Bearer ${cookies.get('auth')}`}
+			{ "Content-type": "Application/json",}
 			},
 			)
 			 

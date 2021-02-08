@@ -118,9 +118,7 @@ export default function Register(props) {
         						method: 'post',
         						url: `https://${process.env.hostname}/users/`,
         						headers: 
-        						{ "Content-type": "Application/json",
-        						  "Authorization": `Bearer ${cookies.get('auth')}`,
-								  },
+        						{ "Content-type": "Application/json",},
 								data: data  
 								  },)
         					    .then(function (response) {

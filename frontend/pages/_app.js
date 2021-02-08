@@ -89,15 +89,6 @@ function MyApp({ Component, pageProps }) {
 	const [inTeam, setTeam] = useControllableState({defaultValue:null});
 	const [discord, setDiscord] = useControllableState({defaultValue: null});
 
-
-	const div = {
-		open: {
-			opacity:1
-			}, 
-		closed:{
-			opacity:1}}
-
-
 		const [isLargerThan797] = useMediaQuery("(min-width: 797px)")
 		// const { nav, setNav } = useContext(NavProvider);
 		
@@ -122,17 +113,16 @@ function MyApp({ Component, pageProps }) {
 
   	useEffect(() => {
 
-		if(cookies.get('auth')){
-			if(jwt_decode(cookies.get('auth')).user_id == 3){
-				setTeam(null)
-				setLogin(0)
-			}
-		}
+		// if(cookies.get('auth')){
+		// 	if(jwt_decode(cookies.get('auth')).user_id == 3){
+		// 		setTeam(null)
+		// 		setLogin(0)
+		// 	}
+		// }
 
-		// if(cookies.get('CookieConsent')){
-			if(cookies.get('auth')){
-				checkToken(jwt_decode(cookies.get('auth')))
-				if(jwt_decode(cookies.get('auth')).user_id != 3){
+		if(cookies.get('CookieConsent')){
+				if(cookies.get('auth')){
+					console.log("in if");
 					setLogin(1)
 					checkToken(jwt_decode(cookies.get('auth')))
 					if(inTeam == null){
@@ -159,25 +149,19 @@ function MyApp({ Component, pageProps }) {
 								setLogin(0)
 								cookies.remove('auth')
 								cookies.remove('refresh')
-								getNewToken();
 							}
 						})
 					}	
 					// getUsers()
 			}
-		}
 		else{
-			getNewToken();
 			setLogin(0)
 			// getUsers()
 		}
 	}
-// }
+}
 	)
 
-
-
-  // useEffect(() => {
     if(!isLargerThan797){
 
 		dived = {
@@ -202,7 +186,7 @@ function MyApp({ Component, pageProps }) {
 
       sidebar = {
         open: (height = 1000) => ({
-          clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+          clipPath: `circle(${height * 1.5}px at 40px 40px)`,
           overflow:"hidden",
           transition: {
             type: "spring",
@@ -241,11 +225,11 @@ function MyApp({ Component, pageProps }) {
     }
     else{
 
-		dived = {}
+	dived = {}
 
       sidebar = {
         open: (height = 1000) => ({
-          clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+          clipPath: `circle(${height * 1.5}px at 40px 40px)`,
           transition: {
             type: "spring",
             stiffness: 20,
@@ -278,24 +262,12 @@ function MyApp({ Component, pageProps }) {
         }
       };
     }
-  // }, [isLargerThan428, sidebar, variant])
-
-//   return (
-//     <Flex layout as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
-//       <MenuToggle toggle={() => {toggleOpen()}}  />
-//       <Navigation ctx={props} />
-//       <Box as={motion.div} h="100%" position="absolute" width={["100%","100%","300px","300px"]} background="#fff" className="background" variants={sidebar} />
-//     </Flex>
-//   );
-
-	
-
 
   	return (
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex flexDirection={["column","column","row","row"]} flexWrap="wrap">
 			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
-					<Flex layout as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
+					<Flex as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
     				  <MenuToggle toggle={() => {toggleOpen()}}  />
     				  <Navigation ctx={{avatar: discord, inteam: inTeam, loggedin:logged}} />
     				  <Box as={motion.div} h="100%" position="absolute" width={["100%","100%","300px","300px"]} background="#fff" className="background" variants={sidebar} />
@@ -316,33 +288,16 @@ const Cookie = () => {
 		cookies.set('CookieConsent', true, { path: '/', maxAge: 604800});
 	}
 	if(!cookies.get('CookieConsent')){
-		if(!cookies.get('auth')){
 		return(
 			<Slide direction="bottom" in={value} style={{zIndex:10}}>
 				<Flex pb={["50px","50px","20px","20px"]} mr="50px" marginLeft={["0","0","auto","auto"]} w={["100%","100%","33%","33%"]} flexDirection="column" flexWrap="wrap" mb={["0px","0px","150px","150px"]} paddingLeft="20px" paddingRight="20px" paddingTop="20px" color="white" mt="4" rounded="lg" bg="#a5cf9f" shadow="md">
 					<Text alignSelf="center">Този уебсайт използва бисквитки. Научи повече <Link textDecoration="underline" isExternal href="https://hacktues.pythonanywhere.com/static/frontend/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%B7%D0%B0%20%D0%B1%D0%B8%D1%81%D0%BA%D0%B2%D0%B8%D1%82%D0%BA%D0%B8.pdf" >тук</Link></Text>
-					<Button alignSelf="center" border="0" colorScheme="white" backgroundColor="transparent" onClick={() => {setValue(false); cookieConsentHandler();getNewToken()}}>Съгласявам се</Button>
+					<Button alignSelf="center" border="0" colorScheme="white" backgroundColor="transparent" onClick={() => {setValue(false); cookieConsentHandler();}}>Съгласявам се</Button>
 					</Flex>
 			</Slide>
 		)
-		
-	}
 }
 	return(<Box></Box>)
-}
-
-
-function getNewToken() {
-	axios({
-		method: 'post',
-		url: `https://${process.env.hostname}/token/`,
-		header: 'Content-Type: application/json',
-		data: {"email": "hacktues","password": "Go Green"}
-	})
-	.then(function (response) {
-		cookies.set('auth', response.data.access, { path: '/' })
-		cookies.set('refresh', response.data.refresh, { path: '/' })
-	})
 }
 
 function refreshToken() {
@@ -361,31 +316,5 @@ function refreshToken() {
 		}
 	})
 }
-
-function getUsers() {
-	axios({
-		method: 'get',
-		url: `https://${process.env.hostname}/users/`,
-		headers: 
-		{ "Content-type": "Application/json",
-		  "Authorization": `Bearer ${cookies.get('auth')}`}
-		  },)
-		.then(function (response){
-			console.log(response);
-		})
-}
-
-// function getCurrTeamUser() {
-// 	axios({
-// 		method: 'get',
-// 		url: `https://hacktues.pythonanywhere.com/users/${jwt_decode(cookies.get('auth')).user_id}/`,
-// 		headers: 
-// 		{ "Content-type": "Application/json",
-// 		  "Authorization": `Bearer ${cookies.get('auth')}`}
-// 		  },)
-// 		.then(function (response){
-// 			console.log(response.data.team_set[0]);
-// 		})
-// }
 
 export default MyApp
