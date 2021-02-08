@@ -62,17 +62,17 @@ const theme = extendTheme({
 
 function checkToken(exp) {
     if (Date.now() - 36000000 <= exp.exp * 1000) {
-		console.log('token is not expired')
+		// console.log('token is not expired')
 		// console.log(exp/.exp * 1000 - Date.now() - 36000000);
 		// console.log(cookies.get('auth'));
-		console.log(jwt_decode(cookies.get('auth')).user_id);
+		// console.log(jwt_decode(cookies.get('auth')).user_id);
 		// getUsers()
 		// getNewToken()
 		// refreshToken()
 	}
 	else{
 		// console.log('token is expired')
-		console.log(jwt_decode(cookies.get('auth')).user_id);
+		// console.log(jwt_decode(cookies.get('auth')).user_id);
 		// getNewToken()
 		refreshToken()
 	}

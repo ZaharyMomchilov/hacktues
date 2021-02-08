@@ -59,8 +59,7 @@ export default function Login({logIn}) {
 			  <Box margin="auto" w={["100%","100%","25%","25%"]} minWidth={["none","none","35rem","35rem"]} backgroundColor="white" p="25px" mt="50px" rounded="lg">
 				<Formik validationSchema={SignupSchema} initialValues={{ }} 
 		onSubmit={(values, actions) => {
-			setTimeout(() => {
-					console.log("v requesta sme")
+				console.log("onSubmit")
 					axios({
 						method: 'post',
 						url: `https://${process.env.hostname}/users/change_password/`,
@@ -85,10 +84,8 @@ export default function Login({logIn}) {
 									duration: 9000
 								})
 							}})
-									console.log(JSON.stringify(values, null, 1))
 									actions.setSubmitting(false)
-								}, 1000);
-						}}>
+								}}>
 	{props => (
 			<form onSubmit={props.handleSubmit}>
 			<Field name="password" >
@@ -171,3 +168,19 @@ export default function Login({logIn}) {
 		</Box>)
 	}
 }
+
+function equalTo(ref, msg) {
+	return Yup.mixed().test({
+	  name: 'equalTo',
+	  exclusive: false,
+	  message: msg || '${path} must be the same as ${reference}',
+	  params: {
+		reference: ref.path,
+	  },
+	  test: function(value) {
+		return value === this.resolve(ref);
+	  },
+	});
+  }
+
+Yup.addMethod(Yup.string, 'equalTo', equalTo);

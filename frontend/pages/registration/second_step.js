@@ -101,11 +101,9 @@ export default function Register(props) {
         <Box backgroundColor="white" margin="auto" marginTop="50px" padding="20px" rounded="lg" w={["100%","100%","33%","33%"]} minWidth={["none","none","55rem","55rem"]}>
 			<Formik initialValues={{first_name: '', last_name: '', email: '', password: ''}} validationSchema={SignupSchema}
 				onSubmit={(values, actions) => {
-        			setTimeout(() => {
                             values["discord_id"] = localStorage.getItem('userID');
 							values["avatar"] = localStorage.getItem('avatar');
 							var data = JSON.stringify(values, null, 1)
-							console.log(data)
         					axios({
         						method: 'post',
         						url: `https://${process.env.hostname}/users/`,
@@ -124,45 +122,7 @@ export default function Register(props) {
 											
 										router.push('/registration/confirmation')
         					    	}
-									else if(response.status == 401){
-										axios({
-											method: 'post',
-											url: `https://${process.env.hostname}/token/refresh/`,
-											headers: 
-											{ "Content-type": "Application/json"},
-											data: {refresh: `${cookies.get('refresh')}`}  
-										})
-										.then(function (response) {
-											console.log(response);
-											cookies.set('auth', response.data.access, { path: '/' })
-											if(response.data.refresh != undefined){
-												cookies.set('refresh', response.data.access, { path: '/' })
-											}
-											axios({
-        						method: 'post',
-        						url: `https://${process.env.hostname}/users/`,
-        						headers: 
-        						{ "Content-type": "Application/json",
-        						  "Authorization": `Bearer ${cookies.get('auth')}`,
-								  },
-								data: data  
-								  },)
-        					    .then(function (response) {
-        					        if(response.status == 201){
-										toast({
-        									  title: "Потвърждаване на акаунт",
-        									  description: "Акаунтът беше успешно създаден и трябва да се потвърди, чрез имейл",
-        									  status: "success",
-        									  duration: 9000
-        									})
-											
-										router.push('/registration/confirmation')
-        					    	}})
-
-										})
-									}
-									
-									})
+								})
         					    .catch(function (error) {
 									if (error.response) {
 										for (const [key, value] of Object.entries(error.response.data)) {
@@ -174,11 +134,9 @@ export default function Register(props) {
 											}
 										}
 									}
-								})						
-											console.log(JSON.stringify(values, null, 1))
+								})					
           									actions.setSubmitting(false)
-        								}, 1000);
-      							}}>
+        								}}>
     {props => (
 				<form style={{display:"flex",flexDirection:"row",flexWrap:"wrap"}} onSubmit={props.handleSubmit}>
 				<Field name="first_name">
@@ -308,18 +266,6 @@ export default function Register(props) {
 					</FormControl>
 				)}
 			</Field>
-				{/* <Field name="food_preferences">
-				{({ field, form }) => (
-							<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field} isInvalid={form.errors.tshirt && form.touched.tshirt} isRequired>
-								<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="text">Консумирате ли месо?</FormLabel>
-								<Select borderRadius={0}  _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="food_preferences" type="text" fontFamily="Rubik" placeholder="">
-									<option value={0}>Да</option>
-									<option value={"Vgn"}>Не, веган съм</option>
-									<option value={"Vgnt"}>Не, вегетарианец съм</option>
-								</Select>
-							</FormControl>
-						)}
-					</Field> */}
 			<Flex flexDirection="row">
 				<Field name="regulation">
 					{({ field, form }) => (
