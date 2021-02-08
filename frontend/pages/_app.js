@@ -102,8 +102,8 @@ function MyApp({ Component, pageProps }) {
 		// const { nav, setNav } = useContext(NavProvider);
 		
 		const [isOpen, toggleOpen] = useCycle(false, true);
-		const containerRef = useRef(null);
-		const { height } = useDimensions(containerRef);
+		// const containerRef = useRef(null);
+		// const { height } = useDimensions(containerRef);
 		 
 		// const handleNav = () => setNav(isOpen)
 		 
@@ -296,11 +296,11 @@ function MyApp({ Component, pageProps }) {
   	<ChakraProvider resetCSS={false} theme={theme}>
 		<Flex flexDirection={["column","column","row","row"]} flexWrap="wrap">
 			<NextNprogress color="#009d60" height='3' options={{ showSpinner: false }}/>
-					<Flex layout as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
+					{/* <Flex layout as={motion.div} zIndex="15" flexDirection="column" flexWrap="nowrap" position="sticky" h="100vh" top="0" flexGrow="1" left="0" bottom="0" variants={variant} initial={false} animate={isOpen ? "open" : "closed"} custom={height} ref={containerRef}>
     				  <MenuToggle toggle={() => {toggleOpen()}}  />
     				  <Navigation ctx={{avatar: discord, inteam: inTeam, loggedin:logged}} />
     				  <Box as={motion.div} h="100%" position="absolute" width={["100%","100%","300px","300px"]} background="#fff" className="background" variants={sidebar} />
-    				</Flex>
+    				</Flex> */}
 					<Box animate={isOpen ? "open" : "closed"} as={motion.div} variants={dived} flexBasis="0" flexGrow="999" minW="50%" flexShrink="1">
 						<Component {...pageProps} />
 					</Box>
@@ -313,9 +313,9 @@ const Cookie = () => {
 	
 	const [value, setValue] = useControllableState({defaultValue: true})
 	
-	function cookieConsentHandler(){
-		cookies.set('CookieConsent', true, { path: '/', maxAge: 604800});
-	}
+	// function cookieConsentHandler(){
+	// 	cookies.set('CookieConsent', true, { path: '/', maxAge: 604800});
+	// }
 	if(!cookies.get('CookieConsent')){
 		if(!cookies.get('auth')){
 		return(
