@@ -347,7 +347,7 @@ export default function Register(props) {
 				</Field>
 			</Flex>
 
-			<Button display="flex" flexGrow={1} w="33%" justifyContent="center" mt={4} colorScheme="green" border="0"
+			<Button cursor="pointer" display="flex" flexGrow={1} w="33%" justifyContent="center" mt={4} colorScheme="green" border="0"
 			 isLoading={props.isSubmitting} type="submit"
 			>
 				Продължи

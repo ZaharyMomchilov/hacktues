@@ -105,16 +105,17 @@ export default function Home() {
 								</Link>
 
 								<Link isExternal href="http://www.a1.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, 0px)",xl:"translate(0px, 8px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
+									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, -5px)",xl:"translate(0px, -5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
 										<Image transform="scale(0.65)" display="block" width="100%" h="100%" objectFit="contain" title="A1" src="/Logos/Beta - A1/A1_01_08RED_3_L_1.png"></Image>
 									</Box>
 								</Link>
 
 								<Link isExternal href="https://www.facebook.com/StrypesBulgaria" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform="translate(0px, 16px)" marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
-										<Image transform="scale(0.75)" display="block" width="100%" h="100%" objectFit="contain" title="Strypes" src="/Logos/Beta - Strypes/strypes-logo-transparent.png"></Image>
+									<Box transform="translate(0px, -5px)" marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
+										<Image transform="scale(0.7)" display="block" width="100%" h="100%" objectFit="contain" title="Strypes" src="/FinalLogos/Strypes_logo.svg"></Image>
 									</Box>
 								</Link>
+								
 								
 						</Flex>
 					</Flex>

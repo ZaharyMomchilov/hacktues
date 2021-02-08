@@ -48,12 +48,12 @@ export default function Navigation(props, {toggle}){
     else if(props.ctx.loggedin == 0 && props.ctx.inteam == "false"){
       team = <Box display="none" ></Box>
     }
-    else if(props.ctx.loggedin == 1 && props.ctx.inteam == null){
-      team = <MenuItem name="Създай отбор" icon={AiOutlineUsergroupAdd} link="/maketeam"/> 
-    }
-    else if(props.ctx.loggedin == 1 && props.ctx.inteam){
-      team = <MenuItem name="Моят отбор" icon={AiOutlineTeam} link={`/teams/${encodeURIComponent(props.ctx.inteam)}/`}/>
-    }
+    // else if(props.ctx.loggedin == 1 && props.ctx.inteam == null){
+    //   team = <MenuItem name="Създай отбор" icon={AiOutlineUsergroupAdd} link="/maketeam"/> 
+    // }
+    // else if(props.ctx.loggedin == 1 && props.ctx.inteam){
+    //   team = <MenuItem name="Моят отбор" icon={AiOutlineTeam} link={`/teams/${encodeURIComponent(props.ctx.inteam)}/`}/>
+    // }
   
     if(!props.ctx.loggedin){
       login= <MenuItem name="Вход" icon={BiLogIn} link="/login"/>
@@ -72,11 +72,11 @@ export default function Navigation(props, {toggle}){
   {/* {props.xd[0]} */}
     {/* <Flex justifyContent="center" alignItems="center" flexDirection="column" position="relative" h="100%"> */}
       <Flex marginBottom="auto" marginTop="15px" zIndex="1" position="relative" flexDirection="column" flexWrap="wrap">
-            <MenuItem top="-1px" link="/"/>
+        <MenuItem top="-3px" link="/"/>
         <MenuItem name="Програма" top="-1px" icon={GrSchedule} link="/schedule/"/>
         {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
         {/* <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/> */}
-        <MenuItem name="Отбори" top="-1px" icon={RiTeamLine} link="/teams/"/>
+        {/* <MenuItem name="Отбори" top="-1px" icon={RiTeamLine} link="/teams/"/> */}
         <MenuItem name="Архив" icon={FiArchive} link="/archive/"/>
         <MenuItem name="Регламент" icon={GrDocumentText} link="/regulation/"/>
         <MenuItem name="За Hack TUES" top="-1px" icon="GG" link="/about/"/>

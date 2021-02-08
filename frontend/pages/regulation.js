@@ -35,7 +35,7 @@ const panels = [
             );
         },
     }}>{parts[2]}</Markdown>},
-    { title: <Markdown>### МЕНТОРИ</Markdown>, description: <Markdown options={{
+    { title: <Markdown>### ПРОЕКТИ</Markdown>, description: <Markdown options={{
         createElement(type, props, children) {
             return (
                 <Box fontFamily="Rubik" className="parent">
@@ -44,7 +44,7 @@ const panels = [
             );
         },
     }}>{parts[3]}</Markdown>},
-    { title: <Markdown>### ОЦЕНЯВАНЕ ОТ МЕНТОРИТЕ</Markdown>, description: <Markdown options={{
+    { title: <Markdown>### ТЕХНОЛОГИИ</Markdown>, description: <Markdown options={{
         createElement(type, props, children) {
             return (
                 <Box fontFamily="Rubik" className="parent">
@@ -53,7 +53,7 @@ const panels = [
             );
         },
     }}>{parts[4]}</Markdown>},
-    { title: <Markdown>### ПОЛУФИНАЛИ И ФИНАЛИ</Markdown>, description: <Markdown options={{
+    { title: <Markdown>### МЕНТОРИ</Markdown>, description: <Markdown options={{
         createElement(type, props, children) {
             return (
                 <Box fontFamily="Rubik" className="parent">
@@ -62,7 +62,7 @@ const panels = [
             );
         },
     }}>{parts[5]}</Markdown>},
-    { title: <Markdown>### ОЦЕНЯВАНЕ ОТ ЖУРИТО</Markdown>, description: <Markdown options={{
+    { title: <Markdown>### ОЦЕНЯВАНЕ ОТ МЕНТОРИТЕ</Markdown>, description: <Markdown options={{
         createElement(type, props, children) {
             return (
                 <Box fontFamily="Rubik" className="parent">
@@ -71,7 +71,7 @@ const panels = [
             );
         },
     }}>{parts[6]}</Markdown>},
-    { title: <Markdown>### ОТГОВОРНОСТ</Markdown>, description: <Markdown options={{
+    { title: <Markdown>### ПОЛУФИНАЛИ И ФИНАЛИ</Markdown>, description: <Markdown options={{
         createElement(type, props, children) {
             return (
                 <Box fontFamily="Rubik" className="parent">
@@ -80,7 +80,7 @@ const panels = [
             );
         },
     }}>{parts[7]}</Markdown>},
-    { title: <Markdown>### ДИСКВАЛИФИКАЦИЯ</Markdown>, description: <Markdown options={{
+    { title: <Markdown>### ОЦЕНЯВАНЕ ОТ ЖУРИТО</Markdown>, description: <Markdown options={{
         createElement(type, props, children) {
             return (
                 <Box fontFamily="Rubik" className="parent">
@@ -89,7 +89,7 @@ const panels = [
             );
         },
     }}>{parts[8]}</Markdown>},
-    { title: <Markdown>### ТОРМОЗ</Markdown>, description: <Markdown options={{
+    { title: <Markdown>### ОТГОВОРНОСТ</Markdown>, description: <Markdown options={{
         createElement(type, props, children) {
             return (
                 <Box fontFamily="Rubik" className="parent">
@@ -98,6 +98,24 @@ const panels = [
             );
         },
     }}>{parts[9]}</Markdown>},
+    { title: <Markdown>### ДИСКВАЛИФИКАЦИЯ</Markdown>, description: <Markdown options={{
+        createElement(type, props, children) {
+            return (
+                <Box fontFamily="Rubik" className="parent">
+                    {React.createElement(type, props, children)}
+                </Box>
+            );
+        },
+    }}>{parts[10]}</Markdown>},
+    { title: <Markdown>### ТОРМОЗ</Markdown>, description: <Markdown options={{
+        createElement(type, props, children) {
+            return (
+                <Box fontFamily="Rubik" className="parent">
+                    {React.createElement(type, props, children)}
+                </Box>
+            );
+        },
+    }}>{parts[11]}</Markdown>},
 ];
 
 export default function Regulation() {

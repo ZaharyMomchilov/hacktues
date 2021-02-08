@@ -113,10 +113,9 @@ function MyApp({ Component, pageProps }) {
 		 //   console.log(props);
 
 
-	const onLoad = () => {
-		console.log("fired");
-		toggleOpen(false)
-	}
+	
+		const logUrl = url => toggleOpen(false)
+		routerEvents.on('routeChangeStart', logUrl)
 
 	var router = useRouter()
 
@@ -157,7 +156,10 @@ function MyApp({ Component, pageProps }) {
 						})
 						.catch(function(error){
 							if(error.response.data.code == "user_not_found"){
-								refreshToken()
+								setLogin(0)
+								cookies.remove('auth')
+								cookies.remove('refresh')
+								getNewToken();
 							}
 						})
 					}	
@@ -173,8 +175,6 @@ function MyApp({ Component, pageProps }) {
 // }
 	)
 
-	const logUrl = url => toggleOpen(false)
-	routerEvents.once('routeChangeStart', logUrl)
 
 
   // useEffect(() => {
@@ -195,7 +195,6 @@ function MyApp({ Component, pageProps }) {
 				transition:{
 					stiffness: 10000,
 					when:"beforeChildren",
-					delay: 0.6,
 					transitionEnd:{opacity:1}
 				}
 			}

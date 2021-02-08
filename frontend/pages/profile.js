@@ -1,14 +1,14 @@
 import axios from 'axios'
 import Cookies from 'universal-cookie';
 import jwt_decode from "jwt-decode";
-import {Box, Avatar, Flex, Text, Input, InputGroup, InputLeftElement, Select, Switch, useToast, Button, Modal,
+import {Box, Avatar, Flex, Text, Input, InputGroup, InputLeftElement, Select, Switch, useToast, Button, Modal, Link,
 	ModalOverlay,
 	ModalContent,
 	ModalHeader,
 	ModalFooter,
 	ModalBody,
 	ModalCloseButton, useDisclosure } from "@chakra-ui/react";
-import Link from 'next/link'
+// import Link from 'next/link'
 import { Formik, Field, Form, useFormikContext, useField } from 'formik';
 import { PhoneIcon } from '@chakra-ui/icons'
 import { FormControl, FormLabel, FormErrorMessage, FormHelperText,} from "@chakra-ui/react";
@@ -17,7 +17,19 @@ import _ from 'lodash';
 const cookies = new Cookies()
 import * as Yup from 'yup';
 import { useRouter } from "next/router";
-
+import {
+	Menu,
+	MenuButton,
+	MenuList,
+	MenuItem,
+	MenuItemOption,
+	MenuGroup,
+	MenuOptionGroup,
+	MenuIcon,
+	MenuCommand,
+	MenuDivider,
+  } from "@chakra-ui/react"
+  import { ChevronDownIcon } from '@chakra-ui/icons'
 function Profile(props) {
 
 	const toast = useToast()
@@ -55,6 +67,8 @@ function Profile(props) {
 			  "Authorization": `Bearer ${cookies.get('auth')}`},
 			  },)
 			.then(function(resp){
+				cookies.remove('auth')
+				cookies.remove('refresh')
 				router.push('/')
 			})
 			.catch(function (error) {
@@ -115,7 +129,7 @@ function Profile(props) {
 						data: data  
 						  },)
         			    .then(function (response) {
-							toast({ title: "Промени по акаунт", description: "Промените бяха направени успешно.", status: "success", duration: 4500})
+							// toast({ title: "Промени по акаунт", description: "Промените бяха направени успешно.", status: "success", duration: 4500})
         			    	})
         			    .catch(function (error) {
         			    console.log(error);
@@ -230,8 +244,8 @@ function Profile(props) {
 					</Field> */}
 					<Flex flexDirection="row" flexWrap="wrap" w="100%">
 					<Button mt={4} mr={3} colorScheme="red" border="0" cursor="pointer" onClick={onOpened}>Изтрий профила</Button>
-					<Button mt={4} colorScheme="green" border="0" cursor="pointer" onClick={onOpen}>Запази</Button>
-					
+					{/* <Button mt={4} colorScheme="green" border="0" cursor="pointer" onClick={onOpen}>Запази</Button> */}
+					<AutoSave/>
 					<Modal isOpen={isOpen} onClose={onClose}>
 					  {/* <ModalOverlay /> */}
 					  <ModalContent>
@@ -244,7 +258,7 @@ function Profile(props) {
 						  <Button colorScheme="green" border="0" cursor="pointer" mr={3} onClick={onClose}>
 							Откажи
 						  </Button>
-						  <Button colorScheme="green" border="0" cursor="pointer" isLoading={props.isSubmitting} onClick={() => {props.submitForm(); onClose(); router.reload()}} type="submit">Промени</Button>
+						  <Button colorScheme="green" border="0" cursor="pointer" isLoading={props.isSubmitting} onClick={() => {props.submitForm(); router.reload()}} type="submit">Промени</Button>
 						</ModalFooter>
 					  </ModalContent>
 					</Modal>
@@ -263,7 +277,7 @@ function Profile(props) {
       					      </Button>
       					      <Link href="/">
 								{/* <Link> */}
-									<Button href="/" colorScheme="red" border="0" cursor="pointer" isLoading={props.isSubmitting} onClick={() => {handleDelete(); onClosed()}} type="submit">Промени</Button>
+									<Button href="/" colorScheme="red" border="0" cursor="pointer" isLoading={props.isSubmitting} onClick={() => {handleDelete(); onClosed()}} type="submit">Изтрий</Button>
 								{/* </Link> */}
 								</Link>
       					    </ModalFooter>
@@ -275,8 +289,10 @@ function Profile(props) {
 				)}}
     </Formik>
 	</Flex>
-		<Flex rounded="lg" margin={["25px","25px","50px","50px"]} background="white">
-				Изглегли декларация
+		<Flex flexDirection="column" p="15px" rounded="lg" margin={["25px","25px","50px","50px"]} background="white">
+				<Text textColor="red" style={{color:"red"}} p={0} m={0} fontFamily="Rubik">ВАЖНО до 08.03!</Text><Text fontFamily="Rubik" mb="15px">Всеки участник в хакатона трябва да предаде декларация за участие по образец най-късно до 08.03. В противен случай няма да бъде допуснат до участие в Hack TUES GG. Декларация:</Text>
+				<Text fontFamily="Rubik" p={0} m={0}>{'За пълнолетни'}&nbsp;<Link isExternal href="https://hacktues.pythonanywhere.com/static/frontend/%D0%94%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D1%8F_%D0%BF%D1%8A%D0%BB%D0%BD%D0%BE%D0%BB%D0%B5%D1%82%D0%BD%D0%B8.pdf" fontFamily="Rubik" color="green" textDecoration="underline">тук</Link></Text>
+				<Text fontFamily="Rubik" p={0} m={0}>{'За непълнолетни'}&nbsp;<Link isExternal href="https://hacktues.pythonanywhere.com/static/frontend/%D0%94%D0%B5%D0%BA%D0%BB%D0%B0%D1%80%D0%B0%D1%86%D0%B8%D1%8F_%D0%BD%D0%B5%D0%BF%D1%8A%D0%BB%D0%BD%D0%BE%D0%BB%D0%B5%D1%82%D0%BD%D0%B8.pdf" fontFamily="Rubik" color="green" textDecoration="underline">тук</Link></Text>
 		</Flex>
 
 	</Box>)
@@ -331,7 +347,13 @@ const AutoSave = ({ debounceMs = 2000 }) => {
 	);
   
 	useEffect(() => debouncedSubmit, [debouncedSubmit, formik.values],);
-	return(<Box></Box>)
+	return <Text marginLeft="auto" fontFamily="Rubik" fontSize="17px" textAlign="center">
+	{!!formik.isSubmitting
+	  ? 'Запазване...'
+	  : isSaved
+	  ? 'Промените ти бяха направени.'
+	  : null}
+  </Text>
   };
 
 export default Profile

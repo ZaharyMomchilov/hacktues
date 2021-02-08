@@ -23,7 +23,7 @@ export async function getServerSideProps(ctx){
 
 	var response = await axios({
 			method: 'get',
-			url: `https://${process.env.hostname}/teams/`,
+			url: `https://api.hacktues.com/teams/`,
 			headers: 
 			{ "Content-type": "Application/json",
             "Authorization": `Bearer ${cookies.get('auth')}`
@@ -35,3 +35,20 @@ export async function getServerSideProps(ctx){
 	return {props: {teams: response.data}}
 
 }
+
+// async function banan(){
+// 	const cookies = new Cookies();
+
+//     var response = await axios({
+//         method: 'get',
+//         url: `https://api.hacktues.com/teams/`,
+//         headers: 
+//         { "Content-type": "Application/json",
+//         "Authorization": `Bearer ${cookies.get('auth')}`
+//         },
+//     }).catch(function (error) {
+//         console.log("get: " + error);
+//         });
+
+//     return response
+// }

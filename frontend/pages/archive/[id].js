@@ -12,7 +12,7 @@ var data = JSON.parse(JSON.stringify(archive));
 const Hacktues = ({currData}) => {     
 
     return(
-    <Flex display="block" width="100%" flexDirection="column" flexWrap="wrap" pb="150px" pt="50px" justifyContent="center" paddingLeft={["auto","auto","100px","125px"]} paddingRight={["auto","auto","100px","125px"]} borderColor="black">
+    <Flex display="block" width="100%" flexDirection="column" flexWrap="wrap" pb="150px" pt="50px" justifyContent="center" paddingLeft={["auto","50px","50px","75px"]} paddingRight={["auto","50px","50px","75px"]} borderColor="black">
         <Flex flexDirection={["column","column","column", "row"]} flexWrap="wrap">
                 <Card img={currData.winners[0].image} name={currData.winners[0].name} teammates={currData.winners[0].participants} place={currData.winners[0].place} project={currData.winners[0].project}/>
                 <Card img={currData.winners[1].image} name={currData.winners[1].name} teammates={currData.winners[1].participants} place={currData.winners[1].place} project={currData.winners[1].project}/>

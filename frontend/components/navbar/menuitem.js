@@ -46,10 +46,10 @@ export const MenuItem = (props) => {
   }
 
   if(props.icon == "GG"){
-   var icon = <Text  position="relative" top={props.top} fontFamily="llpixel" marginRight="10px" fontSize="17px" textColor="currentColor">GG</Text>
+   var icon = <Text marginRight="6px" left="-5px" position="relative" top="-2px" fontFamily="llpixel" m={0} p={0} fontSize="17px" textColor="currentColor">GG</Text>
   }
   else{
-   var icon = <Icon  left="0px" position="relative" top={props.top} as={props.icon} />
+   var icon = <Icon left="-3px" position="relative" top={props.top} as={props.icon} />
   }
 
   if(!props.link){
@@ -80,9 +80,9 @@ export const MenuItem = (props) => {
   else{
     return (
       <ChakraLink as={motion.div} display="flex" alignItems="center" justifyContent="center" variants={variants} cursor="pointer" _focus={{outline:"none"}} cursor="pointer" onClick={() => {router.push(props.link)}} href={props.link}>
-      <Button as={motion.div} variants={variants} p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
+      <Button w="auto" as={motion.div} variants={variants} p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" flexDirection="row" alignItems="center" cursor="pointer"
       whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }} cursor="pointer" textAlign="center" _hover={{bg:"#009d60"}} _focus={{outline:"none"}} textColor="black" textDecoration="none" background="none"  fontFamily="Rubik"  border="0px" borderWidth="0px"><Text cursor="pointer" _hover={{textDecoration:"none"}}>
+      whileTap={{ scale: 0.95 }} cursor="pointer" textAlign="center" _hover={{bg:"#009d60"}} _focus={{outline:"none"}} textColor="black" textDecoration="none" background="none"  fontFamily="Rubik"  border="0px" borderWidth="0px"><Text display="flex" flexDirection="row" cursor="pointer" _hover={{textDecoration:"none"}}>
       {/* <Box as={motion.div} w="80%" p="3px"  _hover={{bg:"#009d60"}} _active={{bg:"transparent"}} background="none"  justifyContent="center" rounded="lg" margin="0" marginBottom="20px" display="flex" alignItems="center" cursor="pointer"
         variants={variants}
         whileHover={{ scale: 1.1 }}
