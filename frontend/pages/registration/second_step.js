@@ -57,7 +57,7 @@ export default function Register(props) {
         payload.append("client_id",CLIENT_ID)
         payload.append("client_secret",CLIENT_SECRET)
         payload.append("grant_type",'authorization_code')
-        payload.append("redirect_uri",'https://hacktues-git-wave2.zaharymomchilov.vercel.app/registration/second_step')
+        payload.append("redirect_uri",'https://hacktues.com/registration/second_step')
         payload.append("code", router.query['code'])
 		payload.append("scope","identify email")
 
@@ -81,16 +81,8 @@ export default function Register(props) {
                   "Authorization": `Bearer ${response.data.access_token}`}},)
                 .then(function (response){
                     console.log(response);
-					localStorage
 					localStorage.setItem('userID', response.data.id);
 					localStorage.setItem('avatar', response.data.avatar);
-                    // axios({
-                    //     method: 'get',
-                    //     url: `https://cdn.discordapp.com/avatars/${response.data.id}/${response.data.avatar}.png`,
-                    //     },)
-                    //     .then(function (response){
-                    //         console.log(response.config.url);
-                    //     })
                   })
             })
             .catch(function (error) {
@@ -109,18 +101,14 @@ export default function Register(props) {
         <Box backgroundColor="white" margin="auto" marginTop="50px" padding="20px" rounded="lg" w={["100%","100%","33%","33%"]} minWidth={["none","none","55rem","55rem"]}>
 			<Formik initialValues={{first_name: '', last_name: '', email: '', password: ''}} validationSchema={SignupSchema}
 				onSubmit={(values, actions) => {
-        			setTimeout(() => {
                             values["discord_id"] = localStorage.getItem('userID');
 							values["avatar"] = localStorage.getItem('avatar');
 							var data = JSON.stringify(values, null, 1)
-							console.log(data)
         					axios({
         						method: 'post',
         						url: `https://${process.env.hostname}/users/`,
         						headers: 
-        						{ "Content-type": "Application/json",
-        						  "Authorization": `Bearer ${cookies.get('auth')}`,
-								  },
+        						{ "Content-type": "Application/json",},
 								data: data  
 								  },)
         					    .then(function (response) {
@@ -134,45 +122,7 @@ export default function Register(props) {
 											
 										router.push('/registration/confirmation')
         					    	}
-									else if(response.status == 401){
-										axios({
-											method: 'post',
-											url: `https://${process.env.hostname}/token/refresh/`,
-											headers: 
-											{ "Content-type": "Application/json"},
-											data: {refresh: `${cookies.get('refresh')}`}  
-										})
-										.then(function (response) {
-											console.log(response);
-											cookies.set('auth', response.data.access, { path: '/' })
-											if(response.data.refresh != undefined){
-												cookies.set('refresh', response.data.access, { path: '/' })
-											}
-											axios({
-        						method: 'post',
-        						url: `https://${process.env.hostname}/users/`,
-        						headers: 
-        						{ "Content-type": "Application/json",
-        						  "Authorization": `Bearer ${cookies.get('auth')}`,
-								  },
-								data: data  
-								  },)
-        					    .then(function (response) {
-        					        if(response.status == 201){
-										toast({
-        									  title: "Потвърждаване на акаунт",
-        									  description: "Акаунтът беше успешно създаден и трябва да се потвърди, чрез имейл",
-        									  status: "success",
-        									  duration: 9000
-        									})
-											
-										router.push('/registration/confirmation')
-        					    	}})
-
-										})
-									}
-									
-									})
+								})
         					    .catch(function (error) {
 									if (error.response) {
 										for (const [key, value] of Object.entries(error.response.data)) {
@@ -184,11 +134,9 @@ export default function Register(props) {
 											}
 										}
 									}
-								})						
-											console.log(JSON.stringify(values, null, 1))
+								})					
           									actions.setSubmitting(false)
-        								}, 1000);
-      							}}>
+        								}}>
     {props => (
 				<form style={{display:"flex",flexDirection:"row",flexWrap:"wrap"}} onSubmit={props.handleSubmit}>
 				<Field name="first_name">
@@ -318,36 +266,24 @@ export default function Register(props) {
 					</FormControl>
 				)}
 			</Field>
-				{/* <Field name="food_preferences">
-				{({ field, form }) => (
-							<FormControl flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px" {...field} isInvalid={form.errors.tshirt && form.touched.tshirt} isRequired>
-								<FormLabel paddingTop="15px" paddingBottom="5px" fontFamily="Rubik" fontSize="15px" htmlFor="text">Консумирате ли месо?</FormLabel>
-								<Select borderRadius={0}  _focus={{borderColor:"#a5cf9f", boxShadow: "0px 2px 0px 0px #a5cf9f"}} variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="food_preferences" type="text" fontFamily="Rubik" placeholder="">
-									<option value={0}>Да</option>
-									<option value={"Vgn"}>Не, веган съм</option>
-									<option value={"Vgnt"}>Не, вегетарианец съм</option>
-								</Select>
-							</FormControl>
-						)}
-					</Field> */}
 			<Flex flexDirection="row">
 				<Field name="regulation">
 					{({ field, form }) => (
 						<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
-						<CustomCheckbox jsx={{}} colorScheme="green" isRequired id="regulation" fontStyle="Rubik" >Съгласен съм с <Link href="/regulation"><a style={{color:"green", }} onClick={onClose}>регламента на хакатона</a></Link></CustomCheckbox>
+						<CustomCheckbox _focus={{outline:"none",border:0}} jsx={{}} colorScheme="green" isRequired id="regulation" fontStyle="Rubik" >Съгласен съм с <Link isExternal href="/regulation"><a style={{color:"green", }} onClick={onClose}>регламента на хакатона</a></Link></CustomCheckbox>
 						</FormControl>
 					)}
 				</Field>
 				<Field name="GDPR">
 					{({ field, form }) => (
 						<FormControl display="flex" flexDirection="row" flexGrow={1} w={["100%","100%","100%","33%"]} mr="5px">
-						<CustomCheckbox jsx={{}} colorScheme="green" isRequired id="GDPR" fontStyle="Rubik" >Съгласен съм с <Link href="/gdpr"><a style={{color:"green", }} onClick={onClose}>Общият регламент за защита на данните</a></Link></CustomCheckbox>
+							<CustomCheckbox _focus={{outline:"none",border:0}} jsx={{}} colorScheme="green" isRequired id="GDPR" fontStyle="Rubik" >Съгласен съм с <Link isExternal href="https://hacktues.pythonanywhere.com/static/frontend/Политика за поверителност.pdf"><a style={{color:"green", }} onClick={onClose}>политиката за поверителност на Hack TUES GG</a></Link></CustomCheckbox>
 						</FormControl>
 					)}
 				</Field>
 			</Flex>
 
-			<Button display="flex" flexGrow={1} w="33%" justifyContent="center" mt={4} colorScheme="green" border="0"
+			<Button cursor="pointer" display="flex" flexGrow={1} w="33%" justifyContent="center" mt={4} colorScheme="green" border="0"
 			 isLoading={props.isSubmitting} type="submit"
 			>
 				Продължи
@@ -364,6 +300,11 @@ export default function Register(props) {
 const CustomCheckbox = styled(Checkbox)`
   .chakra-checkbox__control{
     color: #105231;
+	&:focus {
+        outline: none;
+        box-shadow: 0;
+		border: 0
+    }
   }
 `
 

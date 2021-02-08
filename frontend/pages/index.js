@@ -49,15 +49,15 @@ export default function Home() {
                 	<Text textAlign="center" marginTop="auto" marginBottom="0px" wordBreak="break-word" fontFamily="llpixel" textColor="#009d60" fontSize="calc(1em + 10vmin)">Hack TUES&nbsp;<span style={{display:"inline-block", color:"#105231"}}>GG</span></Text>
                     <Clock deadline="March, 11, 2021" />
                     <Flex justifyContent="space-around" flexDirection="row" flexWrap="wrap">
-                      	<Button _hover={{background:"#009d60"}} border="0" textDecoration="none" fontStyle="Rubik" leftIcon={<MdPlace/>} colorScheme="#105231" variant="outline"><Link textDecoration="none" isExternal href="https://www.youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ"><a style={{textDecoration:"none"}}>Онлайн</a></Link></Button>	
-				    	<Button _hover={{background:"#009d60"}} border="0" textDecoration="none" fontStyle="Rubik" leftIcon={<AiOutlineCalendar/>} colorScheme="#105231" variant="outline"><Link textDecoration="none" href="/schedule"><a style={{textDecoration:"none"}}>11-14.03.2021</a></Link></Button>	
+                      	<Button _hover={{background:"#009d60"}} border="0" textDecoration="none" fontStyle="Rubik" leftIcon={<MdPlace/>} colorScheme="#105231" variant="outline"><Link textDecoration="none" isExternal href="https://www.youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ"><a style={{textDecoration:"none", fontFamily:"Rubik"}}>Онлайн</a></Link></Button>	
+				    	<Button _hover={{background:"#009d60"}} border="0" textDecoration="none" fontStyle="Rubik" leftIcon={<AiOutlineCalendar/>} colorScheme="#105231" variant="outline"><Link textDecoration="none" href="/schedule"><a style={{textDecoration:"none", fontFamily:"Rubik"}}>11-14.03.2021</a></Link></Button>	
 				    </Flex>
                 </Flex>
 
            			
 				<Flex w="100%" rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="column" flexWrap="wrap" justifyContent="center" alignItems="center">
 					<Flex justifyContent="center" alignItems="center" flexDirection="column" flexWrap="wrap">
-						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Alpha спонсори</Text>
+						<Text marginBottom="5px" fontFamily="Rubik" fontSize="1.4rem" textAlign="center">Alpha спонсори</Text>
 						<Flex wrap="wrap" rounded="lg" justifyContent="center" alignItems="center" background="#fff" justifyContent="center">		  			
 								
 								
@@ -95,7 +95,7 @@ export default function Home() {
 						</Flex>
 					</Flex>
 					<Flex justifyContent="center" alignItems="center" flexDirection="column" flexWrap="wrap">
-						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Beta спонсори</Text>
+						<Text marginBottom="5px" fontFamily="Rubik" fontSize="1.4rem" textAlign="center">Beta спонсори</Text>
 						<Flex rounded="lg" justifyContent="center" alignItems="center" background="#fff" flexDirection="row" flexWrap="wrap" >		  	
 
 								<Link isExternal href="https://www.nemetschek.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
@@ -105,21 +105,22 @@ export default function Home() {
 								</Link>
 
 								<Link isExternal href="http://www.a1.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, 0px)",xl:"translate(0px, 8px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
-										<Image transform="scale(0.5)" display="block" width="100%" h="100%" objectFit="contain" title="A1" src="/Logos/Beta - A1/A1_01_08RED_3_L_1.png"></Image>
+									<Box transform={{sm:"translate(0px, 0px)",md:"translate(0px, 0px)",lg:"translate(0px, -5px)",xl:"translate(0px, -5px)"}} marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
+										<Image transform="scale(0.65)" display="block" width="100%" h="100%" objectFit="contain" title="A1" src="/Logos/Beta - A1/A1_01_08RED_3_L_1.png"></Image>
 									</Box>
 								</Link>
 
 								<Link isExternal href="https://www.facebook.com/StrypesBulgaria" display="flex" justifyContent="center" alignItems="center" h="100%">
-									<Box transform="translate(0px, 16px)" marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
-										<Image transform="scale(0.75)" display="block" width="100%" h="100%" objectFit="contain" title="Strypes" src="/Logos/Beta - Strypes/strypes-logo-transparent.png"></Image>
+									<Box transform="translate(0px, -5px)" marginBottom={["0rem","0rem","0rem","1rem"]} marginLeft={["0rem","0rem","0rem","1rem"]} width="calc(900px * 1 /3)" h="125px">
+										<Image transform="scale(0.7)" display="block" width="100%" h="100%" objectFit="contain" title="Strypes" src="/FinalLogos/Strypes_logo.svg"></Image>
 									</Box>
 								</Link>
+								
 								
 						</Flex>
 					</Flex>
 					<Flex justifyContent="center" alignItems="center" flexDirection="column" flexWrap="wrap">
-						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Gamma спонсори</Text>
+						<Text marginBottom="5px" fontFamily="Rubik" fontSize="1.4rem" textAlign="center">Gamma спонсори</Text>
 						<Flex rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center" >
 								
 								<Link isExternal href="https://asteasolutions.com/" display="flex" justifyContent="center" alignItems="center" h="100%">
@@ -161,7 +162,7 @@ export default function Home() {
 					</Flex>
 
 					<Flex justifyContent="center" alignItems="center" flexDirection="column" flexWrap="wrap">
-						<Text marginBottom="5px" fontFamily="Rubik" fontSize="20px" textAlign="center">Партньори</Text>
+						<Text marginBottom="5px" fontFamily="Rubik" fontSize="1.4rem" textAlign="center">Партньори</Text>
 						<Flex rounded="lg" justifyContent="center" alignItems="center" padding="15px" background="#fff" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center" >
 								
 								<Link isExternal href="https://aztues.bg/" display="flex" justifyContent="center" alignItems="center" h="100%">

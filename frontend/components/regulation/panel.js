@@ -21,7 +21,7 @@ const Panel = (props) => {
     return(
     <AccordionItem>
     {({ isExpanded }) => (
-        <Flex cursor="pointer" marginLeft={["25px", "25px", "100px", "250px"]} marginRight={["25px", "25px", "100px", "250px"]} marginTop="10px"  flexDirection="row" flexWrap="wrap" justifyContent="center" height="auto" borderColor="black" borderWidth="10px" rounded="lg" backgroundColor="white" overflow="hidden">
+        <Flex marginLeft={["25px", "25px", "100px", "250px"]} marginRight={["25px", "25px", "100px", "250px"]} marginTop="10px"  flexDirection="row" flexWrap="wrap" justifyContent="center" height="auto" borderColor="black" borderWidth="10px" rounded="lg" backgroundColor="white" overflow="hidden">
             <AccordionButton cursor="pointer" border="0" backgroundColor="white" _focus={{outline:0, background:"white"}}>
                 <Text cursor="pointer" fontFamily="Rubik" textAlign="left" paddingLeft="10px" color="black" mt="0" mb="0" as="h3">
                     {props.title}

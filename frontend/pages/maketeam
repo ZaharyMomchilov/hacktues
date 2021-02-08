@@ -34,6 +34,7 @@ const Teams = (props) => {
 				tagRefs.current[index].current.style.boxShadow = "0px 0px 5px"
 			}
 			else if(chosenTech.includes(data.label)){
+				
 				chosenTech.indexOf(data.label) !== -1 && chosenTech.splice(chosenTech.indexOf(data.label), 1)
 				tagRefs.current[index].current.style.background = data.color
 				tagRefs.current[index].current.style.boxShadow = "none"
@@ -87,6 +88,7 @@ const Teams = (props) => {
                             let selected = people.map(a => a.value);
                             values['users'] = selected
 							values['users'].push(jwt_decode(cookies.get('auth')).user_id)
+							console.log(chosenTech)
                             values['technologies'] = chosenTech
 							var data = JSON.stringify(values, null, 1)
         					axios({
