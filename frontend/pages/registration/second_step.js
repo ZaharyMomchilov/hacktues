@@ -85,7 +85,6 @@ export default function Register(props) {
 					localStorage.setItem('avatar', response.data.avatar);
                   })
             })
-            })
 		}
 		else if(router.query['error'] == "access_denied"){
 			router.push('/')
