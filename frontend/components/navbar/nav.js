@@ -65,7 +65,6 @@ export default function Navigation(props, {toggle}){
       link="/profile"/>
       logout= <MenuItem name="Излез" icon={BiExit}/>
     }
-  // }, [login,team,logout, props])
 
 
   return (<Flex as={motion.div} justifyContent="center" alignItems="center"  zIndex="1" w={["100%","100%","300px","300px"]} position="relative" flexDirection="column" borderRadius="5px" variants={variants}>
