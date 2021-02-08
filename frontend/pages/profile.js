@@ -17,19 +17,6 @@ import _ from 'lodash';
 const cookies = new Cookies()
 import * as Yup from 'yup';
 import { useRouter } from "next/router";
-import {
-	Menu,
-	MenuButton,
-	MenuList,
-	MenuItem,
-	MenuItemOption,
-	MenuGroup,
-	MenuOptionGroup,
-	MenuIcon,
-	MenuCommand,
-	MenuDivider,
-  } from "@chakra-ui/react"
-  import { ChevronDownIcon } from '@chakra-ui/icons'
 function Profile(props) {
 
 	const toast = useToast()
@@ -73,11 +60,6 @@ function Profile(props) {
 			})
 			.catch(function (error) {
 				if (error.response) {
-					console.log(error.response)
-					// for (const [key, value] of Object.entries(error.response.data)) {
-					  // 	console.log(`${key}: ${value}`);
-					// 	actions.setFieldError(key, value)
-					// }
 			}})	
 	}
 
@@ -112,14 +94,12 @@ function Profile(props) {
 	<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
 	<Flex backgroundColor="white" p="25px" rounded="lg" flexDirection="column" flexWrap="wrap" margin={["25px","25px","50px","50px"]}>
 		<Flex>
-			<Avatar src={`https://cdn.discordapp.com/avatars/${props.users.discord_id}/${props.users.avatar}.png`}/>
+			<Avatar/>
 			<Text fontSize="15px" fontFamily="Rubik" pl="15px">{props.users.first_name}&nbsp;{props.users.last_name}</Text>
 		</Flex>
 		<Formik validationSchema={SignupSchema} initialValues={{ first_name: props.users.first_name , last_name: props.users.last_name, email: props.users.email, form: form, alergies:props.users.alergies, tshirt_size:props.users.tshirt_size, food_preferences:props.users.food_preferences, is_online:props.users.is_online, phone: props.users.phone}}
 		onSubmit={(values, actions) => {
-        	setTimeout(() => {
 					var data = JSON.stringify(values, null, 1)
-					console.log(data)
         			axios({
         				method: 'patch',
         				url: `https://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}/`,
@@ -128,15 +108,10 @@ function Profile(props) {
         				  "Authorization": `Bearer ${cookies.get('auth')}`},
 						data: data  
 						  },)
-        			    .then(function (response) {
-							// toast({ title: "Промени по акаунт", description: "Промените бяха направени успешно.", status: "success", duration: 4500})
-        			    	})
         			    .catch(function (error) {
         			    console.log(error);
         			    })							
-          				actions.setSubmitting(false)
-        			}, 1000)
-      		}}> 
+          				actions.setSubmitting(false)}}> 
 			{function(props){
 				return(
 				<Form {...props} style={{display:"flex",flexDirection:"row",flexWrap:"wrap", paddingTop:"10px"}} onSubmit={props.handleSubmit}>
@@ -350,7 +325,7 @@ const AutoSave = ({ debounceMs = 2000 }) => {
 	{!!formik.isSubmitting
 	  ? 'Запазване...'
 	  : isSaved
-	  ? 'Промените ти бяха направени.'
+	  ? 'Промените бяха направени.'
 	  : null}
   </Text>
   };

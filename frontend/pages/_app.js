@@ -33,9 +33,6 @@ import routerEvents from 'next-router-events'
 Sentry.init({
 	dsn: "https://47d68f3b1c084b459d17b4013d403960@o516791.ingest.sentry.io/5623722",
 	integrations: [new Integrations.BrowserTracing()],
-  
-	// We recommend adjusting this value in production, or using tracesSampler
-	// for finer control
 	tracesSampleRate: 1.0,
   });
 
@@ -62,18 +59,8 @@ const theme = extendTheme({
 
 function checkToken(exp) {
     if (Date.now() - 36000000 <= exp.exp * 1000) {
-		// console.log('token is not expired')
-		// console.log(exp/.exp * 1000 - Date.now() - 36000000);
-		// console.log(cookies.get('auth'));
-		// console.log(jwt_decode(cookies.get('auth')).user_id);
-		// getUsers()
-		// getNewToken()
-		// refreshToken()
 	}
 	else{
-		// console.log('token is expired')
-		// console.log(jwt_decode(cookies.get('auth')).user_id);
-		// getNewToken()
 		refreshToken()
 	}
 }
@@ -84,18 +71,17 @@ function MyApp({ Component, pageProps }) {
 	const [inTeam, setTeam] = useControllableState({defaultValue:null});
 	const [discord, setDiscord] = useControllableState({defaultValue: null});
 
-		const [isLargerThan797] = useMediaQuery("(min-width: 797px)")
-		
-		const [isOpen, toggleOpen] = useCycle(false, true);
-		const containerRef = useRef(null);
-		const { height } = useDimensions(containerRef);
-		 
-		var sidebar
-		var variant
-		var dived
-
-		const logUrl = url => toggleOpen(false)
-		routerEvents.on('routeChangeStart', logUrl)
+	const [isLargerThan797] = useMediaQuery("(min-width: 797px)")
+	
+	const [isOpen, toggleOpen] = useCycle(false, true);
+	const containerRef = useRef(null);
+	const { height } = useDimensions(containerRef);
+	 
+	var sidebar
+	var variant
+	var dived
+	const logUrl = url => toggleOpen(false)
+	routerEvents.on('routeChangeStart', logUrl)
 
 	var router = useRouter()
 
@@ -103,7 +89,6 @@ function MyApp({ Component, pageProps }) {
 
 		if(cookies.get('CookieConsent')){
 				if(cookies.get('auth')){
-					console.log("in if");
 					setLogin(1)
 					checkToken(jwt_decode(cookies.get('auth')))
 					if(inTeam == null){
@@ -121,7 +106,6 @@ function MyApp({ Component, pageProps }) {
 								setTeam(null)
 							}
 							else{
-								setDiscord([response.data.discord_id,response.data.avatar])
 								setTeam(response.data.team_set[0])
 							}
 						})
@@ -132,12 +116,10 @@ function MyApp({ Component, pageProps }) {
 								cookies.remove('refresh')
 							}
 						})
-					}	
-					// getUsers()
+					}
 			}
 		else{
 			setLogin(0)
-			// getUsers()
 		}
 	}
 }

@@ -7,8 +7,6 @@ export const useDimensions = ref => {
     dimensions.current.width = ref.current.offsetWidth;
     dimensions.current.height = ref.current.offsetHeight;
   }, []);
-
-  console.log(dimensions.current);
   return dimensions.current;
 };
 

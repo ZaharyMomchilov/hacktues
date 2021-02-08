@@ -39,8 +39,6 @@ export default function Navigation(props, {toggle}){
   var logout
   var team
 
-  console.log(props);
-
   // useEffect(() => {
     if(props.ctx.loggedin == 0 && props.ctx.inteam == null){
       team = <Box display="none" ></Box>

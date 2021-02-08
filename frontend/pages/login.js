@@ -26,7 +26,6 @@ export default function Login() {
 	  	<Box margin="auto" w={["100%","100%","25%","25%"]} minWidth={["none","none","35rem","35rem"]} backgroundColor="white" p="25px" mt="50px" rounded="lg">
 			<Formik initialValues={{ email: "", password: "" }} 
 	onSubmit={(values, actions) => {
-		setTimeout(() => {
 				var data = JSON.stringify(values, null, 1)
 				axios({
 					method: 'post',
@@ -50,11 +49,7 @@ export default function Login() {
         						duration: 9000
         					})
 						}
-						})
-								console.log(JSON.stringify(values, null, 1))
-								actions.setSubmitting(false)
-							}, 1000);
-					}}>
+						})}}>
 {props => (
 		<form onSubmit={props.handleSubmit}>
 		<Field name="email">
