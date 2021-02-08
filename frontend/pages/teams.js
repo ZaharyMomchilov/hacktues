@@ -29,6 +29,11 @@ export async function getServerSideProps(ctx){
               "Authorization": `Bearer ${cookies.get('auth')}`,
               },
         })
+        .catch(function (error) {
+            if (error.response) {
+                console.log(error)
+            }
+            })
 
 	return {props: {teams: response.data}}
 
