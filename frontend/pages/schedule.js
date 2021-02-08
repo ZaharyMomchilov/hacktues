@@ -143,7 +143,7 @@ function EventAgenda({ event }) {
       <span>
         <Link textDecoration="none" _hover={{textDecoration:"none"}} as="em" isExternal href={event.youtube} style={{ color: '#009d60' }}>{event.title}</Link>
         <Text>{event.desc}</Text>
-        <a style={{textDecoration:"none"}}>{"Гледай ни"}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{"Youtube"}</Link></a>
+        <a style={{textDecoration:"none"}}>{"Гледай ни"}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" isExternal href={event.youtube}>{"Youtube"}</Link></a>
       </span>
     )
   }
@@ -154,7 +154,7 @@ function EventAgenda({ event }) {
       <span>
         <Link textDecoration="none" _hover={{textDecoration:"none"}} as="em" isExternal href={event.discord} style={{ color: '#009d60' }}>{event.title}</Link>
         <Text>{event.desc}</Text>
-        <a style={{textDecoration:"none"}}>{"Нещо свързано с Discord"}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.link}>{"Discord"}</Link></a>
+        <a style={{textDecoration:"none"}}>{"Нещо свързано с Discord"}&nbsp;-&gt;&nbsp;<Link textDecoration="underline" target="_blank" href={event.discord}>{"Discord"}</Link></a>
       </span>
     )
   }

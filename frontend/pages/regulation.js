@@ -6,7 +6,8 @@ import { Accordion, Box, Text, Flex } from '@chakra-ui/react'
 var parts = txt.split(";;");
 
 const panels = [
-    { title: <Markdown >### КАКВО ПРЕДСТОИ ПРЕДИ HACK TUES GG</Markdown>, description: <Markdown options={{
+    { title: <Markdown  >### КАКВО ПРЕДСТОИ ПРЕДИ HACK TUES GG</Markdown>, description: <Markdown options={ {
+        forceBlock: true,
         createElement(type, props, children) {
             return (
                 <Box fontFamily="Rubik" className="parent">
@@ -14,7 +15,8 @@ const panels = [
                 </Box>
             );
         },
-    }}>{parts[0]}</Markdown>},
+    }
+    }>{parts[0]}</Markdown>},
     { title: <Markdown>### КАК ДА УЧАСТВАТЕ?</Markdown>, description: <Markdown options={{
         createElement(type, props, children) {
             return (

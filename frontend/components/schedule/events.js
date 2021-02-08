@@ -61,6 +61,6 @@ export default [
     start: new Date(2021, 2, 14, 9, 0),
     end: new Date(2021, 2, 14, 20, 0),
     desc: 'Очаквайте скоро от нас повече подробности за последния ден. Полуфиналите и финалите ще се състоят чрез платформата BigBlueButton.',
-    youtube: 'https://www.youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ'
+    youtube: 'https://youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ'
   },
 ]
