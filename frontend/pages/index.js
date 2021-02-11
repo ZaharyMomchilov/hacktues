@@ -34,10 +34,6 @@ export default function Home() {
 		  router.push("/secret/verywellkeptsecret/indeed/secret")
     }
 
-    // if(){
-    //   return <Loader/>
-    // }
-
     return( 
         <Box>
           	<Konami code={[71,71,87,80]} action={easterEgg}/>
