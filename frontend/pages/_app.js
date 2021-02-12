@@ -58,10 +58,11 @@ const theme = extendTheme({
     global: {
       body: {
         bg:
-          "/background.svg",
+          "../public/background.svg",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
+        backgroundAttachment:"fixed",
       },
     },
   },
@@ -91,7 +92,7 @@ function MyApp({ Component, pageProps }) {
   var variant;
   var dived;
   
-  const logUrl = (url) => {
+  const start = (url) => {
     if(url == "/"){
       toggleOpen(true);
     }
@@ -100,7 +101,7 @@ function MyApp({ Component, pageProps }) {
     }
   }
 
-  const profile = (url) => {
+  const complete = (url) => {
     if(url.split('/')[1] == 'registration'){
       toggleOpen(false);
     }
@@ -110,14 +111,15 @@ function MyApp({ Component, pageProps }) {
   }
 
 
-  routerEvents.on("routeChangeStart", logUrl);
-  routerEvents.on("routeChangeComplete", profile);
 
   // == "/registration/second_step"
 
   var router = useRouter();
 
   useEffect(() => {
+    
+    routerEvents.on("routeChangeStart", start);
+    routerEvents.on("routeChangeComplete", complete);
 
     if (cookies.get("CookieConsent")) {
       if (cookies.get("auth")) {
@@ -197,7 +199,7 @@ function MyApp({ Component, pageProps }) {
         setLogin(0);
       }
     }
-  });
+  }, [start, complete]);
 
   if (!isLargerThan797) {
     dived = {
@@ -299,7 +301,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider resetCSS={false} theme={theme}>
-      <Flex flexDirection={["column", "column", "row", "row"]} flexWrap="wrap">
+      <Flex overflow="hidden" flexDirection={["column", "column", "row", "row"]} flexWrap="wrap">
         <Head>
           <title>Hack TUES GG</title>
           <meta
@@ -313,6 +315,7 @@ function MyApp({ Component, pageProps }) {
           options={{ showSpinner: false }}
         />
         <Flex
+          overflow="hidden"
           as={motion.div}
           zIndex="15"
           flexDirection="column"
