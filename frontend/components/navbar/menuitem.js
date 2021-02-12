@@ -95,7 +95,7 @@ export const MenuItem = (props) => {
 
   if (!props.link) {
     return (
-      <ChakraLink
+      <Link
         as={motion.div}
         display="flex"
         alignItems="center"
@@ -133,7 +133,7 @@ export const MenuItem = (props) => {
           {icon}
           {button}
         </Box>
-      </ChakraLink>
+      </Link>
     );
   } else if (!props.name && !props.icon) {
     return (
