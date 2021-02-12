@@ -301,7 +301,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ChakraProvider resetCSS={false} theme={theme}>
-      <Flex overflow="hidden" flexDirection={["column", "column", "row", "row"]} flexWrap="wrap">
+      <Flex flexDirection={["column", "column", "row", "row"]} flexWrap="wrap">
         <Head>
           <title>Hack TUES GG</title>
           <meta
@@ -315,7 +315,6 @@ function MyApp({ Component, pageProps }) {
           options={{ showSpinner: false }}
         />
         <Flex
-          overflow="hidden"
           as={motion.div}
           zIndex="15"
           flexDirection="column"

@@ -251,7 +251,7 @@ export async function getServerSideProps(ctx){
 			var users = response.data.filter(function(item) {
 				return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != ''
 			})
-			return {users};
+			return {props: {users:users}};
 		}
 
 
