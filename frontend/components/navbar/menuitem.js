@@ -95,7 +95,7 @@ export const MenuItem = (props) => {
 
   if (!props.link) {
     return (
-      <Link
+      <ChakraLink
         as={motion.div}
         display="flex"
         alignItems="center"
@@ -103,13 +103,13 @@ export const MenuItem = (props) => {
         variants={variants}
         cursor="pointer"
         _focus={{ outline: "none" }}
-        href="/"
+        // href="/"
         cursor="pointer"
         textDecoration="none"
         onClick={() => {
           cookies.remove("auth");
           cookies.remove("refresh");
-          // router.push("/");
+          router.push("/");
         }}
       >
         <Box
@@ -133,11 +133,11 @@ export const MenuItem = (props) => {
           {icon}
           {button}
         </Box>
-      </Link>
+      </ChakraLink>
     );
   } else if (!props.name && !props.icon) {
     return (
-      <Link
+      <ChakraLink
         as={motion.div}
         display="flex"
         alignItems="center"
@@ -146,7 +146,10 @@ export const MenuItem = (props) => {
         cursor="pointer"
         _focus={{ outline: "none" }}
         cursor="pointer"
-        href="/"
+        // href="/"
+        onClick={() => {
+            router.push("/");
+          }}
         textDecoration="none"
       >
         <Box
@@ -178,11 +181,11 @@ export const MenuItem = (props) => {
             Hack TUES <span style={{ color: "#105231" }}>GG</span>
           </Text>
         </Box>
-      </Link>
+      </ChakraLink>
     );
   } else {
     return (
-      <Link
+      <ChakraLink
         as={motion.div}
         display="flex"
         alignItems="center"
@@ -192,9 +195,9 @@ export const MenuItem = (props) => {
         _focus={{ outline: "none" }}
         cursor="pointer"
         onClick={() => {
-          // router.push(props.link);
+          router.push(props.link);
         }}
-        href={props.link}
+        // href={props.link}
         style={{textDecoration:"none"}}
       >
         <Button
@@ -245,7 +248,7 @@ export const MenuItem = (props) => {
             {/* </Box> */}
           </Text>
         </Button>
-      </Link>
+      </ChakraLink>
     );
   }
 };
