@@ -109,7 +109,7 @@ export const MenuItem = (props) => {
         onClick={() => {
           cookies.remove("auth");
           cookies.remove("refresh");
-          router.push("/");
+          // router.push("/");
         }}
       >
         <Box
@@ -151,7 +151,7 @@ export const MenuItem = (props) => {
       >
         <Box
           onClick={() => {
-            router.push("/");
+            // router.push("/");
           }}
           href="/"
           as={motion.div}
@@ -192,7 +192,7 @@ export const MenuItem = (props) => {
         _focus={{ outline: "none" }}
         cursor="pointer"
         onClick={() => {
-          router.push(props.link);
+          // router.push(props.link);
         }}
         href={props.link}
         style={{textDecoration:"none"}}
