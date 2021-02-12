@@ -11,55 +11,117 @@ import labels from '../components/teams/icons'
 import jwt_decode from "jwt-decode";
 import Cookies from 'universal-cookie';
 
-const Teams2 = (props) => {
-	const onSubmit = useCallback(() => (values, actions) => {
-		if(people.length > 4){
-			actions.setSubmitting(false);
-			actions.setFieldError("users", "Твърде много участници избрани участници")
-		}
-		let selected = people.map(a => a.value);
-		values['users'] = selected
-		values['users'].push(jwt_decode(cookies.get('auth')).user_id)
-		values['technologies'] = chosenTech
-		var data = JSON.stringify(values, null, 1)
-		axios({
-			method: 'post',
-			url: `https://${process.env.hostname}/teams/`,
-			headers: 
-			{ "Content-type": "Application/json",
-			  "Authorization": `Bearer ${cookies.get('auth')}`},
-			data: data  
-			  },)
-			.then(function (response) {
-				if(response.status == 201){
-					toast({
-						  title: "Създаване на отбор",
-						  description: "Отборът беше успешно създаден.",
-						  status: "success",
-						  duration: 9000
-						});
-						router.push('/?t=success')
-				}})
-			.catch(function (error) {
-				if (error.response) {
-					if(error.response.data == "reached maximum users in the team limit"){
-						actions.setFieldError("users", "надвишен е максималният брой участници")
-					}
-					for (const [key, value] of Object.entries(error.response.data)) {
-						  // console.log(`${key}: ${value}`);
-						actions.setFieldError(key, value)
-					}
-					// console.log(error.response)
-			}})						
-						  actions.setSubmitting(false)
-			  }, []);
+const Teams = (props) => {
+
+	const technology = labels
+	const cookies = new Cookies()
+	var router = useRouter()
+	const toast = useToast()
+	var tech = []
+	var chosenTech = []
+
+	const tagRefs = React.useRef([]);
+	tagRefs.current = technology.map(
+		(ref, index) =>   tagRefs.current[index] = React.createRef()
+	)
+	
+	technology.map((data, index) => {
+		
+		tech.push(<Tag onClick={function(){
+			if(!chosenTech.includes(data.label)){
+				chosenTech.push(data.label)
+				tagRefs.current[index].current.style.background = "rgb(0, 255, 255)"
+				tagRefs.current[index].current.style.boxShadow = "0px 0px 5px"
+			}
+			else if(chosenTech.includes(data.label)){
+				
+				chosenTech.indexOf(data.label) !== -1 && chosenTech.splice(chosenTech.indexOf(data.label), 1)
+				tagRefs.current[index].current.style.background = data.color
+				tagRefs.current[index].current.style.boxShadow = "none"
+			}		
+		}} ref={tagRefs.current[index]} cursor="pointer" key={data.id} mt="5px" mr="5px" background={data.color}><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)	
+	});
+
+    var users = props.users
+    var items = []
+	var i
+	
+	// try {
+	// 	console.log(jwt_decode(cookies.get('auth')))
+	// 	// valid token format
+	//   } catch(error) {
+	// 	console.log(error);
+	//   }
+
+	// console.log(jwt_decode(cookies.get('auth')));
+
+	// && item.id != jwt_decode(cookies.get('auth')).user_id
+
+
+
+    for(i = 0; i < users.length; i++){
+        items.push({value: users[i].id, label: `${users[i].first_name} ${users[i].last_name} - ${users[i].form}`})
+    }
+    var people
+    const [pickerItems, setPickerItems] = React.useState(items);
+    const [selectedItems, setSelectedItems] = React.useState([]);
+
+    people = selectedItems
+
+    const handleSelectedItemsChange = (selectedItems) => {
+        if (selectedItems) {
+            setSelectedItems(selectedItems);
+        }
+    };
 
 	return (
 		<Box paddingBottom="300px" maxW="960px" marginLeft="auto" marginRight="auto">
 		<Flex backgroundColor="white" p="25px" rounded="lg" flexDirection="column" flexWrap="wrap" margin="50px">
-		<Formik justifyContent="center"
-			initialValues={{name: '', project_name: '', project_description: '', github_link: ''}}
-			onSubmit={onSubmit}>
+        <Formik justifyContent="center" initialValues={{name: '', project_name: '', project_description: '', github_link: ''}}
+				onSubmit={(values, actions) => {
+							console.log(people)
+							if(people.length > 4){
+								actions.setSubmitting(false);
+								actions.setFieldError("users", "Твърде много участници избрани участници")
+							}
+                            let selected = people.map(a => a.value);
+                            values['users'] = selected
+							values['users'].push(jwt_decode(cookies.get('auth')).user_id)
+							console.log(chosenTech)
+                            values['technologies'] = chosenTech
+							var data = JSON.stringify(values, null, 1)
+        					axios({
+        						method: 'post',
+        						url: `https://${process.env.hostname}/teams/`,
+        						headers: 
+        						{ "Content-type": "Application/json",
+        						  "Authorization": `Bearer ${cookies.get('auth')}`},
+								data: data  
+								  },)
+        					    .then(function (response) {
+        					        if(response.status == 201){
+										toast({
+        									  title: "Създаване на отбор",
+        									  description: "Отборът беше успешно създаден.",
+        									  status: "success",
+        									  duration: 9000
+        									});
+											router.push('/?t=success')
+        					    	}})
+        					    .catch(function (error) {
+									if (error.response) {
+										if(error.response.data == "reached maximum users in the team limit"){
+											actions.setFieldError("users", "надвишен е максималният брой участници")
+										}
+										for (const [key, value] of Object.entries(error.response.data)) {
+  											// console.log(`${key}: ${value}`);
+											actions.setFieldError(key, value)
+										}
+										// console.log(error.response)
+								}})						
+          									actions.setSubmitting(false)
+        								
+				}}>
 				
                 {(props) => (
 					<form style={{display:"flex",flexDirection:"row",flexWrap:"wrap", paddingTop:"10px"}} onSubmit={props.handleSubmit}>
@@ -128,79 +190,11 @@ const Teams2 = (props) => {
 		</Flex>
 		</Box>
 	);
-};
-
-const Teams = (props) => {
-
-	const technology = labels
-	const cookies = new Cookies()
-	var router = useRouter()
-	const toast = useToast()
-	var tech = []
-	var chosenTech = []
-
-	const tagRefs = React.useRef([]);
-	tagRefs.current = technology.map(
-		(ref, index) =>   tagRefs.current[index] = React.createRef()
-	)
-	
-	technology.map((data, index) => {
-		
-		tech.push(<Tag onClick={function(){
-			if(!chosenTech.includes(data.label)){
-				chosenTech.push(data.label)
-				tagRefs.current[index].current.style.background = "rgb(0, 255, 255)"
-				tagRefs.current[index].current.style.boxShadow = "0px 0px 5px"
-			}
-			else if(chosenTech.includes(data.label)){
-				
-				chosenTech.indexOf(data.label) !== -1 && chosenTech.splice(chosenTech.indexOf(data.label), 1)
-				tagRefs.current[index].current.style.background = data.color
-				tagRefs.current[index].current.style.boxShadow = "none"
-			}		
-		}} ref={tagRefs.current[index]} cursor="pointer" key={data.id} mt="5px" mr="5px" background={data.color}><TagLabel textColor="white" fontFamily="Rubik">{data.label}</TagLabel></Tag>)	
-	});
-
-    var users = props.users
-    var items = []
-	var i
-	
-	// try {
-	// 	console.log(jwt_decode(cookies.get('auth')))
-	// 	// valid token format
-	//   } catch(error) {
-	// 	console.log(error);
-	//   }
-
-	// console.log(jwt_decode(cookies.get('auth')));
-
-	// && item.id != jwt_decode(cookies.get('auth')).user_id
-
-
-
-    for(i = 0; i < users.length; i++){
-        items.push({value: users[i].id, label: `${users[i].first_name} ${users[i].last_name} - ${users[i].form}`})
-    }
-    var people
-    const [pickerItems, setPickerItems] = React.useState(items);
-    const [selectedItems, setSelectedItems] = React.useState([]);
-
-    people = selectedItems
-
-    const handleSelectedItemsChange = (selectedItems) => {
-        if (selectedItems) {
-            setSelectedItems(selectedItems);
-        }
-    };
-
-	// return(
-		
-	// )
 }
 
 export async function getServerSideProps(ctx){
-	try {
-		const cookies = new Cookies(ctx.req.headers.cookie);
+	
+	const cookies = new Cookies(ctx.req.headers.cookie);
 
 	if(!cookies.get('auth')){
 		return {
@@ -291,10 +285,6 @@ export async function getServerSideProps(ctx){
 		// }
 	
 }
-	} catch (error) {
-		console.error(error);
-	}
-	
 }
 
 function equalTo(ref, msg) {
