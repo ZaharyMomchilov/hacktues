@@ -37,7 +37,7 @@ export default function Login({ logIn }) {
       .matches(/[a-z]/, "използвай минимум 1 малка буква")
       .matches(/\d/, "използвай минимум 1 цифра")
       .matches(/[^\d\w\s]/, "използвай минимум 1 специален символ")
-      .matches(/.{8}/, "използвай минимум 8 символа")
+      .matches(/.{8}/, "използвай минимум 8 символа"),
   });
 
   var router = useRouter();
@@ -63,7 +63,6 @@ export default function Login({ logIn }) {
             validationSchema={SignupSchema}
             initialValues={{}}
             onSubmit={(values, actions) => {
-              console.log("onSubmit");
               axios({
                 method: "post",
                 url: `https://${process.env.hostname}/users/change_password/`,
@@ -174,7 +173,6 @@ export default function Login({ logIn }) {
           <Formik
             initialValues={{ email: "" }}
             onSubmit={(values, actions) => {
-              setTimeout(() => {
                 axios({
                   method: "post",
                   url: `https://${process.env.hostname}/users/forgotten_password/`,
@@ -200,9 +198,6 @@ export default function Login({ logIn }) {
                       });
                     }
                   });
-                console.log(JSON.stringify(values, null, 1));
-                actions.setSubmitting(false);
-              }, 1000);
             }}
           >
             {(props) => (
