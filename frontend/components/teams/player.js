@@ -16,7 +16,7 @@ const Player = (props) => {
         Authorization: `Bearer ${cookies.get("auth")}`,
       },
     }).then(function (response) {
-      router.push("/");
+      router.push("/?t=success");
     });
   }
 

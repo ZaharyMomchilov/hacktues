@@ -206,6 +206,18 @@ export async function getServerSideProps(ctx){
 	}
 	}
 	else{
+
+		// const instance = axios.create({
+		// 	baseURL: `https://${process.env.hostname}/`,
+		// 	timeout: 1000,
+		// 	headers: {"Content-type": "Application/json",
+		// 	"Authorization": `Bearer ${cookies.get('auth')}`}
+		//   });
+
+		// const getUsers = instance.get('/users/');
+		// const getUser = instance.get(`/users/${jwt_decode(cookies.get('auth')).user_id}`);
+
+		// const [users, user] = await Promise.all([getUsers, getUser]);
 		var response = await axios({
 			method: 'get',
 			url: `https://${process.env.hostname}/users/`,
@@ -215,16 +227,20 @@ export async function getServerSideProps(ctx){
 			},
 		)
 
-		var user = await axios({
-			method: 'get',
-			url: `https://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}`,
-			headers: 
-			{ "Content-type": "Application/json",
-			  "Authorization": `Bearer ${cookies.get('auth')}`}
-			},
-		)
-		
-		if(user.data.team_set[0] != null){
+		// var user = await axios({
+		// 	method: 'get',
+		// 	url: `https://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}`,
+		// 	headers: 
+		// 	{ "Content-type": "Application/json",
+		// 	  "Authorization": `Bearer ${cookies.get('auth')}`}
+		// 	},
+		// )
+		for(let k = 0; k < response.data.length; k++){
+			if(response.data[k].id == jwt_decode(cookies.get('auth')).user_id){
+				var user = response.data[k]
+			}
+		}
+		if(user.team_set[0] != null){
 			return {
 				redirect: {
 				permanent: false,
@@ -236,7 +252,6 @@ export async function getServerSideProps(ctx){
 			var users = response.data.filter(function(item) {
 				return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != ''
 			})
-			console.log(users)
 			return {props: {users: users}}
 		}
 
