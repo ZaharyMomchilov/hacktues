@@ -182,7 +182,7 @@ export const MenuItem = (props) => {
     );
   } else {
     return (
-      <ChakraLink
+      <Link
         as={motion.div}
         display="flex"
         alignItems="center"
@@ -245,7 +245,7 @@ export const MenuItem = (props) => {
             {/* </Box> */}
           </Text>
         </Button>
-      </ChakraLink>
+      </Link>
     );
   }
 };
