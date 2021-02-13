@@ -34,6 +34,9 @@ import { useRouter } from "next/router";
 import routerEvents from "next-router-events";
 
 import Head from "next/head";
+    
+
+// Router.events.on('routeChangeComplete', () => NProgress.done())
 
 // axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
 // axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
@@ -85,12 +88,25 @@ function MyApp({ Component, pageProps }) {
   const [isLargerThan797] = useMediaQuery("(min-width: 797px)");
 
   const [isOpen, toggleOpen] = useCycle(false, true);
+  
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
-
+  
   var sidebar;
   var variant;
   var dived;
+  
+  const closeNav = props =>{
+    // if(props == "/"){
+    //   toggleOpen(true);
+    // }
+    // else{
+      toggleOpen(false);
+    // }
+    // console.log(props);
+  }
+  
+  
   
   const start = (url) => {
     if(url == "/"){
@@ -117,7 +133,15 @@ function MyApp({ Component, pageProps }) {
   var router = useRouter();
 
   useEffect(() => {
-    
+    // if(router.pathname == '/'){
+    //   toggleOpen(true);
+    // }
+    // else{
+    //   toggleOpen(false);
+    // }
+
+    Router.events.on('routeChangeStart', closeNav)
+    Router.events.on('routeChangeComplete', closeNav)
     // routerEvents.on("routeChangeStart", start);
     // routerEvents.on("routeChangeComplete", complete);
 
@@ -199,7 +223,11 @@ function MyApp({ Component, pageProps }) {
         setLogin(0);
       }
     }
-  }, [start, complete]);
+
+    return(
+      Router.events.on('beforeHistoryChange', closeNav)
+    )
+  }, []);
 
   if (!isLargerThan797) {
     dived = {

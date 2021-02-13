@@ -223,7 +223,9 @@ export async function getServerSideProps(ctx){
 			{ "Content-type": "Application/json",
 			  "Authorization": `Bearer ${cookies.get('auth')}`}
 			},
-		)
+		).catch(function(error){
+			console.log(error)
+		})
 
 		// var user = await axios({
 		// 	method: 'get',
