@@ -140,8 +140,8 @@ function MyApp({ Component, pageProps }) {
     //   toggleOpen(false);
     // }
 
-    Router.events.on('routeChangeStart', closeNav)
-    Router.events.on('routeChangeComplete', closeNav)
+    // Router.events.on('routeChangeStart', closeNav)
+    // Router.events.on('routeChangeComplete', closeNav)
     // routerEvents.on("routeChangeStart", start);
     // routerEvents.on("routeChangeComplete", complete);
 
@@ -224,10 +224,10 @@ function MyApp({ Component, pageProps }) {
       }
     }
 
-    return(
-      Router.events.on('beforeHistoryChange', closeNav)
-    )
-  }, []);
+    // return(
+    //   Router.events.on('beforeHistoryChange', closeNav)
+    // )
+  });
 
   if (!isLargerThan797) {
     dived = {
