@@ -153,10 +153,6 @@ export const MenuItem = (props) => {
         textDecoration="none"
       >
         <Box
-          onClick={() => {
-            // router.push("/");
-          }}
-          href="/"
           as={motion.div}
           w="100%"
           p="3px"
@@ -170,7 +166,6 @@ export const MenuItem = (props) => {
           variants={variants}
         >
           <Text
-            href="/"
             textDecoration="none"
             fontFamily="llpixel"
             color="#009d60"

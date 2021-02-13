@@ -32,11 +32,7 @@ const variants = {
   },
 };
 
-export default function Navigation(props, { toggle }) {
-  const [isSmalledThan480] = useMediaQuery("(max-width: 480px)");
-
-  var router = useRouter();
-  const cookies = new Cookies();
+export default function Navigation(props) {
 
   var login;
   var logout;
