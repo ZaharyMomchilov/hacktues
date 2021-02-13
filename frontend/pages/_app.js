@@ -118,8 +118,8 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     
-    routerEvents.on("routeChangeStart", start);
-    routerEvents.on("routeChangeComplete", complete);
+    // routerEvents.on("routeChangeStart", start);
+    // routerEvents.on("routeChangeComplete", complete);
 
     if (cookies.get("CookieConsent")) {
       if (cookies.get("auth")) {
