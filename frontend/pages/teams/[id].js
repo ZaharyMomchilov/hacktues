@@ -473,22 +473,12 @@ function Teams(props) {
 							</FormControl>
 							)}
 					</Field>
-	
-					<Field name="tech">
-							{({ field, form }) => (
-							<FormControl flexGrow={1} w="100%" mr="5px" isDisabled isInvalid={form.errors.last_name && form.touched.last_name}>
-								<FormLabel fontFamily="Rubik" fontSize="15px" htmlFor="text">Линк/ове към GitHub хранилище/а:</FormLabel>
-									<Input isDisabled _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="github_link" />
-								<FormErrorMessage border={0}>{form.errors.last_name}</FormErrorMessage>
-							</FormControl>
-							)}
-					</Field>
 
 					<Flex paddingTop="15px" flexDirection="row" flexWrap="wrap" width="100%">
 						  {tech}
 					</Flex>
 					<Flex flexDirection="column" flexWrap="wrap">
-						<Text>Потвърден:&nbsp;{confirmed}</Text>	
+						<Text fontFamily="Rubik">Потвърден:&nbsp;{confirmed}</Text>	
 					</Flex>
 
 

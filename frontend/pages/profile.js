@@ -40,30 +40,6 @@ import { useRouter } from "next/router";
 function Profile(props) {
 
   console.log(props);
-
-  const [users, setUsers] = React.useState([]);
-
-    useEffect(() => {
-        
-      axios({
-        method: "get",
-        url: `https://${process.env.hostname}/users/${
-          jwt_decode(cookies.get("auth")).user_id
-        }`,
-        headers: { "Content-type": "Application/json",
-        "Authorization": `Bearer ${cookies.get('auth')}` },
-      })
-      .then(function(response){
-        setUsers(response.data);
-       })
-      .catch(function (error) {
-        console.log("get: " + error);
-        });
-      
-    }, [])
-
-
-
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
@@ -115,7 +91,7 @@ function Profile(props) {
   };
 
   var form;
-  switch (users.form) {
+  switch (props.users.form) {
     case "8А":
       form = "8А";
       break;
@@ -201,23 +177,23 @@ function Profile(props) {
         margin={["25px", "25px", "50px", "50px"]}
       >
         <Flex>
-          <Avatar src={`https://cdn.discordapp.com/avatars/${users.discord_id}/${users.avatar}.png`} />
+          <Avatar src={`https://cdn.discordapp.com/avatars/${props.users.discord_id}/${props.users.avatar}.png`} />
           <Text fontSize="15px" fontFamily="Rubik" pl="15px">
-            {users.first_name}&nbsp;{users.last_name}
+            {props.users.first_name}&nbsp;{props.users.last_name}
           </Text>
         </Flex>
         <Formik
           validationSchema={SignupSchema}
           initialValues={{
-            first_name:users.first_name,
-            last_name: users.last_name,
-            email: users.email,
+            first_name: props.users.first_name,
+            last_name: props.users.last_name,
+            email: props.users.email,
             form: form,
-            alergies:users.alergies,
-            tshirt_size: users.tshirt_size,
-            food_preferences: users.food_preferences,
-            is_online: users.is_online,
-            phone: users.phone,
+            alergies: props.users.alergies,
+            tshirt_size: props.users.tshirt_size,
+            food_preferences: props.users.food_preferences,
+            is_online: props.users.is_online,
+            phone: props.users.phone,
           }}
           onSubmit={(values, actions) => {
             var data = JSON.stringify(values, null, 1);
@@ -713,8 +689,16 @@ export async function getServerSideProps(ctx) {
       },
     };
   } else {
+    var response = await axios({
+      method: "get",
+      url: `https://${process.env.hostname}/users/${
+        jwt_decode(cookies.get("auth")).user_id
+      }`,
+      headers: { "Content-type": "Application/json",
+      "Authorization": `Bearer ${cookies.get('auth')}` },
+    });
 
-    return { props: {} };
+    return { props: { users: response.data } };
   }
 }
 
