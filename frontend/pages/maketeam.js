@@ -87,7 +87,6 @@ const Teams = (props) => {
                             let selected = people.map(a => a.value);
                             values['users'] = selected
 							values['users'].push(jwt_decode(cookies.get('auth')).user_id)
-							console.log(chosenTech)
                             values['technologies'] = chosenTech
 							var data = JSON.stringify(values, null, 1)
         					axios({
