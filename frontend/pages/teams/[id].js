@@ -587,7 +587,6 @@ export async function getServerSideProps(ctx){
 
 	const cookies = new Cookies(ctx.req.headers.cookie);
 	console.log(cookies.get('auth'));
-	
 
 		var response = await axios({
 		method: 'get',
@@ -614,7 +613,30 @@ export async function getServerSideProps(ctx){
 				})
 	
 		if(cookies.get('auth') != undefined){
-			console.log("v if-a sme");
+			var response = await axios({
+				method: 'get',
+				url: `http://${process.env.hostname}/teams/${ctx.query.id}/`,
+				headers: 
+				{ "Content-type": "Application/json",}
+				},
+				).catch(function (error) {
+					if (error.response) {
+						console.log(error.response);
+					}
+					})
+					var users = await axios({
+						method: 'get',
+						url: `http://${process.env.hostname}/users/`,
+						headers: 
+						{ "Content-type": "Application/json"}
+						},
+					)
+					.catch(function (error) {
+						if (error.response) {
+							console.log(error.response);
+						}
+						})
+
 			var res = await axios({
 				method: 'get',
 				url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}`,
@@ -628,7 +650,8 @@ export async function getServerSideProps(ctx){
 					}
 					})
 					var users = users.data.filter(function(item) {
-						return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != ''
+						
+						return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != '' && item.is_active != false
 					})
 					return {props: {teams: response.data,  user: res.data, users: users}}
 		}

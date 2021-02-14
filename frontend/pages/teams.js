@@ -6,24 +6,24 @@ import Cookies from 'universal-cookie';
 
 export default function Teams(props) {
     
-  const [teams, setTeams] = React.useState([]);
+  const [teams, setTeams] = React.useState(props.teams);
 
-    useEffect(() => {
+    // useEffect(() => {
         
-        axios({
-			method: 'get',
-			url: `https://api.hacktues.com/teams/`,
-			headers: 
-			{ "Content-type": "Application/json",
-			},
-        })
-        .then(function(response){
-            setTeams(response.data);
-        })
-        .catch(function (error) {
-            console.log("get: " + error);
-            });
-    }, [])
+    //     axios({
+	// 		method: 'get',
+	// 		url: `https://api.hacktues.com/teams/`,
+	// 		headers: 
+	// 		{ "Content-type": "Application/json",
+	// 		},
+    //     })
+    //     .then(function(response){
+    //         setTeams(response.data);
+    //     })
+    //     .catch(function (error) {
+    //         console.log("get: " + error);
+    //         });
+    // }, [])
 
 
     return (
@@ -33,4 +33,20 @@ export default function Teams(props) {
             )}
         </Flex>
     )
+}
+
+export async function getServerSideProps(ctx){
+
+	var response = await axios({
+			method: 'get',
+			url: `https://api.hacktues.com/teams/`,
+			headers: 
+			{ "Content-type": "Application/json",
+			},
+        }).catch(function (error) {
+            console.log("get: " + error);
+            });
+
+	return {props: {teams: response.data}}
+
 }
