@@ -586,8 +586,9 @@ else{
 export async function getServerSideProps(ctx){
 
 	const cookies = new Cookies(ctx.req.headers.cookie);
-
+	console.log(cookies.get('auth'));
 	
+
 		var response = await axios({
 		method: 'get',
 		url: `http://${process.env.hostname}/teams/${ctx.query.id}/`,
@@ -599,14 +600,26 @@ export async function getServerSideProps(ctx){
 				console.log(error.response);
 			}
 			})
+			var users = await axios({
+				method: 'get',
+				url: `http://${process.env.hostname}/users/`,
+				headers: 
+				{ "Content-type": "Application/json"}
+				},
+			)
+			.catch(function (error) {
+				if (error.response) {
+					console.log(error.response);
+				}
+				})
 	
 		if(cookies.get('auth') != undefined){
+			console.log("v if-a sme");
 			var res = await axios({
 				method: 'get',
 				url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}`,
 				headers: 
-				{ "Content-type": "Application/json",
-				  "Authorization": `Bearer ${cookies.get('auth')}`}
+				{ "Content-type": "Application/json"}
 				},
 				)
 				.catch(function (error) {
@@ -614,31 +627,17 @@ export async function getServerSideProps(ctx){
 						console.log(error.response);
 					}
 					})
+					var users = users.data.filter(function(item) {
+						return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != ''
+					})
+					return {props: {teams: response.data,  user: res.data, users: users}}
 		}
+		else{
+			return {props: {teams: response.data}}
 
-		var users = await axios({
-			method: 'get',
-			url: `http://${process.env.hostname}/users/`,
-			headers: 
-			{ "Content-type": "Application/json"}
-			},
-		)
-		.catch(function (error) {
-			if (error.response) {
-				console.log(error.response);
-			}
-			})
-		
-			var users = users.data.filter(function(item) {
-				return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != ''
-			})
-			// return {props: {users: users}}
-			if(res.data){
-				return {props: {teams: response.data,  user: res.data, users: users}}
-			}
-			else{
-				return {props: {teams: response.data, users: users}}
-			}
+		}
+			
+			
 			//  captain: captain.data 
 			
 }
