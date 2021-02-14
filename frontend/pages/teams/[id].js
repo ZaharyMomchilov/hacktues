@@ -600,7 +600,7 @@ export async function getServerSideProps(ctx){
 			}
 			})
 	
-		if(cookies.get('auth')){
+		if(cookies.get('auth') != undefined){
 			var res = await axios({
 				method: 'get',
 				url: `http://${process.env.hostname}/users/${jwt_decode(cookies.get('auth')).user_id}`,
