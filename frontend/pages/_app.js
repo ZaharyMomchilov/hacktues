@@ -225,9 +225,9 @@ function MyApp({ Component, pageProps }) {
       }
     }
 
-    // return(
-    //   Router.events.on('beforeHistoryChange', closeNav)
-    // )
+    return(
+      Router.events.on('routeChangeStart', start)
+    )
   });
 
   if (!isLargerThan797) {
