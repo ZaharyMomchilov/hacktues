@@ -87,7 +87,8 @@ function MyApp({ Component, pageProps }) {
 
   const [isLargerThan797] = useMediaQuery("(min-width: 797px)");
 
-  const [isOpen, toggleOpen] = useCycle(false, true);
+  // const [isOpen, toggleOpen] = useCycle(false, true);
+  const [isOpen, toggleOpen] = useControllableState({ defaultValue: false });
   
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -109,12 +110,12 @@ function MyApp({ Component, pageProps }) {
   
   
   const start = (url) => {
-    if(url == "/"){
-      toggleOpen(true);
-    }
-    else{
+    // if(url == "/"){
+    //   toggleOpen(true);
+    // }
+    // else{
       toggleOpen(false);
-    }
+    // }
   }
 
   const complete = (url) => {
@@ -140,7 +141,7 @@ function MyApp({ Component, pageProps }) {
     //   toggleOpen(false);
     // }
 
-    // Router.events.on('routeChangeStart', closeNav)
+    Router.events.on('routeChangeStart', start)
     // Router.events.on('routeChangeComplete', closeNav)
     // routerEvents.on("routeChangeStart", start);
     // routerEvents.on("routeChangeComplete", complete);
@@ -361,7 +362,7 @@ function MyApp({ Component, pageProps }) {
         >
           <MenuToggle
             toggle={() => {
-              toggleOpen();
+              toggleOpen(!isOpen);
             }}
           />
           <Navigation
