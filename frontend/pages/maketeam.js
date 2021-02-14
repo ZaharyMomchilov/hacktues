@@ -70,7 +70,9 @@ const Teams = (props) => {
 
     const handleSelectedItemsChange = (selectedItems) => {
         if (selectedItems) {
-            setSelectedItems(selectedItems);
+			if(selectedItems.length < 5){
+				setSelectedItems(selectedItems);
+			}
         }
     };
 
@@ -250,7 +252,7 @@ export async function getServerSideProps(ctx){
 		}
 		else{
 			var users = response.data.filter(function(item) {
-				return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != ''
+				return item.email !== "-" && item.team_set.length == 0 && item.id != jwt_decode(cookies.get('auth')).user_id && item.first_name != '' && item.last_name != '' && item.is_active != false
 			})
 			return {props: {users:users}};
 		}

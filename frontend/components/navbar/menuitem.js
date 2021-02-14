@@ -192,7 +192,8 @@ export const MenuItem = (props) => {
         // onClick={() => {
         //   router.push(props.link);
         // }}
-        href={`${props.link}`}
+        as={props.link}
+        href={props.link}
         style={{textDecoration:"none"}}
       >
         <Button
