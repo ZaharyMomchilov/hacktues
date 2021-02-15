@@ -187,7 +187,7 @@ const Teams = (props) => {
                     status: "success",
                     duration: 9000,
                   });
-                  router.push("/?t=success");
+                  router.push(`/teams/${response.data.id}`);
                 }
               })
               .catch(function (error) {
