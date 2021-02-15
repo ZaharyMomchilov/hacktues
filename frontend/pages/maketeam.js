@@ -109,21 +109,27 @@ const Teams = (props) => {
     }
   };
 
+  const reachedMax = React.useMemo(() => selectedItems.length >= 4, [
+    selectedItems,
+  ]);
   const [autocomplete, setAutocomplete] = React.useState(null);
 
   React.useEffect(() => {
     const nodeList = document.querySelectorAll(
       "input[id^=downshift][id*=input]"
     );
-    console.log(nodeList);
     if (nodeList && nodeList.length > 0) {
       setAutocomplete(nodeList[0]);
     }
   }, []);
 
   React.useEffect(() => {
-    if (autocomplete) {
-      autocomplete.value = "";
+    if (!autocomplete) {
+      return;
+    }
+    autocomplete.value = "";
+    if (reachedMax) {
+      autocomplete.blur();
     }
   }, [selectedItems]);
 
@@ -391,7 +397,25 @@ const Teams = (props) => {
                       id="users"
                       onCreateItem={() => {}}
                       {...field}
-                      placeholder="Добави участници"
+                      placeholder={
+                        reachedMax
+                          ? "Достигнат е лимитът на участници"
+                          : "Добави участници"
+                      }
+                      inputStyleProps={
+                        reachedMax
+                          ? {
+                              pointerEvents: "none",
+                            }
+                          : {}
+                      }
+                      listStyleProps={
+                        reachedMax
+                          ? {
+                              display: "none",
+                            }
+                          : {}
+                      }
                       toggleButtonStyleProps={{ display: "none" }}
                       tagStyleProps={{
                         padding: "5px",
