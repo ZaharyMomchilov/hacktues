@@ -38,7 +38,6 @@ const cookies = new Cookies();
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 function Profile(props) {
-
   console.log(props);
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -153,7 +152,7 @@ function Profile(props) {
       form = "12Г";
       break;
   }
-  
+
   return (
     <Box
       paddingBottom="300px"
@@ -161,10 +160,24 @@ function Profile(props) {
       marginLeft="auto"
       marginRight="auto"
     >
-    <Flex rounded="lg" mr={["25px", "25px", "50px", "300px"]} ml={["25px", "25px", "50px", "300px"]} mt={["25px", "25px", "50px", "50px"]} justifyContent="center" alignItems="center" background="white" padding="15px">
+      <Flex
+        rounded="lg"
+        mr={["25px", "25px", "50px", "300px"]}
+        ml={["25px", "25px", "50px", "300px"]}
+        mt={["25px", "25px", "50px", "50px"]}
+        justifyContent="center"
+        alignItems="center"
+        background="white"
+        padding="15px"
+      >
         <Box>
-          <Link isExternal class="discord-widget" href="https://discord.gg/UJuy9fJRc2" title="Join us on Discord">
-            <img src="https://discordapp.com/api/guilds/747517305164005456/embed.png?style=banner3"/>
+          <Link
+            isExternal
+            class="discord-widget"
+            href="https://discord.gg/UJuy9fJRc2"
+            title="Join us on Discord"
+          >
+            <img src="https://discordapp.com/api/guilds/747517305164005456/embed.png?style=banner3" />
           </Link>
         </Box>
       </Flex>
@@ -177,7 +190,9 @@ function Profile(props) {
         margin={["25px", "25px", "50px", "50px"]}
       >
         <Flex>
-          <Avatar src={`https://cdn.discordapp.com/avatars/${props.users.discord_id}/${props.users.avatar}.png`} />
+          <Avatar
+            src={`https://cdn.discordapp.com/avatars/${props.users.discord_id}/${props.users.avatar}.png`}
+          />
           <Text fontSize="15px" fontFamily="Rubik" pl="15px">
             {props.users.first_name}&nbsp;{props.users.last_name}
           </Text>
@@ -511,7 +526,7 @@ function Profile(props) {
 						)}
 					</Field> */}
                 <Flex flexDirection="row" flexWrap="wrap" w="100%">
-                 <Button
+                  <Button
                     mt={4}
                     mr={3}
                     colorScheme="red"
@@ -660,7 +675,14 @@ function Profile(props) {
             тук
           </Link>
         </Text>
-        <Text style={{color:"red"}} textColor="red" mt="15px" mb={0} fontFamily="Rubik" p={0}>
+        <Text
+          style={{ color: "red" }}
+          textColor="red"
+          mt="15px"
+          mb={0}
+          fontFamily="Rubik"
+          p={0}
+        >
           {"Декларациите трябва да изпратите на този"}&nbsp;
           <Link
             isExternal
@@ -673,7 +695,6 @@ function Profile(props) {
           </Link>
         </Text>
       </Flex>
-
     </Box>
   );
 }
@@ -694,8 +715,10 @@ export async function getServerSideProps(ctx) {
       url: `https://${process.env.hostname}/users/${
         jwt_decode(cookies.get("auth")).user_id
       }`,
-      headers: { "Content-type": "Application/json",
-      "Authorization": `Bearer ${cookies.get('auth')}` },
+      headers: {
+        "Content-type": "Application/json",
+        Authorization: `Bearer ${cookies.get("auth")}`,
+      },
     });
 
     return { props: { users: response.data } };
@@ -747,4 +770,4 @@ const AutoSave = ({ debounceMs = 2000 }) => {
   );
 };
 
-export default Profile
+export default Profile;

@@ -21,8 +21,6 @@ import {
 } from "@chakra-ui/react";
 import { BiImageAlt } from "react-icons/bi";
 
-
-
 export default function Home() {
   var inW;
   var inH;
@@ -34,7 +32,6 @@ export default function Home() {
   }, [inW, inH]);
 
   var router = useRouter();
-
 
   const easterEgg = () => {
     router.push("/secret/verywellkeptsecret/indeed/secret");

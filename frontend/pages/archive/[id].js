@@ -83,7 +83,8 @@ const Hacktues = ({ currData }) => {
             as="h1"
             fontWeight="400"
           >
-            <AiOutlineUser style={{position:"relative", top:"3px"}} /> {currData.allParticipants}
+            <AiOutlineUser style={{ position: "relative", top: "3px" }} />{" "}
+            {currData.allParticipants}
           </Text>
         </Flex>
         <Flex
@@ -114,7 +115,8 @@ const Hacktues = ({ currData }) => {
             fontFamily="Rubik"
             fontWeight="400"
           >
-            <AiOutlineTeam style={{position:"relative", top:"3px"}} /> {currData.teams}
+            <AiOutlineTeam style={{ position: "relative", top: "3px" }} />{" "}
+            {currData.teams}
           </Text>
         </Flex>
         <Flex
@@ -145,7 +147,8 @@ const Hacktues = ({ currData }) => {
             fontFamily="Rubik"
             fontWeight="400"
           >
-            <AiOutlineGift style={{position:"relative", top:"3px"}} /> {currData.valuedProjects}
+            <AiOutlineGift style={{ position: "relative", top: "3px" }} />{" "}
+            {currData.valuedProjects}
           </Text>
         </Flex>
       </Flex>

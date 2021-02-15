@@ -173,31 +173,31 @@ export default function Login({ logIn }) {
           <Formik
             initialValues={{ email: "" }}
             onSubmit={(values, actions) => {
-                axios({
-                  method: "post",
-                  url: `https://${process.env.hostname}/users/forgotten_password/`,
-                  headers: { "Content-type": "Application/json" },
-                  data: { email: values.email },
+              axios({
+                method: "post",
+                url: `https://${process.env.hostname}/users/forgotten_password/`,
+                headers: { "Content-type": "Application/json" },
+                data: { email: values.email },
+              })
+                .then(function (response) {
+                  toast({
+                    title: "Промяна на парола.",
+                    description: "Влезте в имейла, за да смените паролата.",
+                    status: "success",
+                    duration: 9000,
+                  });
+                  router.push("/");
                 })
-                  .then(function (response) {
+                .catch(function (error) {
+                  if (error.response) {
                     toast({
-                      title: "Промяна на парола.",
-                      description: "Влезте в имейла, за да смените паролата.",
-                      status: "success",
+                      title: "Възникна грешка.",
+                      description: error.response.data.detail,
+                      status: "error",
                       duration: 9000,
                     });
-                    router.push("/");
-                  })
-                  .catch(function (error) {
-                    if (error.response) {
-                      toast({
-                        title: "Възникна грешка.",
-                        description: error.response.data.detail,
-                        status: "error",
-                        duration: 9000,
-                      });
-                    }
-                  });
+                  }
+                });
             }}
           >
             {(props) => (
