@@ -32,6 +32,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
+import React, { useMemo } from "react";
+
 function Teams(props) {
   const router = useRouter();
   const toast = useToast();
@@ -183,6 +185,30 @@ function Teams(props) {
         const [selectedItems, setSelectedItems] = React.useState([]);
 
         people = selectedItems;
+		
+		const reachedMax = React.useMemo(() => selectedItems.length >= 4 || props.teams.users.length == 5 || selectedItems.length + props.teams.users.length == 5 , [
+			selectedItems,
+		  ]);
+		  const [autocomplete, setAutocomplete] = React.useState(null);
+		
+		  React.useEffect(() => {
+			const nodeList = document.querySelectorAll(
+			  "input[id^=downshift][id*=input]"
+			);
+			if (nodeList && nodeList.length > 0) {
+			  setAutocomplete(nodeList[0]);
+			}
+		  }, []);
+		
+		  React.useEffect(() => {
+			if (!autocomplete) {
+			  return;
+			}
+			autocomplete.value = "";
+			if (reachedMax) {
+			  autocomplete.blur();
+			}
+		  }, [selectedItems]);
 
         const handleSelectedItemsChange = (selectedItems) => {
           if (selectedItems) {
@@ -246,16 +272,21 @@ function Teams(props) {
                         "Твърде много участници избрани"
                       );
                     }
-                    let selected = people.map((a) => a.value);
-                    values["users"] = selected;
-                    values["users"].push(
-                      jwt_decode(cookies.get("auth")).user_id
-                    );
+					var alreadySelected = []
+					for(let k = 0; k < props.teams.users.length; k++){	
+						alreadySelected.push(props.teams.users[k].id)
+					}
+					values["users"] = alreadySelected
+                    // let selected = selectedItems.map((a) => a.value);
+					for(let p = 0; p < selectedItems.length; p++){
+						// console.log(selectedItems[p])
+						values["users"].push(selectedItems[p].value)
+					}
                     values["technologies"] = chosenTech;
-                    console.log(values);
                     var data = JSON.stringify(values, null, 1);
+					console.log("data: " + data)
                     axios({
-                      method: "patch",
+                      method: "put",
                       url: `https://${process.env.hostname}/teams/${router.query.id}/`,
                       headers: {
                         "Content-type": "Application/json",
@@ -454,7 +485,25 @@ function Teams(props) {
                           <CUIAutoComplete
                             id="users"
                             {...field}
-                            placeholder="Добави участници"
+                            placeholder={
+                        reachedMax
+                          ? "Достигнат е лимитът на участници"
+                          : "Добави участници"
+                      }
+                      inputStyleProps={
+                        reachedMax
+                          ? {
+                              pointerEvents: "none",
+                            }
+                          : {}
+                      }
+                      listStyleProps={
+                        reachedMax
+                          ? {
+                              display: "none",
+                            }
+                          : {}
+                      }
                             toggleButtonStyleProps={{ display: "none" }}
                             tagStyleProps={{
                               padding: "5px",
@@ -490,7 +539,9 @@ function Teams(props) {
                             Технологии
                           </FormLabel>
                           {/* <Input _invalid={{boxShadow: "0 1px 0 0 #E53E3E", borderColor:"#E53E3E"}} borderColor="#a5cf9f" boxShadow= "0px 1px 0px 0px #a5cf9f" variant="flushed" borderTop={0} borderRight={0} borderLeft={0} {...field} id="github_link" /> */}
-                          {tech}
+                          	<Flex flexDirection="row" flexWrap="wrap">
+						  		{tech}
+						  	</Flex>
                           <FormErrorMessage border={0}>
                             {form.errors.last_name}
                           </FormErrorMessage>
@@ -549,7 +600,7 @@ function Teams(props) {
 
                           <ModalFooter>
                             <Button
-                              colorScheme="green"
+                              colorScheme="red"
                               border="0"
                               cursor="pointer"
                               mr={3}
@@ -1451,7 +1502,6 @@ function Teams(props) {
 
 export async function getServerSideProps(ctx) {
   const cookies = new Cookies(ctx.req.headers.cookie);
-  console.log(cookies.get("auth"));
 
   var response = await axios({
     method: "get",

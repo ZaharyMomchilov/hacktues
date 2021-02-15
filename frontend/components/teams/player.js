@@ -62,6 +62,11 @@ const Player = (props) => {
   var captain;
   var position;
   var remove;
+
+
+  // const { isOpen: , onOpen, onClose } = useDisclosure();
+  // const { isOpen: isOpened, onOpen: onOpened, onClose: onClosed,} = useDisclosure();
+
   if (props.captain) {
     // leave = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
     position = "Капитан";
@@ -143,6 +148,131 @@ const Player = (props) => {
         {captain}
         {remove}
         {leave}
+
+        {/* <Modal isOpen={isOpen} onClose={onClose}>
+                        <ModalOverlay />
+                        <ModalContent>
+                          <ModalCloseButton
+                            _focus={{
+                              outline: "none",
+                              border: "0",
+                              background: "transparent",
+                            }}
+                          />
+                          <ModalHeader>
+                            Сигурни ли сте, че искате да запазите?
+                          </ModalHeader>
+
+                          <ModalFooter>
+                            <Button
+                              colorScheme="red"
+                              border="0"
+                              cursor="pointer"
+                              mr={3}
+                              onClick={onClose}
+                            >
+                              Откажи
+                            </Button>
+                            <Button
+                              colorScheme="green"
+                              border="0"
+                              cursor="pointer"
+                              isLoading={props.isSubmitting}
+                              onClick={() => {
+                                props.submitForm();
+                                onClose();
+                                router.reload();
+                              }}
+                              type="submit"
+                            >
+                              Промени
+                            </Button>
+                          </ModalFooter>
+                        </ModalContent>
+        </Modal>
+        <Modal isOpen={isOpen} onClose={onClose}>
+                        <ModalOverlay />
+                        <ModalContent>
+                          <ModalCloseButton
+                            _focus={{
+                              outline: "none",
+                              border: "0",
+                              background: "transparent",
+                            }}
+                          />
+                          <ModalHeader>
+                            Сигурни ли сте, че искате да запазите?
+                          </ModalHeader>
+
+                          <ModalFooter>
+                            <Button
+                              colorScheme="red"
+                              border="0"
+                              cursor="pointer"
+                              mr={3}
+                              onClick={onClose}
+                            >
+                              Откажи
+                            </Button>
+                            <Button
+                              colorScheme="green"
+                              border="0"
+                              cursor="pointer"
+                              isLoading={props.isSubmitting}
+                              onClick={() => {
+                                props.submitForm();
+                                onClose();
+                                router.reload();
+                              }}
+                              type="submit"
+                            >
+                              Промени
+                            </Button>
+                          </ModalFooter>
+                        </ModalContent>
+        </Modal>
+
+                      <Modal isOpen={isOpened} onClose={onClosed}>
+                        <ModalOverlay />
+                        <ModalContent>
+                          <ModalCloseButton
+                            _focus={{
+                              outline: "none",
+                              border: "0",
+                              background: "transparent",
+                            }}
+                          />
+                          <ModalHeader>
+                            Сигурни ли сте, че искате да изтриете отбора?
+                          </ModalHeader>
+
+                          <ModalFooter>
+                            <Button
+                              colorScheme="green"
+                              border="0"
+                              cursor="pointer"
+                              mr={3}
+                              onClick={onClosed}
+                            >
+                              Откажи
+                            </Button>
+                            <Button
+                              colorScheme="red"
+                              border="0"
+                              cursor="pointer"
+                              isLoading={props.isSubmitting}
+                              onClick={() => {
+                                handleDelete();
+                                onClosed();
+                                router.push("/?t=success");
+                              }}
+                              type="submit"
+                            >
+                              Изтрий
+                            </Button>
+                          </ModalFooter>
+                        </ModalContent>
+                      </Modal> */}
       </Flex>
     </Flex>
   );

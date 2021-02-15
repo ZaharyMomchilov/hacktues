@@ -236,7 +236,9 @@ var CUIAutoComplete = function CUIAutoComplete(props) {
 
   return createElement(
     Stack,
-    null,
+    {
+      width:"100%"
+    },
     createElement(FormLabel, Object.assign({}, getLabelProps({})), label),
     selectedItems &&
       createElement(
