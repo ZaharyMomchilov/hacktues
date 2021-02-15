@@ -134,7 +134,12 @@ let Schedule = () => (
         event: EventAgenda,
       },
     }}
-    messages={{ event: "Събитие", date: "Дата", time: "Време", allDay: "цял ден" }}
+    messages={{
+      event: "Събитие",
+      date: "Дата",
+      time: "Време",
+      allDay: "цял ден",
+    }}
     style={{
       fontFamily: "Rubik",
       background: "white",

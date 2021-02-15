@@ -1,74 +1,82 @@
 [
-    {
+  {
     "id": "Координатор",
     "winners": [
-        {
-            "name": "Виктория Димитрова",
-            "class":"11Г",
-            "picture":"/About/viki.jpg"
-        }
-    ]},{
-        "id": "PR",
-        "winners": [
-            {
-                "name": "Гергана Узунова",
-                "class":"11Г",
-                "picture":"/About/geri.jpg"
-            }
-        ]},
-    {
-        "id": "IT",
-        "winners": [
-            {
-                "name": "Захари Момчилов",
-                "class":"11Г",
-                "picture":"/About/hari.png"
-            },
-            {
-                "name": "Йоан Джелекарски",
-                "class":"11Г",
-                "picture":"/About/yoan.jpg"
-            }
-        ]
-    },
-    {
-        "id": "Спонсори",
-        "winners": [
-            {
-                "name": "Ния Маркова",
-                "class":"11Г",
-                "picture":"/About/niya.jpg"
-            },
-            {
-                "name": "Теодора Стоичкова",
-                "class":"11Г",
-                "picture":"/About/tedi.png"
-            }
-        ]},
-            {
-        "id": "Логистика",
-        "winners": [
-            {
-                "name": "Славянка Йовчева",
-                "class":"11Г",
-                "picture":"/About/slavi.jpg"
-            },
-            {
-                "name": "Виолета Кабаджова",
-                "class":"11А",
-                "picture":"/About/vili.jpeg"
-            }]},
-        {
-            "id": "Дизайн",
-            "winners": [
-                {
-                    "name": "Кайра Бояджиева",
-                    "class":"10В",
-                    "picture":"/About/kayra.jpg"
-                },
-                {
-                    "name": "Ивайла Панайотова",
-                    "class":"9В",
-                    "picture":"/About/ivayla.jpg"
-                }]}
+      {
+        "name": "Виктория Димитрова",
+        "class": "11Г",
+        "picture": "/About/viki.jpg"
+      }
+    ]
+  },
+  {
+    "id": "PR",
+    "winners": [
+      {
+        "name": "Гергана Узунова",
+        "class": "11Г",
+        "picture": "/About/geri.jpg"
+      }
+    ]
+  },
+  {
+    "id": "IT",
+    "winners": [
+      {
+        "name": "Захари Момчилов",
+        "class": "11Г",
+        "picture": "/About/hari.png"
+      },
+      {
+        "name": "Йоан Джелекарски",
+        "class": "11Г",
+        "picture": "/About/yoan.jpg"
+      }
+    ]
+  },
+  {
+    "id": "Спонсори",
+    "winners": [
+      {
+        "name": "Ния Маркова",
+        "class": "11Г",
+        "picture": "/About/niya.jpg"
+      },
+      {
+        "name": "Теодора Стоичкова",
+        "class": "11Г",
+        "picture": "/About/tedi.png"
+      }
+    ]
+  },
+  {
+    "id": "Логистика",
+    "winners": [
+      {
+        "name": "Славянка Йовчева",
+        "class": "11Г",
+        "picture": "/About/slavi.jpg"
+      },
+      {
+        "name": "Виолета Кабаджова",
+        "class": "11А",
+        "picture": "/About/vili.jpeg"
+      }
+    ]
+  },
+  {
+    "id": "Дизайн",
+    "winners": [
+      {
+        "name": "Кайра Бояджиева",
+        "class": "10В",
+        "picture": "/About/kayra.jpg"
+      },
+      {
+        "name": "Ивайла Панайотова",
+        "class": "9В",
+        "picture": "/About/ivayla.jpg"
+      }
+    ]
+  }
 ]

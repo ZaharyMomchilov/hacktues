@@ -34,7 +34,6 @@ import { useRouter } from "next/router";
 import routerEvents from "next-router-events";
 
 import Head from "next/head";
-    
 
 // Router.events.on('routeChangeComplete', () => NProgress.done())
 
@@ -60,12 +59,11 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg:
-          "../public/background.svg",
+        bg: "../public/background.svg",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
-        backgroundAttachment:"fixed",
+        backgroundAttachment: "fixed",
       },
     },
   },
@@ -74,7 +72,6 @@ const theme = extendTheme({
 
 function checkToken(exp) {
   if (Date.now() - 36000000 <= exp.exp * 1000) {
-    
   } else {
     refreshToken();
   }
@@ -89,45 +86,40 @@ function MyApp({ Component, pageProps }) {
 
   // const [isOpen, toggleOpen] = useCycle(false, true);
   const [isOpen, toggleOpen] = useControllableState({ defaultValue: false });
-  
+
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
-  
+
   var sidebar;
   var variant;
   var dived;
-  
-  const closeNav = props =>{
+
+  const closeNav = (props) => {
     // if(props == "/"){
     //   toggleOpen(true);
     // }
     // else{
-      toggleOpen(false);
+    toggleOpen(false);
     // }
     // console.log(props);
-  }
-  
-  
-  
+  };
+
   const start = (url) => {
     // if(url == "/"){
     //   toggleOpen(true);
     // }
     // else{
-      toggleOpen(false);
+    toggleOpen(false);
     // }
-  }
+  };
 
   const complete = (url) => {
-    if(url.split('/')[1] == 'registration'){
+    if (url.split("/")[1] == "registration") {
+      toggleOpen(false);
+    } else {
       toggleOpen(false);
     }
-    else{
-      toggleOpen(false);
-    }
-  }
-
-
+  };
 
   // == "/registration/second_step"
 
@@ -141,7 +133,7 @@ function MyApp({ Component, pageProps }) {
     //   toggleOpen(false);
     // }
 
-    Router.events.on('routeChangeStart', start)
+    Router.events.on("routeChangeStart", start);
     // Router.events.on('routeChangeComplete', closeNav)
     // routerEvents.on("routeChangeStart", start);
     // routerEvents.on("routeChangeComplete", complete);
@@ -150,7 +142,7 @@ function MyApp({ Component, pageProps }) {
       if (cookies.get("auth")) {
         setLogin(1);
         checkToken(jwt_decode(cookies.get("auth")));
-        if(router.query.t == "success"){
+        if (router.query.t == "success") {
           axios({
             method: "get",
             url: `https://${process.env.hostname}/users/${
@@ -166,10 +158,9 @@ function MyApp({ Component, pageProps }) {
                 setTeam(false);
               } else {
                 if (response.data.captain) {
-                  setCaptain(true)
+                  setCaptain(true);
                   setTeam(response.data.team_set[0]);
-                }
-                else{
+                } else {
                   setTeam(response.data.team_set[0]);
                 }
                 // if(response.data.){
@@ -201,10 +192,9 @@ function MyApp({ Component, pageProps }) {
                 setTeam(false);
               } else {
                 if (response.data.captain) {
-                  setCaptain(true)
+                  setCaptain(true);
                   setTeam(response.data.team_set[0]);
-                }
-                else{
+                } else {
                   setTeam(response.data.team_set[0]);
                 }
                 // if(response.data.){
@@ -225,9 +215,7 @@ function MyApp({ Component, pageProps }) {
       }
     }
 
-    return(
-      Router.events.on('routeChangeStart', start)
-    )
+    return Router.events.on("routeChangeStart", start);
   });
 
   if (!isLargerThan797) {
@@ -366,7 +354,7 @@ function MyApp({ Component, pageProps }) {
             }}
           />
           <Navigation
-            ctx={{ inteam: inTeam, loggedin: logged, captain: captain}}
+            ctx={{ inteam: inTeam, loggedin: logged, captain: captain }}
           />
           <Box
             as={motion.div}
@@ -421,7 +409,7 @@ const Cookie = () => {
           bg="#a5cf9f"
           shadow="md"
         >
-          <Text  alignSelf="center">
+          <Text alignSelf="center">
             Този уебсайт използва бисквитки. Научи повече{" "}
             <Link
               textDecoration="underline"
@@ -431,7 +419,7 @@ const Cookie = () => {
               тук
             </Link>
           </Text>
-          <Button 
+          <Button
             cursor="pointer"
             alignSelf="center"
             border="0"

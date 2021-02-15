@@ -77,7 +77,7 @@ export default function Login() {
                   });
                 }
               });
-              actions.setSubmitting(false);
+            actions.setSubmitting(false);
           }}
         >
           {(props) => (
