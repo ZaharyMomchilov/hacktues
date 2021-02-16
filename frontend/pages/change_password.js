@@ -37,7 +37,7 @@ export default function Login({ logIn }) {
       .matches(/[a-z]/, "използвай минимум 1 малка буква")
       .matches(/\d/, "използвай минимум 1 цифра")
       .matches(/[^\d\w\s]/, "използвай минимум 1 специален символ")
-      .matches(/.{8}/, "използвай минимум 8 символа")
+      .matches(/.{8}/, "използвай минимум 8 символа"),
   });
 
   var router = useRouter();
@@ -63,7 +63,6 @@ export default function Login({ logIn }) {
             validationSchema={SignupSchema}
             initialValues={{}}
             onSubmit={(values, actions) => {
-              console.log("onSubmit");
               axios({
                 method: "post",
                 url: `https://${process.env.hostname}/users/change_password/`,
@@ -174,35 +173,31 @@ export default function Login({ logIn }) {
           <Formik
             initialValues={{ email: "" }}
             onSubmit={(values, actions) => {
-              setTimeout(() => {
-                axios({
-                  method: "post",
-                  url: `https://${process.env.hostname}/users/forgotten_password/`,
-                  headers: { "Content-type": "Application/json" },
-                  data: { email: values.email },
+              axios({
+                method: "post",
+                url: `https://${process.env.hostname}/users/forgotten_password/`,
+                headers: { "Content-type": "Application/json" },
+                data: { email: values.email },
+              })
+                .then(function (response) {
+                  toast({
+                    title: "Промяна на парола.",
+                    description: "Влезте в имейла, за да смените паролата.",
+                    status: "success",
+                    duration: 9000,
+                  });
+                  router.push("/");
                 })
-                  .then(function (response) {
+                .catch(function (error) {
+                  if (error.response) {
                     toast({
-                      title: "Промяна на парола.",
-                      description: "Влезте в имейла, за да смените паролата.",
-                      status: "success",
+                      title: "Възникна грешка.",
+                      description: error.response.data.detail,
+                      status: "error",
                       duration: 9000,
                     });
-                    router.push("/");
-                  })
-                  .catch(function (error) {
-                    if (error.response) {
-                      toast({
-                        title: "Възникна грешка.",
-                        description: error.response.data.detail,
-                        status: "error",
-                        duration: 9000,
-                      });
-                    }
-                  });
-                console.log(JSON.stringify(values, null, 1));
-                actions.setSubmitting(false);
-              }, 1000);
+                  }
+                });
             }}
           >
             {(props) => (
