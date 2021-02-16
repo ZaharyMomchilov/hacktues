@@ -145,7 +145,7 @@ function MyApp({ Component, pageProps }) {
       if (cookies.get("auth")) {
         setLogin(1);
         checkToken(jwt_decode(cookies.get("auth")));
-        // refreshToken()
+        refreshToken()
         if (router.query.t == "success") {
           axios({
             method: "get",
