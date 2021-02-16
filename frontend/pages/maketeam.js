@@ -475,6 +475,7 @@ const Teams = (props) => {
 export async function getServerSideProps(ctx) {
   const cookies = new Cookies(ctx.req.headers.cookie);
 
+  const toast = useToast();
   if (!cookies.get("auth")) {
     return {
       redirect: {
@@ -498,12 +499,8 @@ export async function getServerSideProps(ctx) {
       method: "get",
       url: `https://${process.env.hostname}/users/`,
       headers: {
-        "Content-type": "Application/json",
-        Authorization: `Bearer ${cookies.get("auth")}`,
-      },
-    }).catch(function (error) {
-      console.log(error);
-    });
+        "Content-type": "Application/json",      },
+    })
 
     // var user = await axios({
     // 	method: 'get',

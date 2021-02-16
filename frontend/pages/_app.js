@@ -72,10 +72,12 @@ const theme = extendTheme({
 });
 
 function checkToken(exp) {
-  if (Date.now() - 36000000 <= exp.exp * 1000) {
+  if (Date.now() - 36000000 <= exp.exp) {
+    
   } else {
     refreshToken();
   }
+  
 }
 
 function MyApp({ Component, pageProps }) {
@@ -144,6 +146,7 @@ function MyApp({ Component, pageProps }) {
         setLogin(1);
         refreshToken()
         checkToken(jwt_decode(cookies.get("auth")));
+        refreshToken()
         if (router.query.t == "success") {
           axios({
             method: "get",

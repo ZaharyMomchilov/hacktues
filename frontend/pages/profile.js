@@ -717,10 +717,8 @@ export async function getServerSideProps(ctx) {
       }`,
       headers: {
         "Content-type": "Application/json",
-        Authorization: `Bearer ${cookies.get("auth")}`,
       },
-    });
-
+    })
 
     return { props: { users: response.data } };
   }

@@ -59,6 +59,7 @@ export default function Teams(props) {
 }
 
 export async function getServerSideProps(ctx) {
+  
   var response = await axios({
     method: "get",
     url: `https://api.hacktues.com/teams/`,
