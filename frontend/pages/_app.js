@@ -327,6 +327,7 @@ function MyApp({ Component, pageProps }) {
             
           />
           <link rel="icon" property="og:image" href="https://www.hacktues.com/favicon.ico?v=2" />
+          <meta property="og:image" content="http://www.yourdomain.com/Facebook_cover-1.png" />
         </Head>
         <NextNprogress
           color="#009d60"
