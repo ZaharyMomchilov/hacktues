@@ -326,7 +326,7 @@ function MyApp({ Component, pageProps }) {
             content="initial-scale=1.0, width=device-width"
             
           />
-          <link rel="icon" href="http://www.hacktues.com/favicon.ico?v=2" />
+          <link rel="icon" property="og:image" href="https://www.hacktues.com/favicon.ico?v=2" />
         </Head>
         <NextNprogress
           color="#009d60"
