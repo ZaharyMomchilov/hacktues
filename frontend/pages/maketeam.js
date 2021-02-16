@@ -475,7 +475,6 @@ const Teams = (props) => {
 export async function getServerSideProps(ctx) {
   const cookies = new Cookies(ctx.req.headers.cookie);
 
-  const toast = useToast();
   if (!cookies.get("auth")) {
     return {
       redirect: {
