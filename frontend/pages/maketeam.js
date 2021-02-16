@@ -129,10 +129,12 @@ const Teams = (props) => {
     if (!autocomplete) {
       return;
     }
-    autocomplete.value = "";
     if (reachedMax) {
       autocomplete.blur();
     }
+    setTimeout(() => {
+      autocomplete.value = "";
+    }, 0);
   }, [selectedItems]);
 
   return (
