@@ -1,4 +1,10 @@
-import { Box, Flex, Text, Button } from "@chakra-ui/react";
+import { Box, Flex, Text, Button, ModalOverlay, Modal,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure, } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
@@ -16,7 +22,7 @@ const Player = (props) => {
         Authorization: `Bearer ${cookies.get("auth")}`,
       },
     }).then(function (response) {
-      router.push("/?t=success");
+      router.push("/teams?t=success");
     });
   }
 
@@ -64,8 +70,9 @@ const Player = (props) => {
   var remove;
 
 
-  // const { isOpen: , onOpen, onClose } = useDisclosure();
-  // const { isOpen: isOpened, onOpen: onOpened, onClose: onClosed,} = useDisclosure();
+  const { isOpen: isOpenCap, onOpen: onOpenCap, onClose: onCloseCap } = useDisclosure();
+  const { isOpen: isOpenDel, onOpen: onOpenDel, onClose: onCloseDel,} = useDisclosure();
+  const { isOpen: isOpenLeav, onOpen: onOpenLeav, onClose: onCloseLeav,} = useDisclosure();
 
   if (props.captain) {
     // leave = <Button colorScheme="green" border="0" cursor="pointer" onClick={() => leave()}>Напусни</Button>
@@ -76,7 +83,7 @@ const Player = (props) => {
         colorScheme="red"
         border="0"
         cursor="pointer"
-        onClick={() => leave()}
+        onClick={onOpenLeav}
       >
         Напусни
       </Button>
@@ -89,7 +96,7 @@ const Player = (props) => {
         colorScheme="green"
         border="0"
         cursor="pointer"
-        onClick={() => makecaptain(props)}
+        onClick={onOpenCap}
       >
         Направи капитан
       </Button>
@@ -99,7 +106,7 @@ const Player = (props) => {
         colorScheme="red"
         border="0"
         cursor="pointer"
-        onClick={() => deletePlayer(props)}
+        onClick={onOpenDel}
       >
         Премахни
       </Button>
@@ -149,7 +156,7 @@ const Player = (props) => {
         {remove}
         {leave}
 
-        {/* <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpenCap} onClose={onCloseCap}>
                         <ModalOverlay />
                         <ModalContent>
                           <ModalCloseButton
@@ -160,7 +167,7 @@ const Player = (props) => {
                             }}
                           />
                           <ModalHeader>
-                            Сигурни ли сте, че искате да запазите?
+                            Сигурни ли сте, че искате да предадете капитанските права?
                           </ModalHeader>
 
                           <ModalFooter>
@@ -169,28 +176,24 @@ const Player = (props) => {
                               border="0"
                               cursor="pointer"
                               mr={3}
-                              onClick={onClose}
+                              onClick={onCloseCap}
                             >
-                              Откажи
+                              Отмени
                             </Button>
                             <Button
                               colorScheme="green"
                               border="0"
                               cursor="pointer"
                               isLoading={props.isSubmitting}
-                              onClick={() => {
-                                props.submitForm();
-                                onClose();
-                                router.reload();
-                              }}
+                              onClick={() => makecaptain(props)}
                               type="submit"
                             >
-                              Промени
+                              Предай
                             </Button>
                           </ModalFooter>
                         </ModalContent>
         </Modal>
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpenDel} onClose={onCloseDel}>
                         <ModalOverlay />
                         <ModalContent>
                           <ModalCloseButton
@@ -201,7 +204,7 @@ const Player = (props) => {
                             }}
                           />
                           <ModalHeader>
-                            Сигурни ли сте, че искате да запазите?
+                            Сигурни ли сте, че искате да премахнете този участник от отбора?
                           </ModalHeader>
 
                           <ModalFooter>
@@ -210,29 +213,25 @@ const Player = (props) => {
                               border="0"
                               cursor="pointer"
                               mr={3}
-                              onClick={onClose}
+                              onClick={onCloseDel}
                             >
-                              Откажи
+                              Отмени
                             </Button>
                             <Button
                               colorScheme="green"
                               border="0"
                               cursor="pointer"
-                              isLoading={props.isSubmitting}
-                              onClick={() => {
-                                props.submitForm();
-                                onClose();
-                                router.reload();
-                              }}
+                              isLoading={props.isSubmitting}               
+                              onClick={() => deletePlayer(props)}
                               type="submit"
                             >
-                              Промени
+                              Премахни
                             </Button>
                           </ModalFooter>
                         </ModalContent>
         </Modal>
 
-                      <Modal isOpen={isOpened} onClose={onClosed}>
+                      <Modal isOpen={isOpenLeav} onClose={onCloseLeav}>
                         <ModalOverlay />
                         <ModalContent>
                           <ModalCloseButton
@@ -243,7 +242,7 @@ const Player = (props) => {
                             }}
                           />
                           <ModalHeader>
-                            Сигурни ли сте, че искате да изтриете отбора?
+                            Сигурни ли сте, че искате да напуснете отбора?
                           </ModalHeader>
 
                           <ModalFooter>
@@ -252,7 +251,7 @@ const Player = (props) => {
                               border="0"
                               cursor="pointer"
                               mr={3}
-                              onClick={onClosed}
+                              onClick={onCloseLeav}
                             >
                               Откажи
                             </Button>
@@ -261,18 +260,14 @@ const Player = (props) => {
                               border="0"
                               cursor="pointer"
                               isLoading={props.isSubmitting}
-                              onClick={() => {
-                                handleDelete();
-                                onClosed();
-                                router.push("/?t=success");
-                              }}
+                              onClick={() => leave()}
                               type="submit"
                             >
-                              Изтрий
+                              Напусни
                             </Button>
                           </ModalFooter>
                         </ModalContent>
-                      </Modal> */}
+                      </Modal>
       </Flex>
     </Flex>
   );

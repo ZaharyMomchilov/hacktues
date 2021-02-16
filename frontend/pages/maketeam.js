@@ -101,7 +101,9 @@ const Teams = (props) => {
 
   people = selectedItems;
 
-  const handleSelectedItemsChange = (selectedItems) => {
+  const handleSelectedItemsChange = (selectedItems, changes) => {
+    // if(changes.type == '__dropdown_keydown_backspace__')
+    // console.log(changes);
     if (selectedItems) {
       if (selectedItems.length < 5) {
         setSelectedItems(selectedItems);
@@ -423,8 +425,8 @@ const Teams = (props) => {
                       }}
                       items={pickerItems}
                       selectedItems={selectedItems}
-                      onSelectedItemsChange={(changes) =>
-                        handleSelectedItemsChange(changes.selectedItems)
+                      onSelectedItemsChange={(changes) => {handleSelectedItemsChange(changes.selectedItems, changes)}
+                        
                       }
                     />
                     <FormErrorMessage paddingBottom="15px" border={0}>
@@ -442,11 +444,13 @@ const Teams = (props) => {
                 {tech}
               </Flex>
 
+              <Flex w="100%" justifyContent="center" alignItems="center">
               <Button
+                
                 cursor="pointer"
                 _focus={{ outline: "none" }}
                 display="flex"
-                w="33%"
+                w="50%"
                 justifyContent="center"
                 mt={4}
                 colorScheme="green"
@@ -456,6 +460,8 @@ const Teams = (props) => {
               >
                 Продължи
               </Button>
+              </Flex>
+              
             </form>
           )}
         </Formik>

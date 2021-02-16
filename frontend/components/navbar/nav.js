@@ -109,7 +109,7 @@ export default function Navigation(props) {
         <MenuItem name="Отбори" top="-1px" icon={RiTeamLine} link="/teams/"/>
         <MenuItem name="Архив" icon={FiArchive} link="/archive/" />
         <MenuItem name="Регламент" icon={GrDocumentText} link="/regulation/" />
-        <MenuItem name="За Hack TUES" top="-1px" icon="GG" link="/about/" />
+        <MenuItem name="За Hack TUES" top="-1px"  link="/about/" />
       </Flex>
       <Flex
         alignItems="center"

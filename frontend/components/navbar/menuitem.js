@@ -151,6 +151,7 @@ export const MenuItem = (props) => {
             router.push("/");
           }}
         textDecoration="none"
+        style={{textDecoration:"none"}}
       >
         <Box
           as={motion.div}
@@ -164,8 +165,10 @@ export const MenuItem = (props) => {
           alignItems="center"
           cursor="pointer"
           variants={variants}
+          style={{textDecoration:"none"}}
         >
           <Text
+            style={{textDecoration:"none"}}
             textDecoration="none"
             fontFamily="llpixel"
             color="#009d60"
@@ -238,10 +241,11 @@ export const MenuItem = (props) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       > */}
-            {icon}
             {/* {button} */}
+            {props.icon ? <Icon left="-3px" position="relative" top={props.top} as={props.icon} /> : <Box display="none" /> }
             {props.name}
             {/* </Box> */}
+            {props.icon ? <Box display="none" /> : <Text marginRight="6px" left="5px" position="relative" top="-2px" fontFamily="llpixel" m={0} p={0} fontSize="17px" textColor="currentColor"> GG </Text> }
           </Text>
         </Button>
       </Link>

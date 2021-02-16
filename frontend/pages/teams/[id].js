@@ -33,11 +33,12 @@ import {
 } from "@chakra-ui/react";
 
 import React, { useMemo } from "react";
+const cookies = new Cookies();
 
 function Teams(props) {
+
   const router = useRouter();
   const toast = useToast();
-  const cookies = new Cookies();
   var confirmed;
 
   if (props.teams.confirmed) {
@@ -52,7 +53,7 @@ function Teams(props) {
   var players = [];
   var ids = [];
 
-  if (cookies.get("auth")) {
+  if (props.logged == 1) {
     if (props.user.is_captain && props.user.team_set[0] == router.query.id) {
       for (var j = 0; j < props.teams.users.length; j++) {
         // console.log(props.teams.users[j].id);
@@ -264,14 +265,6 @@ function Teams(props) {
                   project_description: props.teams.project_description,
                 }}
                 onSubmit={(values, actions) => {
-                  setTimeout(() => {
-                    if (people.length > 4) {
-                      actions.setSubmitting(false);
-                      actions.setFieldError(
-                        "users",
-                        "Твърде много участници избрани"
-                      );
-                    }
 					var alreadySelected = []
 					for(let k = 0; k < props.teams.users.length; k++){	
 						alreadySelected.push(props.teams.users[k].id)
@@ -284,7 +277,6 @@ function Teams(props) {
 					}
                     values["technologies"] = chosenTech;
                     var data = JSON.stringify(values, null, 1);
-					console.log("data: " + data)
                     axios({
                       method: "put",
                       url: `https://${process.env.hostname}/teams/${router.query.id}/`,
@@ -295,6 +287,7 @@ function Teams(props) {
                       data: data,
                     })
                       .then(function (response) {
+                        router.reload();
                         // toast({ title: "Промени по отбора", description: "Промените бяха направени успешно.", status: "success", duration: 4500})
                       })
                       .catch(function (error) {
@@ -307,7 +300,6 @@ function Teams(props) {
                         }
                       });
                     actions.setSubmitting(false);
-                  }, 1000);
                 }}
               >
                 {(props) => (
@@ -327,7 +319,6 @@ function Teams(props) {
                           flexGrow={1}
                           w={["100%", "100%", "33%", "33%", "33%"]}
                           mr="5px"
-                          isRequired
                           isInvalid={
                             form.errors.first_name && form.touched.first_name
                           }
@@ -616,7 +607,7 @@ function Teams(props) {
                               onClick={() => {
                                 props.submitForm();
                                 onClose();
-                                router.reload();
+                                // router.reload();
                               }}
                               type="submit"
                             >
@@ -698,7 +689,6 @@ function Teams(props) {
           name={`${props.user.first_name} ${props.user.last_name}`}
         ></Player>
       );
-      console.log(props.user.id);
       for (var k = 0; k < props.teams.users.length; k++) {
         if (
           props.user.id != props.teams.users[k].id &&
@@ -784,7 +774,6 @@ function Teams(props) {
                     flexWrap: "wrap",
                     paddingTop: "10px",
                   }}
-                  onSubmit={props.handleSubmit}
                 >
                   <Field name="name">
                     {({ field, form }) => (
@@ -792,7 +781,7 @@ function Teams(props) {
                         flexGrow={1}
                         w={["100%", "100%", "33%", "33%", "33%"]}
                         mr="5px"
-                        isDisabled
+                        isReadOnly
                         isInvalid={
                           form.errors.first_name && form.touched.first_name
                         }
@@ -801,7 +790,7 @@ function Teams(props) {
                           Име на отбора
                         </FormLabel>
                         <Input
-                          isDisabled
+                          isReadOnly
                           _invalid={{
                             boxShadow: "0 1px 0 0 #E53E3E",
                             borderColor: "#E53E3E",
@@ -827,7 +816,7 @@ function Teams(props) {
                         flexGrow={1}
                         w={["100%", "100%", "33%", "33%", "33%"]}
                         mr="5px"
-                        isDisabled
+                        isReadOnly
                         isInvalid={
                           form.errors.first_name && form.touched.first_name
                         }
@@ -836,7 +825,7 @@ function Teams(props) {
                           Име на проекта
                         </FormLabel>
                         <Input
-                          isDisabled
+                          isReadOnly
                           _invalid={{
                             boxShadow: "0 1px 0 0 #E53E3E",
                             borderColor: "#E53E3E",
@@ -863,7 +852,7 @@ function Teams(props) {
                         flexGrow={1}
                         w="100%"
                         mr="5px"
-                        isDisabled
+                        isReadOnly
                         isInvalid={form.errors.email && form.touched.email}
                       >
                         <FormLabel
@@ -879,7 +868,7 @@ function Teams(props) {
                           resize="none"
                           fontSize="14px"
                           fontFamily="Rubik"
-                          isDisabled
+                          isReadOnly
                           _invalid={{
                             boxShadow: "0 1px 0 0 #E53E3E",
                             borderColor: "#E53E3E",
@@ -905,7 +894,7 @@ function Teams(props) {
                         flexGrow={1}
                         w="100%"
                         mr="5px"
-                        isDisabled
+                        isReadOnly
                         isInvalid={
                           form.errors.last_name && form.touched.last_name
                         }
@@ -918,7 +907,7 @@ function Teams(props) {
                           Линк/ове към GitHub хранилище/а:
                         </FormLabel>
                         <Input
-                          isDisabled
+                          isReadOnly
                           _invalid={{
                             boxShadow: "0 1px 0 0 #E53E3E",
                             borderColor: "#E53E3E",
@@ -1047,7 +1036,6 @@ function Teams(props) {
                     flexWrap: "wrap",
                     paddingTop: "10px",
                   }}
-                  onSubmit={props.handleSubmit}
                 >
                   <Field name="name">
                     {({ field, form }) => (
@@ -1055,7 +1043,7 @@ function Teams(props) {
                         flexGrow={1}
                         w={["100%", "100%", "33%", "33%", "33%"]}
                         mr="5px"
-                        isDisabled
+                        isReadOnly
                         isInvalid={
                           form.errors.first_name && form.touched.first_name
                         }
@@ -1064,7 +1052,7 @@ function Teams(props) {
                           Име на отбора
                         </FormLabel>
                         <Input
-                          isDisabled
+                          isReadOnly
                           _invalid={{
                             boxShadow: "0 1px 0 0 #E53E3E",
                             borderColor: "#E53E3E",
@@ -1090,7 +1078,7 @@ function Teams(props) {
                         flexGrow={1}
                         w={["100%", "100%", "33%", "33%", "33%"]}
                         mr="5px"
-                        isDisabled
+                        isReadOnly
                         isInvalid={
                           form.errors.first_name && form.touched.first_name
                         }
@@ -1099,7 +1087,7 @@ function Teams(props) {
                           Име на проекта
                         </FormLabel>
                         <Input
-                          isDisabled
+                          isReadOnly
                           _invalid={{
                             boxShadow: "0 1px 0 0 #E53E3E",
                             borderColor: "#E53E3E",
@@ -1126,7 +1114,7 @@ function Teams(props) {
                         flexGrow={1}
                         w="100%"
                         mr="5px"
-                        isDisabled
+                        isReadOnly
                         isInvalid={form.errors.email && form.touched.email}
                       >
                         <FormLabel
@@ -1142,7 +1130,7 @@ function Teams(props) {
                           resize="none"
                           fontSize="14px"
                           fontFamily="Rubik"
-                          isDisabled
+                          isReadOnly
                           _invalid={{
                             boxShadow: "0 1px 0 0 #E53E3E",
                             borderColor: "#E53E3E",
@@ -1168,7 +1156,7 @@ function Teams(props) {
                         flexGrow={1}
                         w="100%"
                         mr="5px"
-                        isDisabled
+                        isReadOnly
                         isInvalid={
                           form.errors.last_name && form.touched.last_name
                         }
@@ -1181,7 +1169,7 @@ function Teams(props) {
                           Линк/ове към GitHub хранилище/а:
                         </FormLabel>
                         <Input
-                          isDisabled
+                          isReadOnly
                           _invalid={{
                             boxShadow: "0 1px 0 0 #E53E3E",
                             borderColor: "#E53E3E",
@@ -1232,7 +1220,8 @@ function Teams(props) {
         </Box>
       );
     }
-  } else {
+  } 
+  else if(props.logged == 0) {
     for (var k = 0; k < props.teams.users.length; k++) {
       if (!props.teams.users[k].is_captain) {
         players.push(
@@ -1313,7 +1302,6 @@ function Teams(props) {
                   flexWrap: "wrap",
                   paddingTop: "10px",
                 }}
-                onSubmit={props.handleSubmit}
               >
                 <Field name="name">
                   {({ field, form }) => (
@@ -1321,7 +1309,7 @@ function Teams(props) {
                       flexGrow={1}
                       w={["100%", "100%", "33%", "33%", "33%"]}
                       mr="5px"
-                      isDisabled
+                      isReadOnly
                       isInvalid={
                         form.errors.first_name && form.touched.first_name
                       }
@@ -1330,7 +1318,7 @@ function Teams(props) {
                         Име на отбора
                       </FormLabel>
                       <Input
-                        isDisabled
+                        isReadOnly
                         _invalid={{
                           boxShadow: "0 1px 0 0 #E53E3E",
                           borderColor: "#E53E3E",
@@ -1356,7 +1344,7 @@ function Teams(props) {
                       flexGrow={1}
                       w={["100%", "100%", "33%", "33%", "33%"]}
                       mr="5px"
-                      isDisabled
+                      isReadOnly
                       isInvalid={
                         form.errors.first_name && form.touched.first_name
                       }
@@ -1365,7 +1353,7 @@ function Teams(props) {
                         Име на проекта
                       </FormLabel>
                       <Input
-                        isDisabled
+                        isReadOnly
                         _invalid={{
                           boxShadow: "0 1px 0 0 #E53E3E",
                           borderColor: "#E53E3E",
@@ -1392,7 +1380,7 @@ function Teams(props) {
                       flexGrow={1}
                       w="100%"
                       mr="5px"
-                      isDisabled
+                      isReadOnly
                       isInvalid={form.errors.email && form.touched.email}
                     >
                       <FormLabel
@@ -1408,7 +1396,7 @@ function Teams(props) {
                         resize="none"
                         fontSize="14px"
                         fontFamily="Rubik"
-                        isDisabled
+                        isReadOnly
                         _invalid={{
                           boxShadow: "0 1px 0 0 #E53E3E",
                           borderColor: "#E53E3E",
@@ -1434,7 +1422,7 @@ function Teams(props) {
                       flexGrow={1}
                       w="100%"
                       mr="5px"
-                      isDisabled
+                      isReadOnly
                       isInvalid={
                         form.errors.last_name && form.touched.last_name
                       }
@@ -1447,7 +1435,7 @@ function Teams(props) {
                         Линк/ове към GitHub хранилище/а:
                       </FormLabel>
                       <Input
-                        isDisabled
+                        isReadOnly
                         _invalid={{
                           boxShadow: "0 1px 0 0 #E53E3E",
                           borderColor: "#E53E3E",
@@ -1563,9 +1551,9 @@ export async function getServerSideProps(ctx) {
         item.is_active != false
       );
     });
-    return { props: { teams: response.data, user: res.data, users: users } };
+    return { props: { teams: response.data, user: res.data, users: users, logged: 1 } };
   } else {
-    return { props: { teams: response.data } };
+    return { props: { teams: response.data, logged: 0 } };
   }
 
   //  captain: captain.data

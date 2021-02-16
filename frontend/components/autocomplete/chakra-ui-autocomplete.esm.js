@@ -356,7 +356,7 @@ var CUIAutoComplete = function CUIAutoComplete(props) {
                         as: "span",
                         cursor: "pointer"
                       },
-                      "Няма такъв участник"
+                      "Няма такъв участник или е вече в отбора"
                     ),
                     " ",
                     createElement(

@@ -22,7 +22,7 @@ export const MenuToggle = ({ toggle }) => (
     border="none"
     cursor="pointer"
     position="relative"
-    top={["18px", "18px", "18px", "18px"]}
+    top={["26px", "26px", "18px", "18px"]}
     left="15px"
     w="50px"
     height="50px"
