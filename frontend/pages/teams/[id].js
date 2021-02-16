@@ -186,30 +186,7 @@ function Teams(props) {
         const [selectedItems, setSelectedItems] = React.useState([]);
 
         people = selectedItems;
-		
-		const reachedMax = React.useMemo(() => selectedItems.length >= 4 || props.teams.users.length == 5 || selectedItems.length + props.teams.users.length == 5 , [
-			selectedItems,
-		  ]);
-		  const [autocomplete, setAutocomplete] = React.useState(null);
-		
-		  React.useEffect(() => {
-			const nodeList = document.querySelectorAll(
-			  "input[id^=downshift][id*=input]"
-			);
-			if (nodeList && nodeList.length > 0) {
-			  setAutocomplete(nodeList[0]);
-			}
-		  }, []);
-		
-		  React.useEffect(() => {
-			if (!autocomplete) {
-			  return;
-			}
-			autocomplete.value = "";
-			if (reachedMax) {
-			  autocomplete.blur();
-			}
-		  }, [selectedItems]);
+
 
         const handleSelectedItemsChange = (selectedItems) => {
           if (selectedItems) {
@@ -235,6 +212,32 @@ function Teams(props) {
             }
           });
         };
+
+        const reachedMax = React.useMemo(() => selectedItems.length >= 4, [
+          selectedItems,
+        ]);
+        const [autocomplete, setAutocomplete] = React.useState(null);
+      
+        React.useEffect(() => {
+          const nodeList = document.querySelectorAll(
+            "input[id^=downshift][id*=input]"
+          );
+          if (nodeList && nodeList.length > 0) {
+            setAutocomplete(nodeList[0]);
+          }
+        }, []);
+      
+        React.useEffect(() => {
+          if (!autocomplete) {
+            return;
+          }
+          if (reachedMax) {
+            autocomplete.blur();
+          }
+          setTimeout(() => {
+            autocomplete.value = "";
+          }, 0);
+        }, [selectedItems]);
 
         return (
           <Box
