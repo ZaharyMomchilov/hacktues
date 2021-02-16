@@ -37,6 +37,7 @@ import Head from "next/head";
 
 // Router.events.on('routeChangeComplete', () => NProgress.done())
 
+
 // axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
 // axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
 // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';

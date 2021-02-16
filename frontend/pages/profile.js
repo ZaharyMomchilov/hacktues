@@ -721,6 +721,7 @@ export async function getServerSideProps(ctx) {
       },
     });
 
+
     return { props: { users: response.data } };
   }
 }
