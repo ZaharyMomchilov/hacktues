@@ -138,7 +138,7 @@ function MyApp({ Component, pageProps }) {
     // routerEvents.on("routeChangeStart", start);
     // routerEvents.on("routeChangeComplete", complete);
 
-    if (cookies.get("CookieConsent")) {
+    // if (cookies.get("CookieConsent")) {
       if (cookies.get("auth")) {
         setLogin(1);
         checkToken(jwt_decode(cookies.get("auth")));
@@ -213,7 +213,7 @@ function MyApp({ Component, pageProps }) {
       } else {
         setLogin(0);
       }
-    }
+    // }
 
     return Router.events.on("routeChangeStart", start);
   });
@@ -409,9 +409,10 @@ const Cookie = () => {
           bg="#a5cf9f"
           shadow="md"
         >
-          <Text alignSelf="center">
+          <Text fontFamily="Rubik" alignSelf="center">
             Този уебсайт използва бисквитки. Научи повече{" "}
             <Link
+            fontFamily="Rubik"
               textDecoration="underline"
               isExternal
               href="https://hacktues.pythonanywhere.com/static/frontend/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%B7%D0%B0%20%D0%B1%D0%B8%D1%81%D0%BA%D0%B2%D0%B8%D1%82%D0%BA%D0%B8.pdf"
