@@ -142,6 +142,7 @@ function MyApp({ Component, pageProps }) {
     // if (cookies.get("CookieConsent")) {
       if (cookies.get("auth")) {
         setLogin(1);
+        refreshToken()
         checkToken(jwt_decode(cookies.get("auth")));
         if (router.query.t == "success") {
           axios({
