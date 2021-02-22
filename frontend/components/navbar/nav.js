@@ -44,10 +44,10 @@ export default function Navigation(props) {
     team = <Box display="none"></Box>;
   }
   else if(props.ctx.loggedin == 1 && props.ctx.inteam == null){
-    team = <MenuItem name="Създай отбор" icon={AiOutlineUsergroupAdd} link="/maketeam"/>
+    team = <Box display="none"></Box>;
   }
   else if(props.ctx.loggedin == 1 && props.ctx.inteam == false){
-    team = <MenuItem name="Създай отбор" icon={AiOutlineUsergroupAdd} link="/maketeam"/>
+    team = <Box display="none"></Box>;
   }
   else if(props.ctx.loggedin == 1 && props.ctx.inteam){
     team = <MenuItem name="Моят отбор" icon={AiOutlineTeam} link={`/teams/${encodeURIComponent(props.ctx.inteam)}/`}/>
@@ -56,12 +56,7 @@ export default function Navigation(props) {
   if (!props.ctx.loggedin) {
     login = <MenuItem name="Вход" icon={BiLogIn} link="/login" />;
     logout = (
-      <MenuItem
-        name="Регистрация"
-        reg
-        icon={AiOutlineUserAdd}
-        link="/registration/first_step"
-      />
+      <Box display="none"></Box>
     );
   } else {
     login = (
