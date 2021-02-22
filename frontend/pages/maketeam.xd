@@ -474,6 +474,7 @@ const Teams = (props) => {
 
 export async function getServerSideProps(ctx) {
   const cookies = new Cookies(ctx.req.headers.cookie);
+  
   if (!cookies.get("auth")) {
     return {
       redirect: {
