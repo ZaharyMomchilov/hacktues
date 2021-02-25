@@ -100,7 +100,7 @@ export default function Navigation(props) {
           link="/schedule/"
         />
         {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
-        {/* <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/> */}
+        <MenuItem name="Ментори" icon={PhoneIcon} link="/mentors"/>
         <MenuItem name="Отбори" top="-1px" icon={RiTeamLine} link="/teams/"/>
         <MenuItem name="Архив" icon={FiArchive} link="/archive/" />
         <MenuItem name="Регламент" icon={GrDocumentText} link="/regulation/" />
