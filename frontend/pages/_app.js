@@ -23,8 +23,6 @@ import Router from "next/router";
 const cookies = new Cookies();
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
-
-export const NavProvider = React.createContext(false);
 import _ from "lodash";
 import { useDimensions } from "../components/navbar/dim";
 import { MenuToggle } from "../components/navbar/button";
