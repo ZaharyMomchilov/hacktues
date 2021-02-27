@@ -158,7 +158,12 @@ export default function Home() {
                 marginLeft="-1rem"
                 isExternal
                 href="https://www.chaosgroup.com/careers"
-                transform="translate(0px, 10px)"
+                transform={{
+                    sm: "translate(0px, 0px)",
+                    md: "translate(25px, 1px)",
+                    lg: "translate(25px, 1px)",
+                    xl: "translate(25px, 1px)",
+                  }}
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
@@ -172,13 +177,13 @@ export default function Home() {
                   h="125px"
                 >
                   <Image
-                    transform="scale(1)"
+                    transform="scale(0.65)"
                     display="block"
                     width="100%"
                     h="100%"
                     objectFit="contain"
                     title="Chaos Group"
-                    src="/FinalLogos/Chaos_Group_logo_b.svg"
+                    src="/FinalLogos/Chaos-Primary_Logo_Colour_CMYK.svg"
                   ></Image>
                 </Box>
               </Link>

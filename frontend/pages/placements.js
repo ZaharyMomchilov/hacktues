@@ -30,17 +30,17 @@ export default function Teams(props) {
     </Tr>
   </Thead>
   <Tbody>
-    <Tr>
+    <Tr style={{background:"#FFD700"}}>
       <Td>1</Td>
       <Td>Ягодките</Td>
       <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
     </Tr>
-    <Tr>
+    <Tr style={{background:"#D7D7D7"}}>
       <Td>2</Td>
       <Td>Кенара</Td>
       <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
     </Tr>
-    <Tr>
+    <Tr style={{background:"#A77044"}}>
       <Td>3</Td>
       <Td>Сметана</Td>
       <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
@@ -70,6 +70,96 @@ export default function Teams(props) {
 
 <Table overflow="hidden" background="white" borderBottomRadius="lg" colorScheme="whatsapp" p="15px"
      variant="simple">
+     <TableCaption background="white" borderTopRadius="lg" placement="top">Полуфинал №1</TableCaption>
+  <Thead>
+    <Tr>
+      <Th>Място</Th>
+      <Th>Име</Th>
+      <Th>линк към repo</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+  <Tr style={{background:"#a6cf9f"}}>
+      <Td>1</Td>
+      <Td>Ягодките</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr style={{background:"#a6cf9f"}}>
+      <Td>2</Td>
+      <Td>Кенара</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+    
+      <Td>3</Td>
+      <Td>Сметана</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>1</Td>
+      <Td>Ягодките</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>2</Td>
+      <Td>Кенара</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>3</Td>
+      <Td>Сметана</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>1</Td>
+      <Td>Ягодките</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>2</Td>
+      <Td>Кенара</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>3</Td>
+      <Td>Сметана</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>1</Td>
+      <Td>Ягодките</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>2</Td>
+      <Td>Кенара</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>3</Td>
+      <Td>Сметана</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>1</Td>
+      <Td>Ягодките</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>2</Td>
+      <Td>Кенара</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+    <Tr>
+      <Td>3</Td>
+      <Td>Сметана</Td>
+      <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+<Table overflow="hidden" background="white" borderBottomRadius="lg" colorScheme="whatsapp" p="15px"
+     variant="simple">
      <TableCaption background="white" borderTopRadius="lg" placement="top">Полуфинал №2</TableCaption>
   <Thead>
     <Tr>
@@ -79,12 +169,12 @@ export default function Teams(props) {
     </Tr>
   </Thead>
   <Tbody>
-    <Tr>
+    <Tr style={{background:"#a6cf9f"}}>
       <Td>1</Td>
       <Td>Ягодките</Td>
       <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
     </Tr>
-    <Tr>
+    <Tr style={{background:"#a6cf9f"}}>
       <Td>2</Td>
       <Td>Кенара</Td>
       <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
@@ -168,12 +258,12 @@ export default function Teams(props) {
     </Tr>
   </Thead>
   <Tbody>
-    <Tr>
+    <Tr style={{background:"#a6cf9f"}}>
       <Td>1</Td>
       <Td>Ягодките</Td>
       <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
     </Tr>
-    <Tr>
+    <Tr style={{background:"#a6cf9f"}}>
       <Td>2</Td>
       <Td>Кенара</Td>
       <Td><Link isExternal href="https://google.com"><a>github.com/...</a></Link></Td>
