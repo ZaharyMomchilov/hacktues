@@ -103,8 +103,8 @@ export default function Navigation(props) {
         />
         {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
         <MenuItem name="Ментори" icon={FaRegHandshake} link="/mentors"/>
-        <MenuItem name="Класации" icon={FaListOl } link="/placements"/>
-        <MenuItem name="Победители" icon={AiOutlineTrophy } link="/winners"/>
+        {/* <MenuItem name="Класации" icon={FaListOl } link="/placements"/> */}
+        {/* <MenuItem name="Победители" icon={AiOutlineTrophy } link="/winners"/> */}
         <MenuItem name="Отбори" top="-1px" icon={RiTeamLine} link="/teams/"/>
         <MenuItem name="Архив" icon={FiArchive} link="/archive/" />
         <MenuItem name="Регламент" icon={GrDocumentText} link="/regulation/" />
