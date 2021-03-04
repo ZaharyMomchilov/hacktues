@@ -72,11 +72,29 @@ export default [
   },
   {
     id: 9,
-    title: "Полуфинали, финал и награждаване",
+    title: "Полуфинали",
     start: new Date(2021, 2, 14, 9, 0),
-    end: new Date(2021, 2, 14, 20, 0),
+    end: new Date(2021, 2, 14, 14, 45),
     desc:
-      "Очаквайте скоро от нас повече подробности за последния ден. Полуфиналите и финалите ще се състоят чрез платформата BigBlueButton.",
+      "Полуфиналите ще бъдат три паралелни, като във всеки един ще има по 15 отбора. Те ще се състоят в BigBlueButton.",
+    youtube: "https://youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ",
+  },
+  {
+    id: 10,
+    title: "Финал",
+    start: new Date(2021, 2, 14, 16, 0),
+    end: new Date(2021, 2, 14, 19, 15),
+    desc:
+      " На финала ще отидат 7 отбора. Те ще се състоят в BigBlueButton и ще се излъчват.",
+    youtube: "https://youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ",
+  },
+  {
+    id: 11,
+    title: "Полуфинали",
+    start: new Date(2021, 2, 14, 20, 0),
+    end: new Date(2021, 2, 14, 21, 0),
+    desc:
+      "Награждаване - Ще бъдат отличени отборите. Не пропускайте!",
     youtube: "https://youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ",
   },
 ];
