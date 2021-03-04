@@ -76,8 +76,7 @@ export default [
     start: new Date(2021, 2, 14, 9, 0),
     end: new Date(2021, 2, 14, 14, 45),
     desc:
-      "Полуфиналите ще бъдат три паралелни, като във всеки един ще има по 15 отбора. Те ще се състоят в BigBlueButton.",
-    youtube: "https://youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ",
+      "Полуфиналите ще бъдат три паралелни, като във всеки един ще има по 15 отбора. Те ще се състоят в BigBlueButton."
   },
   {
     id: 10,
