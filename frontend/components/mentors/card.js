@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, Image } from "@chakra-ui/react";
 import {
   Tag,
   TagIcon,
@@ -30,9 +30,11 @@ const Mentor = (props) => {
     );
   });
 
-  var techs = props.technologies.split(", ");
+  // var techs = props.technologies.split(", ");
   let tech = [];
-  techs.map((data, index) => {
+  
+  // techs.map((data, index) => {
+  props.technologies.map((data, index) => {
     for (let j = 0; j < labels.length; j++)
       if (labels[j].label == data) {
         tech.push(
@@ -88,7 +90,7 @@ const Mentor = (props) => {
         alignItems="center"
         flexWrap="wrap"
       >
-        <Avatar size="2xl" src={props.image} />
+        <Avatar src={props.image.replace('open?id=', 'thumbnail?id=')} size="2xl" />
         <Text
           pt="5px"
           fontSize="16px"
@@ -151,6 +153,5 @@ const Mentor = (props) => {
       </Flex>
     </Flex>
   );
-};
-
+}
 export default Mentor;
