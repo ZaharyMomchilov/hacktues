@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { GrSchedule, GrDocumentText } from "react-icons/gr";
 import { RiTeamLine } from "react-icons/ri";
 import { FiArchive } from "react-icons/fi";
-import { FaRegHandshake, FaListOl } from 'react-icons/fa'
+import { FaRegHandshake, FaListOl, FaEnvelopeOpenText } from 'react-icons/fa'
 import {
   AiOutlineTrophy,
   AiOutlineTeam,
@@ -101,7 +101,7 @@ export default function Navigation(props) {
           icon={GrSchedule}
           link="/schedule/"
         />
-        {/* <MenuItem name="Теми" icon={PhoneIcon} link="/themes"/> */}
+        <MenuItem name="Теми" icon={FaEnvelopeOpenText} link="/themes"/>
         <MenuItem name="Ментори" icon={FaRegHandshake} link="/mentors"/>
         {/* <MenuItem name="Класации" icon={FaListOl } link="/placements"/> */}
         {/* <MenuItem name="Победители" icon={AiOutlineTrophy } link="/winners"/> */}
