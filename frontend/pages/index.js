@@ -76,7 +76,7 @@ export default function Home() {
               GG
             </span>
           </Text>
-          <Clock deadline="March, 11, 2021" />
+          <Clock deadline={new Date(2021, 2, 11, 18, 0)} />
           <Flex
             justifyContent="space-around"
             flexDirection="row"

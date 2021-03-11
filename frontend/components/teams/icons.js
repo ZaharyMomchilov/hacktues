@@ -65,7 +65,6 @@ const labels = [
   { id: 43, label: "Nginx", color: "rgb(0, 230, 118)" },
   { id: 44, label: "NoSQL", color: "rgb(255, 234, 0)" },
   { id: 45, label: "NodeJS", color: "rgb(255, 234, 0)" },
-  { id: 46, label: "NoSQL", color: "rgb(255, 234, 0)" },
   { id: 47, label: "OpenGL", color: "rgb(51, 171, 159)" },
   { id: 48, label: "PHP", color: "rgb(33, 150, 243)" },
   { id: 49, label: "Perl", color: "rgb(33, 150, 243)" },
