@@ -63,14 +63,6 @@ export default [
     youtube: "https://www.youtube.com/channel/UCQcbYkAKPEgfjzvwb2sUWSQ",
   },
   {
-    id: 8,
-    title: "Работни дни",
-    start: new Date(2021, 2, 11, 21, 0),
-    end: new Date(2021, 2, 13, 7, 59, 59),
-    desc:
-      "Работата ще кипи и кипи.. Комуникацията между отборите и менторите ще се случва в Discord сървъра на хакатона. Финалните версии трябва да са качени до 14.03 07:59:59.",
-  },
-  {
     id: 9,
     title: "Работни дни",
     start: new Date(2021, 2, 11, 21, 0),

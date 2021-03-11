@@ -474,7 +474,11 @@ const Teams = (props) => {
 
 export async function getServerSideProps(ctx) {
   const cookies = new Cookies(ctx.req.headers.cookie);
+<<<<<<< HEAD:frontend/pages/maketeam.js
+
+=======
   
+>>>>>>> wave2:frontend/pages/maketeam
   if (!cookies.get("auth")) {
     return {
       redirect: {
