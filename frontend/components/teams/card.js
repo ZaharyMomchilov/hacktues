@@ -43,9 +43,10 @@ const Card = (props) => {
   });
 
   return (
-    <Link
-      display="flex"
-      color="black"
+    <a
+      style={{display:"flex",color:"black"}}
+      // display="flex"
+      // color="black"
       href={`/teams/${encodeURIComponent(props.id)}/`}
     >
       <Flex
@@ -114,7 +115,7 @@ const Card = (props) => {
           </Text>
         </Flex>
       </Flex>
-    </Link>
+    </a>
   );
 };
 
