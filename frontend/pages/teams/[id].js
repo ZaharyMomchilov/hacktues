@@ -1438,7 +1438,8 @@ function Teams(props) {
                         Линк/ове към GitHub хранилище/а:
                       </FormLabel>
                       <Input
-                        isReadOnly
+                        isDisabled
+                        style={{userSelect:"auto"}}
                         _invalid={{
                           boxShadow: "0 1px 0 0 #E53E3E",
                           borderColor: "#E53E3E",
