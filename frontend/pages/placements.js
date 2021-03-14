@@ -250,73 +250,73 @@ export default function Teams(props) {
     <Tr style={{background:"#a6cf9f"}}>
       <Td>1</Td>
       <Td>Holdinga</Td>
-      <Td><Link isExternal href="https://github.com/ManiacMaxo/CyclePath"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/ManiacMaxo/CyclePath"><a>github.com</a></Link></Td>
     </Tr>
     <Tr style={{background:"#a6cf9f"}}>
       <Td>2</Td>
       <Td>magen7a</Td>
-      <Td><Link isExternal href="https://github.com/VayerMaking/broaden"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/VayerMaking/broaden"><a>github.com</a></Link></Td>
     </Tr>
     <Tr style={{background:"#add8e6"}}>
       <Td>3</Td>
       <Td>Dynamics</Td>
-      <Td><Link isExternal href="https://github.com/Lilly7777/GRobot   https://github.com/Lilly7777/GRobot---Server"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/Lilly7777/GRobot   https://github.com/Lilly7777/GRobot---Server"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>4</Td>
       <Td>Memelin</Td>
-      <Td><Link isExternal href="https://github.com/generot/Memelin_HackTUESGG"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/generot/Memelin_HackTUESGG"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>5</Td>
       <Td>Gesko feat. PG</Td>
-      <Td><Link isExternal href="https://github.com/pgmatev/WFP"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/pgmatev/WFP"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>6</Td>
       <Td>Nice inc.</Td>
-      <Td><Link isExternal href="https://github.com/TopchetoEU/Apollo"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/TopchetoEU/Apollo"><a>github.com</a></Link></Td>
     </Tr>
     
     <Tr>
       <Td>7</Td>
       <Td>FAnton 👀</Td>
-      <Td><Link isExternal href="https://github.com/braind3d/eleggo"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/braind3d/eleggo"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>8</Td>
       <Td>bruhhh</Td>
-      <Td><Link isExternal href="https://github.com/xcWhy/hacktuesProject.git"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/xcWhy/hacktuesProject.git"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>9</Td>
       <Td>Provocateur</Td>
-      <Td><Link isExternal href="https://github.com/1freshie/HACKTUES-GG"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/1freshie/HACKTUES-GG"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>10</Td>
       <Td>Still_thinking</Td>
-      <Td><Link isExternal href="https://github.com/NikolayLazarov/Still_thinking"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/NikolayLazarov/Still_thinking"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>11</Td>
       <Td>Chakalite&Co</Td>
-      <Td><Link isExternal href="https://github.com/Marto113/HTGG"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/Marto113/HTGG"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>12</Td>
       <Td>VoidPointer</Td>
-      <Td><Link isExternal href="https://github.com/AlekoGeorgiev/HackTuesGG"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/AlekoGeorgiev/HackTuesGG"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>13</Td>
       <Td>Едни там</Td>
-      <Td><Link isExternal href="https://github.com/yosko123/HackTUES"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/yosko123/HackTUES"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>14</Td>
       <Td>Lmao</Td>
-      <Td><Link isExternal href="https://github.com/achkatanikolov/Flower-s-sprayer.git"><a>github.com/...</a></Link></Td>
+      <Td><Link isExternal href="https://github.com/achkatanikolov/Flower-s-sprayer.git"><a>github.com</a></Link></Td>
     </Tr>
   </Tbody>
 </Table>
