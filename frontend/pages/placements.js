@@ -19,7 +19,7 @@ export default function Teams(props) {
     return (
         <Box marginTop="50px" marginBottom="50px" marginLeft="15px" marginRight="15px">
 
-{/* <Table overflow="hidden" background="white" borderBottomRadius="lg" colorScheme="whatsapp" p="15px"
+ <Table overflow="hidden" background="white" borderBottomRadius="lg" colorScheme="whatsapp" p="15px"
      variant="simple">
      <TableCaption background="white" borderTopRadius="lg" placement="top">Финали</TableCaption>
   <Thead>
@@ -32,41 +32,41 @@ export default function Teams(props) {
   <Tbody>
     <Tr style={{background:"#FFD700"}}>
       <Td>1</Td>
-      <Td>789 2.0</Td>
-      <Td><Link isExternal href="https://google.com"><a>github.com</a></Link></Td>
+      <Td>Holdinga</Td>
+      <Td><Link isExternal href="https://github.com/ManiacMaxo/CyclePath"><a>github.com</a></Link></Td>
     </Tr>
     <Tr style={{background:"#D7D7D7"}}>
       <Td>2</Td>
-      <Td>Кенара</Td>
-      <Td><Link isExternal href="https://google.com"><a>github.com</a></Link></Td>
+      <Td>Мечо Пух</Td>
+      <Td><Link isExternal href="https://github.com/boki1/verda"><a>github.com</a></Link></Td>
     </Tr>
     <Tr style={{background:"#A77044"}}>
       <Td>3</Td>
-      <Td>Сметана</Td>
-      <Td><Link isExternal href="https://google.com"><a>github.com</a></Link></Td>
+      <Td>789 2.0</Td>
+      <Td><Link isExternal href="https://github.com/venelinatanasov/iot_stuff"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
-      <Td>1</Td>
-      <Td>Ягодките</Td>
-      <Td><Link isExternal href="https://google.com"><a>github.com</a></Link></Td>
+      <Td>4</Td>
+      <Td>Dynamics</Td>
+      <Td><Link isExternal href="https://github.com/C-Hashtag-HackTues"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
-      <Td>2</Td>
-      <Td>Кенара</Td>
-      <Td><Link isExternal href="https://google.com"><a>github.com</a></Link></Td>
+      <Td>5</Td>
+      <Td>False Positive</Td>
+      <Td><Link isExternal href="https://github.com/false-positive/ecospace"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
-      <Td>3</Td>
-      <Td>Сметана</Td>
-      <Td><Link isExternal href="https://google.com"><a>github.com</a></Link></Td>
+      <Td>6</Td>
+      <Td>magen7a</Td>
+      <Td><Link isExternal href="https://github.com/VayerMaking/broaden"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
-      <Td>1</Td>
-      <Td>Ягодките</Td>
-      <Td><Link isExternal href="https://google.com"><a>github.com</a></Link></Td>
+      <Td>7</Td>
+      <Td>6rek</Td>
+      <Td><Link isExternal href="https://github.com/filio123321/hacktues"><a>github.com</a></Link></Td>
     </Tr>
   </Tbody>
-</Table> */}
+</Table>
 
 <Table overflow="hidden" background="white" borderBottomRadius="lg" colorScheme="whatsapp" p="15px"
      variant="simple">
