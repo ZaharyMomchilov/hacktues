@@ -40,15 +40,16 @@ export default function Teams(props) {
       <Td>Мечо Пух</Td>
       <Td><Link isExternal href="https://github.com/boki1/verda"><a>github.com</a></Link></Td>
     </Tr>
+  
     <Tr style={{background:"#A77044"}}>
       <Td>3</Td>
-      <Td>789 2.0</Td>
-      <Td><Link isExternal href="https://github.com/venelinatanasov/iot_stuff"><a>github.com</a></Link></Td>
-    </Tr>
-    <Tr style={{background:"#A77044"}}>
-      <Td>4</Td>
       <Td>Dynamics</Td>
       <Td><Link isExternal href="https://github.com/Lilly7777/GRobot   https://github.com/Lilly7777/GRobot---Server"><a>github.com</a></Link></Td>
+    </Tr>
+  <Tr style={{background:"#A77044"}}>
+      <Td>4</Td>
+      <Td>789 2.0</Td>
+      <Td><Link isExternal href="https://github.com/venelinatanasov/iot_stuff"><a>github.com</a></Link></Td>
     </Tr>
     <Tr>
       <Td>5</Td>
