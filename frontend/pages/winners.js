@@ -27,25 +27,25 @@ const Hacktues = ({ currData }) => {
         flexWrap="wrap"
       >
         <Card
-          // img={currData.winners[0].image}
-          name={"Отбор 1"}
-          teammates={"Сашко, Харката и компания"}
+          img="https://hacktues.pythonanywhere.com/static/frontend/htgg-1.png"
+          name={"Holdinga"}
+          teammates={"Виктор Горчилов - 12А, Валентин Спасов - 12А, Самуил Георгиев - 12А, Антон Янчев - 12А"}
           place={"first"}
-          project={"кофа"}
+          project={"CyclePath"}
         />
         <Card
-          // img={currData.winners[0].image}
-          name={"Отбор 1"}
-          teammates={"Сашко, Харката и компания"}
+          img={"https://hacktues.pythonanywhere.com/static/frontend/htgg-2.png"}
+          name={"Мечо Пух"}
+          teammates={"Стоян Тинчев - 11А, Александър Найденов - 11А, Стефан Босев - 11А, Кристиян Стоименов - 11А"}
           place={"second"}
-          project={"кофа"}
+          project={"Verda"}
         />
         <Card
-          // img={currData.winners[0].image}
-          name={"Отбор 1"}
-          teammates={"Сашко, Харката и компания"}
+          img={"https://hacktues.pythonanywhere.com/static/frontend/htgg-3.png"}
+          name={"789 2.0"}
+          teammates={"Илиана Генова - 12Б, Венелин Атанасов - 12Г, Стефан Антонов - 12Г"}
           place={"third"}
-          project={"кофа"}
+          project={"AutoHome"}
         />
       </Flex>
       {/* <Flex
