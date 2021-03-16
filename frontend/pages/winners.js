@@ -42,10 +42,10 @@ const Hacktues = ({ currData }) => {
         />
         <Card
           img={"https://hacktues.pythonanywhere.com/static/frontend/htgg-3.png"}
-          name={"789 2.0"}
-          teammates={"Илиана Генова - 12Б, Венелин Атанасов - 12Г, Стефан Антонов - 12Г"}
+          name={"Dynamics"}
+          teammates={"Ангел Стоянов - 11Б, Лилия Любенова - 11Б, Евгени Атанасов - 11Г,Денис Захариев - 11Б"}
           place={"third"}
-          project={"AutoHome"}
+          project={"GRobot"}
         />
       </Flex>
       {/* <Flex
